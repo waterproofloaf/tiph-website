@@ -1,0 +1,67 @@
+
+.top-contact-container{
+    display: relative;
+    padding: 6vw;
+    box-sizing: border-box;
+}
+
+.contact-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact-us-container{
+    width: 45%;
+    display: block;
+}
+
+.form-container{
+    background-color: #eeed;
+    width: 50%;
+    display: block;
+    padding: 50px;
+    border-radius: 4px;
+}
+
+.contact-form-text{
+    width: 100%;
+    margin-bottom: 30px;
+    float: right;
+}
+
+.button {
+    position: relative;
+    background-color: #173b41;
+    border: none;
+    font-size: 28px;
+    color: #FFFFFF;
+    width: 130px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  .button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
