@@ -2,6 +2,13 @@
   background-color: #eeede0;
 }
 
+.navbar {
+  background-color: #a67f46; 
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: small;
+}
+
 .centered-text {
   position: absolute;
   top: 50%;
@@ -17,6 +24,50 @@
 .header-title {
   font-family: "Montserrat";
   font-weight: bolder;
-  font-size: 50px;
+  font-size: 30px;
   color: white;
 }
+
+.sub-title {
+  font-family: "Roboto";
+  font-weight: bolder;
+  font-size: 45px;
+  color: #0c5865;
+}
+
+.sub-caption {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 15px;
+  color: #242424;
+}
+
+.btn {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.btn:hover {
+  color: #0c5865;
+}
+
+footer {
+  font-family: "Montserrat";
+  background-color: #dabd7e;
+  color: white;
+}
+
+.footer-copyright {
+  font-size: 10px;
+  background-color: #a67f46;
+}
+
+.soc-button {
+  color: white;
+}
+
+.soc-button:hover {
+  color: gray;
+}
+
