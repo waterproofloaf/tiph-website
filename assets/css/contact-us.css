@@ -16,10 +16,9 @@
     display: block;
 }
 
-.form-container{
+.contact-form-container{
     background-color: #eeed;
     width: 50%;
-    display: block;
     padding: 50px;
     border-radius: 4px;
 }
@@ -27,7 +26,6 @@
 .contact-form-text{
     width: 100%;
     margin-bottom: 30px;
-    float: right;
 }
 
 .button {
@@ -44,6 +42,7 @@
     cursor: pointer;
     padding-top: 10px;
     padding-bottom: 10px;
+    float: right;
   }
   
   .button:after {
