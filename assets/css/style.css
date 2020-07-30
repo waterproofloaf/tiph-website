@@ -2,7 +2,7 @@
   background-color: #eeede0;
 }
 
-.navbar {
+.navbar { 
   background-color: #a67f46; 
   font-family: "Montserrat";
   font-weight: 400;
@@ -11,20 +11,21 @@
 
 .centered-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 38%;
+  width: 100%;
+  text-align: center;
 }
 
 .header-img {
   width: 100%;
-  position: relative; 
+  position: relative;
+  z-index: -1;
 }
 
 .header-title {
   font-family: "Montserrat";
   font-weight: bolder;
-  font-size: 30px;
+  font-size: 4vw;
   color: white;
 }
 
@@ -52,6 +53,10 @@
   color: #0c5865;
 }
 
+.disabled {
+  cursor: not-allowed !important;
+}
+
 footer {
   font-family: "Montserrat";
   background-color: #dabd7e;
@@ -63,11 +68,28 @@ footer {
   background-color: #a67f46;
 }
 
+.soc-list {
+	list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.soc-list li {
+	float: left;
+}
+
+.soc-list li a {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .soc-button {
   color: white;
 }
 
 .soc-button:hover {
-  color: gray;
+  color: #0c5865;
 }
 
