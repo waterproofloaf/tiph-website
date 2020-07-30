@@ -1,4 +1,9 @@
 
+.contact-us-container a{
+    color: black !important;
+    text-decoration: none;
+}
+
 .top-contact-container{
     display: relative;
     padding: 6vw;
@@ -12,8 +17,9 @@
 }
 
 .contact-us-container{
-    width: 45%;
+    width: 40%;
     display: block;
+    text-align: justify;
 }
 
 .contact-form-container{
@@ -26,15 +32,24 @@
 .contact-form-text{
     width: 100%;
     margin-bottom: 30px;
+    border-radius: 2px;
+    border: 1px solid #ccc
+}
+
+#contact-inquiry{
+    height: 152px;
 }
 
 .button {
+    margin-top: 30px;
     position: relative;
     background-color: #173b41;
+    border-radius: 10px;
     border: none;
-    font-size: 28px;
+    font-size: 16px;
     color: #FFFFFF;
-    width: 130px;
+    width: 128px;
+    height: 56px;
     text-align: center;
     transition-duration: 0.4s;
     text-decoration: none;
