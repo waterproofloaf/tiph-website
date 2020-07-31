@@ -56,11 +56,32 @@
 }
 
 .object-container {
+    position: relative;
+    text-align: center;
+}
+
+.collapsible {
     background-color: #a67f46;
-    margin: auto;
     width: 70%;
     padding: 15px;
     color: white;
+    text-align: left;
+    border: none;
+}
+
+.active, .collapsible:hover {
+    background-color: #876739;
+}
+
+.content {
+    padding: 0 10px;
+    padding-top: 10px;
+    display: none;
+    overflow: hidden;
+    background-color: #a67f46;
+    color: white;
+    width: 70%;
+    margin: auto;
     margin-bottom: 20px;
 }
 
