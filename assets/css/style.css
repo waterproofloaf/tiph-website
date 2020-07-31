@@ -2,6 +2,11 @@
   background-color: #eeede0;
 }
 
+.bg-white{
+    background-color: white;
+    padding: 20px;
+}
+
 .navbar { 
   background-color: #a67f46; 
   font-family: "Montserrat";
@@ -41,6 +46,22 @@
   font-weight: 400;
   font-size: 15px;
   color: #242424;
+}
+
+.sub-header {
+    font-family: "Roboto";
+    font-weight: bolder;
+    font-size: 30px;
+    color: #173b41;
+}
+
+.object-container {
+    background-color: #a67f46;
+    margin: auto;
+    width: 70%;
+    padding: 15px;
+    color: white;
+    margin-bottom: 20px;
 }
 
 .btn {
