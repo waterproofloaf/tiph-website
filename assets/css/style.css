@@ -29,6 +29,13 @@
   color: white;
 }
 
+.header-title-2{
+  font-family: "Montserrat";
+  font-weight: bolder;
+  font-size: 4vw;
+  color: #0c5865;
+}
+
 .sub-title {
   font-family: "Roboto";
   font-weight: bolder;
