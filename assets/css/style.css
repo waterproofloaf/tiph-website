@@ -55,6 +55,10 @@
     color: #173b41;
 }
 
+ul li{
+  list-style-type: none;
+}
+
 .object-container {
     position: relative;
     text-align: center;
