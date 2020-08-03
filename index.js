@@ -20,8 +20,8 @@ app.use(express.static('views'));
 hbs.registerPartials(__dirname + '/views/partials');
 
 // define css, img, js, and views as static 
-app.use(express.static('public'));
-app.use(express.static('views'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname,'public')));
 
 // define the paths contained in routes module
 app.use('/', routes);
