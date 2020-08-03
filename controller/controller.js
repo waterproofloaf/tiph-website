@@ -13,6 +13,21 @@ const controller = {
         res.render('login');
     },
 
+    getHomePage: function(req, res){
+        res.render('homepage');
+    },
+
+    getAboutUs: function(req, res){
+        res.render('about');
+    },
+    getProjects: function(req, res){
+        res.render('projects');
+    },
+
+    getNews: function(req, res){
+        res.render('news');
+    },
+
     getContactUs: function(req, res){
         res.render('contact-us');
     },
