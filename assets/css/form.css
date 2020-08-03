@@ -1,0 +1,24 @@
+.div-flex{
+    display: flex;
+    margin-top: 15px;
+}
+
+.form-container{
+    display: block;
+}
+
+.width{
+    width: 620px;
+}
+
+.margin-left{
+    margin-left: 20px;
+}
+
+ul{
+    list-style-type: none;    
+}
+
+.div-expertise{
+    display: block
+}

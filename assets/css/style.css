@@ -58,6 +58,8 @@
 .object-container {
     position: relative;
     text-align: center;
+    width: 80%;
+    margin: auto;
 }
 
 .collapsible {
