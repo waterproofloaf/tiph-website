@@ -2,6 +2,11 @@
   background-color: #eeede0;
 }
 
+.bg-white{
+    background-color: white;
+    padding: 20px;
+}
+
 .navbar { 
   background-color: #a67f46; 
   font-family: "Montserrat";
@@ -41,6 +46,47 @@
   font-weight: 400;
   font-size: 15px;
   color: #242424;
+}
+
+.sub-header {
+    font-family: "Roboto";
+    font-weight: bolder;
+    font-size: 30px;
+    color: #173b41;
+}
+
+ul li{
+  list-style-type: none;
+}
+
+.object-container {
+    position: relative;
+    text-align: center;
+}
+
+.collapsible {
+    background-color: #a67f46;
+    width: 70%;
+    padding: 15px;
+    color: white;
+    text-align: left;
+    border: none;
+}
+
+.active, .collapsible:hover {
+    background-color: #876739;
+}
+
+.content {
+    padding: 0 10px;
+    padding-top: 10px;
+    display: none;
+    overflow: hidden;
+    background-color: #a67f46;
+    color: white;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 .btn {
