@@ -28,31 +28,40 @@
     <body class="bg-color">
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
-            <a class="navbar-brand" href="#"><img src="assets/img/brand.png" width="180"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarToggler">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <form action="#">
-                        <li class="nav-item">
-                            <a class="nav-link">About Us</a>
-                        </li>
-                    </form>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Project</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
+          <a class="navbar-brand" href="#"><img src="assets/img/brand.png" width="180"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <form action="#">
+              <li class="nav-item">
+                <a class="nav-link">Home</a>
+              </li>
+              </form>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Volunteer
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Pre-Application</a>
+                    <a class="dropdown-item" href="#">Application<span class="sr-only">(current)</span></a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Project</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
+              </li>
+            </ul>
+          </div>
         </nav>
         <div class="container-fluid" style="text-align: center">
             <!-- HEADER -->
@@ -256,12 +265,100 @@
                     <li>Videographers</li>
                 </ul>
             </div>
+            
+            <!-- DEPARTMENT OF CHOICE 1 -->
             <div class="div-dept-choice">
                 <h6 class="sub-header">Department of Choice</h6>
                 <div class="form-container">
                     <input type="radio" id="publications-communications" name="dept-choice" value="publications-communications"> Department of Publications and Communications (DPC) <br>
                     <input type="radio" id="disaster-mitigation" name="dept-choice" value="disaster-mitigation"> Department of Disaster Mitigation and Recovery (DDMR) <br>
                     <input type="radio" id="sogie-rights" name="dept-choice" value="sogie-rights"> Department of SOGIE Rights (DSR) <br>
+                    <input type="radio" id="initiatives-espana" name="dept-choice" value="initiatives-espana">Department of Initiatives - Project Espana (DI-PE)<br>
+                    <input type="radio" id="initiatives-taft" name="dept-choice" value="initiatives-taft">Department of Initiatives - Project Taft (DI-PT)<br>
+                </div>
+            </div> <br>
+            
+            <!-- DESIRED POSITION 1 -->
+            <div class="div-position">
+                <p class="sub-caption" style="font-size: 20px;">What's your desired position? </p>
+                <select name="position1" id="position1" style="width: 620px; margin-bottom: 15px;">
+                    <option value="secretary">Secretary</option>
+                    <option value="multimedia-artist">Multimedia Artist</option>
+                    <option value="content-writer">Content Writer</option>
+                    <option value="photographer">Photographer</option>
+                    <option value="videographer">Videographer</option>
+                    <option value="external-relations-officer">External Relations Officer</option>
+                    <option value="finance-officer">Finance Officer</option>
+                    <option value="logistics-officer">Logistics Officer</option>
+                    <option value="research-officer">Research Officer</option>
+                </select>
+            </div>
+            
+            <!-- DEPARTMENT OF CHOICE 2 -->
+            <div class="div-dept-choice-second">
+                <h6 class="sub-header">Department of Choice (Second Option)</h6>
+                <div class="form-container">
+                    <input type="radio" id="second-disaster-mitigation" name="dept-second-choice" value="second-disaster-mitigation">  Department of Disaster Mitigation and Recovery (DDMR) <br>
+                    <input type="radio" id="second-animal-welfare" name="dept-second-choice" value="second-animal-welfare"> Department of Animal and Environmental Welfare (DAEW)<br>
+                    <input type="radio" id="second-mental-health" name="dept-second-choice" value="second-mental-health"> Department of Mental Health (DMH)<br>
+                    <input type="radio" id="second-marginalized-community" name="dept-second-choice" value="second-marginalized-community">Department of Marginalized Community Action (DMCA)<br>
+                    <input type="radio" id="second-sogie-rights" name="dept-second-choice" value="second-sogie-rights">Department of SOGIE Rights (DSR)<br>
+                    <input type="radio" id="second-initiatives-taft" name="dept-second-choice" value="second-initiatives-taft">Department of Initiatives - Project Taft (DI-PT)<br>
+                    <input type="radio" id="second-initiatives-espana" name="dept-second-choice" value="second-initiatives-espana">Department of Initiatives - Project Espana (DI-PE)<br>
+                    <input type="radio" id="second-initiatives-katipunan" name="dept-second-choice" value="second-initiatives-katipunan">Department of Initiatives - Project Katipunan (DI-PK)<br>
+                </div>
+            </div>
+            
+            <!-- DESIRED POSITION 2 -->
+            <div class="div-position-2">
+                <p class="sub-caption" style="font-size: 20px; margin-top: 15px;">What's your desired position? </p>
+                <select name="position2" id="position2" style="width: 620px; margin-bottom: 15px;">
+                    <option value="hr-officer">HR Officer</option>
+                    <option value="secretary">Secretary</option>
+                    <option value="multimedia-artist">Multimedia Artist</option>
+                    <option value="content-writer">Content Writer</option>
+                    <option value="photographer">Photographer</option>
+                    <option value="videographer">Videographer</option>
+                    <option value="social-media-curator">Social Media Curator</option>
+                    <option value="electronic-postmaster">Electronic Postmaster</option>
+                    <option value="external-relations-officer">External Relations Officer</option>
+                    <option value="finance-officer">Finance Officer</option>
+                    <option value="logistics-officer">Logistics Officer</option>
+                    <option value="research-officer">Research Officer</option>
+                </select>
+            </div>
+            
+            <!-- REASON FOR JOINING -->
+            <div class="div-reason">
+                <h6 class="sub-caption" style="font-size: 20px; margin-top: 15px;"><strong>Reason for Volunteering </strong> (Answer in 140 characters or less.)</h6>
+                <textarea name="paragraph_text" cols="50" rows="8" style="margin-bottom: 20px; margin-left: 86px;"></textarea>
+            </div>
+            <hr>
+            <!-- PORTFOLIO -->
+            <div class="div-portfolio">
+                <h6 class="sub-header">Portfolio</h6>
+                <p class="sub-caption">
+                    This is only applicable for those applying for the following positions: <br>
+
+                    <strong>Multimedia Artist</strong> - Poster (1), Any digital artwork (3) <br>
+                    <strong>Content Writer</strong> - Article(1), Caption any event (1), Any written output (2) 
+                    <br>
+                    <strong>Photographer</strong> - Photos owned by the volunteer (5)
+                    <br>
+                    <strong>Videographer</strong> - Any video taken and edited by the volunteer (3)
+                    <br><br>
+                    You may upload through here or send it via our Email
+                    <strong>tiph.humanresources@gmail.com </strong>with the subject <br>
+                    <strong>[LAST NAME] Portfolio</strong>
+                    <br>
+                <!--    The link for the interview sheet will be found at the end of the form. Place your name on the DPC sheet. -->
+                    <br>
+                    <strong>DISREGARD THIS</strong> if you did not apply for the aforementioned positions. 
+                </p>
+                
+                <!-- PORTFOLIO UPLOAD -->
+                <div class="file-upload">
+
                 </div>
             </div>
         </div>
