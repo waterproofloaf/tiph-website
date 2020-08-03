@@ -15,16 +15,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body class="bg-color">
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark" style="background-color: #a67f46; font-family: Roboto Mono;">
-      <a class="navbar-brand" href="#"><img src="assets/img/brand.png" width="190"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+      <a class="navbar-brand" href="#"><img src="assets/img/brand.png" width="180"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <form action="#">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link">Home</a>
           </li>
           </form>
           <li class="nav-item">
@@ -37,7 +38,7 @@
               <a class="nav-link" href="#">Blog</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link">Contact Us<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Contact Us<span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>
@@ -81,51 +82,45 @@
       
     </div>
 
-    <!-- Footer -->
-    <footer class="font-small ">
-      <div class="container-fluid text-center text-md-left py-5">
-
-        <!-- Grid row -->
+    <!-- FOOTER -->
+    <footer>
+      <div class="container-fluid text-center text-md-left py-5 px-4">
         <div class="row">
-
-          <!-- Grid column -->
-          <div class="col-md-6 mt-md-0 mt-2">
-
-            <!-- Content -->
+          <div class="col-md-6 mt-md-0">
             <img src="assets/img/brand.png" width=300>
-
           </div>
-          <!-- Grid column -->
 
           <hr class="clearfix w-100 d-md-none pb-3">
 
-          <!-- Grid column -->
-          <div class="col-md-6 mb-md-0 mb-3 pb-3">
-
-            <!-- Content -->
-            <!-- <h5 class="text-uppercase font-weight-bold">LINKS</h5> -->
+          <div class="col-md-6 mb-md-0">
             <p>
               theinitiativeph@gmail.com
               <br>
               Contact No.
             </p>
 
-            <a class="fb-ic soc-button" href="#">
-              <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-1x"></i>
-            </a>
-
-            <a class="tw-ic soc-button" href="#">
-              <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-1x"></i>
-            </a>
-
+            <div class="d-flex justify-content-md-start justify-content-center">
+              <ul class="soc-list">
+                <li>
+                  <a class="fb-ic soc-button" href="https://www.facebook.com/theinitiativeph">
+                    <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-1x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="tw-ic soc-button" href="https://twitter.com/theinitiativeph">
+                    <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-1x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a class="ins-ic soc-button" href="https://www.instagram.com/theinitiativeph/">
+                    <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-1x"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <!-- Grid column -->
-
         </div>
-        <!-- Grid row -->
-
       </div>
-      <!-- Footer Text -->
       <div class="footer-copyright text-center py-2">© 2020 CSSWENG GROUP 3</div>
     </footer>
     
