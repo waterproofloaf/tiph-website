@@ -10,6 +10,10 @@ const app = express();
 
 // call function getIndex when client sends a request for '/' defined in routes.js
 // controller
+app.get('/homepage', controller.getHomePage);
+app.get('/about-us', controller.getAboutUs);
+app.get('/projects', controller.getProjects);
+app.get('/news', controller.getNews);
 app.get('/contact-us', controller.getContactUs);
 
 
