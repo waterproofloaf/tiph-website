@@ -1,0 +1,27 @@
+{
+  "name": "tiph-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "handlebars": "^4.7.6",
+    "hbs": "^4.1.1",
+    "mongodb": "^3.6.0",
+    "partials": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waterproofloaf/tiph-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waterproofloaf/tiph-website/issues"
+  },
+  "homepage": "https://github.com/waterproofloaf/tiph-website#readme"
+}
