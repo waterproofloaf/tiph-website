@@ -1,5 +1,5 @@
 .cms-login-container{
-    background-color: #e3e0d8;
+    background-color: #f8f9fa;
     padding: 50px;
     border-radius: 4px;
     position: absolute;
@@ -17,4 +17,6 @@
 
 .button{
     width: 100%;
+    background-color: #173b41;
+    color: #FFFFFF;
 }
