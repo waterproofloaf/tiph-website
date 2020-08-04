@@ -1,0 +1,27 @@
+.cms-login-container{
+    background-color: #f8f9fa;
+    padding: 50px;
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cms-login-form-text{
+    width: 200px;
+    margin-bottom: 30px;
+    border-radius: 2px;
+    border: 1px solid #ccc
+}
+
+.cms-font-text{
+    font-family: "Montserrat";
+}
+
+.button{
+    width: 100%;
+    background-color: #173b41;
+    color: #FFFFFF;
+    font-family: "Montserrat";
+}

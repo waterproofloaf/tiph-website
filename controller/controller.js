@@ -32,6 +32,10 @@ const controller = {
         res.render('contact-us');
     },
 
+    getContactUs: function(req, res){
+        res.render('cms-login');
+    },
+
     //executed when client requests '/' for HTTP POST defined in routes.js
     postLogIn: function(req, res){
         var DisplayName = req.body.username;

@@ -64,5 +64,11 @@ app.get('/contact-us', function(req, res) {
         contact_active: true,
     })
 });
+
+app.get('/cms-login', function(req, res) {
+    res.render('cms-login', {
+        title: 'CMS Login | The Initiative PH',
+    })
+});
 // enables to export app object when called in another .js file
 module.exports = app;
