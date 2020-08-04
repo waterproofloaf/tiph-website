@@ -40,12 +40,21 @@
     height: 152px;
 }
 
+.contact-font-header{
+    font-family: "Roboto";
+}
+
+.contact-font-texts{
+    font-family: "Montserrat";
+}
+
 .button {
     margin-top: 30px;
     position: relative;
     background-color: #173b41;
     border-radius: 10px;
     border: none;
+    font-family: "Montserrat";
     font-size: 16px;
     color: #FFFFFF;
     width: 128px;
