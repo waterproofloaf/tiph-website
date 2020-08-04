@@ -16,6 +16,13 @@ const app = express();
 //app.get('/news', controller.getNews);
 //app.get('/contact-us', controller.getContactUs);
 
+app.get('/', function(req, res) {
+    res.render('home', {
+        title: 'Home | The Initiative PH',
+        home_active: true,
+    })
+});
+
 app.get('/home', function(req, res) {
     res.render('home', {
         title: 'Home | The Initiative PH',
