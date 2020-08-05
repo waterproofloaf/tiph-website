@@ -14,24 +14,46 @@
   font-size: small;
 }
 
-.centered-text {
-  position: absolute;
-  top: 38%;
-  width: 100%;
-  text-align: center;
+.dropdown-menu {
+  background-color: #a67f46 !important; 
+  font-family: "Montserrat" !important;
+  font-weight: 400 !important;
+  font-size: small !important;
 }
 
-.header-img {
-  width: 100%;
+.dropdown-item {
+  color: white !important;
+  
+}
+
+.dropdown-item:hover {
+  background-color: #876739 !important; 
+}
+
+.header-home {
+  background-image: url(../img/test.jpg);
   position: relative;
-  z-index: -1;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode:lighten
 }
 
-.header-title {
+.header-text {
+  position: absolute;
+  padding-bottom: 1em;
+  text-align: center;
   font-family: "Montserrat";
-  font-weight: bolder;
-  font-size: 4vw;
+  text-transform: uppercase;
+  font-size: 2.7em;
+  line-height: 1em;
+  width: 60vw;
+  max-width:500px;
   color: white;
+}
+
+.header-sub {
+  font-size: 0.4em;
 }
 
 .sub-title {
@@ -49,10 +71,56 @@
 }
 
 .sub-header {
-    font-family: "Roboto";
-    font-weight: bolder;
-    font-size: 30px;
-    color: #173b41;
+  font-family: "Roboto";
+  font-weight: bolder;
+  font-size: 30px;
+  color: #173b41;
+}
+
+.card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: #0c5865;
+  text-transform: uppercase;
+}
+
+.card-subtitle {
+  font-family: "Montserrat";
+  font-weight: normal;
+  font-size: 1em;
+}
+
+.card-text {
+  font-family: "Roboto";
+  font-size: 0.8em;
+}
+
+.card-body {
+  font-family: "Roboto";
+}
+
+.card-link {
+  font-family: "Montserrat";
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  color: #0c5865;
+}
+
+.pagination {
+  font-family: "Montserrat";
+  font-weight: 500;
+}
+
+.btn-link {
+  font-family: "Montserrat" !important;
+  font-weight: 500 !important;
+  color: #0c5865 !important;
 }
 
 ul li{
