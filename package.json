@@ -8,6 +8,7 @@
     "handlebars": "^4.7.6",
     "hbs": "^4.1.1",
     "mongodb": "^3.6.0",
+    "mongoose": "^5.9.27",
     "partials": "^0.1.0"
   },
   "devDependencies": {},
