@@ -27,12 +27,12 @@ const controller = {
         })
     },
 
-    //getVolunteer: function(req, res){
-    //    res.render('volunteer', {
-    //        title: 'Volunteer | The Initiative PH',
-    //        volunteer_active: true,
-    //    })
-    //},
+    getVolunteer: function(req, res){
+        res.render('volunteer', {
+            title: 'Volunteer | The Initiative PH',
+            volunteer_active: true,
+       })
+    },
 
     getPreApp: function(req, res){
         res.render('pre-application', {
