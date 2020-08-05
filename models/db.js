@@ -10,7 +10,7 @@ const url = "mongodb://localhost:27017";
 const options = {useUnifiedTopology: true,  useNewUrlParser: true};
 
 // name of database
-const dbName = 'Big4FW_database';
+const dbName = 'TIPH';
 
 // database functions (CRUD functions)
 const database = {
