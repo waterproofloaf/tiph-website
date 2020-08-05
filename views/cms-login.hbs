@@ -17,7 +17,8 @@
 <body class="bg-color">
     {{>navbar}}
     
-        <div class="cms-login-container"> <!-- Form -->
+    <div class="cms-login-container">
+        <div class="cms-login-form-container"> <!-- Form -->
             <label for="cms-username" class="cms-font-text"><strong> Username </strong></label>
             <br>
             <input type="text" name="cms-username" id="cms-username" class="cms-login-form-text" required>
@@ -28,12 +29,10 @@
             <br>
           <button name="contact-submit" id="contact-submit" class="button"><strong>LOG IN</strong></button>
         </div>
-
-      <!-- </form> -->
-
-      </div>
-      
     </div>
+        
+
+    {{>footer}}
 
 </body>
 </html>
