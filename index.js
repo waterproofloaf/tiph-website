@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
+const session = require('express-session');
 
 // import routes module
 const routes = require('./routes/routes.js');
@@ -27,6 +28,12 @@ app.use(express.static(path.join(__dirname,'public')));
 
 // define the paths contained in routes module
 app.use('/', routes);
+
+app.use(session({
+    secret: "fd34s@!@dfa453f3DF#$D&W",
+    resave: false,
+    saveUninitialized: true,
+}));
 
 db.connect();
 
