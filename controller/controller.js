@@ -1,5 +1,5 @@
 // import module from db.js in models directory
-const db = require('../models/db.js');
+const database = require('../models/db.js');
 
 // define objects for client request functions for a certain path in the server
 const controller = {
@@ -14,73 +14,63 @@ const controller = {
     },
 
     getHomePage: function(req, res){
-        res.render('homepage');
+        res.render('home', {
+            title: 'Home | The Initiative PH',
+            home_active: true,
+        })
     },
 
     getAboutUs: function(req, res){
-        res.render('about');
+        res.render('about', {
+            title: 'About | The Initiative PH',
+            about_active: true,
+        })
     },
+
+    getVolunteer: function(req, res){
+        res.render('volunteer', {
+            title: 'Volunteer | The Initiative PH',
+            volunteer_active: true,
+        })
+    },
+
     getProjects: function(req, res){
-        res.render('projects');
+        res.render('projects', {
+            title: 'Projects | The Initiative PH',
+            projects_active: true,
+        })
     },
 
-    getNews: function(req, res){
-        res.render('news');
+    getBlogs: function(req, res){
+        res.render('blog', {
+            title: 'Blog | The Initiative PH',
+            blog_active: true,
+        })
     },
 
     getContactUs: function(req, res){
-        res.render('contact-us');
-    },
-
-    getContactUs: function(req, res){
-        res.render('cms-login');
-    },
-
-    //executed when client requests '/' for HTTP POST defined in routes.js
-    postLogIn: function(req, res){
-        var DisplayName = req.body.username;
-
-        var query = {
-            DisplayName: DisplayName,
-        }
-
-        db.findOne('userProfile',query,function(result){
-            if(result){
-                res.redirect('/HOME?_id=' + result._id + '&DisplayName=' + DisplayName);
-            }
+        res.render('contact-us', {
+            title: 'Contact Us | The Initiative PH',
+            contact_active: true,
         })
     },
 
-    // executes when client request for HTTP GET '/checkUsername' defined in routes.js
-    checkUsername: function(req,res){
-
-        // retrieve value of Username stored in req.query object
-        var username = req.query.Username;
-
-        // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
-        // sends an empty string if no result was found. otherwise, send an object containing 'Username'
-        db.findOne('userProfile', {DisplayName : username}, function(result){
-            res.send(result);
+    getCMSLogin: function(req, res){
+        res.render('cms-login', {
+            title: 'CMS Login | The Initiative PH',
         })
-
-
-        // mongoose
-        // db.findOne(User, {username: username}, 'username', function (result) {
-        //     res.send(result);
-        // });
     },
 
-    checkPassword: function(req,res){
-
-        // retrieve value of Username stored in req.query object
-        var pass = req.query.Password;
-
-        // call the function findOne() from the module in db.js and use the object query to filter the collection 'userProfile' in the database
-        // sends an empty string if no result was found. otherwise, send an object containing 'Username'
-        db.findOne('userProfile', {Password : pass}, function(result){
-            res.send(result);
+    getCMSHome: function(req, res){
+        res.render('cms-home', {
+            title: 'CMS Home | The Initiative PH',
         })
+    },
 
+    getCMSBlog: function(req, res){
+        res.render('cms-blog', {
+            title: 'CMS Blog | The Initiative PH',
+        })
     },
 }
 

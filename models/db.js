@@ -6,7 +6,8 @@ const url = "mongodb://localhost:27017/tiph";
 
 const options = {
     useUnifiedTopology: true,  
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useCreateIndex: true
 };
 
 // database functions (CRUD functions)
