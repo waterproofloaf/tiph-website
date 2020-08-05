@@ -1,0 +1,337 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>The Initiative PH - Application Form</title>
+
+        <link rel="stylesheet" type="text/css" media="all" href="assets/css/style.css">
+        <link rel="stylesheet" type="text/css" media="all" href="assets/css/form.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <script src="https://kit.fontawesome.com/a2bb66671d.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+        <script type="text/javascript">
+            function GetFindOut(value){
+                var element = document.getElementById('findouttxt');
+                if(value=='other')
+                    element.style.display='block';
+                else  
+                    element.style.display='none';
+            }
+
+        </script> 
+    </head>
+    <body class="bg-color">
+        {{>navbar}}
+        
+        <div class="container-fluid" style="text-align: center">
+            <!-- HEADER -->
+            <h5 class="font-weight-bold text-uppercase sub-title" style="margin-top: 20px;">APPLICATION FORM</h5>
+            <h6 class="font-weight-bold sub-header" id="app_year">2020</h6>
+            
+            <!-- INFO -->
+            <div class="object-container">
+                <p class="sub-caption">The Initiative PH (TIPH) is a youth-run volunteer organization that coordinates relief efforts and organizes sustainable programs for poverty-, calamity-, and conflict- ridden areas and communities in the Philippines. By spearheading youth volunteer efforts, we build solidarity and social consciousness among the youth regardless of school or social background. <br> Note that by completing this form, you are giving The Initiative PH (TIPH) the rights to hold onto your information for profiling during your membership. You may rest assured that your information will remain protected as per the Data Privacy Act.
+                    
+                <br><br><strong>PURPOSE</strong><br>
+                This registration form shall only be used to gather personal information of interested applicants for The Initiative PH to contact all applicants for the potential dissemination of additional information or updates regarding their status of application for TIPH and nothing else. 
+                    
+                <br><br><strong>CONFIDENTIALITY</strong><br>
+                In accordance with RA 10173 or the Data Privacy Act of 2012, all personal information gathered from this registration form shall be kept CONFIDENTIAL and will only be accessed by TIPH's Human Resources (HR) Department Heads and Officers. 
+                    
+                <br><br><strong>DISPOSAL OF DATA</strong><br>
+                All data gathered through this registration form will be disposed of by the end of the duration of TIPH's July application season. This concerns the permanent deletion of all data collected.
+
+                <br><br><strong>YOUR RESPONSIBILITY</strong><br>
+                Should you realize that your data privacy is being breached or not handled properly, you may send a complaint to the National Privacy Commission through an email to complaints@privacy.gov.ph, and our organization will be responsible for handling such cases regarding potential violations of RA 10173 or the Data Privacy Act of 2012.</p>
+                
+                <input type="checkbox" id="form-agree" name="form-agree" value="Agree" style="width: auto;">
+                <label for="form-agree" class="sub-caption"><strong>I Agree</strong></label><br>
+            </div>
+        </div>
+        <br><br>
+        <div class="container-fluid" style="margin-left: 56px;">
+            <h5 class="font-weight-bold sub-header" id="step1">STEP 1: FILL OUT THE FORM</h5>
+            <div class="form-container">
+                <div class="div-last-first div-flex">
+                    <div class="div-lastname">
+                        <input type="text" name="form-lastname" id="form-lastname" class="app-form-text width" placeholder="Dela Cruz">
+                        <h6 class="font-weight-bold">LAST NAME</h6>
+
+                    </div>
+                    <div class="div-firstname margin-left">
+                        <input type="text" name="form-firstname" id="form-firstname" class="app-form-text width" placeholder="Juana">
+                        <h6 class="font-weight-bold">FIRST NAME</h6>
+                    </div>
+                </div>
+                <div class="div-nickname-email div-flex">
+                    <div class="div-nickname">
+                        <input type="text" name="form-nickname" id="form-nickname" class="app-form-text width" placeholder="Ana">
+                        <h6 class="font-weight-bold">NICKNAME</h6>
+
+                    </div>
+                    <div class="div-email margin-left">
+                        <input type="email" name="form-email" id="form-email" class="app-form-text width" value required>
+                        <h6 class="font-weight-bold">EMAIL</h6>
+                    </div>
+                </div>
+                <div class="div-birthday-city div-flex">
+                    <div class="div-birthday">
+                        <input type="date" name="form-birthday" id="form-birthday" class="width">
+                        <h6 class="font-weight-bold">DATE OF BIRTH</h6>
+                    </div>
+                    <div class="div-city margin-left">
+                        <input type="text" name="form-city" id="form-city" class="width">
+                        <h6 class="font-weight-bold">CITY OF RESIDENCE</h6>
+                    </div>
+                </div>
+                <div class="div-schoolcompany-number div-flex">
+                    <div class="div-schoolcompany">
+                        <input type="text" name="form-schoolcompany" id="form-schoolcompany" class="width">
+                        <h6 class="font-weight-bold">SCHOOL/COMPANY</h6>
+                    </div>
+                    <div class="div-number margin-left">
+                        <input type="tel" name="form-number" id="form-number" class="width">
+                        <h6 class="font-weight-bold">CONTACT NUMBER</h6>
+                    </div>
+                </div>
+                <div class="div-facebook-twitter div-flex">
+                    <div class="div-facebook">
+                        <input type="url" name="form-facebook" id="form-facebook" class="width">
+                        <h6 class="font-weight-bold">FACEBOOK URL</h6>
+                    </div>
+                    <div class="div-twitter margin-left">
+                        <input type="url" name="form-twitter" id="form-twitter" class="width">
+                        <h6 class="font-weight-bold">TWITTER URL (optional)</h6>
+                    </div>
+                </div>
+                <div class="div-findout fixx" style="margin-top: 20px;">
+                     <select name="findout" id="findout" onchange='GetFindOut(this.value);' class="width">
+                        <option value="family">Family</option>
+                        <option value="friend">Friend</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="twitter">Twitter</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="wordpress">Wordpress</option>
+                        <option value="school">School</option>        <option value="company">Company</option>
+                        <option value="other">Other...</option>
+                    </select>
+                    <input type="text" name="findouttxt" id="findouttxt" style="display:none; margin-top: 15px; border-color: red" class="width" placeholder="Please Specify"/>
+                    <h6 class="font-weight-bold"> HOW DID YOU FIND OUT ABOUT TIPH?</h6>
+                </div> 
+            </div>
+
+            <hr>
+            <h5 class="font-weight-bold sub-header" id="role-registration">Role Registration</h5>
+            <div class="sub-caption">
+                <p><strong>
+                    There are two (2) branches in the organizational structure: The Management Branch (MB) and the Operations Branch (OB). <br><br>
+
+                    Under the Management Branch (MB):</strong>
+                </p>
+                <ul>
+                    <li>Department of Administrative Affairs (DAA)</li>
+                    <li>Department of Publications and Communications (DPC)</li>
+                    <li>Department of Marketing and Finance (DMF)*</li>
+                </ul>
+                <p class="sub-caption"><strong>Under the Operations Branch (OB):</strong></p>
+                <ul>
+                    <li>Department of Disaster Mitigation and Recovery (DDMR)</li>
+                    <li>Department of Marginalized Community Action (DMCA)*</li>
+                    <li>Department of Mental Health (DMH)*</li>
+                    <li>Department of Animal and Environmental Welfare (DAEW)*</li>
+                    <li>Department of SOGIE Rights (DSR)</li>
+                    <li>Department of Initiatives - Project Taft (DI-PT)</li>
+                    <li>Department of Initiatives - Project Espana (DI-PE)</li>
+                    <li>Department of Initiatives - Project Katipunan (DI-PK)*</li>
+                </ul>
+                <p class="sub-caption">You may choose from the Operations Branch for all volunteers will have a respective management branch assigned.
+                <br><strong>* - Will not open applications</strong>
+                </p>
+            </div>
+            <div class="div-expertise-txt div-flex">
+                <h5 class="sub-header">Areas of Expertise</h5>
+                <p class="sub-caption" style="margin-top: 10px; margin-left: 6px;"> (choose as many as you can)</p>
+            </div>
+            <div class="div-expertise sub-caption">
+                <form method="get" id="expertise-check" class=" form-container margin-left">
+                    <input type="checkbox" name="expertise" id="legal-matters" value="legal-matters"> Legal Matters
+                    <br>
+                    <input type="checkbox" name="expertise" id="file-organization" value="file-organization"> File Organization <br>
+                    <input type="checkbox" name="expertise" id="minute-taking" value="minute-taking"> Minute-Taking 
+                    <br>
+                    <input type="checkbox" name="expertise" id="hr-management" value="hr-management"> Human Resource Management 
+                    <br>
+                    <input type="checkbox" name="expertise" id="project-management" value="project-management"> Project Management
+                    <br>
+                    <input type="checkbox" name="expertise" id="data-driven" value="data-driven"> Data-driven Marketing and Analysis (Social Media Engagement)
+                    <br>
+                    <input type="checkbox" name="expertise" id="content-curation" value="content-curation"> Content Curation (Social Media Management)
+                    <br>
+                    <input type="checkbox" name="expertise" id="website-design" value="website-design"> Website Design and Development 
+                    <br>
+                    <input type="checkbox" name="expertise" id="content-text" value="content-text"> Content Creation (Text) 
+                    <br>
+                    <input type="checkbox" name="expertise" id="content-multimedia" value="content-multimedia"> Content Creation (Multimedia)
+                    <br>
+                    <input type="checkbox" name="expertise" id="photo-video" value="photo-video"> Photography and Videography 
+                    <br>
+                    <input type="checkbox" name="expertise" id="accounting" value="accounting"> Accounting
+                    <br>
+                    <input type="checkbox" name="expertise" id="external-relations" value="external-relations"> External Relations 
+                    <br>
+                    <input type="checkbox" name="expertise" id="logistics" value="logistics"> Logistics 
+                    <br>
+                </form>
+            </div>
+            <div class="">
+                <h6 class="sub-header">Available Positions per Department</h6>
+                <p><strong>DEPARTMENT OF PUBLICATIONS AND COMMUNICATIONS (DPC)</strong></p>
+                <ul class="sub-caption">
+                    <li>Multimedia Artist for DDMR, DMH, DSR, DI-PT, DI-PK, DI-PE</li>
+                    <li>Content Writer for DDMR, DMH, DSR, DI-PT, DI-PK, DI-PE</li>
+                    <li>Photographer for DDMR, DMCA, DAEW, DSR, DI-PT, DI-PK, DI-PE</li>
+                    <li>Videographer for DDMR, DMCA, DAEW, DSR, DI-PT, DI-PK, DI-PE</li>
+                </ul>
+                <p><strong>DEPARTMENT OF DISASTER MITIGATION AND RECOVERY (DDMR)</strong> - Must be at least 17 years old, or will be 17 by the year of application</p>
+                <ul class="sub-caption">
+                    <li>External Relations Officers</li>
+                    <li>Finance Officers</li>
+                    <li>Multimedia Artists</li>
+                    <li>Content Writers</li>
+                    <li>Photographers</li>
+                    <li>Videographers</li>
+                </ul>
+                <p><strong>DEPARTMENT OF SOGIE RIGHTS (DSR)</strong></p>
+                <ul class="sub-caption">
+                    <li>External Relations Officers (Partnerships Officers)</li>
+                    <li>Finance Officers</li>
+                    <li>Logistics Officers</li>
+                    <li>Marketing Officers</li>
+                    <li>Research Officers</li>
+                </ul>
+                <p><strong>DEPARTMENT OF INITIATIVES – PROJECT ESPAÑA (DI-PE)</strong></p>
+                <ul class="sub-caption">
+                    <li>External Relations Officers</li>
+                    <li>Finance Officers</li>
+                    <li>Logistics Officers</li>
+                    <li>Research Officers</li>
+                </ul>
+                <p><strong>DEPARTMENT OF INITIATIVES – PROJECT TAFT (DI-PT)</strong></p>
+                <ul class="sub-caption">
+                    <li>Finance Officers</li>
+                    <li>Multimedia Artists</li>
+                    <li>Content Writers</li>
+                    <li>Photographers</li>
+                    <li>Videographers</li>
+                </ul>
+            </div>
+            
+            <!-- DEPARTMENT OF CHOICE 1 -->
+            <div class="div-dept-choice">
+                <h6 class="sub-header">Department of Choice</h6>
+                <div class="form-container margin-left">
+                    <input type="radio" id="publications-communications" name="dept-choice" value="publications-communications"> Department of Publications and Communications (DPC) <br>
+                    <input type="radio" id="disaster-mitigation" name="dept-choice" value="disaster-mitigation"> Department of Disaster Mitigation and Recovery (DDMR) <br>
+                    <input type="radio" id="sogie-rights" name="dept-choice" value="sogie-rights"> Department of SOGIE Rights (DSR) <br>
+                    <input type="radio" id="initiatives-espana" name="dept-choice" value="initiatives-espana"> Department of Initiatives - Project Espana (DI-PE)<br>
+                    <input type="radio" id="initiatives-taft" name="dept-choice" value="initiatives-taft"> Department of Initiatives - Project Taft (DI-PT)<br>
+                </div>
+            </div> <br>
+            
+            <!-- DESIRED POSITION 1 -->
+            <div class="div-position">
+                <p class="sub-caption" style="font-size: 20px;">What's your desired position? </p>
+                <select name="position1" id="position1" style="min-width: 50%; margin-bottom: 15px;">
+                    <option value="secretary">Secretary</option>
+                    <option value="multimedia-artist">Multimedia Artist</option>
+                    <option value="content-writer">Content Writer</option>
+                    <option value="photographer">Photographer</option>
+                    <option value="videographer">Videographer</option>
+                    <option value="external-relations-officer">External Relations Officer</option>
+                    <option value="finance-officer">Finance Officer</option>
+                    <option value="logistics-officer">Logistics Officer</option>
+                    <option value="research-officer">Research Officer</option>
+                </select>
+            </div>
+            
+            <!-- DEPARTMENT OF CHOICE 2 -->
+            <div class="div-dept-choice-second">
+                <h6 class="sub-header">Department of Choice (Second Option)</h6>
+                <div class="form-container margin-left">
+                    <input type="radio" id="second-disaster-mitigation" name="dept-second-choice" value="second-disaster-mitigation"> Department of Disaster Mitigation and Recovery (DDMR) <br>
+                    <input type="radio" id="second-animal-welfare" name="dept-second-choice" value="second-animal-welfare"> Department of Animal and Environmental Welfare (DAEW)<br>
+                    <input type="radio" id="second-mental-health" name="dept-second-choice" value="second-mental-health"> Department of Mental Health (DMH)<br>
+                    <input type="radio" id="second-marginalized-community" name="dept-second-choice" value="second-marginalized-community"> Department of Marginalized Community Action (DMCA)<br>
+                    <input type="radio" id="second-sogie-rights" name="dept-second-choice" value="second-sogie-rights"> Department of SOGIE Rights (DSR)<br>
+                    <input type="radio" id="second-initiatives-taft" name="dept-second-choice" value="second-initiatives-taft"> Department of Initiatives - Project Taft (DI-PT)<br>
+                    <input type="radio" id="second-initiatives-espana" name="dept-second-choice" value="second-initiatives-espana"> Department of Initiatives - Project Espana (DI-PE)<br>
+                    <input type="radio" id="second-initiatives-katipunan" name="dept-second-choice" value="second-initiatives-katipunan"> Department of Initiatives - Project Katipunan (DI-PK)<br>
+                </div>
+            </div>
+            
+            <!-- DESIRED POSITION 2 -->
+            <div class="div-position-2">
+                <p class="sub-caption" style="font-size: 20px; margin-top: 15px;">What's your desired position? </p>
+                <select name="position2" id="position2" style="width: 50%; margin-bottom: 15px;">
+                    <option value="hr-officer">HR Officer</option>
+                    <option value="secretary">Secretary</option>
+                    <option value="multimedia-artist">Multimedia Artist</option>
+                    <option value="content-writer">Content Writer</option>
+                    <option value="photographer">Photographer</option>
+                    <option value="videographer">Videographer</option>
+                    <option value="social-media-curator">Social Media Curator</option>
+                    <option value="electronic-postmaster">Electronic Postmaster</option>
+                    <option value="external-relations-officer">External Relations Officer</option>
+                    <option value="finance-officer">Finance Officer</option>
+                    <option value="logistics-officer">Logistics Officer</option>
+                    <option value="research-officer">Research Officer</option>
+                </select>
+            </div>
+            
+            <!-- REASON FOR JOINING -->
+            <div class="div-reason">
+                <h6 class="sub-caption" style="font-size: 20px; margin-top: 15px;"><strong>Reason for Volunteering </strong> (Answer in 140 characters or less.)</h6>
+                <textarea name="comment-txt" id="comment-txt" cols="50" rows="8"></textarea>
+            </div>
+            <hr>
+            <!-- PORTFOLIO -->
+            <div class="div-portfolio">
+                <h6 class="sub-header">Portfolio</h6>
+                <p class="sub-caption">
+                    This is only applicable for those applying for the following positions: <br>
+
+                    <strong>Multimedia Artist</strong> - Poster (1), Any digital artwork (3) <br>
+                    <strong>Content Writer</strong> - Article(1), Caption any event (1), Any written output (2) 
+                    <br>
+                    <strong>Photographer</strong> - Photos owned by the volunteer (5)
+                    <br>
+                    <strong>Videographer</strong> - Any video taken and edited by the volunteer (3)
+                    <br><br>
+                    You may upload through here or send it via our Email
+                    <strong>tiph.humanresources@gmail.com </strong>with the subject <br>
+                    <strong>[LAST NAME] Portfolio</strong>
+                    <br>
+                <!--    The link for the interview sheet will be found at the end of the form. Place your name on the DPC sheet. -->
+                    <br>
+                    <strong>DISREGARD THIS</strong> if you did not apply for the aforementioned positions. 
+                </p>
+                
+                <!-- PORTFOLIO UPLOAD -->
+                <div class="file-upload">
+                    <input type="file" name="upload" class="portfolio-upload">
+                </div>
+            </div>
+        </div>
+
+        <button name="form-submit" id="form-submit" class="submit"><strong>S U B M I T</strong></button>
+        
+      {{>footer}}
+      
+    </body>
+</html>
