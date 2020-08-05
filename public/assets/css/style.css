@@ -2,11 +2,6 @@
   background-color: #eeede0;
 }
 
-.bg-white{
-    background-color: white;
-    padding: 20px;
-}
-
 .navbar { 
   background-color: #a67f46; 
   font-family: "Montserrat";
@@ -84,6 +79,8 @@ ul li{
 .object-container {
     position: relative;
     text-align: center;
+    width: 80%;
+    margin: auto;
 }
 
 .collapsible {
@@ -165,4 +162,6 @@ footer {
 .soc-button:hover {
   color: #0c5865;
 }
+
+
 
