@@ -19,8 +19,8 @@ const logIncontroller = {
         },
 
         postLogin: function(req, res) {
-            var username = helper.sanitize(req.body.cms-username);
-            var password = helper.sanitize(req.body.cms-password);
+            var username = helper.sanitize(req.body.cmsusername);
+            var password = helper.sanitize(req.body.cmspassword);
 
             if(username.trim() == '' || password == ''){
                 res.render('cms-login', {
