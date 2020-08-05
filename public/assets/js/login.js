@@ -5,7 +5,7 @@ $(document).ready(function () {
     $('#cmsusername').keyup(function(){
         var username = $('#cmsusername').val();
 
-        $.get('/checkUsername', {psername : username}, function(result){
+        $.get('/checkUsername', {username : username}, function(result){
             
             if(result.username == username){
                 $('#cmsusername').css('border-color', '#d9dadc');

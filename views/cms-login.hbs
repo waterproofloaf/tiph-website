@@ -19,7 +19,7 @@
 
     {{>navbar}}
     
-    <form id="cms-login" method="POST">
+    <form id="cmslogin" method="POST">
         <div class="cms-login-container">
             <div class="cms-login-form-container">
                 <label for="cmsusername" class="cms-font-text"><strong> Username </strong></label>
@@ -30,11 +30,12 @@
                 <br>
                 <input type="password" name="cmspassword" id="cmspassword" class="cms-login-form-text" required>
                 <br>
+                <h5 class="cms-font-text-error">{{#if login_active}}{{loginErrorMessage}}{{/if}}</h5>
+                <br>
                 <input type="submit" name="cmssubmit" id="cmssubmit" class="button" value="LOG IN">
             </div>
         </div>
     </form>
-    
 
     {{>footer}}
 

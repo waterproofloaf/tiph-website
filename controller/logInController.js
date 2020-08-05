@@ -20,10 +20,17 @@ const logIncontroller = {
                 if (result.username == username && result.password == password){
                     res.redirect('/cms-home');
                 }
+                else{
+                    res.render('cms-login', {
+                        title: 'Login | TIPH',
+                        login_active: true,
+                        loginErrorMessage: 'Invalid credentials!'
+                    })
+                }
             }
         })
         
-    }
+    },
 }
 
  // enables to export controller object when called in another .js file
