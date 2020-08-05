@@ -2,11 +2,6 @@
   background-color: #eeede0;
 }
 
-.bg-s{
-    background-color: #0c5865;
-    padding: 20px;
-}
-
 .navbar { 
   background-color: #a67f46; 
   font-family: "Montserrat";
@@ -136,4 +131,6 @@ footer {
 .soc-button:hover {
   color: #0c5865;
 }
+
+
 
