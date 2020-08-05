@@ -1,5 +1,3 @@
-const { db } = require('./models/UserModel.js');
-
 const User = require('./models/UserModel.js');
 const database = require('./models/db.js');
 

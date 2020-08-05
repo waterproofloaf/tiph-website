@@ -8,8 +8,8 @@ const logIncontroller = {
 
     postLogIn: function(req, res){
 
-        var username = req.body.cms-username;
-        var password = req.body.cms-password;
+        var username = req.body.cmsusername;
+        var password = req.body.cmspassword;
 
         User.findOne( {username: username}, function(err, result){
             if (err){
@@ -17,6 +17,9 @@ const logIncontroller = {
             }
             else{
                 console.log("Result: ", result);
+                if (result.username == username && result.password == password){
+                    res.redirect('/cms-home');
+                }
             }
         })
         
