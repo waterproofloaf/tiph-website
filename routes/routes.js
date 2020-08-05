@@ -70,5 +70,17 @@ app.get('/cms-login', function(req, res) {
         title: 'CMS Login | The Initiative PH',
     })
 });
+
+app.get('/cms-home', function(req, res) {
+    res.render('cms-home', {
+        title: 'CMS Home | The Initiative PH',
+    })
+});
+
+app.get('/cms-blog', function(req, res) {
+    res.render('cms-blog', {
+        title: 'CMS Blog | The Initiative PH',
+    })
+});
 // enables to export app object when called in another .js file
 module.exports = app;
