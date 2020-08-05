@@ -89,22 +89,23 @@
             </div>
         </div>
         <br><br>
-        <div class="container-fluid" style="margin-left: 90px;">
+        <div class="container-fluid" style="margin-left: 56px;">
             <h5 class="font-weight-bold sub-header" id="step1">STEP 1: FILL OUT THE FORM</h5>
             <div class="form-container">
                 <div class="div-last-first div-flex">
                     <div class="div-lastname">
-                        <input type="text" name="form-lastname" id="form-lastname" class="app-form-text width" value required>
+                        <input type="text" name="form-lastname" id="form-lastname" class="app-form-text width" placeholder="Dela Cruz">
                         <h6 class="font-weight-bold">LAST NAME</h6>
+
                     </div>
                     <div class="div-firstname margin-left">
-                        <input type="text" name="form-firstname" id="form-firstname" class="app-form-text width" value required>
+                        <input type="text" name="form-firstname" id="form-firstname" class="app-form-text width" placeholder="Juana">
                         <h6 class="font-weight-bold">FIRST NAME</h6>
                     </div>
                 </div>
                 <div class="div-nickname-email div-flex">
                     <div class="div-nickname">
-                        <input type="text" name="form-nickname" id="form-nickname" class="app-form-text width">
+                        <input type="text" name="form-nickname" id="form-nickname" class="app-form-text width" placeholder="Ana">
                         <h6 class="font-weight-bold">NICKNAME</h6>
 
                     </div>
@@ -143,8 +144,8 @@
                         <h6 class="font-weight-bold">TWITTER URL (optional)</h6>
                     </div>
                 </div>
-                <div class="div-findout" style="margin-top: 20px; display: flex">
-                    <select name="findout" id="findout" onchange='GetFindOut(this.value);' style="width: 620px;">
+                <div class="div-findout fixx" style="margin-top: 20px;">
+                     <select name="findout" id="findout" onchange='GetFindOut(this.value);' class="width">
                         <option value="family">Family</option>
                         <option value="friend">Friend</option>
                         <option value="facebook">Facebook</option>
@@ -152,14 +153,14 @@
                         <option value="instagram">Instagram</option>
                         <option value="linkedin">LinkedIn</option>
                         <option value="wordpress">Wordpress</option>
-                        <option value="school">School</option>
-                        <option value="company">Company</option>
+                        <option value="school">School</option>        <option value="company">Company</option>
                         <option value="other">Other...</option>
                     </select>
-                    <input type="text" name="findouttxt" id="findouttxt" style="display:none; margin-top: 15px; border-color: red" class="margin-left width" placeholder="Please Specify"/>
-                </div>
-                <h6 class="font-weight-bold"> HOW DID YOU FIND OUT ABOUT TIPH?</h6>
+                    <input type="text" name="findouttxt" id="findouttxt" style="display:none; margin-top: 15px; border-color: red" class="width" placeholder="Please Specify"/>
+                    <h6 class="font-weight-bold"> HOW DID YOU FIND OUT ABOUT TIPH?</h6>
+                </div> 
             </div>
+
             <hr>
             <h5 class="font-weight-bold sub-header" id="role-registration">Role Registration</h5>
             <div class="sub-caption">
@@ -269,19 +270,19 @@
             <!-- DEPARTMENT OF CHOICE 1 -->
             <div class="div-dept-choice">
                 <h6 class="sub-header">Department of Choice</h6>
-                <div class="form-container">
+                <div class="form-container margin-left">
                     <input type="radio" id="publications-communications" name="dept-choice" value="publications-communications"> Department of Publications and Communications (DPC) <br>
                     <input type="radio" id="disaster-mitigation" name="dept-choice" value="disaster-mitigation"> Department of Disaster Mitigation and Recovery (DDMR) <br>
                     <input type="radio" id="sogie-rights" name="dept-choice" value="sogie-rights"> Department of SOGIE Rights (DSR) <br>
-                    <input type="radio" id="initiatives-espana" name="dept-choice" value="initiatives-espana">Department of Initiatives - Project Espana (DI-PE)<br>
-                    <input type="radio" id="initiatives-taft" name="dept-choice" value="initiatives-taft">Department of Initiatives - Project Taft (DI-PT)<br>
+                    <input type="radio" id="initiatives-espana" name="dept-choice" value="initiatives-espana"> Department of Initiatives - Project Espana (DI-PE)<br>
+                    <input type="radio" id="initiatives-taft" name="dept-choice" value="initiatives-taft"> Department of Initiatives - Project Taft (DI-PT)<br>
                 </div>
             </div> <br>
             
             <!-- DESIRED POSITION 1 -->
             <div class="div-position">
                 <p class="sub-caption" style="font-size: 20px;">What's your desired position? </p>
-                <select name="position1" id="position1" style="width: 620px; margin-bottom: 15px;">
+                <select name="position1" id="position1" style="min-width: 50%; margin-bottom: 15px;">
                     <option value="secretary">Secretary</option>
                     <option value="multimedia-artist">Multimedia Artist</option>
                     <option value="content-writer">Content Writer</option>
@@ -297,22 +298,22 @@
             <!-- DEPARTMENT OF CHOICE 2 -->
             <div class="div-dept-choice-second">
                 <h6 class="sub-header">Department of Choice (Second Option)</h6>
-                <div class="form-container">
-                    <input type="radio" id="second-disaster-mitigation" name="dept-second-choice" value="second-disaster-mitigation">  Department of Disaster Mitigation and Recovery (DDMR) <br>
+                <div class="form-container margin-left">
+                    <input type="radio" id="second-disaster-mitigation" name="dept-second-choice" value="second-disaster-mitigation"> Department of Disaster Mitigation and Recovery (DDMR) <br>
                     <input type="radio" id="second-animal-welfare" name="dept-second-choice" value="second-animal-welfare"> Department of Animal and Environmental Welfare (DAEW)<br>
                     <input type="radio" id="second-mental-health" name="dept-second-choice" value="second-mental-health"> Department of Mental Health (DMH)<br>
-                    <input type="radio" id="second-marginalized-community" name="dept-second-choice" value="second-marginalized-community">Department of Marginalized Community Action (DMCA)<br>
-                    <input type="radio" id="second-sogie-rights" name="dept-second-choice" value="second-sogie-rights">Department of SOGIE Rights (DSR)<br>
-                    <input type="radio" id="second-initiatives-taft" name="dept-second-choice" value="second-initiatives-taft">Department of Initiatives - Project Taft (DI-PT)<br>
-                    <input type="radio" id="second-initiatives-espana" name="dept-second-choice" value="second-initiatives-espana">Department of Initiatives - Project Espana (DI-PE)<br>
-                    <input type="radio" id="second-initiatives-katipunan" name="dept-second-choice" value="second-initiatives-katipunan">Department of Initiatives - Project Katipunan (DI-PK)<br>
+                    <input type="radio" id="second-marginalized-community" name="dept-second-choice" value="second-marginalized-community"> Department of Marginalized Community Action (DMCA)<br>
+                    <input type="radio" id="second-sogie-rights" name="dept-second-choice" value="second-sogie-rights"> Department of SOGIE Rights (DSR)<br>
+                    <input type="radio" id="second-initiatives-taft" name="dept-second-choice" value="second-initiatives-taft"> Department of Initiatives - Project Taft (DI-PT)<br>
+                    <input type="radio" id="second-initiatives-espana" name="dept-second-choice" value="second-initiatives-espana"> Department of Initiatives - Project Espana (DI-PE)<br>
+                    <input type="radio" id="second-initiatives-katipunan" name="dept-second-choice" value="second-initiatives-katipunan"> Department of Initiatives - Project Katipunan (DI-PK)<br>
                 </div>
             </div>
             
             <!-- DESIRED POSITION 2 -->
             <div class="div-position-2">
                 <p class="sub-caption" style="font-size: 20px; margin-top: 15px;">What's your desired position? </p>
-                <select name="position2" id="position2" style="width: 620px; margin-bottom: 15px;">
+                <select name="position2" id="position2" style="width: 50%; margin-bottom: 15px;">
                     <option value="hr-officer">HR Officer</option>
                     <option value="secretary">Secretary</option>
                     <option value="multimedia-artist">Multimedia Artist</option>
@@ -331,7 +332,7 @@
             <!-- REASON FOR JOINING -->
             <div class="div-reason">
                 <h6 class="sub-caption" style="font-size: 20px; margin-top: 15px;"><strong>Reason for Volunteering </strong> (Answer in 140 characters or less.)</h6>
-                <textarea name="paragraph_text" cols="50" rows="8" style="margin-bottom: 20px; margin-left: 86px;"></textarea>
+                <textarea name="comment-txt" id="comment-txt" cols="50" rows="8"></textarea>
             </div>
             <hr>
             <!-- PORTFOLIO -->
@@ -362,6 +363,7 @@
                 </div>
             </div>
         </div>
+
         <button name="form-submit" id="form-submit" class="submit"><strong>S U B M I T</strong></button>
         
         <!-- FOOTER -->

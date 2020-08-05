@@ -1,14 +1,27 @@
+body{
+    min-width: 600px;
+    overflow: auto;
+}
 .div-flex{
     display: flex;
     margin-top: 15px;
+    position: relative;
+    flex-flow: row wrap;
 }
 
 .form-container{
     display: block;
+    width: 85%;
+    position: relative;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+    margin-left: auto;
 }
 
 .width{
-    width: 620px;
+    width: 400px;
+    padding: 5px;
 }
 
 .margin-left{
@@ -19,8 +32,34 @@ ul{
     list-style-type: none;    
 }
 
+.div-notify-comments{
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+}
+
+input:focus{
+    border: 3px solid #0c5865;
+}
+
 .div-expertise{
     display: block
+}
+
+#comment-txt{
+    margin-bottom: 20px;
+    margin-left: 86px
+}
+
+textarea:focus{
+    border: 3px solid #0c5865;
+    padding: 8px;
+}
+
+textarea{
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
 }
 
 .submit{
