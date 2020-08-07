@@ -84,6 +84,7 @@ const controller = {
     getCMSApplication: function(req, res){
         res.render('cms-application', {
             title: 'CMS Application | The Initiative PH',
+            application_active: true,
         })
     },
 

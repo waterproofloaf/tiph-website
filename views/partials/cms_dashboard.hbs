@@ -1,0 +1,44 @@
+<div class="sidebar" data-color="white" data-active-color="danger">
+      <div class="logo">
+        <a href="#" class="simple-text logo-mini">
+          <div class="logo-image-small">
+            <img src="assets/img/cropped-logo.png">
+          </div>
+        </a>
+        <a href="#" class="simple-text logo-normal">
+          The Initiative PH
+          <!-- Your Logo -->
+          <!-- <div class="logo-image-big">
+            <img src="/assets/img/brand.png">
+          </div> -->
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li {{#if home_active}}class="active "{{/if}}>
+            <a href="cms-dashboard-h">
+              <i class="nc-icon nc-bullet-list-67"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li {{#if application_active}}class="active "{{/if}}>
+            <a href="cms-dashboard-a">
+              <i class="nc-icon nc-badge"></i>
+              <p>Application</p>
+            </a>
+          </li>
+          <li {{#if blog_active}}class="active "{{/if}}>
+            <a href="cms-dashboard-b">
+              <i class="nc-icon nc-laptop"></i>
+              <p>Blog</p>
+            </a>
+          </li>
+          <li {{#if project_active}}class="active "{{/if}}>
+            <a href="cms-dashboard-p">
+              <i class="nc-icon nc-single-copy-04"></i>
+              <p>Projects</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>

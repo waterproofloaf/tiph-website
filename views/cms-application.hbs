@@ -1,118 +1,149 @@
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>The Initiative PH - CMS - Application Form</title>
+<!--
+=========================================================
+* Paper Dashboard 2 - v2.0.1
+=========================================================
 
-        <link rel="stylesheet" type="text/css" media="all" href="assets/css/style.css">
-        <link rel="stylesheet" type="text/css" media="all" href="assets/css/form.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+* Product Page: https://www.creative-tim.com/product/paper-dashboard-2
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
 
-        <script src="https://kit.fontawesome.com/a2bb66671d.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </head>
-    <body class="bg-color"><br>
-        {{!-- {{>navbar}} --}}
-        
-        <div class="cms-app-container">
-            <div class="div-intro-form">
-                <h5 class="sub-header">Application Form Introduction</h5>
-                <textarea name="intro-txt" id="intro-txt" cols="50" rows="8"></textarea>
-            </div><br><br>
-            <h5 class="sub-header">Departments Open for Application and Positions</h5>
-            <!-- HAS TO BE ABLE TO TO ADD NEW DEPT ALSO -->
-            <div class="div-choices sub-caption">
-                <input type="checkbox" name="department" id="admin-affairs" value="admin-affairs"> Department of Administrative Affairs (DAA) <br>
-                <div class="dept-positions" id="pos-admin-affairs">
-                    <input type="checkbox" name="dept-pos" id=""> SOME POSITON <br>
-                </div>
-                    
-                <input type="checkbox" name="department" id="pub-comm" value="pub-comm"> Department of Publications and Communications (DPC) <br>
-                <div class="dept-positions" id="pos-pub-comm">
-                    <form method="get">
-                        <input type="checkbox" name="dept-pos" id="pos-multimedia-artist" value="pos-multimedia-artist"> Multimedia Artist for DDMR, DMH, DSR, DI-PT, DI-PK, DI-PE <br>
-                        <input type="checkbox" name="dept-pos" id="pos-content-writer" value="pos-content-writer"> Content Writer for DDMR, DMH, DSR, DI-PT, DI-PK, DI-PE <br>
-                        <input type="checkbox" name="dept-pos" id="pos-photographer" value="pos-photographer"> Photographer for DDMR, DMCA, DAEW, DSR, DI-PT, DI-PK, DI-PE <br>
-                        <input type="checkbox" name="dept-pos" id="pos-videographer" value="pos-videographer"> Videographer for DDMR, DMCA, DAEW, DSR, DI-PT, DI-PK, DI-PE <br>
-                    </form>
-                </div>
-                
-                <input type="checkbox" name="department" id="market-finance" value="market-finance"> Department of Marketing and Finance (DMF) <br>
-                <div class="dept-positions" id="pos-market-finance">
-                    <form method="get">
-                        <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
-                        <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
-                    </form>
-                </div>
-                <input type="checkbox" name="department" id="disaster-mit" value="disaster-mit"> Department of Disaster Mitigation and Recovery (DDMR) <br>
-                <div class="dept-positions" id="pos-disaster-mit">
-                    <form method="get">
-                        <input type="checkbox" name="dept-pos" id="pos-external-rel" value="pos-external-rel"> External Relations Officers <br>
-                        <input type="checkbox" name="dept-pos" id="pos-finance" value="pos-finance"> Finance Officers <br>
-                        <input type="checkbox" name="dept-pos" id="pos-multimedia-disaster" value="pos-multimedia-disaster"> Multimedia Artists <br>
-                        <input type="checkbox" name="dept-pos" id="pos-content-disaster" value="pos-content-disaster"> Content Writers <br>
-                        <input type="checkbox" name="dept-pos" id="pos-photog-disaster" value="pos-photog-disaster"> Photographers <br>
-                        <input type="checkbox" name="dept-pos" id="pos-videog-disaster"> Videographers <br>
-                    </form>
-                </div>
-                <input type="checkbox" name="department" id="marginalized" value="marginalized"> Department of Marginalized Community Action (DMCA) <br>
-                <div class="dept-positions" id="pos-marginalized">
-                    <form method="get">
-                        <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
-                        <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
-                    </form>
-                </div>
-                
-                <input type="checkbox" name="department" id="animal-environment" value="animal-environment"> Department of Animal and Environmental Welfare (DAEW) <br>
-                <div class="dept-positions" id="pos-animal-environment">
-                    <form method="get">
-                        <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
-                        <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
-                    </form>
-                </div>
-                
-                <input type="checkbox" name="department" id="sogie" value="sogie"> Department of SOGIE Rights (DSR) <br>
-                <div class="dept-positions" id="pos-sogie">
-                    <form method="get">
-                        <input type="checkbox" name="dept-pos" id="pos-external-sogie" value="pos-external-sogie"> External Relations Officers (Partnerships Officers) <br>
-                        <input type="checkbox" name="dept-pos" id="pos-finance-sogie" value="pos-finance-sogie"> Finance Officers <br>
-                        <input type="checkbox" name="dept-pos" id="pos-logistics-sogie" value="pos-logistics-sogie"> Logistics Officers <br>
-                        <input type="checkbox" name="dept-pos" id="pos-marketing-sogie" value="pos-marketing-sogie"> Marketing Officers <br>
-                        <input type="checkbox" name="dept-pos" id="pos-research-sogie" value="pos-research-sogie"> Research Officers <br>
-                    </form>
-                </div>
-                
-                <input type="checkbox" name="department" id="proj-taft" value="proj-taft"> Department of Initiatives: Project Taft (DI-PT) <br>
-                <div class="dept-positions" id="pos-proj-taft">
-                    <form method="get">
-                        <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
-                        <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
-                    </form>
-                </div>
-                
-                <input type="checkbox" name="department" id="proj-espana" value="proj-espana"> Department of Initiatives: Project España (DI-PE) <br>
-                <div class="dept-positions" id="pos-proj-espana">
-                    <form method="get">
-                        <input type="checkbox" name="dept-pos" id="pos-external-espana" value="pos-external-espana"> External Relations Officers <br>
-                        <input type="checkbox" name="dept-pos" id="pos-finance-espana" value="pos-finance-espana"> Finance Officers <br>
-                        <input type="checkbox" name="dept-pos" id="pos-logistics-espana" value="pos-logistics-espana"> Logistics Officers <br>
-                        <input type="checkbox" name="dept-pos" id="pos-research-espana" value="pos-research-espana"> Research Officers <br>
-                    </form>
-                </div>
-                
-                <input type="checkbox" name="department" id="proj-katipunan" value="proj-katipunan"> Department of Initiatives: Project Katipunan (DI-PK) <br>
-                <div class="dept-positions" id="pos-proj-katipunan">
-                    <form method="get">
-                        <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
-                        <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
-                    </form>
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>The Initiative PH - CMS Home Page</title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./assets/css/paper-dashboard.css" rel="stylesheet" />
+  <link href="./assets/css/style.css" rel="stylesheet" />
+  <link href="./assets/css/form.css" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="./assets/demo/demo.css" rel="stylesheet" />
+</head>
+
+<body class="">
+  <div class="wrapper ">
+    {{>cms_dashboard}}
+    <div class="main-panel" style="height: 100vh;">
+      <!-- Navbar -->
+      {{>cms_navbar}}
+      <!-- End Navbar -->
+        {{!-- <div class="content"> --}}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cms-app-container">
+                        <div class="div-intro-form">
+                            <h5 class="sub-header">Application Form Introduction</h5>
+                            <textarea name="intro-txt" id="intro-txt" cols="50" rows="8"></textarea>
+                        </div><br><br>
+                        <h5 class="sub-header">Departments Open for Application and Positions</h5>
+                        <!-- HAS TO BE ABLE TO TO ADD NEW DEPT ALSO -->
+                        <div class="div-choices sub-caption">
+                            <input type="checkbox" name="department" id="admin-affairs" value="admin-affairs"> Department of Administrative Affairs (DAA) <br>
+                            <div class="dept-positions" id="pos-admin-affairs">
+                                <input type="checkbox" name="dept-pos" id=""> SOME POSITON <br>
+                            </div>
+                                
+                            <input type="checkbox" name="department" id="pub-comm" value="pub-comm"> Department of Publications and Communications (DPC) <br>
+                            <div class="dept-positions" id="pos-pub-comm">
+                                <form method="get">
+                                    <input type="checkbox" name="dept-pos" id="pos-multimedia-artist" value="pos-multimedia-artist"> Multimedia Artist for DDMR, DMH, DSR, DI-PT, DI-PK, DI-PE <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-content-writer" value="pos-content-writer"> Content Writer for DDMR, DMH, DSR, DI-PT, DI-PK, DI-PE <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-photographer" value="pos-photographer"> Photographer for DDMR, DMCA, DAEW, DSR, DI-PT, DI-PK, DI-PE <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-videographer" value="pos-videographer"> Videographer for DDMR, DMCA, DAEW, DSR, DI-PT, DI-PK, DI-PE <br>
+                                </form>
+                            </div>
+                            
+                            <input type="checkbox" name="department" id="market-finance" value="market-finance"> Department of Marketing and Finance (DMF) <br>
+                            <div class="dept-positions" id="pos-market-finance">
+                                <form method="get">
+                                    <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
+                                    <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
+                                </form>
+                            </div>
+                            <input type="checkbox" name="department" id="disaster-mit" value="disaster-mit"> Department of Disaster Mitigation and Recovery (DDMR) <br>
+                            <div class="dept-positions" id="pos-disaster-mit">
+                                <form method="get">
+                                    <input type="checkbox" name="dept-pos" id="pos-external-rel" value="pos-external-rel"> External Relations Officers <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-finance" value="pos-finance"> Finance Officers <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-multimedia-disaster" value="pos-multimedia-disaster"> Multimedia Artists <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-content-disaster" value="pos-content-disaster"> Content Writers <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-photog-disaster" value="pos-photog-disaster"> Photographers <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-videog-disaster"> Videographers <br>
+                                </form>
+                            </div>
+                            <input type="checkbox" name="department" id="marginalized" value="marginalized"> Department of Marginalized Community Action (DMCA) <br>
+                            <div class="dept-positions" id="pos-marginalized">
+                                <form method="get">
+                                    <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
+                                    <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
+                                </form>
+                            </div>
+                            
+                            <input type="checkbox" name="department" id="animal-environment" value="animal-environment"> Department of Animal and Environmental Welfare (DAEW) <br>
+                            <div class="dept-positions" id="pos-animal-environment">
+                                <form method="get">
+                                    <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
+                                    <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
+                                </form>
+                            </div>
+                            
+                            <input type="checkbox" name="department" id="sogie" value="sogie"> Department of SOGIE Rights (DSR) <br>
+                            <div class="dept-positions" id="pos-sogie">
+                                <form method="get">
+                                    <input type="checkbox" name="dept-pos" id="pos-external-sogie" value="pos-external-sogie"> External Relations Officers (Partnerships Officers) <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-finance-sogie" value="pos-finance-sogie"> Finance Officers <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-logistics-sogie" value="pos-logistics-sogie"> Logistics Officers <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-marketing-sogie" value="pos-marketing-sogie"> Marketing Officers <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-research-sogie" value="pos-research-sogie"> Research Officers <br>
+                                </form>
+                            </div>
+                            
+                            <input type="checkbox" name="department" id="proj-taft" value="proj-taft"> Department of Initiatives: Project Taft (DI-PT) <br>
+                            <div class="dept-positions" id="pos-proj-taft">
+                                <form method="get">
+                                    <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
+                                    <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
+                                </form>
+                            </div>
+                            
+                            <input type="checkbox" name="department" id="proj-espana" value="proj-espana"> Department of Initiatives: Project España (DI-PE) <br>
+                            <div class="dept-positions" id="pos-proj-espana">
+                                <form method="get">
+                                    <input type="checkbox" name="dept-pos" id="pos-external-espana" value="pos-external-espana"> External Relations Officers <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-finance-espana" value="pos-finance-espana"> Finance Officers <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-logistics-espana" value="pos-logistics-espana"> Logistics Officers <br>
+                                    <input type="checkbox" name="dept-pos" id="pos-research-espana" value="pos-research-espana"> Research Officers <br>
+                                </form>
+                            </div>
+                            
+                            <input type="checkbox" name="department" id="proj-katipunan" value="proj-katipunan"> Department of Initiatives: Project Katipunan (DI-PK) <br>
+                            <div class="dept-positions" id="pos-proj-katipunan">
+                                <form method="get">
+                                    <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
+                                    <input type="checkbox" name="dept-pos" id=""> SOME POSITION <br>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="cms-dashboard-a"><button name="form-submit" id="form-submit" class="submit"><strong>S U B M I T</strong></button></a>
                 </div>
             </div>
-        </div>
-        <a href="cms-dashboard-a"><button name="form-submit" id="form-submit" class="submit"><strong>S U B M I T</strong></button></a>
+        {{!-- </div> --}}
         
         {{!-- {{>footer}} --}}
         
@@ -187,6 +218,18 @@
                     $('#pos-animal-environment').hide();
                 }
             });
-        </script> 
-    </body>
-</html>
+            <!--   Core JS Files   -->
+  <script src="./assets/js/core/jquery.min.js"></script>
+  <script src="./assets/js/core/popper.min.js"></script>
+  <script src="./assets/js/core/bootstrap.min.js"></script>
+  <script src="./assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  <script src="./assets/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="./assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -
+        </script>
+        </body>
+        </html>
