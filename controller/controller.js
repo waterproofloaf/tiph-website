@@ -104,24 +104,28 @@ const controller = {
     getH: function(req, res){
         res.render('cms-dashboard-h', {
             title: 'CMS-Home | The Initiative PH',
+            home_active: true,
         })
     },
 
     getA: function(req, res){
         res.render('cms-dashboard-a', {
             title: 'CMS-Application | The Initiative PH',
+            application_active: true,
         })
     },
 
     getB: function(req, res){
         res.render('cms-dashboard-b', {
             title: 'CMS-Blog | The Initiative PH',
+            blog_active: true,
         })
     },
 
     getP: function(req, res){
         res.render('cms-dashboard-p', {
             title: 'CMS-Project | The Initiative PH',
+            project_active: true,
         })
     },
 }
