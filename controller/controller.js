@@ -81,11 +81,24 @@ const controller = {
         })
     },
 
+    getCMSApplication: function(req, res){
+        res.render('cms-application', {
+            title: 'CMS Application | The Initiative PH',
+        })
+    },
+
     getCMSBlog: function(req, res){
         res.render('cms-blog', {
             title: 'CMS Blog | The Initiative PH',
         })
     },
+
+    getCMSProject: function(req, res){
+        res.render('cms-project', {
+            title: 'CMS Project | The Initiative PH',
+        })
+    },
+
 
     // new dashboard for cms
     getH: function(req, res){
