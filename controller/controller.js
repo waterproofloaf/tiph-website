@@ -20,13 +20,6 @@ const controller = {
         })
     },
 
-    getH: function(req, res){
-        res.render('cms-h', {
-            title: 'Home | The Initiative PH',
-            home_active: true,
-        })
-    },
-
     getAboutUs: function(req, res){
         res.render('about', {
             title: 'About | The Initiative PH',
@@ -91,6 +84,31 @@ const controller = {
     getCMSBlog: function(req, res){
         res.render('cms-blog', {
             title: 'CMS Blog | The Initiative PH',
+        })
+    },
+
+    // new dashboard for cms
+    getH: function(req, res){
+        res.render('cms-dashboard-h', {
+            title: 'CMS-Home | The Initiative PH',
+        })
+    },
+
+    getA: function(req, res){
+        res.render('cms-dashboard-a', {
+            title: 'CMS-Application | The Initiative PH',
+        })
+    },
+
+    getB: function(req, res){
+        res.render('cms-dashboard-b', {
+            title: 'CMS-Blog | The Initiative PH',
+        })
+    },
+
+    getP: function(req, res){
+        res.render('cms-dashboard-p', {
+            title: 'CMS-Project | The Initiative PH',
         })
     },
 }
