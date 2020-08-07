@@ -15,6 +15,7 @@ const controller = {
 
     getHomePage: function(req, res){
         res.render('home', {
+            layout: '/layouts/main',
             title: 'Home | The Initiative PH',
             home_active: true,
         })
@@ -22,6 +23,7 @@ const controller = {
 
     getAboutUs: function(req, res){
         res.render('about', {
+            layout: '/layouts/main',
             title: 'About | The Initiative PH',
             about_active: true,
         })
@@ -36,6 +38,7 @@ const controller = {
 
     getPreApp: function(req, res){
         res.render('pre-application', {
+            layout: '/layouts/main',
             title: 'Pre-Application | The Initiative PH',
             volunteer_active: true,
         })
@@ -43,6 +46,7 @@ const controller = {
 
     getApplication: function(req, res){
         res.render('application', {
+            layout: '/layouts/main',
             title: 'Application | The Initiative PH',
             volunteer_active: true,
         })
@@ -50,6 +54,7 @@ const controller = {
 
     getProjects: function(req, res){
         res.render('projects', {
+            layout: '/layouts/main',
             title: 'Projects | The Initiative PH',
             projects_active: true,
         })
@@ -57,6 +62,7 @@ const controller = {
 
     getBlogs: function(req, res){
         res.render('blog', {
+            layout: '/layouts/main',
             title: 'Blog | The Initiative PH',
             blog_active: true,
         })
@@ -64,6 +70,7 @@ const controller = {
 
     getContactUs: function(req, res){
         res.render('contact-us', {
+            layout: '/layouts/main',
             title: 'Contact Us | The Initiative PH',
             contact_active: true,
         })

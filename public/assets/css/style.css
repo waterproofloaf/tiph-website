@@ -1,3 +1,5 @@
+/* Home */
+
 .bg-color {
   background-color: #eeede0;
 }
@@ -209,5 +211,274 @@ footer {
   color: #0c5865;
 }
 
+/* About */
+
+.sub-header-branch{
+  margin-left: 215px;
+  margin-top: 15px;
+}
+
+/* Contact Us */
+.contact-us-container a{
+  color: black !important;
+  text-decoration: none;
+}
+
+.top-contact-container{
+  display: relative;
+  padding: 6vw;
+  box-sizing: border-box;
+}
+
+.contact-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-us-container{
+  width: 40%;
+  display: block;
+  text-align: justify;
+}
+
+.contact-form-container{
+  background-color: #f8f9fa;
+  width: 50%;
+  padding: 50px;
+  border-radius: 4px;
+}
+
+.contact-form-text{
+  width: 100%;
+  margin-bottom: 30px;
+  border-radius: 2px;
+  border: 1px solid #ccc
+}
+
+#contact-inquiry{
+  height: 152px;
+}
+
+.contact-font-header{
+  font-family: "Roboto";
+}
+
+.contact-font-texts{
+  font-family: "Montserrat";
+}
+
+
+.contact-button {
+  margin-top: 30px;
+  position: relative;
+  background-color: #173b41;
+  border-radius: 10px;
+  border: none;
+  font-family: "Montserrat";
+  font-size: 16px;
+  color: #FFFFFF;
+  width: 128px;
+  height: 56px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  float: right;
+}
+
+.contact-button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.contact-button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+/* Pre Application & Application */
+
+.form-width{
+  min-width: 600px;
+  overflow: auto;
+}
+
+.pos-width-bot{
+  min-width: 50%;
+  margin-bottom: 15px;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.mar-top-20{
+  margin-top: 20px;
+}
+
+.mar-top--10{
+  margin-top: -10px;
+}
+
+.mar-left-90{
+  margin-left: 90px;
+}
+
+.mar-left-56{
+  margin-left: 56px;
+}
+
+.font-sze-20{
+  font-size: 20px;
+}
+
+.sub-caption-style{
+  margin-left: 60px; 
+  font-size: 17px;
+}
+
+.sub-caption-style-1{
+  margin-top: 10px;
+  margin-left: 6px;
+}
+
+
+.sub-caption-style-2{
+  font-size: 20px; 
+  margin-top: 15px; 
+}
+
+.sub-caption-style-3{
+  font-size: 20px; 
+  margin-top: 15px;
+}
+
+.textarea-margins{
+  margin-bottom: 20px; 
+  margin-left: 16%;
+}
+.div-flex{
+  display: flex;
+  margin-top: 15px;
+  position: relative;
+  flex-flow: row wrap;
+}
+
+.form-container{
+  display: block;
+  width: 85%;
+  position: relative;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  margin-left: auto;
+}
+
+.width{
+  width: 400px;
+  padding: 5px;
+}
+
+.width-auto{
+  width: auto;
+}
+
+.margin-left{
+  margin-left: 20px;
+}
+
+ul{
+  list-style-type: none;    
+}
+
+.div-notify-comments{
+  align-content: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.subcaption input:focus{
+  border: 3px solid #0c5865;
+}
+
+.div-expertise{
+  display: block
+}
+
+#comment-txt{
+  margin-bottom: 20px;
+  margin-left: 86px
+}
+
+.div-comments textarea:focus{
+  border: 3px solid #0c5865;
+  padding: 8px;
+}
+
+.div-comments textarea{
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+}
+
+.dept-positions{
+  display: none;
+  font-weight: 450;
+  margin-left: 40px;
+}
+
+.div-choices{
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.cms-app-container{
+  margin-left: 25%;
+}
+
+#intro-txt{
+  margin-left: 10%
+}
+
+.specify-border{
+  display:none; 
+  margin-top: 15px; 
+  border-color: red"
+}
+
+.submit{
+  position: relative;
+  background-color: #173b41;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  color: #FFFFFF;
+  width: 128px;
+  height: 56px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 45%;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
 
 
