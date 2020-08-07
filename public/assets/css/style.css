@@ -312,6 +312,14 @@ footer {
 
 /* Pre Application & Application */
 
+.apps-sub-header{
+  font-family: "Roboto";
+  font-weight: bolder;
+  font-size: 30px;
+  color: #173b41;
+  margin-left: 0%;
+}
+
 .form-width{
   min-width: 600px;
   overflow: auto;
