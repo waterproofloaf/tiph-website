@@ -1,39 +1,77 @@
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>The Initiative PH - CMS Project</title>
-
-    <link rel="stylesheet" type="text/css" media="all" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" media="all" href="assets/css/cms-blog.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-    <script src="https://kit.fontawesome.com/a2bb66671d.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</head>
-<body class="bg-color">
-
-    {{!-- {{>navbar}} --}}
-
-    <!-- BODY -->
-    <div class="cms-blog-container">
-
-        <div class="cms-blog-form-container"> <!-- Form -->
-            <h6><strong> TITLE </strong></h6>
-            <input type="text" name="cms-blog-title" id="cms-blog-title" class="cms-blog-form-text" value required>
-            <h6><strong> CONTENT </strong></h6>
-            <textarea name="cms-blog-content" id="cms-blog-content" class="cms-blog-form-text" value required></textarea>
-            <h6><strong> IMAGE </strong></h6>
-            <input type='file' name='upload' class="cms-blog-form-text">
-            <a href="cms-dashboard-p"><button name="cms-blog-submit" id="cms-blog-submit" class="button"><strong>S U B M I T</strong></button></a>
+<div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <form>
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Projects</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive text-center">
+                    <table class="table text-left">
+                      <thead class=" text-primary">
+                        <th>
+                          Page
+                        </th>
+                        <th class="text-right">
+                          Switch
+                        </th>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            Project 1 Title
+                          </td>
+                          <td class="text-right">
+                            <a href="cms-project"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Project 2 Title
+                          </td>
+                          <td class="text-right">
+                            <a href="cms-project"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Project 3 Title
+                          </td>
+                          <td class="text-right">
+                            <a href="cms-project"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Project 4 Title
+                          </td>
+                          <td class="text-right">
+                            <a href="cms-project"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Project 5 Title
+                          </td>
+                          <td class="text-right">
+                            <a href="cms-project"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            Project 6 Title
+                          </td>
+                          <td class="text-right">
+                            <a href="cms-project"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-
-    </div>
-
-    {{!-- {{>footer}} --}}
-
-</body>
-</html>
+      </div>

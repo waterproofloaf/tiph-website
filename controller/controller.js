@@ -84,12 +84,15 @@ const controller = {
 
     getCMSHome: function(req, res){
         res.render('cms-home', {
+            layout: '/layouts/cms-layout',
             title: 'CMS Home | The Initiative PH',
+            home_active: true,
         })
     },
 
     getCMSApplication: function(req, res){
         res.render('cms-application', {
+            layout: '/layouts/cms-layout',
             title: 'CMS Application | The Initiative PH',
             application_active: true,
         })
@@ -97,42 +100,16 @@ const controller = {
 
     getCMSBlog: function(req, res){
         res.render('cms-blog', {
+            layout: '/layouts/cms-layout',
             title: 'CMS Blog | The Initiative PH',
+            blog_active: true,
         })
     },
 
     getCMSProject: function(req, res){
         res.render('cms-project', {
+            layout: '/layouts/cms-layout',
             title: 'CMS Project | The Initiative PH',
-        })
-    },
-
-
-    // new dashboard for cms
-    getH: function(req, res){
-        res.render('cms-dashboard-h', {
-            title: 'CMS-Home | The Initiative PH',
-            home_active: true,
-        })
-    },
-
-    getA: function(req, res){
-        res.render('cms-dashboard-a', {
-            title: 'CMS-Application | The Initiative PH',
-            application_active: true,
-        })
-    },
-
-    getB: function(req, res){
-        res.render('cms-dashboard-b', {
-            title: 'CMS-Blog | The Initiative PH',
-            blog_active: true,
-        })
-    },
-
-    getP: function(req, res){
-        res.render('cms-dashboard-p', {
-            title: 'CMS-Project | The Initiative PH',
             project_active: true,
         })
     },
