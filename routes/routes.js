@@ -25,4 +25,7 @@ app.post('/cms-login', logIncontroller.postLogIn);
 app.get('/cms-home', controller.getCMSHome);
 app.get('/cms-blog', controller.getCMSBlog);
 // enables to export app object when called in another .js file
+
+
+app.get('/cms-h', controller.getH);
 module.exports = app;

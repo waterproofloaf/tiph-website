@@ -20,6 +20,13 @@ const controller = {
         })
     },
 
+    getH: function(req, res){
+        res.render('cms-h', {
+            title: 'Home | The Initiative PH',
+            home_active: true,
+        })
+    },
+
     getAboutUs: function(req, res){
         res.render('about', {
             title: 'About | The Initiative PH',
