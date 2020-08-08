@@ -74,6 +74,10 @@
   color: #173b41;
 }
 
+#carouselExampleIndicators {
+  font-family: "Montserrat";
+}
+
 .carousel-inner img {
   transition: .5s ease;
   background-color: black !important;

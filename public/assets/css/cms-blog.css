@@ -27,7 +27,15 @@
 }
 
 #cms-blog-content{
-    height: 300px
+    height: 1000px !important;
+}
+
+.cms-blog .card-body .form-group textarea{
+    height: 300px;
+}
+
+#editor {
+  height: 130px;
 }
 
 .button {

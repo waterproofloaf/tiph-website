@@ -22,3 +22,5 @@ function GetFindOut(value){
     else  
         element.style.display='none';
 }
+  
+  
