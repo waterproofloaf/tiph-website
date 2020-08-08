@@ -85,6 +85,8 @@
   opacity: 1;
 }
 
+/* Blog */
+
 .card {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -123,6 +125,12 @@
 .pagination {
   font-family: "Montserrat";
   font-weight: 500;
+}
+
+.pagination > li > a
+{
+    background-color: white;
+    color: #0c5865;
 }
 
 .btn-link {
@@ -499,5 +507,7 @@ ul{
   margin-bottom: 20px;
   margin-top: 30px;
 }
+
+
 
 
