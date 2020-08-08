@@ -26,5 +26,6 @@ app.get('/cms-home', controller.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-blog', controller.getCMSBlog);
 app.get('/cms-project', controller.getCMSProject);
+app.get('/cms-project-page', controller.getCMSProjectPage);
 // enables to export app object when called in another .js file
 module.exports = app;

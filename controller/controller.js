@@ -113,6 +113,14 @@ const controller = {
             project_active: true,
         })
     },
+
+    getCMSProjectPage: function(req, res){
+        res.render('cms-project-page', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Project Edit | The Initiative PH',
+            project_active: true,
+        })
+    },
 }
 
  // enables to export controller object when called in another .js file
