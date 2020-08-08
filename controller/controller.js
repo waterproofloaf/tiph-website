@@ -67,6 +67,22 @@ const controller = {
             blog_active: true,
         })
     },
+    
+    getABlog: function(req, res){
+        res.render('a-blog', {
+            layout: '/layouts/main',
+            title: 'A Blog | The Initiative PH',
+            blog_active: true,
+        })
+    },
+    
+    getAProject: function(req, res){
+        res.render('a-project', {
+            layout: '/layouts/main',
+            title: 'A Project | The Initiative PH',
+            projects_active: true,
+        })
+    },
 
     getContactUs: function(req, res){
         res.render('contact-us', {
