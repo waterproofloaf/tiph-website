@@ -74,6 +74,17 @@
   color: #173b41;
 }
 
+.carousel-inner img {
+  transition: .5s ease;
+  background-color: black !important;
+  opacity: 0.6;
+}
+
+.carousel-inner img:hover {
+  transition: .5s ease;
+  opacity: 1;
+}
+
 .card {
   margin-top: 10px;
   margin-bottom: 10px;
