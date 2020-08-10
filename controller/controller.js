@@ -113,6 +113,14 @@ const controller = {
             application_active: true,
         })
     },
+    
+    getCMSEditApplication: function(req, res){
+        res.render('cms-edit-application', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Application Form Edit | The Initiative PH',
+            application_active: true,
+        })
+    },
 
     getCMSBlog: function(req, res){
         res.render('cms-blog', {

@@ -1,4 +1,5 @@
-function collapseAbout(){
+$(document).ready(function(){
+   function collapseAbout(){
     var coll = document.getElementsByClassName('collapsible');
     var i;
 
@@ -13,14 +14,25 @@ function collapseAbout(){
             }
         });
     }   
-}
+   }
 
-function GetFindOut(value){
-    var element = document.getElementById('findouttxt');
-    if(value=='other')
-        element.style.display='block';
-    else  
-        element.style.display='none';
-}
-  
+    function GetFindOut(value){
+        var element = document.getElementById('findouttxt');
+        if(value=='other')
+            element.style.display='block';
+        else  
+            element.style.display='none';
+    }
+    
+    $('#proj-katipunan').change(function(){
+    if(this.checked) {
+        $(this).next().show();
+    } else {
+        $(this).next().hide();
+    }
+});
+   
+});
+
+
   

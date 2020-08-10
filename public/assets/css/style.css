@@ -489,21 +489,6 @@ ul{
   position: relative;
 }
 
-.dept-positions{
-  display: none;
-  font-weight: 450;
-  margin-left: 40px;
-}
-
-.div-choices{
-  font-weight: bold;
-  margin-left: 50px;
-}
-
-.cms-app-container{
-  margin-left: 25%;
-}
-
 #intro-txt{
   margin-left: 10%
 }
