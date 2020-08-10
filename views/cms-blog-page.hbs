@@ -1,4 +1,67 @@
-<div class="cms-blog-form-container">
+<div class="content">
+    <h5>Editing:</h5>
+    <!-- Form -->
+    <div class="content">
+        <div id="form-container" class="row">
+            <div class="col-md-12">
+                <form>
+                    <div class="card cms-blog">
+                        <div class="card-header">
+                            <h4 class="card-title">Blog Title</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">New Title</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="New Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Content</label>
+                                <div id="editor-container">
+                                    <p>Insert body here.</p>
+                                </div>    
+                            </div>
+                            <div class="pb-2">
+                                <label for="exampleFormControlFile1">Cover Photo</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.quilljs.com/1.1.6/quill.js"></script>
+  <script>
+    var quill = new Quill('#editor-container', {
+  modules: {
+    toolbar: [
+      ['bold', 'italic'],
+      ['link', 'blockquote', 'code-block', 'image'],
+      [{ list: 'ordered' }, { list: 'bullet' }]
+    ]
+  },
+  placeholder: 'Seize the day!',
+  theme: 'snow'
+});
+
+var form = document.querySelector('form');
+form.onsubmit = function() {
+  // Populate hidden form on submit
+  var about = document.querySelector('input[name=about]');
+  about.value = JSON.stringify(quill.getContents());
+  
+  console.log("Submitted", $(form).serialize(), $(form).serializeArray());
+  
+  // No back end to actually submit to!
+  alert('Weeee')
+  return false;
+};
+</script>
+
+{{!-- <div class="cms-blog-form-container">
     <!-- Form -->
     <h6><strong> TITLE </strong></h6>
     <input type="text" name="cms-blog-title" id="cms-blog-title" class="cms-blog-form-text" placeholder="News Title"
@@ -10,4 +73,4 @@
     <input type='file' name='upload' class="cms-blog-form-text">
     <a href="cms-dashboard-b"><button name="cms-blog-submit" id="cms-blog-submit" class="button"><strong>S U B M I
                 T</strong></button></a>
-</div>
+</div> --}}
