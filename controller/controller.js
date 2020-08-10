@@ -130,6 +130,14 @@ const controller = {
         })
     },
 
+    getCMSBlogPage: function(req, res){
+        res.render('cms-blog-page', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Blog Edit | The Initiative PH',
+            blog_active: true,
+        })
+    },
+
     getCMSProject: function(req, res){
         res.render('cms-project', {
             layout: '/layouts/cms-layout',

@@ -26,6 +26,7 @@ app.get('/cms-home', controller.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-blog', controller.getCMSBlog);
 app.get('/cms-project', controller.getCMSProject);
+app.get('/cms-blog-page', controller.getCMSBlogPage);
 app.get('/cms-project-page', controller.getCMSProjectPage);
 app.get('/a-blog', controller.getABlog);
 app.get('/a-project', controller.getAProject);
