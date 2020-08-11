@@ -1,83 +1,178 @@
-<div class="form-width">
-    <div class="container-fluid" style="text-align: center">
-            <!-- HEADER -->
-            <h5 class="font-weight-bold text-uppercase sub-title" style="margin-top: 20px;">PRE-APPLICATION FORM</h5>
-            <h6 class="font-weight-bold apps-sub-header" id="app_year">2020</h6>
-            
-            <!-- INFO -->
-            <div class="object-container">
-                <p class="sub-caption">
-                    Thank you for showing interest! 
-                    <br><br>
-                    The Initiative PH (TIPH) is a youth-run volunteer organization that coordinates relief efforts and organizes sustainable programs for poverty-, calamity, and conflict-ridden areas and communities in the Philippines. By spearheading youth volunteer efforts, we build solidarity and social consciousness among the youth regardless of school or social background.
-                    <br><br>
-                    Volunteer applications are currently closed until next year, however if you would like us to notify you immediately when applications will open, you may leave your details here. Signing up here does not confirm your application to the organization.
-                    <br><br>
-                    By filling up this form, you are subscribing to updates regarding when the applications will be open. Rest assured that your information will be kept confidential in compliance to the Data Privacy Act of 2012. 
-                </p>
-            </div>
-        </div>
-        <br><br>
-        <div class="container-fluid" style="margin-left: 90px;">
-            <div class="form-container">
-                <div class="div-last-first div-flex">
-                    <div class="div-lastname">
-                        <input type="text" name="pre-lastname" id="pre-lastname" class="pre-form-text width" value required>
-                        <h6 class="font-weight-bold">LAST NAME</h6>
-                    </div>
-                    <div class="div-firstname margin-left">
-                         <input type="text" name="pre-firstname" id="pre-firstname" class="pre-form-text width" value required>
-                        <h6 class="font-weight-bold">FIRST NAME</h6>
-                    </div>
-                </div>
-                <div class="div-age-number div-flex">
-                    <div class="div-age">
-                        <input type="number" name="pre-age" id="pre-age" class="width">
-                        <h6 class="font-weight-bold">AGE</h6>
-                    </div>
-                    <div class="div-number margin-left">
-                        <input type="tel" name="pre-number" id="pre-number" class="width">
-                        <h6 class="font-weight-bold">CONTACT NUMBER</h6>
-                    </div>
-                </div>
-                <div class="div-email-schoolcompany div-flex">
-                    <div class="div-email">
-                        <input type="email" name="pre-email" id="pre-email" class="pre-form-text width" value required>
-                        <h6 class="font-weight-bold">EMAIL</h6>
-                    </div>
-                    <div class="div-school-company margin-left">
-                        <input type="text" name="pre-schoolcompany" id="pre-schoolcompany" class="pre-form-text width">
-                        <h6 class="font-weight-bold">SCHOOL/COMPANY</h6>
-                    </div>
-                </div>
-                <div class="div-affiliation-facebook div-flex">
-                    <div class="div-affiliation">
-                        <input type="text" name="pre-affiliation" id="pre-affiliation" class="width">
-                        <h6 class="font-weight-bold">AFFILIATION WITH SCHOOL/COMPANY</h6>
-                        <p class="sub-caption" style="margin-top: -10px;">e.g. Grade 11 / 1st year BS Business Management / Intern</p>
-                    </div>
-                    <div class="div-facebook ">
-                        <input type="url" name="pre-facebook" id="pre-facebook" class="width">
-                        <h6 class="font-weight-bold">FACEBOOK URL</h6>
-                    </div>
-                </div>
-                <br><br>
-            <div class="div-notify-comments">
-                <div class="div-notify">
-                    <h6 class="apps-sub-header" style="font-size: 20px;">Where do you want to be notified regarding your application?</h6>
-                    <div class="sub-caption" style="margin-left: 60px; font-size: 17px;">
-                        <input type="radio" id="notify-email" name="notify-choice" value="notify-email"> E-mail <br>
-                        <input type="radio" id="notify-facebook" name="notify-choice" value="notify-facebook"> Facebook Messenger <br>
-                        <input type="radio" id="notify-email" name="notify-choice" value="notify-email"> Mobile Number via Text Message <br>
-                    </div>
-                </div><br>
-                <div class="div-comments">
-                    <h6 class="apps-sub-header" style="font-size: 20px;">Do you have any comments?</h6>
-                    <textarea name="paragraph_text" cols="50" rows="8" style="margin-bottom: 20px; margin-left: 16%;"></textarea>
-                </div>
-            </div>
-            </div>
-
-            <button name="pre-submit" id="pre-submit" class="submit" style="margin-left: 40%;"><strong>S U B M I T</strong></button>
-        </div>
+<div class="container-fluid m-auto pb-5" style="text-align: center">
+    <!-- HEADER -->
+    <h5 class="font-weight-bold text-uppercase sub-title pt-5" style="margin-top: 20px;">PRE-APPLICATION FORM</h5>
+    <h6 class="font-weight-bold apps-sub-header" id="app_year">2020</h6>
+    
+    <!-- INFO -->
+    <div class="object-container">
+        <p class="sub-caption">
+            Thank you for showing interest! 
+            <br><br>
+            The Initiative PH (TIPH) is a youth-run volunteer organization that coordinates relief efforts and organizes sustainable programs for poverty-, calamity, and conflict-ridden areas and communities in the Philippines. By spearheading youth volunteer efforts, we build solidarity and social consciousness among the youth regardless of school or social background.
+            <br><br>
+            Volunteer applications are currently closed until next year, however if you would like us to notify you immediately when applications will open, you may leave your details here. Signing up here does not confirm your application to the organization.
+            <br><br>
+            By filling up this form, you are subscribing to updates regarding when the applications will be open. Rest assured that your information will be kept confidential in compliance to the Data Privacy Act of 2012. 
+        </p>
+    </div>
 </div>
+<div class="container-fluid m-auto px-5">
+    <form class="needs-validation" novalidate>
+        <h6 class="apps-sub-header pb-1" style="font-size: 20px;">Let's know the basics about you!</h6>
+        <div class="sub-caption">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="pre-lastname">Last Name</label>
+                    <input type="text" class="form-control" name="pre-lastname" id="pre-lastname" placeholder="Last Name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="pre-firstname">First Name</label>
+                    <input type="text" class="form-control" name="pre-firstname" id="pre-firstname" placeholder="First Name" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="pre-age">Age</label>
+                    <input type="number" class="form-control" name="pre-age" id="pre-age" placeholder="Age" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="pre-number">Contact Number</label>
+                    <input type="tel" class="form-control" name="pre-number" id="pre-number" placeholder="Contact Number" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="pre-email">Email</label>
+                    <input type="email" class="form-control" name="pre-email" id="pre-email" placeholder="Email" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="pre-schoolcompany">School/Company</label>
+                    <input type="text" class="form-control" name="pre-schoolcompany" id="pre-schoolcompany" placeholder="School/Company" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="pre-affiliation">Affiliation with School/Company</label>
+                    <input type="text" class="form-control" name="pre-affiliation" id="pre-affiliation" placeholder="Affiliation with School/Company" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="pre-facebook">Facebook URL</label>
+                    <input type="url" class="form-control" name="pre-facebook" id="pre-facebook" placeholder="Facebook URL" required>
+                </div>
+            </div>
+        </div>
+
+        <h6 class="apps-sub-header pt-4 pb-1" style="font-size: 20px;">Where do you want to be notified regarding your application?</h6>
+        <div class="sub-caption" style="font-size: 17px;">
+            <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" required>
+            <label class="form-check-label" for="exampleRadios1">
+                E-mail 
+            </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" required>
+                <label class="form-check-label" for="exampleRadios2">
+                    Facebook Messenger 
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" required>
+                <label class="form-check-label" for="exampleRadios3">
+                    Mobile Number via Text Message 
+                </label>
+            </div>
+        </div>
+
+        <h6 class="apps-sub-header pt-4 pb-1" style="font-size: 20px;">Do you have any comments?</h6>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        
+        <div class="row m-auto pt-5 pb-4"> 
+            <div class="col text-center">
+                <button class="btn btn-success" type="submit"><strong>SUBMIT</strong></button>
+            </div>
+        </div>
+    </form>
+        {{!-- <div class="form-container">
+            <div class="div-last-first div-flex">
+                <div class="div-lastname">
+                    <input type="text" name="pre-lastname" id="pre-lastname" class="pre-form-text width" value required>
+                    <h6 class="font-weight-bold">LAST NAME</h6>
+                </div>
+                <div class="div-firstname margin-left">
+                        <input type="text" name="pre-firstname" id="pre-firstname" class="pre-form-text width" value required>
+                    <h6 class="font-weight-bold">FIRST NAME</h6>
+                </div>
+            </div>
+            <div class="div-age-number div-flex">
+                <div class="div-age">
+                    <input type="number" name="pre-age" id="pre-age" class="width">
+                    <h6 class="font-weight-bold">AGE</h6>
+                </div>
+                <div class="div-number margin-left">
+                    <input type="tel" name="pre-number" id="pre-number" class="width">
+                    <h6 class="font-weight-bold">CONTACT NUMBER</h6>
+                </div>
+            </div>
+            <div class="div-email-schoolcompany div-flex">
+                <div class="div-email">
+                    <input type="email" name="pre-email" id="pre-email" class="pre-form-text width" value required>
+                    <h6 class="font-weight-bold">EMAIL</h6>
+                </div>
+                <div class="div-school-company margin-left">
+                    <input type="text" name="pre-schoolcompany" id="pre-schoolcompany" class="pre-form-text width">
+                    <h6 class="font-weight-bold">SCHOOL/COMPANY</h6>
+                </div>
+            </div>
+            <div class="div-affiliation-facebook div-flex">
+                <div class="div-affiliation">
+                    <input type="text" name="pre-affiliation" id="pre-affiliation" class="width">
+                    <h6 class="font-weight-bold">AFFILIATION WITH SCHOOL/COMPANY</h6>
+                    <p class="sub-caption" style="margin-top: -10px;">e.g. Grade 11 / 1st year BS Business Management / Intern</p>
+                </div>
+                <div class="div-facebook ">
+                    <input type="url" name="pre-facebook" id="pre-facebook" class="width">
+                    <h6 class="font-weight-bold">FACEBOOK URL</h6>
+                </div>
+            </div>
+            <br><br> --}}
+        {{!-- <div class="div-notify-comments">
+            <div class="div-notify">
+                <h6 class="apps-sub-header" style="font-size: 20px;">Where do you want to be notified regarding your application?</h6>
+                <div class="sub-caption" style="margin-left: 60px; font-size: 17px;">
+                    <input type="radio" id="notify-email" name="notify-choice" value="notify-email"> E-mail <br>
+                    <input type="radio" id="notify-facebook" name="notify-choice" value="notify-facebook"> Facebook Messenger <br>
+                    <input type="radio" id="notify-email" name="notify-choice" value="notify-email"> Mobile Number via Text Message <br>
+                </div>
+            </div><br>
+            <div class="div-comments">
+                <h6 class="apps-sub-header" style="font-size: 20px;">Do you have any comments?</h6>
+                <textarea name="paragraph_text" cols="50" rows="8" style="margin-bottom: 20px; margin-left: 16%;"></textarea>
+            </div>
+        </div>
+    </div> 
+    <textarea name="paragraph_text" cols="50" rows="8" ></textarea>
+    --}} 
+</div>
+
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>

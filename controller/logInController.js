@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const sanitize = require('mongo-sanitize');
 const session = require('express-session');
 
