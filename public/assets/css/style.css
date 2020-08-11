@@ -237,8 +237,10 @@ footer {
 /* About */
 
 .sub-header{
-  margin-left: 215px;
-  margin-top: 15px;
+  margin-left: 24px;
+  margin-top: 16px;
+  /*margin-left: 215px;
+  margin-top: 15px;*/
 }
 
 /* Blog/News Content */
@@ -354,6 +356,19 @@ footer {
   margin: 0;
   opacity: 1;
   transition: 0s
+}
+
+/* Donate */
+.support-container{
+  width: 40%;
+  display: block;
+  text-align: justify;
+}
+
+.donate-container{
+  width: 50%;
+  padding: 50px;
+  border-radius: 4px;
 }
 
 /* Pre Application & Application */

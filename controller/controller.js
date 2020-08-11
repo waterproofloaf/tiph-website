@@ -92,6 +92,14 @@ const controller = {
         })
     },
 
+    getDonate: function(req, res){
+        res.render('donate', {
+            layout: '/layouts/main',
+            title: 'Donate | The Initiative PH',
+            donate_active: true,
+        })
+    },
+
     getCMSLogin: function(req, res){
         res.render('cms-login', {
             title: 'CMS Login | The Initiative PH',
