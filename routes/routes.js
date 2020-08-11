@@ -18,6 +18,7 @@ app.get('/application', controller.getApplication);
 app.get('/projects', controller.getProjects);
 app.get('/blog', controller.getBlogs);
 app.get('/contact-us', controller.getContactUs);
+app.get('/donate', controller.getDonate);
 
 app.get('/cms-login', controller.getCMSLogin);
 app.post('/cms-login', logIncontroller.postLogIn);
