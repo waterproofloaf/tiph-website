@@ -1,11 +1,13 @@
 /* EDIT APP FORM CMS */
 .dept-positions{
-  display: none;
-  font-weight: 400;
-  margin-left: 40px;
+    display: none;
+    font-weight: 400;
+    margin-left: 40px;
 }
 
 .div-choices{
-  font-weight: 520;
-  margin-left: 50px;
+    font-weight: 520;
+    margin-left: 50px;
+    overflow-y: scroll;
+    height: 300px;
 }
