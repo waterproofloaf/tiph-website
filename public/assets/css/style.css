@@ -156,10 +156,10 @@ ul li{
 
 .collapsible {
     background-color: #a67f46;
-    width: 70%;
+    width: 100%;
     padding: 15px;
     color: white;
-    text-align: left;
+    text-align: center;
     border: none;
 }
 
@@ -175,13 +175,14 @@ ul li{
 .content {
     padding: 0 10px;
     padding-top: 10px;
-    display: none;
+    /* display: none; */
     overflow: hidden;
     background-color: #a67f46;
     color: white;
-    width: 70%;
-    margin: auto;
-    margin-bottom: 20px;
+    width: 100%;
+    /* margin: auto; */
+    /* margin-bottom: 20px; */
+    text-align: center;
 }
 
 .btn {
