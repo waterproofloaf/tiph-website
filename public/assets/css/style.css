@@ -286,14 +286,16 @@ footer {
 }
 
 .contact-us-container{
-  width: 40%;
+  width: 100%;
+  margin: 20px;
   display: block;
   text-align: justify;
 }
 
 .contact-form-container{
   background-color: #f8f9fa;
-  width: 50%;
+  width: 100%;
+  margin: 20px;
   padding: 50px;
   border-radius: 4px;
 }
@@ -308,7 +310,7 @@ footer {
   width: 100%;
   margin-bottom: 30px;
   border-radius: 2px;
-  border: 1px solid #ccc
+  border: 1px solid #ccc;
 }
 
 #contact-inquiry{
@@ -321,8 +323,8 @@ footer {
 
 .contact-font-texts{
   font-family: "Montserrat";
+  font-size: 1em;
 }
-
 
 .contact-button {
   margin-top: 30px;
