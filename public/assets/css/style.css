@@ -65,7 +65,10 @@
   font-weight: 400;
   font-size: 15px;
   color: #242424;
+  text-align: justify;
 }
+
+
 
 .sub-header {
   font-family: "Roboto";
@@ -248,7 +251,7 @@ footer {
 
 .the-content{
     position: relative;
-    width: 50%;
+    width: 70%;
     margin: auto;
     line-height: 2;
 }
@@ -367,6 +370,14 @@ footer {
   transition: 0s
 }
 
+/* Projects */
+.project-subtitle {
+    font-family: "Montserrat";
+    font-weight: 500;
+    font-size: 15px;
+    color: #242424;
+}
+
 /* Donate */
 .support-container{
   width: 40%;
@@ -388,6 +399,11 @@ footer {
   font-size: 30px;
   color: #173b41;
   margin-left: 0%;
+}
+
+.apps-deptchoice-font{
+  font-family: "Montserrat";
+  font-size: 20px;
 }
 
 .form-width{
