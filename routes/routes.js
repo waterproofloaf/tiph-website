@@ -12,7 +12,6 @@ const app = express();
 app.get('/', controller.getHomePage);
 app.get('/home', controller.getHomePage);
 app.get('/about', controller.getAboutUs);
-app.get('/volunteer', controller.getVolunteer);
 app.get('/pre-application', controller.getPreApp);
 app.get('/application', controller.getApplication);
 app.get('/projects', controller.getProjects);

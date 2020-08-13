@@ -4,10 +4,6 @@ const database = require('../models/db.js');
 // define objects for client request functions for a certain path in the server
 const controller = {
 
-    getFavicon: function (req, res) {
-        res.status(204);
-    },
-
     getHomePage: function(req, res){
         res.render('home', {
             layout: '/layouts/main',
@@ -22,13 +18,6 @@ const controller = {
             title: 'About | The Initiative PH',
             about_active: true,
         })
-    },
-
-    getVolunteer: function(req, res){
-        res.render('volunteer', {
-            title: 'Volunteer | The Initiative PH',
-            volunteer_active: true,
-       })
     },
 
     getPreApp: function(req, res){
