@@ -400,8 +400,20 @@ footer {
   margin-top: 20px;
 }
 
+.mar-top-40{
+  margin-top: 40px;
+}
+
 .mar-top--10{
   margin-top: -10px;
+}
+
+.mar-left-8{
+  margin-left: 8px;
+}
+
+.mar-left-40{
+  margin-left: 40px;
 }
 
 .mar-left-90{
@@ -536,6 +548,46 @@ ul{
   margin-top: 30px;
 }
 
+/* Donate Icon */
+.fa-circle{
+  color: #0c5865 !important;
+}
+
+.fa-facebook-square{
+  color: #0c5865 !important; 
+}
+
+.fa-instagram-square{
+  color: #0c5865 !important; 
+}
+
+.fa-twitter-square{
+  color: #0c5865 !important; 
+}
+
+.white-font{
+  color: white!important;
+}
+
+.card-gcash{
+  background-color:	#007dfe;
+  color: white;
+}
+
+.card-paymaya{
+  background-color:	#00344e;
+  color: white;
+}
+
+.card-bdo{
+  background-color:	#0b2972;
+  color: white;
+}
+
+.card-bpi{
+  background-color:	#b20000;
+  color: white;
+}
 
 
 
