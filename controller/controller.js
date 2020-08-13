@@ -8,11 +8,6 @@ const controller = {
         res.status(204);
     },
 
-    // render log-in page when client requests '/' defined in routes.js
-    getIndex: function(req,res){        
-        res.render('login');
-    },
-
     getHomePage: function(req, res){
         res.render('home', {
             layout: '/layouts/main',
