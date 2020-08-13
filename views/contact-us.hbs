@@ -24,15 +24,33 @@
 
     <div class="contact-form-container">
       <!-- Form -->
-      <h6 class="contact-font-texts"><strong> SUBJECT</strong></h6>
-      <input type="text" name="contact-subject" id="contact-subject" class="contact-form-text" value required>
-      <h6 class="contact-font-texts"><strong> NAME</strong></h6>
-      <input type="text" name="contact-name" id="contact-name" class="contact-form-text" value required>
-      <h6 class="contact-font-texts"><strong>INQUIRY</strong></h6>
-      <input type="text" name="contact-inquiry" id="contact-inquiry" class="contact-form-text" value required>
-      <input type='file' name='upload' class="contact-form-upload">
-      <button name="contact-submit" id="contact-submit" class="contact-button contact-font-texts"><strong>S U B M I
-          T</strong></button>
+      <form class="needs-validation" novalidate>
+        {{!-- <div class="form-row"> --}}
+          <h6 class="contact-font-texts"><strong> SUBJECT</strong></h6>
+          <input type="text" name="contact-subject" id="contact-subject" class="contact-form-text " value required>
+          {{!-- <h6 class="contact-font-texts"><strong><label class="form-check-label" for="contact-subject"> SUBJECT</label></strong></h6> --}}
+        {{!-- </div> --}}
+        
+        
+        
+        {{!-- <div class="form-row"> --}}
+          <h6 class="contact-font-texts"><strong> NAME</strong></h6>
+          <input type="text" name="contact-name" id="contact-name" class="contact-form-text " value required>
+          {{!-- <h6 class="contact-font-texts"><strong><label class="form-check-label" for="contact-name"> NAME</label></strong></h6> --}}
+        {{!-- </div> --}}
+        
+        
+        
+        {{!-- <div class="form-row"> --}}
+          <h6 class="contact-font-texts"><strong>INQUIRY</strong></h6>
+          <input type="text" name="contact-inquiry" id="contact-inquiry" class="contact-form-text " value required>
+          {{!-- <h6 class="contact-font-texts"><strong><label class="form-check-label" for="contact-inquiry"> INQUIRY</label></strong></h6> --}}
+        {{!-- </div> --}}
+        
+        <input type='file' name='upload' class="contact-form-upload">
+        <button type="submit" name="contact-submit" id="contact-submit" class="contact-button contact-font-texts"><strong>S U B M I T</strong></button>
+      </form>
+      
     </div>
 
     <!-- </form> -->
