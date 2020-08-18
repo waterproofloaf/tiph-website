@@ -317,7 +317,9 @@ footer {
 }
 
 #contact-inquiry{
-  height: 152px;
+  height: 70px;
+  overflow: auto;
+  resize: vertical;
 }
 
 .contact-font-header{
