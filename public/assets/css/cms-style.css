@@ -76,3 +76,126 @@ input:checked + .slider:before {
     overflow-y: scroll;
     height: 300px;
 }
+
+/* Login */
+.cms-login-container{
+    display: relative;
+    padding: 6vw;
+    box-sizing: border-box;
+    height: 70%;
+}
+
+.cms-login-form-container{
+    background-color: #f8f9fa;
+    padding: 50px;
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cms-login-form-text{
+    width: 200px;
+    margin-bottom: 30px;
+    border-radius: 2px;
+    border: 1px solid #ccc
+}
+
+.cms-font-text{
+    font-family: "Montserrat";
+}
+
+.cms-font-text-error{
+    font-family: "Montserrat";
+    font-size: 12px;
+    color: red;
+}
+
+.button{
+    width: 100%;
+    background-color: #173b41;
+    color: #FFFFFF;
+    font-family: "Montserrat";
+}
+
+/* blog */
+.cms-blog-container{
+    display: relative;
+    padding: 6vw;
+    box-sizing: border-box;
+    height: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .cms-blog-form-container{
+      background-color: #f8f9fa;
+      width: 50%;
+      padding: 50px;
+      border-radius: 4px;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Montserrat";
+  }
+  
+  .cms-blog-form-text{
+      width: 100%;
+      margin-bottom: 30px;
+      border-radius: 2px;
+      border: 1px solid #ccc
+  }
+  
+  #cms-blog-content{
+      height: 1000px !important;
+  }
+  
+  .cms-blog .card-body .form-group textarea{
+      height: 300px;
+  }
+  
+  #editor {
+    height: 130px;
+  }
+  
+  .button {
+      margin-top: 10px;
+      position: relative;
+      background-color: #173b41;
+      border-radius: 10px;
+      border: none;
+      font-family: "Montserrat";
+      font-size: 16px;
+      color: #FFFFFF;
+      width: 128px;
+      height: 56px;
+      text-align: center;
+      transition-duration: 0.4s;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    
+    .button:after {
+      content: "";
+      background: #f1f1f1;
+      display: block;
+      position: absolute;
+      padding-top: 300%;
+      padding-left: 350%;
+      margin-left: -20px !important;
+      margin-top: -120%;
+      opacity: 0;
+      transition: all 0.8s
+    }
+    
+    .button:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s
+    }
