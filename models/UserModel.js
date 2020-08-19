@@ -9,6 +9,10 @@ var UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    userType: {
+        type: String,
+        enum: ['PRIMARY_ADMIN', 'SUB_ADMIN']
     }
 });
 
