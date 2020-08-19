@@ -1,77 +1,137 @@
 <div class="content">
-        <div class="row">
-          <div class="col-md-12">
-            <form>
-              <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title">Projects</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive text-center">
-                    <table class="table text-left">
-                      <thead class=" text-primary">
-                        <th>
-                          Page
-                        </th>
-                        <th class="text-right">
-                          Switch
-                        </th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            Project 1 Title
-                          </td>
-                          <td class="text-right">
-                            <a href="cms-project-page"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Project 2 Title
-                          </td>
-                          <td class="text-right">
-                            <a href="cms-project-page"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Project 3 Title
-                          </td>
-                          <td class="text-right">
-                            <a href="cms-project-page"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Project 4 Title
-                          </td>
-                          <td class="text-right">
-                            <a href="cms-project-page"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Project 5 Title
-                          </td>
-                          <td class="text-right">
-                            <a href="cms-project-page"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            Project 6 Title
-                          </td>
-                          <td class="text-right">
-                            <a href="cms-project-page"><button id="blogeditbtn" type="button" class="btn btn-outline-success">Edit</button></a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="card">
+          <div class="card-header">
+            <div class="row d-flex align-items-center">
+              <div class="col">
+                <h4 class="card-title">
+                  Projects
+                </h4>
               </div>
-            </form>
+              <div class="col text-right">
+                <input type="text" id="cms-search" onkeyup="cms_search()" placeholder="Search..">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive text-center">
+              <table class="table text-left blog-project-table" id="pages-table">
+                <thead class=" text-primary">
+                  <th style="width:80%">
+                    Page
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Edit
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Published
+                  </th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="entry-title">Projects Title 1</p>
+                      <span>
+                        <time class="entry-date">01/15/2020</time>
+                      </span>
+                      <span>
+                        -
+                      </span>
+                      <span class="entry-progress">
+                        Ongoing
+                      </span>
+                    </td>
+                    <td class="text-right">
+                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Edit</button></a>
+                    </td>
+                    <td class="text-right">
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="entry-title">Projects Title 2</p>
+                      <span>
+                        <time class="entry-date">04/15/2020</time>
+                      </span>
+                      <span>
+                        -
+                      </span>
+                      <span class="entry-progress">
+                        Done
+                      </span>
+                    </td>
+                    <td class="text-right">
+                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Edit</button></a>
+                    </td>
+                    <td class="text-right">
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="entry-title">Projects Title 3</p>
+                      <span>
+                        <time class="entry-date">02/15/2020</time>
+                      </span>
+                      <span>
+                        -
+                      </span>
+                      <span class="entry-progress">
+                        Ongoing
+                      </span>
+                    </td>
+                    <td class="text-right">
+                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Edit</button></a>
+                    </td>
+                    <td class="text-right">
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="entry-title">Projects Title 4</p>
+                      <span>
+                        <time class="entry-date">11/15/2020</time>
+                      </span>
+                      <span>
+                        -
+                      </span>
+                      <span class="entry-progress">
+                        Proposed
+                      </span>
+                    </td>
+                    <td class="text-right">
+                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Edit</button></a>
+                    </td>
+                    <td class="text-right">
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
+    </div>
+  </div>
+</div>

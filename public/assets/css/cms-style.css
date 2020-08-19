@@ -63,6 +63,16 @@ input:checked + .slider:before {
     height: 0;
 }
 
+/* Search */
+
+#cms-search {
+    height: 50%;
+    width: 50%; /* Full-width */
+    font-size: 13px; /* Increase font-size */
+    padding: 12px 12px 12px 12px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+  }
+
 /* Edit App Form */
 .dept-positions{
     display: none;
@@ -119,7 +129,7 @@ input:checked + .slider:before {
     font-family: "Montserrat";
 }
 
-/* blog */
+/* Blog */
 .cms-blog-container{
     display: relative;
     padding: 6vw;
@@ -198,4 +208,24 @@ input:checked + .slider:before {
       margin: 0;
       opacity: 1;
       transition: 0s
+    }
+
+    th {
+        color: green;
+    }
+
+    .blog-project-table tbody {
+        line-height: 5px;
+    }
+
+    .entry-title {
+        font-weight: 600;
+    }
+
+    .entry-date {
+        font-size: 12px;
+    }
+
+    .entry-progress {
+        font-size: 12px;
     }
