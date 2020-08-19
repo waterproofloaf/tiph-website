@@ -1,6 +1,6 @@
 /* Login Button */
 .login-button:hover {
-    color:green;
+    color:green !important;
 }
 
 /* Switch Slider Toggle */
