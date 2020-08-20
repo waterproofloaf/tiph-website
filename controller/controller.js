@@ -4,7 +4,7 @@ const database = require('../models/db.js');
 // define objects for client request functions for a certain path in the server
 const controller = {
 
-    getHomePage: function(req, res){
+    getHomePage: function (req, res) {
         res.render('home', {
             layout: '/layouts/main',
             title: 'Home | The Initiative PH',
@@ -12,7 +12,7 @@ const controller = {
         })
     },
 
-    getAboutUs: function(req, res){
+    getAboutUs: function (req, res) {
         res.render('about', {
             layout: '/layouts/main',
             title: 'About | The Initiative PH',
@@ -20,7 +20,7 @@ const controller = {
         })
     },
 
-    getPreApp: function(req, res){
+    getPreApp: function (req, res) {
         res.render('pre-application', {
             layout: '/layouts/main',
             title: 'Pre-Application | The Initiative PH',
@@ -28,7 +28,7 @@ const controller = {
         })
     },
 
-    getApplication: function(req, res){
+    getApplication: function (req, res) {
         res.render('application', {
             layout: '/layouts/main',
             title: 'Application | The Initiative PH',
@@ -36,7 +36,7 @@ const controller = {
         })
     },
 
-    getProjects: function(req, res){
+    getProjects: function (req, res) {
         res.render('projects', {
             layout: '/layouts/main',
             title: 'Projects | The Initiative PH',
@@ -44,23 +44,23 @@ const controller = {
         })
     },
 
-    getBlogs: function(req, res){
+    getBlogs: function (req, res) {
         res.render('blog', {
             layout: '/layouts/main',
             title: 'Blog | The Initiative PH',
             blog_active: true,
         })
     },
-    
-    getABlog: function(req, res){
+
+    getABlog: function (req, res) {
         res.render('a-blog', {
             layout: '/layouts/main',
             title: 'A Blog | The Initiative PH',
             blog_active: true,
         })
     },
-    
-    getAProject: function(req, res){
+
+    getAProject: function (req, res) {
         res.render('a-project', {
             layout: '/layouts/main',
             title: 'A Project | The Initiative PH',
@@ -68,7 +68,7 @@ const controller = {
         })
     },
 
-    getContactUs: function(req, res){
+    getContactUs: function (req, res) {
         res.render('contact-us', {
             layout: '/layouts/main',
             title: 'Contact Us | The Initiative PH',
@@ -76,7 +76,7 @@ const controller = {
         })
     },
 
-    getDonate: function(req, res){
+    getDonate: function (req, res) {
         res.render('donate', {
             layout: '/layouts/main',
             title: 'Donate | The Initiative PH',
@@ -84,13 +84,13 @@ const controller = {
         })
     },
 
-    getCMSLogin: function(req, res){
+    getCMSLogin: function (req, res) {
         res.render('cms-login', {
             title: 'CMS Login | The Initiative PH',
         })
     },
 
-    getCMSHome: function(req, res){
+    getCMSHome: function (req, res) {
         res.render('cms-home', {
             layout: '/layouts/cms-layout',
             title: 'CMS Home | The Initiative PH',
@@ -98,15 +98,15 @@ const controller = {
         })
     },
 
-    getCMSApplication: function(req, res){
+    getCMSApplication: function (req, res) {
         res.render('cms-application', {
             layout: '/layouts/cms-layout',
             title: 'CMS Application | The Initiative PH',
             application_active: true,
         })
     },
-    
-    getCMSEditApplication: function(req, res){
+
+    getCMSEditApplication: function (req, res) {
         res.render('cms-edit-application', {
             layout: '/layouts/cms-layout',
             title: 'CMS Application Form Edit | The Initiative PH',
@@ -114,7 +114,7 @@ const controller = {
         })
     },
 
-    getCMSBlog: function(req, res){
+    getCMSBlog: function (req, res) {
         res.render('cms-blog', {
             layout: '/layouts/cms-layout',
             title: 'CMS Blog | The Initiative PH',
@@ -122,7 +122,7 @@ const controller = {
         })
     },
 
-    getCMSBlogPage: function(req, res){
+    getCMSBlogPage: function (req, res) {
         res.render('cms-blog-page', {
             layout: '/layouts/cms-layout',
             title: 'CMS Blog Edit | The Initiative PH',
@@ -130,7 +130,15 @@ const controller = {
         })
     },
 
-    getCMSProject: function(req, res){
+    getCMSBlogNewPage: function (req, res) {
+        res.render('cms-blog-new-page', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS New Blog Entry | The Initiative PH',
+            blog_active: true,
+        })
+    },
+
+    getCMSProject: function (req, res) {
         res.render('cms-project', {
             layout: '/layouts/cms-layout',
             title: 'CMS Project | The Initiative PH',
@@ -138,14 +146,22 @@ const controller = {
         })
     },
 
-    getCMSProjectPage: function(req, res){
+    getCMSProjectPage: function (req, res) {
         res.render('cms-project-page', {
             layout: '/layouts/cms-layout',
             title: 'CMS Project Edit | The Initiative PH',
             project_active: true,
         })
     },
+
+    getCMSProjectNewPage: function (req, res) {
+        res.render('cms-project-new-page', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS New Project Page | The Initiative PH',
+            project_active: true,
+        })
+    },
 }
 
- // enables to export controller object when called in another .js file
- module.exports = controller;
+// enables to export controller object when called in another .js file
+module.exports = controller;
