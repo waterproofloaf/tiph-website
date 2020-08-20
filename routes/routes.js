@@ -4,6 +4,7 @@ const express = require('express');
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controller/controller.js');
 const logIncontroller = require('../controller/logIncontroller.js');
+const blogController = require('../controller/blogController.js');
 
 const app = express();
 
@@ -24,10 +25,13 @@ app.post('/cms-login', logIncontroller.postLogIn);
 
 app.get('/cms-home', controller.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);
+
 app.get('/cms-blog', controller.getCMSBlog);
-app.get('/cms-project', controller.getCMSProject);
 app.get('/cms-blog-page', controller.getCMSBlogPage);
 app.get('/cms-blog-new-page', controller.getCMSBlogNewPage);
+
+app.get('/cms-project', controller.getCMSProject);
+
 app.get('/cms-project-page', controller.getCMSProjectPage);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);
 app.get('/a-blog', controller.getABlog);

@@ -1,12 +1,31 @@
 // Quill.js
 $(document).ready(function () {
-  function GetFindOut(value) {
-    var element = document.getElementById('findouttxt');
-    if (value == 'other')
-      element.style.display = 'block';
-    else
-      element.style.display = 'none';
-  }
+    function GetFindOut(value) {
+        var element = document.getElementById('findouttxt');
+        if (value == 'other')
+          element.style.display = 'block';
+        else
+          element.style.display = 'none';
+    }
+    
+    // add blog POST called
+    $('#addBlog').click(function() {
+    // Get the data from the form
+        var blog_title = $('#new_blog_title').val();
+        var blog_content = $('#new_blog_content').val();
+        var keywords = $('#new_blog_keywords').val();
+        
+    //COMMENTED OUT BECAUSE IT MAKES THE QUILL EDITOR DISAPPEAR
+//        var newBlog = {
+//            blog_title: blog_title,
+//            blog_content: blog_content;
+//        };
+
+        $.post('addBlog', newBlog, function(data, status) {
+          console.log(data);
+
+        });
+    });
 });
 
 var quill = new Quill('#editor-container', {
@@ -17,7 +36,7 @@ var quill = new Quill('#editor-container', {
       [{ list: 'ordered' }, { list: 'bullet' }]
     ]
   },
-  placeholder: 'Seize the day!',
+  placeholder: 'Insert body here.',
   theme: 'snow'
 });
 
