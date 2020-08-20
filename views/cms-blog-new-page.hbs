@@ -7,28 +7,27 @@
                 <form>
                     <div class="card cms-blog">
                         <div class="card-body">
-                           <!-- <form method="post" action="/addBlog"> -->
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Title</label>
-                                    <input type="text" class="form-control" id="new_blog_title" placeholder="Title" name="new_blog_title">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Title</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Content</label>
+                                <div id="editor-container">
+                                    <p>Insert body here.</p>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Content</label>
-                                    <input name="new_blog_content" type="hidden" id="new_blog_content">
-                                    <div id="editor-container">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Keywords</label>
-                                    <input type="text" class="form-control" id="new_blog_keywords"
-                                        placeholder="Keywords" name="new_blog_keywords">
-                                </div>
-                                <div class="pb-2">
-                                    <label for="exampleFormControlFile1">Cover Photo</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                </div>
-                                <button type="submit" class="btn btn-outline-success" id="addBlog">SUBMIT</button>
-                            <!--</form>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Keywords</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1"
+                                    placeholder="Keywords">
+                            </div>
+                            <div class="pb-2">
+                                <label for="exampleFormControlFile1">Cover Photo</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                            <button type="submit" class="btn btn-outline-success">SUBMIT</button>
                         </div>
                     </div>
                 </form>

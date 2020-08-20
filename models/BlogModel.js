@@ -10,24 +10,12 @@ var BlogModel = new mongoose.Schema({
         required: true
     },
     blog_date: {
-        type: String,
+        type: Date,
         required: true
     },
     blog_img: {
-        //type: Image,
+        type: Image,
     },
 });
 
 module.exports = mongoose.model('Blog', BlogModel);
-
-exports.getAll = function(next){
-    BlogModel.find({}).sort({}).exec(function(err, result){
-        if (err) throw err;
-        var blogObjects = [];
-        
-        result.forEach(function(doc){
-            blogObjects.push(doc.toObject());
-        });
-        next(blogObjects);
-    })
-}
