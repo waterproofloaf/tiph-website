@@ -24,6 +24,8 @@ app.post('/cms-login', logIncontroller.postLogIn);
 
 app.get('/cms-home', controller.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);
+app.get('/cms-admin', controller.getCMSAdmin);
+app.get('/cms-admin-new', controller.getCMSNewAdmin);
 app.get('/cms-blog', controller.getCMSBlog);
 app.get('/cms-project', controller.getCMSProject);
 app.get('/cms-blog-page', controller.getCMSBlogPage);

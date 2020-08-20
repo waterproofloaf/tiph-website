@@ -234,3 +234,8 @@ input:checked + .slider:before {
     .entry-progress {
         font-size: 12px;
     }
+
+/* Admin */
+.admin-username {
+    font-style: italic;
+}

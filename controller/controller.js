@@ -106,6 +106,22 @@ const controller = {
         })
     },
 
+    getCMSAdmin: function (req, res) {
+        res.render('cms-admin', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Admin | The Initiative PH',
+            admin_active: true,
+        })
+    },
+
+    getCMSNewAdmin: function (req, res) {
+        res.render('cms-admin-new', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Add Admin | The Initiative PH',
+            admin_active: true,
+        })
+    },
+
     getCMSEditApplication: function (req, res) {
         res.render('cms-edit-application', {
             layout: '/layouts/cms-layout',
