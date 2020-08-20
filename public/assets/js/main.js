@@ -57,4 +57,13 @@ function cms_search() {
   }
 }
 
+// CMS Sort
+var mylist = $('#entries-table');
+var listitems = mylist.find('tr');
+listitems.sort(function(a, b) {
+  return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+  // return $(a).getElementsByTagName('time').localeCompare($(b).getElementsByTagName('time'));
+})
+$.each(listitems, function(idx, itm) { mylist.append(itm); });
+
 
