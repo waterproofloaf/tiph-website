@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 
 // import routes module
 const routes = require('./routes/routes.js');
@@ -9,8 +10,14 @@ const routes = require('./routes/routes.js');
 // import module `database` from `./model/db.js`
 const db = require('./models/db.js');
 
+const blogModel = require('./models/BlogModel.js');
+
 const app = express();
 const port = process.env.PORT || 9090;
+
+// support json encoded bodies
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // set hbs as view engine
 app.set('view engine', 'hbs');
@@ -37,8 +44,38 @@ app.use(session({
 
 db.connect();
 
+// post methods
+app.post('/addBlog', function(req, res){
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    
+    var blog = new blogModel({
+       blog_title: req.body.blog_title,
+       blog_content: req.body.new_blog_content,
+       blog_date: date,
+    });
+    
+    blog.save(function(err, blog){
+        var result;
+
+        if (err) {
+          console.log(err.errors);
+
+          result = { success: false, message: "Blog was not created!" }
+          res.send(result);
+        } else {
+          console.log("Successfully added new blog!");
+          console.log(blog);
+
+          result = { success: true, message: "Blog created!" }
+
+          res.send(result);
+        }
+
+    });
+});
+
+
 app.listen(port, function(){
     console.log('App listening at port ' + port)
 })
-
-
