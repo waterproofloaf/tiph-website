@@ -1,8 +1,8 @@
 <!-- HOW IT WAS FOUNDED -->
 <div class="container-fluid">
     <div class="row p-5 my-5 d-flex align-items-center">
-        <div class="col">
-            <img src="assets/img/1.png" width="500">
+        <div class="col d-none d-lg-block">
+            <img src="assets/img/1.png" width="100%">
         </div>
         <div class="col">
             <h5 class="font-weight-bold text-uppercase sub-title">How TIPH was founded</h5>
@@ -12,8 +12,12 @@
         </div>
     </div>
 
-    <p class="font-weight-bold text-uppercase sub-header">Management</p>
-    <div id="accordion">
+    <div class="row">
+        <div class="col text-center">
+            <p class="font-weight-bold text-uppercase sub-header">Management</p>
+        </div>
+    </div>
+    <div id="accordion" class="about-us-acc">
         <div class="object-container card">
             {{!-- <div class="card-header" id="headingOne"> --}}
             <h5 class="mb-0">
@@ -79,7 +83,12 @@
         </div>
         <br><br>
         <hr><br>
-        <p class="font-weight-bold text-uppercase sub-header">Operations</p>
+
+        <div class="row">
+            <div class="col text-center">
+                <p class="font-weight-bold text-uppercase sub-header">Operations</p>
+            </div>
+        </div>
         <div class="object-container card">
             {{!-- <div class="card-header" id="headingFour"> --}}
             <h5 class="mb-0">

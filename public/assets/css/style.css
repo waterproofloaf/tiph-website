@@ -240,8 +240,12 @@ footer {
 
 /* About */
 
+.about-us-acc .content {
+  text-align: justify;
+}
+
 .sub-header{
-  margin-left: 24px;
+  /* margin-left: 24px; */
   margin-top: 16px;
   /*margin-left: 215px;
   margin-top: 15px;*/
@@ -406,6 +410,32 @@ footer {
 .apps-deptchoice-font{
   font-family: "Montserrat";
   font-size: 20px;
+}
+
+.apps-button {
+  margin-top: 30px;
+  /* position: relative; */
+  background-color: #173b41;
+  border-radius: 10px;
+  border: none;
+  font-family: "Montserrat";
+  font-size: 16px;
+  color: #FFFFFF;
+  width: 128px;
+  height: 56px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  /* float: right; */
+}
+
+.apps-font-texts{
+  font-family: "Montserrat";
+  font-size: 1em;
 }
 
 .form-width{
