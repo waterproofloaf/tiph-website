@@ -16,6 +16,10 @@ var BlogModel = new mongoose.Schema({
     blog_img: {
         //type: Image,
     },
+    blog_keyword: {
+        type: String,
+        required: true
+    },
 });
 
 module.exports = mongoose.model('Blog', BlogModel);

@@ -10,12 +10,28 @@ var ProjectModel = new mongoose.Schema({
         required: true
     },
     proj_date: {
-        type: Date,
+        type: String,
         required: true
     },
     proj_img: {
-        type: Image,
+        //type: Image,
     },
+    proj_keyword: {
+        type: String,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Project', ProjectModel);
+
+exports.getAll = function(next){
+    ProjectModel.find({}).sort({}).exec(function(err, result){
+        if (err) throw err;
+        var projObjects = [];
+        
+        result.forEach(function(doc){
+            projObjects.push(doc.toObject());
+        });
+        next(projObjects);
+    })
+}
