@@ -106,6 +106,22 @@ const controller = {
         })
     },
 
+    getCMSEditApplication: function (req, res) {
+        res.render('cms-edit-application', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Application Form Edit | The Initiative PH',
+            application_active: true,
+        })
+    },
+
+    getCMSEditPreApplication: function (req, res) {
+        res.render('cms-edit-pre-application', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Pre-Application Form Edit | The Initiative PH',
+            application_active: true,
+        })
+    },
+
     getCMSAdmin: function (req, res) {
         res.render('cms-admin', {
             layout: '/layouts/cms-layout',
@@ -119,14 +135,6 @@ const controller = {
             layout: '/layouts/cms-layout',
             title: 'CMS Add Admin | The Initiative PH',
             admin_active: true,
-        })
-    },
-
-    getCMSEditApplication: function (req, res) {
-        res.render('cms-edit-application', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Application Form Edit | The Initiative PH',
-            application_active: true,
         })
     },
 
