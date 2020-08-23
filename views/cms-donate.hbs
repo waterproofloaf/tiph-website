@@ -1,0 +1,118 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="card">
+          <div class="card-header">
+            <div class="row d-flex align-items-center">
+              <div class="col">
+                <h4 class="card-title">
+                  Donation Options
+                </h4>
+              </div>
+              <div class="col text-right">
+                <input type="text" id="cms-search" onkeyup="cms_search()" placeholder="Search..">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <a href="cms-donation-new-option">
+                  <button id="blogeditbtn" type="button" class="btn btn-success">
+                    <i class="fas fa-plus-circle"></i> Add a new donation option
+                  </button>
+                </a>
+              </div>
+            </div>
+
+          </div>
+          <div class="card-body">
+            <div class="table-responsive text-center">
+              <table class="table text-left blog-project-table" id="pages-table">
+                <thead class=" text-primary">
+                  <th style="width:20%">
+                    Mode
+                  </th>
+                  <th style="width:25%">
+                    Account Name
+                  </th>
+                  <th style="width:25%">
+                    Account Number
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Edit
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Delete
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Hide
+                  </th>
+                </thead>
+                <tbody id="entries-table">
+                  <tr>
+                    <td>
+                      GCash
+                    </td>
+                    <td>
+                      <span>
+                        <time class="entry-date">Juan Dela Cruz</time>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="entry-progress">
+                        09158374923
+                      </span>
+                    </td>
+                    <td class="text-right">
+                      <a href="cms-edit-donation"><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Edit</button></a>
+                    </td>
+                    <td class="text-right">
+                      <a href=""><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-danger">Delete</button></a>
+                    </td>
+                    <td class="text-right">
+                      <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Paymaya
+                    </td>
+                    <td>
+                      <span>
+                        <time class="entry-date">Juan Dela Cruz</time>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="entry-progress">
+                        09158374958
+                      </span>
+                    </td>
+                    <td class="text-right">
+                      <a href="cms-edit-donation"><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Edit</button></a>
+                    </td>
+                    <td class="text-right">
+                      <a href=""><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-danger">Delete</button></a>
+                    </td>
+                    <td class="text-right">
+                      <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

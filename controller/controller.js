@@ -177,6 +177,30 @@ const controller = {
             project_active: true,
         })
     },
+
+    getCMSDonate: function (req, res) {
+        res.render('cms-donate', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Donate | The Initiative PH',
+            donate_active: true,
+        })
+    },
+
+    getCMSNewDonate: function (req, res) {
+        res.render('cms-donation-new-option', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Add Donation Option | The Initiative PH',
+            donate_active: true,
+        })
+    },
+
+    getCMSEditDonate: function (req, res) {
+        res.render('cms-edit-donation', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Edit Donation Option | The Initiative PH',
+            donate_active: true,
+        })
+    },
 }
 
 // enables to export controller object when called in another .js file
