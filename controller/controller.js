@@ -138,6 +138,14 @@ const controller = {
         })
     },
 
+    getCMSEditAdmin: function (req, res) {
+        res.render('cms-admin-edit', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Edit Admin | The Initiative PH',
+            admin_active: true,
+        })
+    },
+
     getCMSBlog: function (req, res) {
         res.render('cms-blog', {
             layout: '/layouts/cms-layout',
