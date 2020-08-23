@@ -4,19 +4,19 @@
     <div class="content">
         <div id="form-container" class="row">
             <div class="col-md-12">
-                <form>
+                <form method="get">
                     <div class="card cms-blog">
                         <div class="card-body">
                             <!-- <form method="post" action="/addBlog"> -->
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Year</label>
-                                <input type="number" class="form-control" id="new_blog_title" placeholder="Title"
-                                    name="new_blog_title">
+                                <label for="cms-pre-apps-date">Year</label>
+                                <input type="number" class="form-control" id="cms-pre-apps-date" placeholder="Year"
+                                    name="cms-pre-apps-date">
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1">Description</label>
-                                <input name="new_blog_content" type="hidden" id="new_blog_content">
-                                <div id="editor-container">
+                                <label for="cms-pre-apps-content">Description</label>
+                                <input name="cms-pre-apps-content" type="hidden" id="cms-pre-apps-content">
+                                <div id="editor-container" class="cms-pre-apps-content">
                                     Thank you for showing interest!
                                     <br><br>
                                     The Initiative PH (TIPH) is a youth-run volunteer organization that coordinates
@@ -39,17 +39,7 @@
                                     Privacy Act of 2012.
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Keywords</label>
-                                <input type="text" class="form-control" id="new_blog_keywords" placeholder="Keywords"
-                                    name="new_blog_keywords">
-                            </div>
-                            <div class="pb-2">
-                                <label for="exampleFormControlFile1">Cover Photo</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                            </div>
-                            <button type="submit" class="btn btn-outline-success" id="addBlog">SUBMIT</button>
-                            <!--</form>-->
+                            <button type="submit" class="btn btn-outline-success" id="addBlog">SAVE</button>
                         </div>
                     </div>
                 </form>
