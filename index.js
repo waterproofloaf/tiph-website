@@ -42,6 +42,7 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+// connects to the database
 db.connect();
 
 // post methods

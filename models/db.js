@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+const Donate = require('./DonateModel.js');
 const User = require('./UserModel.js');
 
 const url = "mongodb://localhost:27017/tiph"; 

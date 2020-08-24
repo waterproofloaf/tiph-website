@@ -4,6 +4,7 @@ const express = require('express');
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controller/controller.js');
 const logIncontroller = require('../controller/logIncontroller.js');
+const donateController = require('../controller/donateController.js');
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.get('/cms-project-page', controller.getCMSProjectPage);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);
 app.get('/cms-donate', controller.getCMSDonate);
 app.get('/cms-donation-new-option', controller.getCMSNewDonate);
+app.post('/cms-donation-new-option', donateController.postDonate);
 app.get('/cms-edit-donation', controller.getCMSEditDonate);
 
 // enables to export app object when called in another .js file

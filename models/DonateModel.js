@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
 
-var DonateSchema = new mongoose.Schema({
-    account_type: {
+var DonateModel = new mongoose.Schema({
+    donate_type: {
         type: String,
         required: true
     },
-    account_name: {
+    donate_name: {
         type: String,
         required: true
     },
-    account_number: {
+    donate_number: {
         type: Number,
         required: true
     }
