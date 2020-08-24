@@ -3,7 +3,7 @@
 <img  src="https://github.com/waterproofloaf/tiph-website/blob/master/public/assets/img/brand-line.png"
 width="180">
 </p>
-This is a web application that serves as
+This is a web application for The Initiative PH that features a background of their organization, projects, and other information related to them.
 
 ## Features
 ### Sub-header 1
