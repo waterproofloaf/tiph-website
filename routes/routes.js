@@ -39,6 +39,7 @@ app.get('/cms-project', controller.getCMSProject);
 app.get('/cms-project-page', controller.getCMSProjectPage);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);
 app.get('/cms-donate', controller.getCMSDonate);
+app.post('/cms-donate', donateController.deleteDonate);
 app.get('/cms-donation-new-option', controller.getCMSNewDonate);
 app.post('/cms-donation-new-option', donateController.postDonate);
 app.get('/cms-edit-donation', controller.getCMSEditDonate);

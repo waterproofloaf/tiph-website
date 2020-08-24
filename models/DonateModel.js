@@ -12,6 +12,10 @@ var DonateModel = new mongoose.Schema({
     donate_number: {
         type: Number,
         required: true
+    },
+    donate_hide: {
+        type: Boolean,
+        required: true
     }
 });
 

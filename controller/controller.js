@@ -1,5 +1,6 @@
 // import module from db.js in models directory
 const database = require('../models/db.js');
+const Donate = require('../models/DonateModel.js');
 
 // define objects for client request functions for a certain path in the server
 const controller = {
@@ -80,7 +81,7 @@ const controller = {
         res.render('donate', {
             layout: '/layouts/main',
             title: 'Donate | The Initiative PH',
-            donate_active: true,
+            donate_active: true
         })
     },
 
@@ -195,11 +196,35 @@ const controller = {
     },
 
     getCMSDonate: function (req, res) {
-        res.render('cms-donate', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Donate | The Initiative PH',
-            donate_active: true,
-        })
+        // res.render('cms-donate', {
+        //     layout: '/layouts/cms-layout',
+        //     title: 'CMS Donate | The Initiative PH',
+        //     donate_active: true,
+        //     donate_info: resultArray
+        // })
+
+        var MongoClient = require('mongodb').MongoClient;
+        var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+            if (err) throw err;
+            var resultArray = [];
+            var dbo = db.db("tiph");
+            var cursor = dbo.collection("donates").find();
+            cursor.forEach(function (doc, err) {
+                resultArray.push(doc);
+            },
+                function () {
+                    console.log(resultArray);
+                    res.render('cms-donate', {
+                        layout: '/layouts/cms-layout',
+                        title: 'CMS Donate | The Initiative PH',
+                        donate_active: true,
+                        donate_info: resultArray
+                    });
+                    db.close();
+                });
+
+        });
     },
 
     getCMSNewDonate: function (req, res) {
