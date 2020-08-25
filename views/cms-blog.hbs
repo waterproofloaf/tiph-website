@@ -106,6 +106,30 @@
                       </label>
                     </td>
                   </tr>
+                    {{# each blog_info}}
+                    <tr>
+                        <td>
+                            {{this.blog_title}}
+                        </td>
+                        <td>
+                            {{this.blog_date}}
+                        </td>
+                    </tr>
+                        <td class="text-right">
+                      <a href="cms-blog-page"><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Edit</button></a>
+                    </td>
+                    <td class="text-right">
+                      <a href=""><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-danger">Delete</button></a>
+                    </td>
+                    <td class="text-right">
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                    {{/each}}
                 </tbody>
               </table>
             </div>
