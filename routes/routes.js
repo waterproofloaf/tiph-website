@@ -6,6 +6,7 @@ const controller = require('../controller/controller.js');
 const logIncontroller = require('../controller/logIncontroller.js');
 const donateController = require('../controller/donateController.js');
 const formsController = require('../controller/formsController.js');
+const blogController = require('../controller/blogController.js');
 
 const app = express();
 
