@@ -76,7 +76,10 @@ app.post('/addBlog', function(req, res){
     });
 });
 
-
 app.listen(port, function(){
     console.log('App listening at port ' + port)
-})
+});
+
+hbs.registerHelper('equals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
