@@ -7,9 +7,7 @@ const formsController = {
         // console.log(req.body);
         const output = `<p>You have a new message from the TIPH website<p>
         <h3>Contact Details</h3>
-        <ul>
-            <li>Name: ${req.body.contact_name}</li>
-        </ul>
+        <p>Name: ${req.body.contact_name}<p>
         <h3>Inquiry</h3>
         <p>${req.body.contact_inquiry}</p>
         `;
@@ -26,9 +24,12 @@ const formsController = {
             from: `${req.body.contact_email}`,
             to: 'victor_tulabot@dlsu.edu.ph',
             subject: `${req.body.contact_subject}`,
-            text: 'That was easy!',
             html: output,
-            attachments: [{filename: `${req.body.contact_upload}`}],
+            attachments: [
+                {
+                    filename: `${req.body.contact_upload}`,
+                }
+            ]
           };
           
           transporter.sendMail(mailOptions, function(error, info){
