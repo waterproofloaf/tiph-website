@@ -214,7 +214,6 @@ const controller = {
                 resultArray.push(doc);
             },
                 function () {
-                    console.log(resultArray);
                     res.render('cms-donate', {
                         layout: '/layouts/cms-layout',
                         title: 'CMS Donate | The Initiative PH',

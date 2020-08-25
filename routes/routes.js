@@ -6,6 +6,7 @@ const controller = require('../controller/controller.js');
 const logIncontroller = require('../controller/logIncontroller.js');
 const donateController = require('../controller/donateController.js');
 const formsController = require('../controller/formsController.js');
+const blogController = require('../controller/blogController.js');
 
 const app = express();
 
@@ -35,8 +36,10 @@ app.get('/cms-admin', controller.getCMSAdmin);
 app.get('/cms-admin-new', controller.getCMSNewAdmin);
 app.get('/cms-admin-edit', controller.getCMSEditAdmin);
 app.get('/cms-blog', controller.getCMSBlog);
+app.post('/cms-blog', blogController.deleteBlog);
 app.get('/cms-blog-page', controller.getCMSBlogPage);
 app.get('/cms-blog-new-page', controller.getCMSBlogNewPage);
+app.post('/cms-blog-new-page', blogController.postBlog);
 app.get('/cms-project', controller.getCMSProject);
 app.get('/cms-project-page', controller.getCMSProjectPage);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);

@@ -45,38 +45,10 @@ app.use(session({
 // connects to the database
 db.connect();
 
-// post methods
-app.post('/addBlog', function(req, res){
-    var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    
-    var blog = new blogModel({
-       blog_title: req.body.blog_title,
-       blog_content: req.body.new_blog_content,
-       blog_date: date,
-    });
-    
-    blog.save(function(err, blog){
-        var result;
-
-        if (err) {
-          console.log(err.errors);
-
-          result = { success: false, message: "Blog was not created!" }
-          res.send(result);
-        } else {
-          console.log("Successfully added new blog!");
-          console.log(blog);
-
-          result = { success: true, message: "Blog created!" }
-
-          res.send(result);
-        }
-
-    });
-});
-
-
 app.listen(port, function(){
     console.log('App listening at port ' + port)
-})
+});
+
+hbs.registerHelper('equals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});

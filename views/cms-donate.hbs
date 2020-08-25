@@ -11,11 +11,7 @@
                 </h4>
               </div>
               <div class="col text-right">
-                <input type="text" id="cms-search" onkeyup="cms_search()" placeholder="Search..">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
+                {{!-- <input type="text" id="cms-search" onkeyup="cms_search()" placeholder="Search.."> --}}
                 <a href="cms-donation-new-option">
                   <button id="blogeditbtn" type="button" class="btn btn-success">
                     <i class="fas fa-plus-circle"></i> Add a new donation option
@@ -23,7 +19,6 @@
                 </a>
               </div>
             </div>
-
           </div>
           <div class="card-body">
             <div class="table-responsive text-center">
@@ -71,7 +66,7 @@
                       <a href=""><button id="blogeditbtn" type="button"
                           class="btn btn-outline-danger">Delete</button></a>
                     </td>
-                    <td class="text-right">
+                    <td class="text-center">
                       <label class="switch">
                         <input type="checkbox">
                         <span class="slider round"></span>
@@ -100,7 +95,7 @@
                       <a href=""><button id="blogeditbtn" type="button"
                           class="btn btn-outline-danger">Delete</button></a>
                     </td>
-                    <td class="text-right">
+                    <td class="text-center">
                       <label class="switch">
                         <input type="checkbox">
                         <span class="slider round"></span>
@@ -132,7 +127,7 @@
                             class="btn btn-outline-danger">Delete</button></a>
                       </td>
                     </form>
-                    <td class="text-right">
+                    <td class="text-center">
                       <label class="switch">
                         <input type="checkbox" {{#if donate_hide}}checked{{/if}}>
                         <span class="slider round"></span>
