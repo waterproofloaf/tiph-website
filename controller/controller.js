@@ -123,6 +123,14 @@ const controller = {
         })
     },
 
+    getCMSApplicant: function (req, res) {
+        res.render('cms-applicant', {
+            layout: '/layouts/cms-layout',
+            title: 'CMS Applicants | The Initiative PH',
+            applicant_active: true,
+        })
+    },
+
     getCMSAdmin: function (req, res) {
         res.render('cms-admin', {
             layout: '/layouts/cms-layout',

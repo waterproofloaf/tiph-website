@@ -100,6 +100,22 @@ $(document).ready(function () {
       orderable: false,
       targets: [3, 4]
     }]
+  })
+
+  $('#preapps-table').DataTable({
+    "aaSorting": [],
+    columnDefs: [{
+      orderable: false,
+      targets: [3, 4, 5]
+    }]
+  })
+
+  $('#apps-table').DataTable({
+    "aaSorting": [],
+    columnDefs: [{
+      orderable: false,
+      targets: [3, 4, 5]
+    }]
   });
 });
 

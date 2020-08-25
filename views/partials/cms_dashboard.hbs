@@ -27,6 +27,12 @@
           <p>Application</p>
         </a>
       </li>
+      <li {{#if applicant_active}}class="active " {{/if}}>
+        <a href="cms-applicant">
+          <i class="nc-icon nc-satisfied"></i>
+          <p>Applicants</p>
+        </a>
+      </li>
       <li class="{{#if admin_active}} active {{/if}}">
         <a href="cms-admin">
           <i class="nc-icon nc-single-02"></i>
