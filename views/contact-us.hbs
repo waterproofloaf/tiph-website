@@ -25,7 +25,15 @@
         <h6 class="contact-font-texts">{{msg}}</h6>
         <br>
         <h6 class="contact-font-texts"><strong> SUBJECT</strong></h6>
-        <input type="text" name="contact_subject" id="contact_subject" class="contact-form-text " value required>
+        <input type="text" list="subjects" name="contact_subject" id="contact_subject" class="contact-form-text " value required>
+        <datalist id="subjects">
+          <option value="[INQUIRY] Organization Partnership"></option>
+          <option value="[INQUIRY] Organization Sponsorship"></option>
+          <option value="[INQUIRY] Organizational Events"></option>
+          <option value="[INQUIRY] Application Concerns"></option>
+          <option value="[DEPARTMENT] Department Pitch"></option>
+          <option value="[DONATION] Proof of Donation"></option>
+        </datalist>
 
         <h6 class="contact-font-texts"><strong> NAME</strong></h6>
         <input type="text" name="contact_name" id="contact_name" class="contact-form-text ">
