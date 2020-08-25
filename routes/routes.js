@@ -5,6 +5,7 @@ const express = require('express');
 const controller = require('../controller/controller.js');
 const logIncontroller = require('../controller/logIncontroller.js');
 const donateController = require('../controller/donateController.js');
+const formsController = require('../controller/formsController.js');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.get('/a-project', controller.getAProject);
 app.get('/blog', controller.getBlogs);
 app.get('/a-blog', controller.getABlog);
 app.get('/contact-us', controller.getContactUs);
+app.post('/contact-us', formsController.postContactUs);
 app.get('/donate', controller.getDonate);
 
 app.get('/cms-login', controller.getCMSLogin);

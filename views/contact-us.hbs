@@ -21,23 +21,24 @@
     <!-- <form> -->
 
     <div class="contact-form-container">
-      <form class="needs-validation" novalidate>
+      <form method="POST" action="contact-us" class="needs-validation" novalidate>
+        <h6 class="contact-font-texts">{{msg}}</h6>
+        <br>
         <h6 class="contact-font-texts"><strong> SUBJECT</strong></h6>
-        <input type="text" name="contact-subject" id="contact-subject" class="contact-form-text " value required>
+        <input type="text" name="contact_subject" id="contact_subject" class="contact-form-text " value required>
 
         <h6 class="contact-font-texts"><strong> NAME</strong></h6>
-        <input type="text" name="contact-name" id="contact-name" class="contact-form-text ">
+        <input type="text" name="contact_name" id="contact_name" class="contact-form-text ">
 
         <h6 class="contact-font-texts"><strong> EMAIL</strong></h6>
-        <input type="text" name="contact-email" id="contact-email" class="contact-form-text " value required>
+        <input type="text" name="contact_email" id="contact_email" class="contact-form-text " value required>
 
         <h6 class="contact-font-texts"><strong>INQUIRY</strong></h6>
-        <textarea name="contact-inquiry" id="contact-inquiry" class="contact-form-text " value required></textarea>
+        <textarea name="contact_inquiry" id="contact_inquiry" class="contact-form-text " value required></textarea>
 
         <h6 class="contact-font-texts"><strong>FOR MOA/MOU</strong></h6>
-        <input type='file' name='upload' class="contact-form-upload">
-        <button type="submit" name="contact-submit" id="contact-submit"
-          class="contact-button contact-font-texts"><strong>S U B M I T</strong></button>
+        <input type="file" name="contact_upload" id="contact_upload" class="contact-form-upload">
+        <button type="submit" class="contact-button contact-font-texts"><strong>S U B M I T</strong></button>
       </form>
 
     </div>
