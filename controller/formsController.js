@@ -9,6 +9,7 @@ const formsController = {
         const output = `<p>You have a new message from the TIPH website<p>
         <h3>Contact Details</h3>
         <p>Name: ${req.body.contact_name}<p>
+        <p>Email: ${req.body.contact_email}<p>
         <h3>Inquiry</h3>
         <p>${req.body.contact_inquiry}</p>
         `;
