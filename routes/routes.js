@@ -5,7 +5,7 @@ const multer = require('multer');
 
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controller/controller.js');
-const logIncontroller = require('../controller/logIncontroller.js');
+const logInController = require('../controller/logInController.js');
 const donateController = require('../controller/donateController.js');
 const formsController = require('../controller/formsController.js');
 const blogController = require('../controller/blogController.js');
@@ -40,8 +40,8 @@ app.get('/contact-us', controller.getContactUs);
 app.post('/contact-us', upload.single('contact_upload'), formsController.postContactUs);
 app.get('/donate', controller.getDonate);
 
-app.get('/cms-login', controller.getCMSLogin);
-app.post('/cms-login', logIncontroller.postLogIn);
+app.get('/cms-login', logInController.getLogin);
+app.post('/cms-login', logInController.postLogIn);
 
 app.get('/cms-home', controller.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);

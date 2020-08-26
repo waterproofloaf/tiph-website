@@ -9,12 +9,27 @@ const helper = require('./helper.js')
 
 const logIncontroller = {
 
+    getLogin: function(req,res){
+        console.log("Fetching Login Page...");
+        res.render('cms-login',{
+            title: 'Login | The Initiative PH',
+        });
+    },
+
     postLogIn: function(req, res){
 
         var username = helper.sanitize(req.body.cmsusername);
         var password = helper.sanitize(req.body.cmspassword);
 
-        User.findOne(User, {username: username}, {}, function(err, user){
+        if (username.trim() == '' || password == ''){
+            res.render('cms-login', {
+                title: 'Login | The Initiative PH',
+                loginErrorMessage: 'Required Fields!'
+            });
+            return;
+        }
+
+        database.findOne(User, {username: username}, {}, function(err, user){
             if (user){
                 bcrypt.compare(password, user.password, function(err, equal){
                     console.log(equal)
@@ -25,7 +40,7 @@ const logIncontroller = {
                     }
                     else{
                         res.render('cms-login', {
-                            title: 'Login | TIPH',
+                            title: 'Login | The Intiative PH',
                             login_active: true,
                             loginErrorMessage: 'Invalid credentials!'
                         });
@@ -34,14 +49,14 @@ const logIncontroller = {
             }
             else{
                 res.render('cms-login', {
-                    title: 'Login | TIPH',
+                    title: 'Login | The Initiative PH',
                     login_active: true,
                     loginErrorMessage: 'Invalid credentials!'
                 });
             }
-        })
+        });
         
-    },
+    }
 }
 
  // enables to export controller object when called in another .js file
