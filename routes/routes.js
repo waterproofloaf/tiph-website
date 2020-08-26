@@ -1,6 +1,8 @@
 // import module `express`
 const express = require('express');
 
+const multer = require('multer');
+
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controller/controller.js');
 const logIncontroller = require('../controller/logIncontroller.js');
@@ -10,6 +12,18 @@ const blogController = require('../controller/blogController.js');
 const projectController = require('../controller/projectController.js');
 
 const app = express();
+
+// SET STORAGE FOR ATTACHMENT
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+
+var upload = multer({ storage: storage })
 
 // call function getIndex when client sends a request for '/' defined in routes.js
 // controller
@@ -23,7 +37,7 @@ app.get('/a-project', controller.getAProject);
 app.get('/blog', controller.getBlogs);
 app.get('/a-blog', controller.getABlog);
 app.get('/contact-us', controller.getContactUs);
-app.post('/contact-us', formsController.postContactUs);
+app.post('/contact-us', upload.single('contact_upload'), formsController.postContactUs);
 app.get('/donate', controller.getDonate);
 
 app.get('/cms-login', controller.getCMSLogin);

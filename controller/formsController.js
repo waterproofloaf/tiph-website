@@ -3,7 +3,8 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 
 const formsController = {
-    postContactUs: function (req, res){
+    postContactUs: function (req, res) {
+
         // console.log(req.body);
         const output = `<p>You have a new message from the TIPH website<p>
         <h3>Contact Details</h3>
@@ -13,10 +14,16 @@ const formsController = {
         `;
         
         var transporter = nodemailer.createTransport({
+            // host: 'smtp.gmail.com',
+            // port: 465,
+            // secure: true,
             service: 'gmail',
             auth: {
               user: process.env.EMAIL,
               pass: process.env.PASSWORD
+              // type: 'OAuth2',
+              // clientId: '832603771533-vfgm7kldqp7o8gmk96pvvro9q0lejg10.apps.googleusercontent.com',
+              // clientSecret: '0HFvRJ8I4J9A7HhHpGJJFwgC'
             }
           });
           
@@ -27,7 +34,10 @@ const formsController = {
             html: output,
             attachments: [
                 {
-                    filename: `${req.body.contact_upload}`,
+                    // filename: `${req.body.contact_upload}`,
+                    filename: `${req.file.filename}`,
+                    encoding: `${req.file.encoding}`,
+                    path: `${req.file.path}`,
                 }
             ]
           };
