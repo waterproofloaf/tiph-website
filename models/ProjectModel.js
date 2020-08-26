@@ -7,7 +7,7 @@ var ProjectModel = new mongoose.Schema({
     },
     proj_content: {
         type: String,
-        required: true
+        //required: true -- commented out to be fixed
     },
     proj_date: {
         type: String,
@@ -16,9 +16,14 @@ var ProjectModel = new mongoose.Schema({
     proj_img: {
         //type: Image,
     },
-    proj_keyword: {
+    proj_keywords: {
         type: String,
         required: true
+    },
+    proj_status:{
+        type: String,
+        default: 'Proposed',
+        //required: true
     }
 });
 

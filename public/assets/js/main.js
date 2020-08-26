@@ -28,6 +28,31 @@ $(document).ready(function () {
   });
 });
 
+//cms-blog-new-page quill
+var blogQuill = new Quill('#blog-quill', {
+  modules: {
+    toolbar: [
+      ['bold', 'italic'],
+      ['link', 'blockquote', 'code-block', 'image'],
+      [{ list: 'ordered' }, { list: 'bullet' }]
+    ]
+  },
+  placeholder: 'Insert body here.',
+  theme: 'snow'
+});
+//cms-proj-new-page quill
+var projQuill = new Quill('#proj-quill', {
+  modules: {
+    toolbar: [
+      ['bold', 'italic'],
+      ['link', 'blockquote', 'code-block', 'image'],
+      [{ list: 'ordered' }, { list: 'bullet' }]
+    ]
+  },
+  placeholder: 'Insert body here.',
+  theme: 'snow'
+});
+
 var quill = new Quill('#editor-container', {
   modules: {
     toolbar: [
@@ -40,16 +65,39 @@ var quill = new Quill('#editor-container', {
   theme: 'snow'
 });
 
-var form = document.querySelector('form');
+var blogForm = document.querySelector('form');
 form.onsubmit = function () {
   // Populate hidden form on submit
-  var about = document.querySelector('input[name=about]');
-  about.value = JSON.stringify(quill.getContents());
+    var proj_content = document.getElementById('blog_content');
+    
+    editor.on('text-change', function() {
+      var deltaBlog = editor.getContents();
+      var innerBlog = projQuill.root.innerHTML;
+      proj_content.innerHTML = JSON.stringify(deltaBlog);
+      //proj_content.innerHTML = innerBlog;
+    });
 
-  console.log("Submitted", $(form).serialize(), $(form).serializeArray());
+  console.log("New Blog Submitted", $(form).serialize(), $(form).serializeArray());
 
-  // No back end to actually submit to!
-  alert('Submitted!')
+  alert('New Blog Submitted!')
+  return false;
+};
+
+var projForm = document.querySelector('form');
+form.onsubmit = function () {
+  // Populate hidden form on submit
+    var proj_content = document.getElementById('proj_content');
+    
+    editor.on('text-change', function() {
+      var deltaProj = editor.getContents();
+      var innerProj = projQuill.root.innerHTML;
+      proj_content.innerHTML = JSON.stringify(deltaProj);
+      //proj_content.innerHTML = innerProj;
+    });
+
+  console.log("New Project Submitted", $(form).serialize(), $(form).serializeArray());
+
+  alert('New Project Submitted!')
   return false;
 };
 

@@ -7,14 +7,14 @@ const blogController = {
         
         var blog_title = req.body.blog_title;
         var blog_content = req.body.blog_content;
-        var blog_date = today.getFullYear()+'/' (today.getMonth()+1)+'/'+today.getDate();
-        var blog_keyword = req.body.blog_keyword;
+        var blog_date = today.getMonth() + "/" + today.getDate() + "/" + today.getFullYear();
+        var blog_keywords = req.body.blog_keywords;
         
         var newBlog = {
             blog_title: blog_title,
             blog_content: blog_content,
             blog_date: blog_date,
-            blog_keyword: blog_keyword
+            blog_keywords: blog_keywords
         }
         
         database.insertOne(Blog, newBlog, function(f){

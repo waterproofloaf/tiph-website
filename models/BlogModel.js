@@ -7,7 +7,7 @@ var BlogModel = new mongoose.Schema({
     },
     blog_content: {
         type: String,
-        required: true
+        //required: true -- commented out, to be fixed
     },
     blog_date: {
         type: String,
@@ -16,7 +16,7 @@ var BlogModel = new mongoose.Schema({
     blog_img: {
         //type: Image,
     },
-    blog_keyword: {
+    blog_keywords: {
         type: String,
         required: true
     },

@@ -9,8 +9,6 @@ const routes = require('./routes/routes.js');
 // import module `database` from `./model/db.js`
 const db = require('./models/db.js');
 
-const blogModel = require('./models/BlogModel.js');
-
 const app = express();
 const port = process.env.PORT || 9090;
 
