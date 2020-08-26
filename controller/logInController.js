@@ -14,13 +14,13 @@ const logIncontroller = {
         var username = helper.sanitize(req.body.cmsusername);
         var password = helper.sanitize(req.body.cmspassword);
 
-        User.findOne( {username: username}, {}, function(err, user){
+        User.findOne(User, {username: username}, {}, function(err, user){
             if (user){
                 bcrypt.compare(password, user.password, function(err, equal){
                     console.log(equal)
                     if(equal){
                         console.log('Username and password is correct.. Redirecting..');
-                        // req.session.user = user.username;
+                        req.session.user = user.username;
                         res.redirect('/cms-home');
                     }
                     else{
