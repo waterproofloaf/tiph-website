@@ -156,11 +156,27 @@ const controller = {
     },
 
     getCMSBlog: function (req, res) {
-        res.render('cms-blog', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Blog | The Initiative PH',
-            blog_active: true,
-        })
+        var MongoClient = require('mongodb').MongoClient;
+        var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, {useUnifiedTopology: true},
+            function(err, db){
+                if (err) throw err;
+                var blogArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("blogs").find();
+                cursor.forEach(function(doc, err){
+                    blogArray.push(doc);
+                },
+                    function(){
+                        res.render('cms-blog', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Blog | The Initiative PH',
+                            blog_active: true,
+                            blog_info: blogArray
+                        });
+                    db.close();
+                });
+        });
     },
 
     getCMSBlogPage: function (req, res) {
@@ -180,11 +196,32 @@ const controller = {
     },
 
     getCMSProject: function (req, res) {
-        res.render('cms-project', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Project | The Initiative PH',
-            project_active: true,
-        })
+        var MongoClient = require('mongodb').MongoClient;
+        var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, {useUnifiedTopology: true},
+            function(err, db){
+                if (err) throw err;
+                var projArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("projects").find();
+                cursor.forEach(function(doc, err){
+                    projArray.push(doc);
+                },
+                    function(){
+                        res.render('cms-project', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Project | The Initiative PH',
+                            project_active: true,
+                            proj_info: projArray
+                        });
+                    db.close();
+                });
+        });
+//        res.render('cms-project', {
+//            layout: '/layouts/cms-layout',
+//            title: 'CMS Project | The Initiative PH',
+//            project_active: true,
+//        })
     },
 
     getCMSProjectPage: function (req, res) {

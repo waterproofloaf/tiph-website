@@ -130,6 +130,37 @@
                       </label>
                     </td>
                   </tr>
+                    {{#each proj_info}}
+                    <tr>
+                    <td>
+                      {{this.proj_title}}
+                    </td>
+                    <td>
+                      <span>
+                        <time class="entry-date">{{this.proj_date}}</time>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="entry-progress">
+                        Proposed
+                      </span>
+                    </td>
+                    <td class="text-right">
+                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Edit</button></a>
+                    </td>
+                    <td class="text-right">
+                      <a href=""><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-danger">Delete</button></a>
+                    </td>
+                    <td class="text-right">
+                      <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                    {{/each}}
                 </tbody>
               </table>
             </div>

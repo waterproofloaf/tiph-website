@@ -106,16 +106,15 @@
                       </label>
                     </td>
                   </tr>
-                    {{# each blog_info}}
-                    <tr>
-                        <td>
-                            {{this.blog_title}}
-                        </td>
-                        <td>
-                            {{this.blog_date}}
-                        </td>
-                    </tr>
-                        <td class="text-right">
+                    {{#each blog_info}}
+                  <tr>
+                    <td>
+                      {{this.blog_title}}
+                    </td>
+                    <td>
+                      <time class="entry-date">{{this.blog_date}}</time>
+                    </td>
+                    <td class="text-right">
                       <a href="cms-blog-page"><button id="blogeditbtn" type="button"
                           class="btn btn-outline-success">Edit</button></a>
                     </td>
@@ -129,6 +128,7 @@
                         <span class="slider round"></span>
                       </label>
                     </td>
+                  </tr>
                     {{/each}}
                 </tbody>
               </table>
