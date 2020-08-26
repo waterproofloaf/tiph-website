@@ -1,7 +1,6 @@
 const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
-const session = require('express-session');
 const bodyParser = require('body-parser');
 
 // import routes module
@@ -35,12 +34,6 @@ app.use(express.static(path.join(__dirname,'public')));
 
 // define the paths contained in routes module
 app.use('/', routes);
-
-app.use(session({
-    secret: "fd34s@!@dfa453f3DF#$D&W",
-    resave: false,
-    saveUninitialized: true,
-}));
 
 // connects to the database
 db.connect();

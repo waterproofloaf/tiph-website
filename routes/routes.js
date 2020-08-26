@@ -3,6 +3,12 @@ const express = require('express');
 
 const multer = require('multer');
 
+const database = require('../models/db.js');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controller/controller.js');
 const logIncontroller = require('../controller/logIncontroller.js');
@@ -25,6 +31,30 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage })
 
+//Init Cookie and Body Parser
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser());
+
+//Init Sessions
+app.use(session({
+    key: 'user_sid', //user session id
+    secret: 'initative',
+    resave: false,
+    saveUninitialized: true,
+    store: database.sessionStore,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 // 1 Day.
+    }
+}));
+
+app.use((req, res, next) => {
+    if(req.cookies.user_sid && !req.session.user) {
+        res.clearCookie('user_sid');
+    }
+    next();
+});
+
 // call function getIndex when client sends a request for '/' defined in routes.js
 // controller
 app.get('/', controller.getHomePage);
@@ -42,6 +72,7 @@ app.get('/donate', controller.getDonate);
 
 app.get('/cms-login', controller.getCMSLogin);
 app.post('/cms-login', logIncontroller.postLogIn);
+app.get('/cms-logout', controller.getCMSLogout);
 
 app.get('/cms-home', controller.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);

@@ -1,37 +1,8 @@
 // import module from db.js in models directory
 const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
-const express = require("express");
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 
-const app = express();
 
-//Init Cookie and Body Parser
-
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(cookieParser());
-
-//Init Sessions
-app.use(session({
-    key: 'user_sid', //user session id
-    secret: 'initative',
-    resave: false,
-    saveUninitialized: true,
-    store: database.sessionStore,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // 1 Day.
-    }
-}));
-
-app.use((req, res, next) => {
-    if(req.cookies.user_sid && !req.session.user) {
-        res.clearCookie('user_sid');
-    }
-    next();
-});
 
 // define objects for client request functions for a certain path in the server
 const controller = {
@@ -117,20 +88,16 @@ const controller = {
     },
 
     getCMSLogin: function (req, res) {
-        // req.logout;
-        // req.session.destory(function(err) {});
         res.render('cms-login', {
             title: 'CMS Login | The Initiative PH',
         })
     },
 
-    // getCMSLogout: function (req, res) {
-    //     req.logout;
-    //     req.session.destory(function(err) {});
-    //     res.redirect('cms-login', {
-    //         title: 'CMS Login | The Initiative PH',
-    //     })
-    // },
+    getCMSLogout: function (req, res) {
+        req.logout;
+        req.session.destroy(function(err) { });
+        res.redirect('cms-login')
+    },
 
     getCMSHome: function (req, res) {
         res.render('cms-home', {

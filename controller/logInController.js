@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const sanitize = require('mongo-sanitize');
 const session = require('express-session');
 
 const database = require('../models/db.js');
@@ -14,7 +13,7 @@ const logIncontroller = {
         var username = helper.sanitize(req.body.cmsusername);
         var password = helper.sanitize(req.body.cmspassword);
 
-        User.findOne(User, {username: username}, {}, function(err, user){
+        database.findOne(User, {username: username}, {}, function(user){
             if (user){
                 bcrypt.compare(password, user.password, function(err, equal){
                     console.log(equal)
