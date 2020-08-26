@@ -116,6 +116,14 @@ const controller = {
         })
     },
 
+    getCMSLogin: function (req, res) {
+        // req.logout;
+        // req.session.destory(function(err) {});
+        res.render('cms-login', {
+            title: 'CMS Login | The Initiative PH',
+        })
+    },
+
     // getCMSLogout: function (req, res) {
     //     req.logout;
     //     req.session.destory(function(err) {});
