@@ -1,19 +1,53 @@
 <!-- HEADER -->
 <section>
-  <div class="container-fluid center">
-    <div class="row p-5 mt-5 justify-content-center">
-      <h5 class="font-weight-bold text-uppercase sub-title">BLOG <i class="fa fa-newspaper-o"></i></h5>
-      <p class="sub-caption p-3">
-        We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
-        Our projects seek to address issues that arised within our country and at the same time, encourage the youth
-        to become more aware on their role as a citizen with social responsibilities.
-      </p>
+  <div class="container-fluid">
+    <div class="row p-5 mt-5 d-flex align-self-center">
+      <div class="col text-left">
+        <h5 class="font-weight-bold text-uppercase sub-title">BLOG
+          <i class="fa fa-newspaper-o"></i>
+        </h5>
+      </div>
+      <div class="col text-right">
+        <input class="form-control" type="text" placeholder="Search through the entries..." id="blog-search"
+          onkeyup="blog_search()" aria-label="Search">
+      </div>
     </div>
   </div>
 </section>
 
 <!-- BODY -->
-<div class="container-fluid d-flex flex-lg-row flex-column justify-content-lg-between align-items-center px-5 mb-3">
+<div class="container-fluid px-5 pb-5">
+  <div class="row d-flex align-items-center">
+    <div class="col-lg-3 p-3">
+      <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
+    </div>
+    <div class="col-lg-9 blog-post">
+      <h5 class="card-title">Blog Entry Test</h5>
+      <h6 class="card-subtitle mb-2 text-muted">By Author</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+        content.</p>
+      <a href="a-blog" class="card-link">Read more</a>
+    </div>
+  </div>
+  <hr>
+  {{#each blog_info}}
+  <div class="row d-flex align-items-center">
+    <div class="col-lg-3 p-3">
+      <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
+    </div>
+    <div class="col-lg-9 blog-post">
+      <h5 class="card-title">{{this.blog_title}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">By {{this.blog_author}}</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+        content.</p>
+      <a href="a-blog" class="card-link">Read more</a>
+    </div>
+  </div>
+  <hr>
+  {{/each}}
+</div>
+
+{{!-- <div class="container-fluid d-flex flex-lg-row flex-column justify-content-lg-between align-items-center px-5 mb-3">
   <div class="card bg-light" style="width: 100vp;">
     <img class="card-img-top" src="assets/img/test.jpg" alt="Card image cap">
     <div class="card-body">
@@ -24,23 +58,9 @@
       <a href="a-blog" class="card-link">Read more</a>
     </div>
   </div>
+</div> --}}
 
-    {{#each blog_info}}
-    <div class="card bg-light" style="width: 100vp;">
-    <img class="card-img-top" src="assets/img/test.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{this.blog_title}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">By {{this.blog_author}}</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="a-blog" class="card-link">Read more</a>
-    </div>
-  </div>
-    {{/each}}
-</div>
-
-
-<div class="container-fluid pb-4">
+{{!-- <div class="container-fluid pb-4">
   <nav aria-label="news-pagination">
     <ul class="pagination justify-content-center">
       <li class="page-item disabled">
@@ -54,4 +74,4 @@
       </li>
     </ul>
   </nav>
-</div>
+</div> --}}
