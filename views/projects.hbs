@@ -1,17 +1,5 @@
 <!-- TITLE -->
-{{!-- <div class="container-fluid">
-  <div class="row p-5 border-bottom border-secondary">
-    <div class="col">
-      <h5 class="font-weight-bold text-uppercase sub-title text-center">Our Projects</h5>
-      <p class="sub-caption">
-        We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
-        Our projects seek to address issues that arised within our country and at the same time, encourage the youth
-        to become more aware on their role as a citizen with social responsibilities.
-      </p>
-    </div>
-  </div>
-</div> --}}
-<section>
+{{!-- <section>
   <div class="container-fluid center">
     <div class="row p-5 mt-5 justify-content-center">
       <h5 class="font-weight-bold text-uppercase sub-title">Our Projects</h5>
@@ -22,35 +10,99 @@
       </p>
     </div>
   </div>
-</section>
-
-<!-- CARD -->
-<div class="row m-auto py-3 px-5">
-  <div class="row m-auto">
-    <div class="row m-auto">
-      <div class="row p-5 border rounded bg-light">
-        <div class="col-lg-7">
-          <h5 class="font-weight-bold sub-title">Project Lumad</h5>
-          <p class="project-subtitle">Established on March 7, 2020</p>
-          <p class="sub-caption">
-            Project Lumad advocates for the Lumad students’ right to claim education by supporting their Bakwit school
-            through fundraising money to provide food packages and hygiene kits to the 111 student and teacher residents
-            safe inside the University of the Philippines Diliman.
-            With the pandemic depleting their already limited resources, threatening the students and teachers with
-            hunger
-            and disease, Project Lumad asks you to help save the school by sharing aid.
-          </p>
-          <a href="a-project"> <button class="btn btn-outline-secondary">Continue Reading</button></a>
-        </div>
-        <div class="col-5 d-none d-lg-block">
-          <img src="assets/img/1.png" width="100%">
-        </div>
+</section> --}}
+<section>
+  <div class="container-fluid">
+    <div class="row px-5 pt-5 mt-5 d-flex align-self-center">
+      <div class="col text-lg-left text-center">
+        <h5 class="font-weight-bold text-uppercase sub-title">Projects
+          <i class="fas fa-leaf"></i>
+        </h5>
+      </div>
+      <div class="col-lg text-right">
+        <input class="form-control sub-caption" type="text" placeholder="Search..." id="project-search"
+          onkeyup="project_search()" aria-label="Search">
       </div>
     </div>
   </div>
+  <div class="row px-5 pt-4 d-flex align-self-center">
+    <p class="sub-caption p-3">
+      We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
+      Our projects seek to address issues that arised within our country and at the same time, encourage the youth
+      to become more aware on their role as a citizen with social responsibilities.
+    </p>
+  </div>
+  <hr>
+</section>
+
+<!-- CARD -->
+<div class="container-fluid py-3 px-5 pb-5" id="project-container">
+  <div class="project-item">
+    <div class="row py-2 align-items-center project-row" style="display:flex;">
+      <div class="col-lg-4 p-3">
+        <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
+      </div>
+      <div class="col-lg-8 project-post">
+        <h5 class="card-title text-uppercase project-title" style="font-size: 25px;">Project Lumad</h5>
+        <p class="project-subtitle project-date">Established on March 7, 2020</p>
+        <p class="sub-caption project-caption">
+          Project Lumad advocates for the Lumad students’ right to claim education by supporting their Bakwit school
+          through fundraising money to provide food packages and hygiene kits to the 111 student and teacher
+          residents
+          safe inside the University of the Philippines Diliman.
+          With the pandemic depleting their already limited resources, threatening the students and teachers with
+          hunger
+          and disease, Project Lumad asks you to help save the school by sharing aid.
+        </p>
+        <a href="a-project"> <button class="btn btn-outline-secondary">Continue Reading</button></a>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="project-item">
+    <div class="row py-2 align-items-center project-row" style="display:flex;">
+      <div class="col-lg-4 p-3">
+        <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
+      </div>
+      <div class="col-lg-8 project-post">
+        <h5 class="card-title text-uppercase project-title" style="font-size: 25px;">Project Katipunan</h5>
+        <p class="project-subtitle project-date">Established on March 7, 2020</p>
+        <p class="sub-caption project-caption">
+          Project Lumad advocates for the Lumad students’ right to claim education by supporting their Bakwit school
+          through fundraising money to provide food packages and hygiene kits to the 111 student and teacher
+          residents
+          safe inside the University of the Philippines Diliman.
+          With the pandemic depleting their already limited resources, threatening the students and teachers with
+          hunger
+          and disease, Project Lumad asks you to help save the school by sharing aid.
+        </p>
+        <a href="a-project"> <button class="btn btn-outline-secondary">Continue Reading</button></a>
+      </div>
+    </div>
+    <hr>
+  </div>
+
+  {{#each proj_info}}
+  <div class="project-item">
+    <div class="row py-2 align-items-center project-row" style="display:flex;">
+      <div class="col-lg-4 p-3">
+        <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
+      </div>
+      <div class="col-lg-8 project-post">
+        <h5 class="card-title text-uppercase project-title" style="font-size: 25px;">{{this.proj_title}}</h5>
+        <p class="project-subtitle project-date">{{this.proj_date}}</p>
+        <p class="sub-caption project-caption">
+          {{this.proj_preview}}
+        </p>
+        <a href="a-project"> <button class="btn btn-outline-secondary">Continue Reading</button></a>
+      </div>
+    </div>
+    <hr>
+  </div>
+  {{/each}}
 </div>
-{{#each proj_info}}
-<div class="row m-auto py-3 px-5">
+
+{{!-- <div class="row m-auto py-3 px-5">
   <div class="row m-auto">
     <div class="row m-auto">
       <div class="row p-5 border rounded bg-light">
@@ -68,8 +120,4 @@
       </div>
     </div>
   </div>
-</div>
-{{/each}}
-
-<!-- SPACER -->
-<div class="py-4"></div>
+</div> --}}

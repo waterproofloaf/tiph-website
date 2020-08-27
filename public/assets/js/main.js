@@ -41,6 +41,56 @@ $(document).ready(function () {
   });
 });
 
+// Blog Search
+function blog_search() {
+  // Declare variables
+  var input, filter, container, item, row, content, title, i, txtValue;
+  input = document.getElementById("blog-search");
+  filter = input.value.toUpperCase();
+  container = document.getElementById("blog-container");
+  item = container.getElementsByClassName("blog-item");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < item.length; i++) {
+    row = item[i].getElementsByClassName("blog-row")[0];
+    content = row.getElementsByClassName("blog-post")[0];
+    title = content.getElementsByClassName("blog-title")[0];
+    if (title) {
+      txtValue = title.textContent || title.innerText || '';
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        item[i].style.display = "";
+      } else {
+        item[i].style.display = "none";
+      }
+    }
+  }
+}
+
+// Project Search
+function project_search() {
+  // Declare variables 
+  var input, filter, container, item, row, content, title, i, txtValue;
+  input = document.getElementById("project-search");
+  filter = input.value.toUpperCase();
+  container = document.getElementById("project-container");
+  item = container.getElementsByClassName("project-item");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < item.length; i++) {
+    row = item[i].getElementsByClassName("project-row")[0];
+    content = row.getElementsByClassName("project-post")[0];
+    title = content.getElementsByClassName("project-title")[0];
+    if (title) {
+      txtValue = title.textContent || title.innerText || '';
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        item[i].style.display = "";
+      } else {
+        item[i].style.display = "none";
+      }
+    }
+  }
+}
+
 // Quill.js
 $(document).ready(function () {
   function GetFindOut(value) {
@@ -111,14 +161,14 @@ var quill = new Quill('#editor-container', {
 var blogForm = document.querySelector('form');
 form.onsubmit = function () {
   // Populate hidden form on submit
-    var proj_content = document.getElementById('blog_content');
-    
-    editor.on('text-change', function() {
-      var deltaBlog = editor.getContents();
-      var innerBlog = projQuill.root.innerHTML;
-      proj_content.innerHTML = JSON.stringify(deltaBlog);
-      //proj_content.innerHTML = innerBlog;
-    });
+  var proj_content = document.getElementById('blog_content');
+
+  editor.on('text-change', function () {
+    var deltaBlog = editor.getContents();
+    var innerBlog = projQuill.root.innerHTML;
+    proj_content.innerHTML = JSON.stringify(deltaBlog);
+    //proj_content.innerHTML = innerBlog;
+  });
 
   console.log("New Blog Submitted", $(form).serialize(), $(form).serializeArray());
 
@@ -129,43 +179,20 @@ form.onsubmit = function () {
 var projForm = document.querySelector('form');
 form.onsubmit = function () {
   // Populate hidden form on submit
-    var proj_content = document.getElementById('proj_content');
-    
-    editor.on('text-change', function() {
-      var deltaProj = editor.getContents();
-      var innerProj = projQuill.root.innerHTML;
-      proj_content.innerHTML = JSON.stringify(deltaProj);
-      //proj_content.innerHTML = innerProj;
-    });
+  var proj_content = document.getElementById('proj_content');
+
+  editor.on('text-change', function () {
+    var deltaProj = editor.getContents();
+    var innerProj = projQuill.root.innerHTML;
+    proj_content.innerHTML = JSON.stringify(deltaProj);
+    //proj_content.innerHTML = innerProj;
+  });
 
   console.log("New Project Submitted", $(form).serialize(), $(form).serializeArray());
 
   alert('New Project Submitted!')
   return false;
 };
-
-// CMS Search
-function cms_search() {
-  // Declare variables 
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("cms-search");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("pages-table");
-  tr = table.getElementsByTagName("tr");
-
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
 
 // CMS Table Sort
 $(document).ready(function () {
