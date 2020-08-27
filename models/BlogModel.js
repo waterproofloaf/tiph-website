@@ -5,6 +5,10 @@ var BlogModel = new mongoose.Schema({
         type: String,
         required: true,
     },
+    blog_author:{
+        type: String,
+        required: true,
+    },
     blog_content: {
         type: String,
         //required: true -- commented out, to be fixed

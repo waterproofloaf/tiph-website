@@ -62,9 +62,15 @@ app.get('/home', controller.getHomePage);
 app.get('/about', controller.getAboutUs);
 app.get('/pre-application', controller.getPreApp);
 app.get('/application', controller.getApplication);
+
 app.get('/projects', controller.getProjects);
+app.post('/projects', projectController.postProject);
 app.get('/a-project', controller.getAProject);
+
 app.get('/blog', controller.getBlogs);
+app.get('/blog', blogController.findBlog);
+app.post('/blog', blogController.postBlog);
+
 app.get('/a-blog', controller.getABlog);
 app.get('/contact-us', controller.getContactUs);
 app.post('/contact-us', upload.single('contact_upload'), formsController.postContactUs);

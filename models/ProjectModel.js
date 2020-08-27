@@ -24,6 +24,9 @@ var ProjectModel = new mongoose.Schema({
         type: String,
         default: 'Proposed',
         //required: true
+    },
+    proj_preview:{
+        type: String,
     }
 });
 

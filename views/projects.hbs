@@ -14,7 +14,7 @@
 <section>
   <div class="container-fluid center">
     <div class="row p-5 mt-5 justify-content-center">
-      <h5 class="font-weight-bold text-uppercase sub-title">Our Projects</i></h5>
+      <h5 class="font-weight-bold text-uppercase sub-title">Our Projects</h5>
       <p class="sub-caption p-3">
         We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
         Our projects seek to address issues that arised within our country and at the same time, encourage the youth
@@ -49,18 +49,16 @@
     </div>
   </div>
 </div>
-
+{{#each proj_info}}
 <div class="row m-auto py-3 px-5">
   <div class="row m-auto">
     <div class="row m-auto">
       <div class="row p-5 border rounded bg-light">
         <div class="col-lg-7">
-          <h5 class="font-weight-bold sub-title">Project Pagsibol</h5>
-          <p class="project-subtitle">Established April 8, 2020</p>
+          <h5 class="font-weight-bold sub-title">{{this.proj_title}}</h5>
+          <p class="project-subtitle">{{this.proj_date}}</p>
           <p class="sub-caption">
-            Project Pagsibol is a donation drive by The Scarecrow PH, in partnership with The Initiative PH, to help
-            farmers who are affected by the COVID-19 crisis. Through donations, Project Pagsibol aims to procure relief
-            packages to upland farmers.
+            {{this.proj_preview}}
           </p>
           <a href="a-project"><button type="button" class="btn btn-outline-secondary">Continue Reading</button></a>
         </div>
@@ -71,27 +69,7 @@
     </div>
   </div>
 </div>
-
-<div class="row m-auto py-3 px-5">
-  <div class="row m-auto">
-    <div class="row m-auto">
-      <div class="row p-5 border rounded bg-light">
-        <div class="col-lg-7">
-          <h5 class="font-weight-bold sub-title">Hatid Kapatid</h5>
-          <p class="project-subtitle">Established March 30, 2020</p>
-          <p class="sub-caption">
-            Hatid Kapatid is an independent youth volunteer effort organized to provide financial and information aid to
-            taxi and ride-hailing app drivers in Metro Manila affected by the COVID-19 pandemic.
-          </p>
-          <a href="a-project"><button type="button" class="btn btn-outline-secondary">Continue Reading</button></a>
-        </div>
-        <div class="col-5 d-none d-lg-block">
-          <img src="assets/img/1.png" width="100%">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{{/each}}
 
 <!-- SPACER -->
 <div class="py-4"></div>

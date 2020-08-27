@@ -9,12 +9,16 @@ const projectController = {
         var proj_content = req.body.proj_content;
         var proj_date = today.getMonth() + "/" + today.getDate() + "/" + today.getFullYear();
         var proj_keywords = req.body.proj_keywords;
+        var proj_preview = req.body.proj_preview;
+        var proj_status = req.body.proj_status;
         
         var newProject = {
             proj_title: proj_title,
             proj_content: proj_content,
             proj_date: proj_date,
-            proj_keywords: proj_keywords
+            proj_keywords: proj_keywords,
+            proj_preview: proj_preview,
+            proj_status: proj_status,
         }
         
         database.insertOne(Project, newProject, function(f){

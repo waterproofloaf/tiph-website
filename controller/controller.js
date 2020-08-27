@@ -2,8 +2,6 @@
 const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
 
-
-
 // define objects for client request functions for a certain path in the server
 const controller = {
 
@@ -40,19 +38,61 @@ const controller = {
     },
 
     getProjects: function (req, res) {
-        res.render('projects', {
-            layout: '/layouts/main',
-            title: 'Projects | The Initiative PH',
-            projects_active: true,
-        })
+        var MongoClient = require('mongodb').MongoClient;
+        var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, {useUnifiedTopology: true},
+            function(err, db){
+                if (err) throw err;
+                var projArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("projects").find();
+                cursor.forEach(function(doc, err){
+                    projArray.push(doc);
+                },
+                    function(){
+                        res.render('projects', {
+                            layout: '/layouts/main',
+                            title: 'Projects | The Initiative PH',
+                            projects_active: true,
+                            proj_info: projArray,
+                        });
+                    db.close();
+                });
+        });
+//        res.render('projects', {
+//            layout: '/layouts/main',
+//            title: 'Projects | The Initiative PH',
+//            projects_active: true,
+//        })
     },
 
-    getBlogs: function (req, res) {
-        res.render('blog', {
-            layout: '/layouts/main',
-            title: 'Blog | The Initiative PH',
-            blog_active: true,
-        })
+    getBlogs: function (req, res) { 
+        var MongoClient = require('mongodb').MongoClient;
+        var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, {useUnifiedTopology: true},
+            function(err, db){
+                if (err) throw err;
+                var blogArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("blogs").find();
+                cursor.forEach(function(doc, err){
+                    blogArray.push(doc);
+                },
+                    function(){
+                        res.render('blog', {
+                            layout: '/layouts/main',
+                            title: 'Blogs | The Initiative PH',
+                            blog_active: true,
+                            blog_info: blogArray,
+                        });
+                    db.close();
+                });
+        });
+//        res.render('blog', {
+//            layout: '/layouts/main',
+//            title: 'Blog | The Initiative PH',
+//            blog_active: true,
+//        })
     },
 
     getABlog: function (req, res) {
