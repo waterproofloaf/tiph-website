@@ -123,11 +123,32 @@ const controller = {
     },
 
     getDonate: function (req, res) {
-        res.render('donate', {
-            layout: '/layouts/main',
-            title: 'Donate | The Initiative PH',
-            donate_active: true
-        })
+        // res.render('donate', {
+        //     layout: '/layouts/main',
+        //     title: 'Donate | The Initiative PH',
+        //     donate_active: true
+        // })
+
+        var MongoClient = require('mongodb').MongoClient;
+        MongoClient.connect(url, {useUnifiedTopology: true},
+            function(err, db){
+                if (err) throw err;
+                var resultArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("donates").find();
+                cursor.forEach(function(doc, err){
+                    resultArray.push(doc);
+                },
+                    function(){
+                        res.render('donate', {
+                            layout: '/layouts/main',
+                            title: 'Donate | The Initiative PH',
+                            donate_active: true,
+                            donate_info: resultArray
+                        });
+                    db.close();
+                });
+        });
     },
 
     getCMSLogin: function (req, res) {
