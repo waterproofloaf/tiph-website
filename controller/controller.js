@@ -2,6 +2,9 @@
 const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
 
+// URL of MongoDB database
+const url = "mongodb://localhost:27017/tiph";
+
 // define objects for client request functions for a certain path in the server
 const controller = {
 
@@ -39,7 +42,7 @@ const controller = {
 
     getProjects: function (req, res) {
         var MongoClient = require('mongodb').MongoClient;
-        var url = "mongodb://localhost:27017/tiph";
+        // var url = "mongodb://localhost:27017/tiph";
         MongoClient.connect(url, {useUnifiedTopology: true},
             function(err, db){
                 if (err) throw err;
@@ -68,7 +71,7 @@ const controller = {
 
     getBlogs: function (req, res) { 
         var MongoClient = require('mongodb').MongoClient;
-        var url = "mongodb://localhost:27017/tiph";
+        // var url = "mongodb://localhost:27017/tiph";
         MongoClient.connect(url, {useUnifiedTopology: true},
             function(err, db){
                 if (err) throw err;
@@ -221,7 +224,7 @@ const controller = {
 
     getCMSBlog: function (req, res) {
         var MongoClient = require('mongodb').MongoClient;
-        var url = "mongodb://localhost:27017/tiph";
+        // var url = "mongodb://localhost:27017/tiph";
         MongoClient.connect(url, {useUnifiedTopology: true},
             function(err, db){
                 if (err) throw err;
@@ -267,7 +270,7 @@ const controller = {
 
     getCMSProject: function (req, res) {
         var MongoClient = require('mongodb').MongoClient;
-        var url = "mongodb://localhost:27017/tiph";
+        // var url = "mongodb://localhost:27017/tiph";
         MongoClient.connect(url, {useUnifiedTopology: true},
             function(err, db){
                 if (err) throw err;
@@ -325,7 +328,7 @@ const controller = {
         // })
 
         var MongoClient = require('mongodb').MongoClient;
-        var url = "mongodb://localhost:27017/tiph";
+        // var url = "mongodb://localhost:27017/tiph";
         MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
             if (err) throw err;
             var resultArray = [];
