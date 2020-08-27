@@ -100,83 +100,107 @@ const controller = {
     },
 
     getCMSHome: function (req, res) {
-        res.render('cms-home', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Home | The Initiative PH',
-            home_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-home', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Home | The Initiative PH',
+                home_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplication: function (req, res) {
-        res.render('cms-application', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Application | The Initiative PH',
-            application_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-application', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Application | The Initiative PH',
+                application_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSEditApplication: function (req, res) {
-        res.render('cms-edit-application', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Application Form Edit | The Initiative PH',
-            application_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-edit-application', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Application Form Edit | The Initiative PH',
+                application_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSEditPreApplication: function (req, res) {
-        res.render('cms-edit-pre-application', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Pre-Application Form Edit | The Initiative PH',
-            application_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-edit-pre-application', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Pre-Application Form Edit | The Initiative PH',
+                application_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplicant: function (req, res) {
-        res.render('cms-applicant', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Applicants | The Initiative PH',
-            applicant_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-applicant', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Applicants | The Initiative PH',
+                applicant_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSAdmin: function (req, res) {
-        res.render('cms-admin', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Admin | The Initiative PH',
-            admin_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-admin', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Admin | The Initiative PH',
+                admin_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSNewAdmin: function (req, res) {
-        res.render('cms-admin-new', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Add Admin | The Initiative PH',
-            admin_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-admin-new', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Add Admin | The Initiative PH',
+                admin_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSEditAdmin: function (req, res) {
-        res.render('cms-admin-edit', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Edit Admin | The Initiative PH',
-            admin_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-admin-edit', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Edit Admin | The Initiative PH',
+                admin_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSBlog: function (req, res) {
@@ -192,37 +216,46 @@ const controller = {
                     blogArray.push(doc);
                 },
                     function(){
-                        res.render('cms-blog', {
-                            layout: '/layouts/cms-layout',
-                            title: 'CMS Blog | The Initiative PH',
-                            blog_active: true,
-                            blog_info: blogArray,
-                            active_session: (req.session.user && req.cookies.user_sid),
-                            active_user: req.session.user
-                        });
+                        if (req.session.user && req.cookies.user_sid){
+                            res.render('cms-blog', {
+                                layout: '/layouts/cms-layout',
+                                title: 'CMS Blog | The Initiative PH',
+                                blog_active: true,
+                                blog_info: blogArray,
+                            });
+                        }
+                        else{
+                            res.redirect('cms-login')
+                        }
                     db.close();
                 });
         });
     },
 
     getCMSBlogPage: function (req, res) {
-        res.render('cms-blog-page', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Blog Edit | The Initiative PH',
-            blog_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-blog-page', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Blog Edit | The Initiative PH',
+                blog_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSBlogNewPage: function (req, res) {
-        res.render('cms-blog-new-page', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS New Blog Entry | The Initiative PH',
-            blog_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-blog-new-page', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS New Blog Entry | The Initiative PH',
+                blog_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSProject: function (req, res) {
@@ -238,14 +271,17 @@ const controller = {
                     projArray.push(doc);
                 },
                     function(){
-                        res.render('cms-project', {
-                            layout: '/layouts/cms-layout',
-                            title: 'CMS Project | The Initiative PH',
-                            project_active: true,
-                            proj_info: projArray,
-                            active_session: (req.session.user && req.cookies.user_sid),
-                            active_user: req.session.user
-                        });
+                        if (req.session.user && req.cookies.user_sid){
+                            res.render('cms-project', {
+                                layout: '/layouts/cms-layout',
+                                title: 'CMS Project | The Initiative PH',
+                                project_active: true,
+                                proj_info: projArray,
+                            });
+                        }
+                        else{
+                            res.redirect('cms-login')
+                        }
                     db.close();
                 });
         });
@@ -257,23 +293,29 @@ const controller = {
     },
 
     getCMSProjectPage: function (req, res) {
-        res.render('cms-project-page', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Project Edit | The Initiative PH',
-            project_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-project-page', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Project Edit | The Initiative PH',
+                project_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSProjectNewPage: function (req, res) {
-        res.render('cms-project-new-page', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS New Project Page | The Initiative PH',
-            project_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-project-new-page', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS New Project Page | The Initiative PH',
+                project_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSDonate: function (req, res) {
@@ -295,14 +337,17 @@ const controller = {
                 resultArray.push(doc);
             },
                 function () {
-                    res.render('cms-donate', {
-                        layout: '/layouts/cms-layout',
-                        title: 'CMS Donate | The Initiative PH',
-                        donate_active: true,
-                        donate_info: resultArray,
-                        active_session: (req.session.user && req.cookies.user_sid),
-                        active_user: req.session.user
-                    });
+                    if (req.session.user && req.cookies.user_sid){
+                        res.render('cms-donate', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Donate | The Initiative PH',
+                            donate_active: true,
+                            donate_info: resultArray,
+                        });
+                    }
+                    else{
+                        res.redirect('cms-login')
+                    }
                     db.close();
                 });
 
@@ -310,23 +355,29 @@ const controller = {
     },
 
     getCMSNewDonate: function (req, res) {
-        res.render('cms-donation-new-option', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Add Donation Option | The Initiative PH',
-            donate_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-donation-new-option', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Add Donation Option | The Initiative PH',
+                donate_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 
     getCMSEditDonate: function (req, res) {
-        res.render('cms-edit-donation', {
-            layout: '/layouts/cms-layout',
-            title: 'CMS Edit Donation Option | The Initiative PH',
-            donate_active: true,
-            active_session: (req.session.user && req.cookies.user_sid),
-            active_user: req.session.user
-        })
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-edit-donation', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Edit Donation Option | The Initiative PH',
+                donate_active: true,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
     },
 }
 
