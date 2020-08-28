@@ -12,7 +12,11 @@ var UserSchema = new mongoose.Schema({
     },
     userType: {
         type: String,
-        enum: ['PRIMARY_ADMIN', 'SUB_ADMIN']
+        required: true
+    },
+    userDepartment: {
+        type: String,
+        required: true
     }
 });
 
