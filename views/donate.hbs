@@ -34,7 +34,8 @@
           <i class="fas fa-circle fa-stack-2x"></i>
           <i class="fas fa-calendar-check fa-stack-1x fa-inverse"></i>
         </span>
-        <p class="pt-3">Attend our activites and events! <br>You may join us in the complete confidence that all proceeds go to TIPH
+        <p class="pt-3">Attend our activites and events! <br>You may join us in the complete confidence that all
+          proceeds go to TIPH
           causes!</p>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 mt-5">
@@ -42,7 +43,8 @@
           <i class="fas fa-circle fa-stack-2x"></i>
           <i class="fas fa-handshake fa-stack-1x fa-inverse"></i>
         </span>
-        <p class="pt-3">Offer partnerships or sponsorships. <br>Microsponsorships from individuals, families, and informal groups are
+        <p class="pt-3">Offer partnerships or sponsorships. <br>Microsponsorships from individuals, families, and
+          informal groups are
           accepted!</p>
       </div>
     </div>
@@ -56,7 +58,7 @@
         {{!-- FOR MONGODB --}}
         {{# each donate_info}}
         {{!-- {{if donate_hide}}{{else}} --}}
-        <div class="col-lg d-flex mb-3">
+        <div class="col-lg mb-3" style={{# if this.donate_hide}}"display: none;"{{else}}"display: flex;"{{/if}}>
           <div
             class="card-body {{#equals this.donate_type "GCash"}}card-gcash{{/equals}}{{#equals this.donate_type "PayMaya"}}card-paymaya{{/equals}}{{#equals this.donate_type "BDO"}}card-bdo{{/equals}}{{#equals this.donate_type "BPI"}}card-bpi{{/equals}}">
             {{#equals this.donate_type "GCash"}}
