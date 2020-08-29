@@ -56,6 +56,22 @@ const donateController = {
         database.updateOne(Donate, filter, donate_details);
         res.redirect('/cms-donate');
     },
+
+    donateToggle: function (req, res) {
+        var donate_id = req.query.id;
+        var donate_hide = req.query.hide;
+
+        var filter = {
+            _id: ObjectID(donate_id)
+        }
+
+        var donate_details = {
+            donate_hide: donate_hide
+        }
+
+        database.updateOne(Donate, filter, donate_details);
+        res.redirect('/cms-donate');
+    },
 }
 
 module.exports = donateController;

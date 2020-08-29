@@ -112,6 +112,7 @@ app.post('/cms-project-new-page', projectController.postProject);
 
 app.get('/cms-donate', controller.getCMSDonate);
 app.get('/cms-donate/delete/', donateController.deleteDonate);
+app.get('/cms-donate/toggle/', donateController.donateToggle);
 app.get('/cms-donation-new-option', controller.getCMSNewDonate);
 app.post('/cms-donation-new-option', donateController.postDonate);
 app.get('/cms-edit-donation', controller.getCMSEditDonate);

@@ -96,27 +96,30 @@ function project_search() {
 
 // CMS Switch Toggle
 function terms_change(checkbox) {
-  //If it is checked.
-  var self = $(checkbox).parent().parent();
-  // .siblings().find('.donate-name').text();
 
-  alert(self);
+  //If it is checked.
+  var self = $(checkbox).attr('id');
   if (checkbox.checked) {
-    var MongoClient = require('mongodb').MongoClient;
-    MongoClient.connect(url, function (err, db) {
-      if (err) throw err;
-      var dbo = db.db("tiph");
-      var myquery = { address: "Valley 345" };
-      var newvalues = { $set: { name: "Mickey", address: "Canyon 123" } };
-      dbo.collection("customers").updateOne(myquery, newvalues, function (err, res) {
-        if (err) throw err;
-        console.log("1 document updated");
-        db.close();
-      });
+    $.ajax({
+      url: "/cms-donate/toggle/",
+      data: { id: self, hide: "true" },
+      success: function (response) {
+        $(this).attr("checked", "checked");
+      },
+      error: function (xhr) { }
     });
   }
+
   //If it has been unchecked.
   else {
+    $.ajax({
+      url: "/cms-donate/toggle/",
+      data: { id: self, hide: "false" },
+      success: function (response) {
+        $(this).removeAttr("checked");
+      },
+      error: function (xhr) { }
+    });
   }
 }
 
