@@ -1,6 +1,3 @@
-// URL of MongoDB database
-const url = "mongodb://localhost:27017/tiph";
-
 // CMS Table Sort
 $(document).ready(function () {
   $('#pages-table').DataTable({
@@ -165,6 +162,7 @@ var blogQuill = new Quill('#blog-quill', {
   placeholder: 'Insert body here.',
   theme: 'snow'
 });
+
 //cms-proj-new-page quill
 var projQuill = new Quill('#proj-quill', {
   modules: {
@@ -225,46 +223,3 @@ form.onsubmit = function () {
   alert('New Project Submitted!')
   return false;
 };
-
-// CMS Table Sort
-$(document).ready(function () {
-  $('#pages-table').DataTable({
-    "aaSorting": [],
-    columnDefs: [{
-      orderable: false,
-      targets: [3, 4, 5]
-    }]
-  })
-
-  $('#blog-table').DataTable({
-    "aaSorting": [],
-    columnDefs: [{
-      orderable: false,
-      targets: [2, 3, 4]
-    }]
-  })
-
-  $('#admin-table').DataTable({
-    "aaSorting": [],
-    columnDefs: [{
-      orderable: false,
-      targets: [3, 4]
-    }]
-  })
-
-  $('#preapps-table').DataTable({
-    "aaSorting": [],
-    columnDefs: [{
-      orderable: false,
-      targets: [3, 4, 5]
-    }]
-  })
-
-  $('#apps-table').DataTable({
-    "aaSorting": [],
-    columnDefs: [{
-      orderable: false,
-      targets: [3, 4, 5]
-    }]
-  });
-});
