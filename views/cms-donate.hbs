@@ -46,32 +46,34 @@
                 <tbody id="entries-table">
                   {{# each donate_info}}
                   <tr>
-                    <td>
+                    <td class="donate-type">
                       {{this.donate_type}}
                     </td>
-                    <td>
+                    <td class="donate-name">
                       <span>
                         <time class="entry-date">{{this.donate_name}}</time>
                       </span>
                     </td>
-                    <td>
+                    <td class="donate-number">
                       <span class="entry-progress">
                         {{this.donate_number}}
                       </span>
                     </td>
                     <td class="text-right">
-                      <a href="cms-edit-donation"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
+                      <a
+                        href="/cms-edit-donation?type={{this.donate_type}}&name={{this.donate_name}}&num={{this.donate_number}}&id={{this._id}}">
+                        <button id={{this._id}} type="button" class="btn btn-outline-success">Edit</button>
+                      </a>
                     </td>
-                    <form method="post">
-                      <td class="text-right">
-                        <a href=""><button id="blogeditbtn" type="button"
-                            class="btn btn-outline-danger">Delete</button></a>
-                      </td>
-                    </form>
-                    <td class="text-center">
+                    <td class="text-right">
+                      <a href="/cms-donate/delete?id={{this._id}}">
+                        <button id={{this._id}} type="button" class="btn btn-outline-danger">Delete</button>
+                      </a>
+                    </td>
+                    <td class="text-center donate-switch">
                       <label class="switch">
-                        <input type="checkbox" {{#if donate_hide}}checked{{/if}}>
+                        <input type="checkbox" id="terms" onclick="terms_change(this)"
+                          {{#if donate_hide}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>
                     </td>

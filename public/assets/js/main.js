@@ -1,3 +1,6 @@
+// URL of MongoDB database
+const url = "mongodb://localhost:27017/tiph";
+
 // CMS Table Sort
 $(document).ready(function () {
   $('#pages-table').DataTable({
@@ -88,6 +91,32 @@ function project_search() {
         item[i].style.display = "none";
       }
     }
+  }
+}
+
+// CMS Switch Toggle
+function terms_change(checkbox) {
+  //If it is checked.
+  var self = $(checkbox).parent().parent();
+  // .siblings().find('.donate-name').text();
+
+  alert(self);
+  if (checkbox.checked) {
+    var MongoClient = require('mongodb').MongoClient;
+    MongoClient.connect(url, function (err, db) {
+      if (err) throw err;
+      var dbo = db.db("tiph");
+      var myquery = { address: "Valley 345" };
+      var newvalues = { $set: { name: "Mickey", address: "Canyon 123" } };
+      dbo.collection("customers").updateOne(myquery, newvalues, function (err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+        db.close();
+      });
+    });
+  }
+  //If it has been unchecked.
+  else {
   }
 }
 

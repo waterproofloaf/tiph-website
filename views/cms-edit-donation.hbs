@@ -4,28 +4,56 @@
     <div class="content">
         <div id="form-container" class="row">
             <div class="col-md-12">
-                <form>
+                <form method="post">
                     <div class="card cms-blog">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">Mode</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option value="GCash">GCash</option>
+                                <label for="donate_type">Mode</label>
+                                {{#equals donate_type "GCash"}}
+                                <select class="form-control" name="donate_type" id="donate_type">
+                                    <option value="{{donate_type}}" selected>{{donate_type}}</option>
                                     <option value="Paymaya">Paymaya</option>
                                     <option value="BPI">BPI
                                     </option>
                                     <option value="BDO">BDO</option>
                                 </select>
+                                {{/equals}}
+                                {{#equals donate_type "Paymaya"}}
+                                <select class="form-control" name="donate_type" id="donate_type">
+                                    <option value="{{donate_type}}" selected>{{donate_type}}</option>
+                                    <option value="GCash">GCash</option>
+                                    <option value="BPI">BPI
+                                    </option>
+                                    <option value="BDO">BDO</option>
+                                </select>
+                                {{/equals}}
+                                {{#equals donate_type "BPI"}}
+                                <select class="form-control" name="donate_type" id="donate_type">
+                                    <option value="{{donate_type}}" selected>{{donate_type}}</option>
+                                    <option value="GCash">GCash</option>
+                                    <option value="Paymaya">Paymaya</option>
+                                    <option value="BDO">BDO</option>
+                                </select>
+                                {{/equals}}
+                                {{#equals donate_type "BDO"}}
+                                <select class="form-control" name="donate_type" id="donate_type">
+                                    <option value="{{donate_type}}" selected>{{donate_type}}</option>
+                                    <option value="GCash">GCash</option>
+                                    <option value="Paymaya">Paymaya</option>
+                                    <option value="BPI">BPI
+                                    </option>
+                                </select>
+                                {{/equals}}
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Account Name</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Full Name">
+                                <label for="donate_name">Account Name</label>
+                                <input type="text" class="form-control" name="donate_name" id="donate_name"
+                                    value="{{donate_name}}">
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Account Number</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Username">
+                                <label for="donate_number">Account Number</label>
+                                <input type="text" class="form-control" name="donate_number" id="donate_number"
+                                    value="{{donate_number}}">
                             </div>
                             <button type="submit" class="btn btn-outline-success">SAVE</button>
                         </div>
@@ -35,19 +63,3 @@
         </div>
     </div>
 </div>
-
-<script src="https://cdn.quilljs.com/1.1.6/quill.js"></script>
-
-{{!-- <div class="cms-blog-form-container">
-    <!-- Form -->
-    <h6><strong> TITLE </strong></h6>
-    <input type="text" name="cms-blog-title" id="cms-blog-title" class="cms-blog-form-text" placeholder="News Title"
-        value required>
-    <h6><strong> CONTENT </strong></h6>
-    <textarea name="cms-blog-content" id="cms-blog-content" class="cms-blog-form-text" placeholder="Lorem ipsum" value
-        required></textarea>
-    <h6><strong> IMAGE </strong></h6>
-    <input type='file' name='upload' class="cms-blog-form-text">
-    <a href="cms-dashboard-b"><button name="cms-blog-submit" id="cms-blog-submit" class="button"><strong>S U B M I
-                T</strong></button></a>
-</div> --}}

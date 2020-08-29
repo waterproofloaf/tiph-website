@@ -33,27 +33,36 @@ var upload = multer({ storage: storage })
 
 //Init Cookie and Body Parser
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 //Init Sessions
 app.use(session({
-    key: 'user_sid', //user session id
-    secret: 'initative',
-    resave: false,
-    saveUninitialized: true,
-    store: database.sessionStore,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // 1 Day.
-    }
+  key: 'user_sid', //user session id
+  secret: 'initative',
+  resave: false,
+  saveUninitialized: true,
+  store: database.sessionStore,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 // 1 Day.
+  }
 }));
 
 app.use((req, res, next) => {
-    if(req.cookies.user_sid && !req.session.user) {
-        res.clearCookie('user_sid');
-    }
-    next();
+  if (req.cookies.user_sid && !req.session.user) {
+    res.clearCookie('user_sid');
+  }
+  next();
 });
+
+// Donates Routes
+app.delete('/donates/:id', (req, res) => {
+  db.collection('donates').remove({ _id: mongodb.ObjectID(req.params.id) }, (err, result) => {
+    if (err) return console.log(err)
+    console.log(req.body)
+    res.redirect('/cms-donate')
+  })
+})
 
 // call function getIndex when client sends a request for '/' defined in routes.js
 // controller
@@ -102,10 +111,11 @@ app.get('/cms-project-new-page', controller.getCMSProjectNewPage);
 app.post('/cms-project-new-page', projectController.postProject);
 
 app.get('/cms-donate', controller.getCMSDonate);
-app.post('/cms-donate', donateController.deleteDonate);
+app.get('/cms-donate/delete/', donateController.deleteDonate);
 app.get('/cms-donation-new-option', controller.getCMSNewDonate);
 app.post('/cms-donation-new-option', donateController.postDonate);
 app.get('/cms-edit-donation', controller.getCMSEditDonate);
+app.post('/cms-edit-donation', donateController.editDonate);
 
 // enables to export app object when called in another .js file
 module.exports = app;

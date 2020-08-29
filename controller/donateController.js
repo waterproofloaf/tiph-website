@@ -1,5 +1,9 @@
 const Donate = require('../models/DonateModel.js');
 const database = require('../models/db.js');
+const { ObjectID } = require('mongodb');
+
+// URL of MongoDB database
+const url = "mongodb://localhost:27017/tiph";
 
 const donateController = {
     postDonate: function (req, res) {
@@ -24,13 +28,34 @@ const donateController = {
     },
 
     deleteDonate: function (req, res) {
-        var query = req.body.donate_number;
-        database.deleteOne(query, function (err, obj) {
-            if (err) throw err;
-            console.log("1 document deleted");
-            res.redirect('/cms-donate');
-        });
-    }
+        var donate_id = req.query.id;
+        var donate_details = {
+            _id: ObjectID(donate_id)
+        }
+
+        database.deleteOne(Donate, donate_details);
+        res.redirect('/cms-donate');
+    },
+
+    editDonate: function (req, res) {
+        var donate_type = req.body.donate_type;
+        var donate_name = req.body.donate_name;
+        var donate_number = req.body.donate_number;
+        var donate_id = req.query.id;
+
+        var filter = {
+            _id: ObjectID(donate_id)
+        }
+
+        var donate_details = {
+            donate_type: donate_type,
+            donate_name: donate_name,
+            donate_number: donate_number
+        }
+
+        database.updateOne(Donate, filter, donate_details);
+        res.redirect('/cms-donate');
+    },
 }
 
 module.exports = donateController;
