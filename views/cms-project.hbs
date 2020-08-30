@@ -43,7 +43,7 @@
                   </th>
                 </thead>
                 <tbody id="entries-table">
-                  <tr>
+                  {{!-- <tr>
                     <td>
                       Project Lumad
                     </td>
@@ -71,67 +71,9 @@
                         <span class="slider round"></span>
                       </label>
                     </td>
-                  </tr>
+                  </tr> --}}
+                  {{#each proj_info}}
                   <tr>
-                    <td>
-                      Project Pagsibol
-                    </td>
-                    <td>
-                      <span>
-                        <time class="entry-date">04/08/2020</time>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="entry-progress">
-                        Done
-                      </span>
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Hatid Kapatid
-                    </td>
-                    <td>
-                      <span>
-                        <time class="entry-date">03/30/2020</time>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="entry-progress">
-                        Ongoing
-                      </span>
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                    {{#each proj_info}}
-                    <tr>
                     <td>
                       {{this.proj_title}}
                     </td>
@@ -155,12 +97,12 @@
                     </td>
                     <td class="text-right">
                       <label class="switch">
-                        <input type="checkbox" checked>
+                        <input type="checkbox" {{#if this.proj_hide}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>
                     </td>
                   </tr>
-                    {{/each}}
+                  {{/each}}
                 </tbody>
               </table>
             </div>

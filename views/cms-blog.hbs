@@ -40,7 +40,7 @@
                   </th>
                 </thead>
                 <tbody id="entries-table">
-                  <tr>
+                  {{!-- <tr>
                     <td>
                       Project Lumad
                     </td>
@@ -61,52 +61,8 @@
                         <span class="slider round"></span>
                       </label>
                     </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Project Pagsibol
-                    </td>
-                    <td>
-                      <time class="entry-date">04/08/2020</time>
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-blog-page"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Hatid Kapatid
-                    </td>
-                    <td>
-                      <time class="entry-date">03/30/2020</time>
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-blog-page"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                    {{#each blog_info}}
+                  </tr> --}}
+                  {{#each blog_info}}
                   <tr>
                     <td>
                       {{this.blog_title}}
@@ -124,12 +80,12 @@
                     </td>
                     <td class="text-right">
                       <label class="switch">
-                        <input type="checkbox" checked>
+                        <input type="checkbox" {{#if this.blog_hide}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>
                     </td>
                   </tr>
-                    {{/each}}
+                  {{/each}}
                 </tbody>
               </table>
             </div>
