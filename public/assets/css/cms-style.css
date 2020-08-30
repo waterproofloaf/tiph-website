@@ -68,8 +68,19 @@ input:checked + .slider:before {
     height: 0;
 }
 
-/* Search */
+/* CMS Breadcrumbs */
+.cms-breadcrumbs {
+    font-size: 11px;
+    font-weight: 600;
+    color: gray;
+    text-transform: uppercase;
+}
 
+.cms-breadcrumbs a {
+    color: green;
+}
+
+/* Search */
 #cms-search {
     height: 50%;
     width: 50%; /* Full-width */

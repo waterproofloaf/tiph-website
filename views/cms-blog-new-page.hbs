@@ -1,37 +1,43 @@
 <div class="content">
-    <h5>New Blog Entry:</h5>
     <!-- Form -->
     <div class="content">
+        <div class="cms-breadcrumbs text-uppercase pb-3">
+            <a href="cms-blog">Blog</a> / New Blog Entry
+        </div>
         <div id="form-container" class="row">
             <div class="col-md-12">
                 <form method="post">
                     <div class="card cms-blog">
+                        <div class="card-header">
+                            <h5>New Blog Entry:</h5>
+                        </div>
                         <div class="card-body">
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Title</label>
-                                    <input type="text" class="form-control" id="blog_title" placeholder="Title" name="blog_title">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Title</label>
+                                <input type="text" class="form-control" id="blog_title" placeholder="Title"
+                                    name="blog_title">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Content</label>
+                                <input name="blog_content" type="hidden" id="blog_content">
+                                <div id="blog-quill">
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Content</label>
-                                    <input name="blog_content" type="hidden" id="blog_content">
-                                    <div id="blog-quill">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Author</label>
-                                    <input type="text" class="form-control" id="blog_author"
-                                        placeholder="Author" name="blog_author">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Keywords</label>
-                                    <input type="text" class="form-control" id="blog_keywords"
-                                        placeholder="Keywords" name="blog_keywords">
-                                </div>
-                                <div class="pb-2">
-                                    <label for="exampleFormControlFile1">Cover Photo</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                </div>
-                                <button type="submit" class="btn btn-outline-success" id="addBlog">SUBMIT</button>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Author</label>
+                                <input type="text" class="form-control" id="blog_author" placeholder="Author"
+                                    name="blog_author">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Keywords</label>
+                                <input type="text" class="form-control" id="blog_keywords" placeholder="Keywords"
+                                    name="blog_keywords">
+                            </div>
+                            <div class="pb-2">
+                                <label for="exampleFormControlFile1">Cover Photo</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                            <button type="submit" class="btn btn-outline-success" id="addBlog">SUBMIT</button>
                         </div>
                     </div>
                 </form>
