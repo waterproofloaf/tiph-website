@@ -28,7 +28,7 @@ var ProjectModel = new mongoose.Schema({
     proj_preview: {
         type: String,
     },
-    proj_hide: {
+    proj_published: {
         type: Boolean,
         required: true
     }

@@ -36,7 +36,7 @@
     <hr>
   </div> --}}
   {{#each blog_info}}
-  <div class="blog-item" {{#if this.blog_hide}}style="display:none;" {{/if}}>
+  <div class="blog-item" {{#if this.blog_published}}{{else}}style="display:none;" {{/if}}>
     <div class="row d-flex align-items-center blog-row">
       <div class="col-lg-3 p-3">
         <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">

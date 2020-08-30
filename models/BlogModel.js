@@ -24,7 +24,7 @@ var BlogModel = new mongoose.Schema({
         type: String,
         required: true
     },
-    blog_hide: {
+    blog_published: {
         type: Boolean,
         required: true
     }

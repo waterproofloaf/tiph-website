@@ -60,7 +60,7 @@
     <hr>
   </div> --}}
   {{#each proj_info}}
-  <div class="project-item" {{#if this.proj_hide}}style="display:none;" {{/if}}>
+  <div class="project-item" {{#if this.proj_published}}{{else}}style="display:none;" {{/if}}>
     <div class="row py-2 align-items-center project-row" style="display:flex;">
       <div class="col-lg-4 p-3">
         <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
