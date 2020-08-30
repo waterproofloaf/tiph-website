@@ -20,24 +20,28 @@ var ProjectModel = new mongoose.Schema({
         type: String,
         required: true
     },
-    proj_status:{
+    proj_status: {
         type: String,
         default: 'Proposed',
         //required: true
     },
-    proj_preview:{
+    proj_preview: {
         type: String,
+    },
+    proj_hide: {
+        type: Boolean,
+        required: true
     }
 });
 
 module.exports = mongoose.model('Project', ProjectModel);
 
-exports.getAll = function(next){
-    ProjectModel.find({}).sort({}).exec(function(err, result){
+exports.getAll = function (next) {
+    ProjectModel.find({}).sort({}).exec(function (err, result) {
         if (err) throw err;
         var projObjects = [];
-        
-        result.forEach(function(doc){
+
+        result.forEach(function (doc) {
             projObjects.push(doc.toObject());
         });
         next(projObjects);
