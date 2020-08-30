@@ -97,7 +97,8 @@
                     </td>
                     <td class="text-right">
                       <label class="switch">
-                        <input type="checkbox" {{#if this.proj_hide}}checked{{/if}}>
+                        <input type="checkbox" id={{this._id}} onclick="proj_change(this)"
+                          {{#if proj_published}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>
                     </td>

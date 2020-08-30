@@ -1,5 +1,6 @@
 const Project = require('../models/ProjectModel.js');
 const database = require('../models/db.js');
+const { ObjectID } = require('mongodb');
 
 const projectController = {
     postProject: function (req, res) {
@@ -11,7 +12,7 @@ const projectController = {
         var proj_keywords = req.body.proj_keywords;
         var proj_preview = req.body.proj_preview;
         var proj_status = req.body.proj_status;
-        var proj_hide = false;
+        var proj_published = true;
 
         var newProject = {
             proj_title: proj_title,
@@ -20,7 +21,7 @@ const projectController = {
             proj_keywords: proj_keywords,
             proj_preview: proj_preview,
             proj_status: proj_status,
-            proj_hide: proj_hide
+            proj_published: proj_published
         }
 
         database.insertOne(Project, newProject, function (f) {
@@ -38,7 +39,23 @@ const projectController = {
             console.log('Project Deleted: ' + query);
             res.redirect('/cms-project');
         });
-    }
+    },
+
+    projToggle: function (req, res) {
+        var proj_id = req.query.id;
+        var proj_published = req.query.publish;
+
+        var filter = {
+            _id: ObjectID(proj_id)
+        }
+
+        var proj_details = {
+            proj_published: proj_published
+        }
+
+        database.updateOne(Project, filter, proj_details);
+        res.redirect('/cms-project');
+    },
 }
 
 module.exports = projectController;

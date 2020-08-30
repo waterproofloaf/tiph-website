@@ -100,12 +100,14 @@ app.get('/cms-admin-edit', controller.getCMSEditAdmin);
 
 app.get('/cms-blog', controller.getCMSBlog);
 app.post('/cms-blog', blogController.deleteBlog);
+app.get('/cms-blog/toggle/', blogController.blogToggle);
 app.get('/cms-blog-page', controller.getCMSBlogPage);
 app.get('/cms-blog-new-page', controller.getCMSBlogNewPage);
 app.post('/cms-blog-new-page', blogController.postBlog);
 
 app.get('/cms-project', controller.getCMSProject);
 app.post('/cms-project', projectController.deleteProject);
+app.get('/cms-project/toggle/', projectController.projToggle);
 app.get('/cms-project-page', controller.getCMSProjectPage);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);
 app.post('/cms-project-new-page', projectController.postProject);
