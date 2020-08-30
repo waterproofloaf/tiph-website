@@ -223,3 +223,37 @@ form.onsubmit = function () {
   alert('New Project Submitted!')
   return false;
 };
+
+$(document).ready(function () {
+  $('#addPreApp').click(function () {
+    //get data
+
+    var pre_firstname = $('#pre-firstname').val();
+    var pre_lastname = $('pre-lastname').val();
+    var pre_age = $('pre-age').val();
+    var pre_number = $('pre-number').val();
+    var pre_email = $('pre-schoolcompany').val();
+    var pre_schoolcompany = $('pre-affiliation').val();
+    var pre_affiliation = $('pre-affiliation').val();
+    var pre_facebook = $('pre-facebook').val();
+    var pre_notify = $('input:radio[name=notify-choice]:checked').val();
+    var pre_comments = $('textarea#comments').val();
+
+    var newPreApp = {
+      pre_firstname: pre_firstname,
+      pre_lastname: pre_lastname,
+      pre_age: pre_age,
+      pre_number: pre_number,
+      pre_email: pre_email,
+      pre_schoolcompany: pre_schoolcompany,
+      pre_affiliation: pre_affiliation,
+      pre_facebook: pre_facebook,
+      pre_notify: pre_notify,
+      pre_comments: pre_comments
+    };
+
+    $.post('addPreApp', newPreApp, function (data, status) {
+      console.log(data);
+    });
+  });
+});

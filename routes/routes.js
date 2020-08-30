@@ -16,6 +16,7 @@ const donateController = require('../controller/donateController.js');
 const formsController = require('../controller/formsController.js');
 const blogController = require('../controller/blogController.js');
 const projectController = require('../controller/projectController.js');
+const preAppController = require('../controller/preAppController.js');
 
 const app = express();
 
@@ -70,6 +71,7 @@ app.get('/', controller.getHomePage);
 app.get('/home', controller.getHomePage);
 app.get('/about', controller.getAboutUs);
 app.get('/pre-application', controller.getPreApp);
+app.post('/pre-application', preAppController.postPreApp);
 app.get('/application', controller.getApplication);
 
 app.get('/projects', controller.getProjects);
