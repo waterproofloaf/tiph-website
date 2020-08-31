@@ -33,12 +33,13 @@ const projectController = {
     },
 
     deleteProject: function (req, res) {
-        var query = req.body.proj_title;
-        database.deleteOne(query, function (err, obj) {
-            if (err) throw err;
-            console.log('Project Deleted: ' + query);
-            res.redirect('/cms-project');
-        });
+        var proj_id = req.query.id;
+        var proj_details = {
+            _id: ObjectID(proj_id)
+        }
+
+        database.deleteOne(Project, proj_details);
+        res.redirect('/cms-project');
     },
 
     projToggle: function (req, res) {

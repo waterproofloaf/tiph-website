@@ -1,6 +1,7 @@
 // import module from db.js in models directory
 const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
+const Blog = require('../models/ProjectModel.js');
 
 // URL of MongoDB database
 const url = "mongodb://localhost:27017/tiph";
@@ -99,11 +100,49 @@ const controller = {
     },
 
     getABlog: function (req, res) {
+        var blog_title = req.query.blog_title;
+        var blog_date = req.query.blog_date;
+        var blog_content = req.query.blog_content;
+        var blog_author = req.query.blog_author;
         res.render('a-blog', {
             layout: '/layouts/main',
-            title: 'A Blog | The Initiative PH',
+            title: blog_title + ' | The Initiative PH',
+            blog_title: blog_title,
+            blog_author: blog_author,
+            blog_date: blog_date,
             blog_active: true,
-        })
+        });
+        
+//        var MongoClient = require('mongodb').MongoClient;
+//        MongoClient.connect(url, {useUnifiedTopology: true},
+//            function(err, db){
+//                if (err) throw err;
+//                var dbo = db.db("tiph");
+//                var cursor = dbo.collection("blogs").find({_id: req.query.id});
+//                var the_blog = [];
+//                cursor.forEach(function (doc, err) {
+//                    the_blog.push(doc);
+//                },
+//                    function () {
+//                        res.render('a-blog', {
+//                            layout: '/layouts/main',
+//                            title: req.query.blog_title+' | The Initiative PH',
+//                            blog_active: true,
+//                            the_blog: the_blog,
+//                        });
+//                        db.close();
+//                    });
+                
+
+//                        res.render('a-blog', {
+//                        layout: '/layouts/main',
+//                        title: blog_title + ' | The Initiative PH',
+//                        blog_title: blog_title,
+//                        blog_date: blog_date,
+//                        blog_content: blog_content,
+//                        blog_active: true,
+//                        });
+//                    };
     },
 
     getAProject: function (req, res) {

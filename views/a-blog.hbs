@@ -1,9 +1,10 @@
 <!-- HEADER -->
+{{#each the_blog}}
 <section>
     <div class="container-fluid center">
         <div class="header-title text-center">
             <h5 class="font-weight-bold text-uppercase sub-title">{{this.blog_title}}</h5>
-            <p class="sub-caption text-center" id="blog-datetime">{{this.blog_date}}</p>
+            <p class="sub-caption text-center" id="blog-datetime">{{this.blog_author}} | {{this.blog_date}}</p>
         </div>
     </div>
 </section>
@@ -13,3 +14,4 @@
     <p class="sub-caption">{{this.blog_content}}</p>
 </div>
 <br>
+{{/each}}

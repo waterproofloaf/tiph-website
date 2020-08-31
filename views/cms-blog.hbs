@@ -75,12 +75,12 @@
                           class="btn btn-outline-success">Edit</button></a>
                     </td>
                     <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
+                      <a href="/cms-blog/delete?id={{this._id}}"><button id="{{this._id}}" type="button"
                           class="btn btn-outline-danger">Delete</button></a>
                     </td>
                     <td class="text-right">
                       <label class="switch">
-                        <input type="checkbox" id={{this._id}} onclick="blog_change(this)"
+                        <input type="checkbox" id="{{this._id}}" onclick="blog_change(this)"
                           {{#if blog_published}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>

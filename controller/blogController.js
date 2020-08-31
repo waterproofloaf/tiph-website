@@ -31,21 +31,21 @@ const blogController = {
     },
 
     findBlog: function (req, res) {
-        var query = req.body.blog_title;
-        database.find({ blog_title: query }, function (err, obj) {
-            if (err) throw err;
-            console.log('Viewing: ' + query);
-            res.redirect('/a-blog');
+        var query = req.query.id;
+        database.findOne(Blog, {_id: query}, {}, function(blog){
+            console.log(blog.blog_title);
         });
+
     },
 
     deleteBlog: function (req, res) {
-        var query = req.body.blog_title;
-        database.deleteOne(query, function (err, obj) {
-            if (err) throw err;
-            console.log('Blog Deleted: ' + query);
-            res.redirect('/cms-blog');
-        });
+        var blog_id = req.query.id;
+        var blog_details = {
+            _id: ObjectID(blog_id)
+        }
+
+        database.deleteOne(Blog, blog_details);
+        res.redirect('/cms-blog');
     },
 
     blogToggle: function (req, res) {

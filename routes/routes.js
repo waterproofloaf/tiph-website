@@ -79,10 +79,11 @@ app.post('/projects', projectController.postProject);
 app.get('/a-project', controller.getAProject);
 
 app.get('/blog', controller.getBlogs);
-app.get('/blog', blogController.findBlog);
 app.post('/blog', blogController.postBlog);
-
 app.get('/a-blog', controller.getABlog);
+app.get('/a-blog', blogController.findBlog);
+
+
 app.get('/contact-us', controller.getContactUs);
 app.post('/contact-us', upload.single('contact_upload'), formsController.postContactUs);
 app.get('/donate', controller.getDonate);
@@ -101,14 +102,14 @@ app.get('/cms-admin-new', controller.getCMSNewAdmin);
 app.get('/cms-admin-edit', controller.getCMSEditAdmin);
 
 app.get('/cms-blog', controller.getCMSBlog);
-app.post('/cms-blog', blogController.deleteBlog);
+app.get('/cms-blog/delete/', blogController.deleteBlog);
 app.get('/cms-blog/toggle/', blogController.blogToggle);
 app.get('/cms-blog-page', controller.getCMSBlogPage);
 app.get('/cms-blog-new-page', controller.getCMSBlogNewPage);
 app.post('/cms-blog-new-page', blogController.postBlog);
 
 app.get('/cms-project', controller.getCMSProject);
-app.post('/cms-project', projectController.deleteProject);
+app.get('/cms-project/delete/', projectController.deleteProject);
 app.get('/cms-project/toggle/', projectController.projToggle);
 app.get('/cms-project-page', controller.getCMSProjectPage);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);
