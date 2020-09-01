@@ -31,15 +31,16 @@ const projectController = {
             }
         });
     },
-    
-    findProject: function(req, res){
+
+    findProject: function (req, res) {
         var query = req.query.id;
-        database.findOne(Project, {_id: query}, {}, function(proj){
+        database.findOne(Project, { _id: query }, {}, function (proj) {
             console.log(proj.proj_title);
             res.render('a-project', {
-                layout:'/layouts/main',
+                layout: '/layouts/main',
                 title: proj.proj_title + ' | The Initiative PH',
                 proj_title: proj.proj_title,
+                proj_status: proj.proj_status,
                 proj_date: proj.proj_date,
                 proj_content: proj.proj_content,
                 proj_active: true,
