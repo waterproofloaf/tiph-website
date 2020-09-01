@@ -17,6 +17,11 @@
                                 <input type="text" class="form-control" id="proj_title" name="proj_title"
                                     placeholder="Title" value="{{this.proj_title}}">
                             </div>
+                            <div class="form-group">
+                                <label for="proj_date">Date</label>
+                                <input type="text" class="form-control" id="proj_date" name="proj_date"
+                                    placeholder="Title" value="{{this.proj_date}}">
+                            </div>
                             <div class=" form-group">
                                 <label for="proj_content">Content</label>
                                 <input name="proj_content" type="hidden" id="proj_content">
@@ -30,11 +35,27 @@
                             </div>
                             <div class="form-group">
                                 <label for="proj_status">Status</label>
+                                {{#equals proj_status "Proposed"}}
                                 <select class="form-control" name="proj_status" id="proj_status">
-                                    <option value="Proposed">Proposed</option>
+                                    <option value="{{this.proj_status}}" selected>{{this.proj_status}}</option>
                                     <option value="Approved">Approved</option>
                                     <option value="Ongoing">Ongoing</option>
                                 </select>
+                                {{/equals}}
+                                {{#equals proj_status "Approved"}}
+                                <select class="form-control" name="proj_status" id="proj_status">
+                                    <option value="{{this.proj_status}}" selected>{{this.proj_status}}</option>
+                                    <option value="Proposed">Proposed</option>
+                                    <option value="Ongoing">Ongoing</option>
+                                </select>
+                                {{/equals}}
+                                {{#equals proj_status "Ongoing"}}
+                                <select class="form-control" name="proj_status" id="proj_status">
+                                    <option value="{{this.proj_status}}" selected>{{this.proj_status}}</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Proposed">Proposed</option>
+                                </select>
+                                {{/equals}}
                             </div>
                             <div class="form-group">
                                 <label for="proj_keywords">Keywords</label>
