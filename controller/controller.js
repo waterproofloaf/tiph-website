@@ -105,19 +105,19 @@ const controller = {
             title: 'A Blog | The Initiative PH',
             blog_active: true,
         });
-//        var blog_title = req.query.title;
-//        var blog_date = req.query.date;
-//        //var blog_content = req.query.blog_content;
-//        var blog_author = req.query.author;
-//        res.render('a-blog', {
-//            layout: '/layouts/main',
-//            title: blog_title + ' | The Initiative PH',
-//            blog_title: blog_title,
-//            blog_author: blog_author,
-//            blog_date: blog_date,
-//            //blog_content: blog_content,
-//            blog_active: true,
-//        });
+        //        var blog_title = req.query.title;
+        //        var blog_date = req.query.date;
+        //        //var blog_content = req.query.blog_content;
+        //        var blog_author = req.query.author;
+        //        res.render('a-blog', {
+        //            layout: '/layouts/main',
+        //            title: blog_title + ' | The Initiative PH',
+        //            blog_title: blog_title,
+        //            blog_author: blog_author,
+        //            blog_date: blog_date,
+        //            //blog_content: blog_content,
+        //            blog_active: true,
+        //        });
     },
 
     getAProject: function (req, res) {
@@ -247,7 +247,7 @@ const controller = {
                         cursor1.forEach(function (doc, err) {
                             appArray.push(doc);
                         },
-                            function() {
+                            function () {
                                 if (req.session.user && req.cookies.user_sid) {
                                     res.render('cms-applicant', {
                                         layout: '/layouts/cms-layout',

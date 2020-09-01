@@ -76,13 +76,14 @@ app.post('/application', formsController.postAppForm);
 
 app.get('/projects', controller.getProjects);
 app.post('/projects', projectController.postProject);
-app.get('/a-project', controller.getAProject);
-app.get('/a-project/view/', projectController.findProject);
+app.get('/a-project/', projectController.findProject);
+// app.get('/a-project', controller.getAProject);
 
 app.get('/blog', controller.getBlogs);
 app.post('/blog', blogController.postBlog);
-app.get('/a-blog', controller.getABlog);
-app.get('/a-blog/view/', blogController.findBlog);
+app.get('/a-blog', blogController.findBlog);
+// app.get('/a-blog', controller.getABlog);
+// app.get('/a-blog/view/', blogController.findBlog);
 
 app.get('/contact-us', controller.getContactUs);
 app.post('/contact-us', upload.single('contact_upload'), formsController.postContactUs);

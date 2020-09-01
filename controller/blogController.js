@@ -32,10 +32,10 @@ const blogController = {
 
     findBlog: function (req, res) {
         var query = req.query.id;
-        database.findOne(Blog, {_id: query}, {}, function(blog){
+        database.findOne(Blog, { _id: query }, {}, function (blog) {
             console.log(blog.blog_title);
             res.render('a-blog', {
-                layout:'/layouts/main',
+                layout: '/layouts/main',
                 title: blog.blog_title + ' | The Initiative PH',
                 blog_title: blog.blog_title,
                 blog_author: blog.blog_author,

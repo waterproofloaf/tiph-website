@@ -71,7 +71,9 @@
         <p class="sub-caption project-caption">
           {{this.proj_preview}}
         </p>
-        <a href="/a-project/view?id={{this._id}}&title={{this.proj_title}}&date={{this.proj_date}}"> <button class="btn btn-outline-secondary" id="{{this._id}}">Continue Reading</button></a>
+        {{!-- <a href="/a-project/view?id={{this._id}}&title={{this.proj_title}}&date={{this.proj_date}}"> <button class="btn btn-outline-secondary" id="{{this._id}}">Continue Reading</button></a> --}}
+        <a href="/a-project?id={{this._id}}"> <button class="btn btn-outline-secondary" id="{{this._id}}">Continue
+            Reading</button></a>
       </div>
     </div>
     <hr>
