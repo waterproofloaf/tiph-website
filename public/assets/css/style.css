@@ -372,6 +372,10 @@ footer {
   float: right;
 }
 
+.contact-button:hover{
+  background-color: #0c5865;
+}
+
 .contact-button:after {
   content: "";
   background: #f1f1f1;
@@ -447,6 +451,9 @@ footer {
   padding-top: 5px;
   padding-bottom: 10px;
   /* float: right; */
+}
+.apps-button:hover {
+  background-color: #0c5865;
 }
 
 .apps-font-texts{
