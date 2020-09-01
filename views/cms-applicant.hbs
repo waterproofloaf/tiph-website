@@ -80,6 +80,31 @@
                           class="btn btn-outline-danger">Reject</button></a>
                     </td>
                   </tr>
+                  {{#each preapp_info}}
+                  <tr>
+                    <td>
+                      {{this.pre_lastname}}
+                    </td>
+                    <td>
+                      {{this.pre_firstname}}
+                    </td>
+                    <td>
+                      {{this.pre_email}}
+                    </td>
+                    <td class="text-center">
+                        <a href="/cms-applicant/review?id={{this.id}}"><button id="{{this.id}}" type="button"
+                         class="btn btn-outline-info">Review</button></a>
+                    </td>
+                    <td class="text-center">
+                      <a href="/cms-applicant/edit?id={{this.id}}"><button id="{{this.id}}" type="button"
+                         class="btn btn-outline-success">Accept</button></a>
+                    </td>
+                    <td class="text-center">
+                      <a href="/cms-applicant/reject?id={{this.id}}"><button id="{{this.id}}" type="button"
+                         class="btn btn-outline-danger">Reject</button></a>
+                    </td>
+                  </tr>
+                  {{/each}}
                 </tbody>
               </table>
             </div>
@@ -169,6 +194,31 @@
                           class="btn btn-outline-danger">Reject</button></a>
                     </td>
                   </tr>
+                  {{#each app_info}}
+                  <tr>
+                    <td>
+                      {{this.app_lastname}}
+                    </td>
+                    <td>
+                      {{this.app_firstname}}
+                    </td>
+                    <td>
+                      {{this.app_email}}
+                    </td>
+                    <td class="text-center">
+                        <a href="/cms-applicant/review?id={{this.id}}"><button id="{{this.id}}" type="button"
+                         class="btn btn-outline-info">Review</button></a>
+                    </td>
+                    <td class="text-center">
+                      <a href="/cms-applicant/edit?id={{this.id}}"><button id="{{this.id}}" type="button"
+                         class="btn btn-outline-success">Accept</button></a>
+                    </td>
+                    <td class="text-center">
+                      <a href="/cms-applicant/reject?id={{this.id}}"><button id="{{this.id}}" type="button"
+                         class="btn btn-outline-danger">Reject</button></a>
+                    </td>
+                  </tr>
+                  {{/each}}
                 </tbody>
               </table>
             </div>
