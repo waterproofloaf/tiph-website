@@ -23,53 +23,53 @@
     </div>
 </div>
 <div class="container-fluid m-auto px-5">
-    <form class="needs-validation" novalidate>
+    <form class="needs-validation" method="POST" action="pre-application" novalidate>
         <h6 class="apps-sub-header pb-1" style="font-size: 20px;">Let's know the basics about you!</h6>
         <div class="sub-caption">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="pre-lastname">Last Name</label>
-                    <input type="text" class="form-control" name="pre-lastname" id="pre-lastname"
+                    <input type="text" class="form-control" name="pre_lastname" id="pre_lastname"
                         placeholder="Last Name" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="pre-firstname">First Name</label>
-                    <input type="text" class="form-control" name="pre-firstname" id="pre-firstname"
+                    <input type="text" class="form-control" name="pre_firstname" id="pre_firstname"
                         placeholder="First Name" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="pre-age">Age</label>
-                    <input type="number" class="form-control" name="pre-age" id="pre-age" placeholder="Age" required>
+                    <input type="number" class="form-control" name="pre_age" id="pre_age" placeholder="Age" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="pre-number">Contact Number</label>
-                    <input type="tel" class="form-control" name="pre-number" id="pre-number"
+                    <input type="tel" class="form-control" name="pre_number" id="pre_number"
                         placeholder="Contact Number" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="pre-email">Email</label>
-                    <input type="email" class="form-control" name="pre-email" id="pre-email" placeholder="Email"
+                    <input type="email" class="form-control" name="pre_email" id="pre_email" placeholder="Email"
                         required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="pre-schoolcompany">School/Company</label>
-                    <input type="text" class="form-control" name="pre-schoolcompany" id="pre-schoolcompany"
+                    <input type="text" class="form-control" name="pre_schoolcompany" id="pre_schoolcompany"
                         placeholder="School/Company" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="pre-affiliation">Affiliation with School/Company</label>
-                    <input type="text" class="form-control" name="pre-affiliation" id="pre-affiliation"
+                    <input type="text" class="form-control" name="pre_affiliation" id="pre_affiliation"
                         placeholder="Affiliation with School/Company" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="pre-facebook">Facebook URL</label>
-                    <input type="url" class="form-control" name="pre-facebook" id="pre-facebook"
+                    <input type="url" class="form-control" name="pre_facebook" id="pre_facebook"
                         placeholder="Facebook URL" required>
                 </div>
             </div>
@@ -79,24 +79,24 @@
             application?</h6>
         <div class="sub-caption" style="font-size: 17px;">
             <div class="form-check">
-                <input class="form-check-input" type="radio" id="notify-email" name="notify-choice" value="notify-email"
+                <input class="form-check-input" type="radio" id="notify-email" name="pre_notify" value="notify-email"
                     required>
                 <label class="form-check-label" for="notify-email">E-mail</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" id="notify-facebook" name="notify-choice"
+                <input class="form-check-input" type="radio" id="notify-facebook" name="pre_notify"
                     value="notify-facebook" required>
                 <label class="form-check-label" for="notify-facebook">Facebook Messenger</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" id="notify-number" name="notify-choice"
+                <input class="form-check-input" type="radio" id="notify-number" name="pre_notify"
                     value="notify-number" required>
                 <label class="form-check-label" for="notify-number">Mobile Number via Text Message</label>
             </div>
         </div>
 
         <h6 class="apps-sub-header pt-4 pb-1" style="font-size: 20px;">Do you have any comments?</h6>
-        <textarea class="form-control" id="comments" rows="3"></textarea>
+        <textarea class="form-control" id="pre_comments" name="pre_comments" rows="3"></textarea>
 
         <div class="row m-auto pt-5 pb-4">
             <div class="col text-center">

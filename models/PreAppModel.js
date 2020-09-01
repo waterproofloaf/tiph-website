@@ -5,6 +5,10 @@ var PreAppModel = new mongoose.Schema({
         type: String,
         required: true,
     },
+    pre_lastname: {
+        type: String,
+        required: true,
+    },
     pre_age: {
         type: String,
         required: true,

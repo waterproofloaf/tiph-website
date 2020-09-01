@@ -1,4 +1,4 @@
-<form class="needs-validation" novalidate>
+<form class="needs-validation" method="POST" action="application" novalidate>
     <div class="container-fluid m-auto pb-5" style="text-align: center">
         <!-- HEADER -->
         <h5 class="font-weight-bold text-uppercase sub-title pt-5" style="margin-top: 20px;">APPLICATION FORM</h5>
@@ -45,67 +45,67 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="form-lastname">Last Name</label>
-                    <input type="text" class="form-control" name="form-lastname" id="form-lastname"
+                    <input type="text" class="form-control" name="app_lastname" id="app_lastname"
                         placeholder="Last Name" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="form-firstname">First Name</label>
-                    <input type="text" class="form-control" name="form-firstname" id="form-firstname"
+                    <input type="text" class="form-control" name="app_firstname" id="app_firstname"
                         placeholder="First Name" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="form-nickname">Nickname</label>
-                    <input type="text" class="form-control" name="form-nickname" id="form-nickname"
+                    <input type="text" class="form-control" name="app_nickname" id="app_nickname"
                         placeholder="Nickname" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="form-email">Email</label>
-                    <input type="email" class="form-control" name="form-email" id="form-email" placeholder="Email"
+                    <input type="email" class="form-control" name="app_email" id="app_email" placeholder="Email"
                         required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="form-birthday">Date of Birth</label>
-                    <input type="date" class="form-control" name="form-birthday" id="form-birthday"
+                    <input type="date" class="form-control" name="app_bday" id="app_bday"
                         placeholder="Date of Birth" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="form-city">City of Residence</label>
-                    <input type="text" class="form-control" name="form-city" id="form-city"
+                    <input type="text" class="form-control" name="app_cResidence" id="app_cResidence"
                         placeholder="City of Residence" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="form-schoolcompany">School/Company</label>
-                    <input type="text" class="form-control" name="form-schoolcompany" id="form-schoolcompany"
+                    <input type="text" class="form-control" name="app_schoolcompany" id="app_schoolcompany"
                         placeholder="School/Company" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="form-number">Contact Number</label>
-                    <input type="tel" class="form-control" name="form-number" id="form-number"
+                    <input type="tel" class="form-control" name="app_number" id="app_number"
                         placeholder="Contact Number" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="form-facebook">Facebook URL</label>
-                    <input type="text" class="form-control" name="form-facebook" id="form-facebook"
+                    <input type="text" class="form-control" name="app_facebook" id="app_facebook"
                         placeholder="Facebook URL" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="form-twitter">Twitter URL (Optional)</label>
-                    <input type="url" class="form-control" name="form-twitter" id="form-twitter"
+                    <input type="url" class="form-control" name="app_twitter" id="app_twitter"
                         placeholder="Twitter URL">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="exampleFormControlSelect1">How did you find out about TIPH?</label>
-                    <select class="form-control" id="exampleFormControlSelect1" required>
+                    <label for="app_findout">How did you find out about TIPH?</label>
+                    <select class="form-control" id="app_findout" name="app_findout" required>
                         <option value="family">Family</option>
                         <option value="friend">Friend</option>
                         <option value="facebook">Facebook</option>
@@ -119,8 +119,8 @@
                     </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="form-others">If other...</label>
-                    <input type="url" class="form-control" name="form-others" id="form-others">
+                    <label for="app_others">If other...</label>
+                    <input type="url" class="form-control" name="app_others" id="app_others">
                 </div>
             </div>
         </div>
@@ -196,7 +196,7 @@
 
         <hr>
 
-        <h5 class="font-weight-bold apps-sub-header pb-1" id="role-registration">STEP 2: ROLE REGISTRATION</h5>
+        {{!-- <h5 class="font-weight-bold apps-sub-header pb-1" id="role-registration">STEP 2: ROLE REGISTRATION</h5>
         <div class="sub-caption">
             <p><strong>
                     There are two (2) branches in the organizational structure: The Management Branch (MB) and the
@@ -224,49 +224,49 @@
                 management branch assigned.
                 <br><strong>* - Will not open applications</strong>
             </p>
-        </div>
+        </div> --}}
         <div class="div-expertise-txt div-flex pt-3">
             <h5 class="apps-sub-header">Areas of Expertise</h5>
             <p class="sub-caption" style="margin-top: 10px; margin-left: 6px;"> (choose as many as you can)</p>
         </div>
         <div class="div-expertise sub-caption">
             {{!-- <form method="get" id="expertise-check" class="form-container margin-left"> --}}
-            <input type="checkbox" name="expertise" id="legal-matters" value="legal-matters"> Legal Matters
+            <input type="checkbox" name="app_expertise" id="legal-matters" value="legal-matters"> Legal Matters
             <br>
-            <input type="checkbox" name="expertise" id="file-organization" value="file-organization"> File Organization
+            <input type="checkbox" name="app_expertise" id="file-organization" value="file-organization"> File Organization
             <br>
-            <input type="checkbox" name="expertise" id="minute-taking" value="minute-taking"> Minute-Taking
+            <input type="checkbox" name="app_expertise" id="minute-taking" value="minute-taking"> Minute-Taking
             <br>
-            <input type="checkbox" name="expertise" id="hr-management" value="hr-management"> Human Resource Management
+            <input type="checkbox" name="app_expertise" id="hr-management" value="hr-management"> Human Resource Management
             <br>
-            <input type="checkbox" name="expertise" id="project-management" value="project-management"> Project
+            <input type="checkbox" name="app_expertise" id="project-management" value="project-management"> Project
             Management
             <br>
-            <input type="checkbox" name="expertise" id="data-driven" value="data-driven"> Data-driven Marketing and
+            <input type="checkbox" name="app_expertise" id="data-driven" value="data-driven"> Data-driven Marketing and
             Analysis (Social Media Engagement)
             <br>
-            <input type="checkbox" name="expertise" id="content-curation" value="content-curation"> Content Curation
+            <input type="checkbox" name="app_expertise" id="content-curation" value="content-curation"> Content Curation
             (Social Media Management)
             <br>
-            <input type="checkbox" name="expertise" id="website-design" value="website-design"> Website Design and
+            <input type="checkbox" name="app_expertise" id="website-design" value="website-design"> Website Design and
             Development
             <br>
-            <input type="checkbox" name="expertise" id="content-text" value="content-text"> Content Creation (Text)
+            <input type="checkbox" name="app_expertise" id="content-text" value="content-text"> Content Creation (Text)
             <br>
-            <input type="checkbox" name="expertise" id="content-multimedia" value="content-multimedia"> Content Creation
+            <input type="checkbox" name="app_expertise" id="content-multimedia" value="content-multimedia"> Content Creation
             (Multimedia)
             <br>
-            <input type="checkbox" name="expertise" id="photo-video" value="photo-video"> Photography and Videography
+            <input type="checkbox" name="app_expertise" id="photo-video" value="photo-video"> Photography and Videography
             <br>
-            <input type="checkbox" name="expertise" id="accounting" value="accounting"> Accounting
+            <input type="checkbox" name="app_expertise" id="accounting" value="accounting"> Accounting
             <br>
-            <input type="checkbox" name="expertise" id="external-relations" value="external-relations"> External
+            <input type="checkbox" name="app_expertise" id="external-relations" value="external-relations"> External
             Relations
             <br>
-            <input type="checkbox" name="expertise" id="logistics" value="logistics"> Logistics
+            <input type="checkbox" name="app_expertise" id="logistics" value="logistics"> Logistics
             <br>
         </div>
-        <div class="">
+        {{!-- <div class="">
             <h6 class="apps-sub-header pt-3">Available Positions per Department</h6>
             <p><strong>DEPARTMENT OF PUBLICATIONS AND COMMUNICATIONS (DPC)</strong></p>
             <ul class="sub-caption">
@@ -308,21 +308,21 @@
                 <li>Photographers</li>
                 <li>Videographers</li>
             </ul>
-        </div>
+        </div> --}}
 
         <!-- DEPARTMENT OF CHOICE 1 -->
         <div class="div-dept-choice">
             <h6 class="apps-sub-header pt-3">Department of Choice</h6>
             <div class="form-container margin-left sub-caption">
-                <input type="radio" id="publications-communications" name="dept-choice"
+                <input type="radio" id="publications-communications" name="app_dept1"
                     value="publications-communications"> Department of Publications and Communications (DPC) <br>
-                <input type="radio" id="disaster-mitigation" name="dept-choice" value="disaster-mitigation"> Department
+                <input type="radio" id="disaster-mitigation" name="app_dept1" value="disaster-mitigation"> Department
                 of Disaster Mitigation and Recovery (DDMR) <br>
-                <input type="radio" id="sogie-rights" name="dept-choice" value="sogie-rights"> Department of SOGIE
+                <input type="radio" id="sogie-rights" name="app_dept1" value="sogie-rights"> Department of SOGIE
                 Rights (DSR) <br>
-                <input type="radio" id="initiatives-espana" name="dept-choice" value="initiatives-espana"> Department of
+                <input type="radio" id="initiatives-espana" name="app_dept1" value="initiatives-espana"> Department of
                 Initiatives - Project Espana (DI-PE)<br>
-                <input type="radio" id="initiatives-taft" name="dept-choice" value="initiatives-taft"> Department of
+                <input type="radio" id="initiatives-taft" name="app_dept1" value="initiatives-taft"> Department of
                 Initiatives - Project Taft (DI-PT)<br>
             </div>
         </div> <br>
@@ -330,7 +330,7 @@
         <!-- DESIRED POSITION 1 -->
         <div class="div-position">
             <p class="sub-caption" style="font-size: 20px;">What's your desired position? </p>
-            <select name="position1" id="position1" style="min-width: 50%; margin-bottom: 15px;" required>
+            <select name="app_position1" id="app_position1" style="min-width: 50%; margin-bottom: 15px;" required>
                 <option value="secretary">Secretary</option>
                 <option value="multimedia-artist">Multimedia Artist</option>
                 <option value="content-writer">Content Writer</option>
@@ -348,21 +348,21 @@
             <h6 class="apps-sub-header">Department of Choice (Second Option)</h6>
             {{!-- <div class="form-container margin-left"> --}}
             <div class="container-fluid sub-caption">
-                <input type="radio" id="second-disaster-mitigation" name="dept-second-choice"
+                <input type="radio" id="second-disaster-mitigation" name="app_dept2"
                     value="second-disaster-mitigation"> Department of Disaster Mitigation and Recovery (DDMR) <br>
-                <input type="radio" id="second-animal-welfare" name="dept-second-choice" value="second-animal-welfare">
+                <input type="radio" id="second-animal-welfare" name="app_dept2" value="second-animal-welfare">
                 Department of Animal and Environmental Welfare (DAEW)<br>
-                <input type="radio" id="second-mental-health" name="dept-second-choice" value="second-mental-health">
+                <input type="radio" id="second-mental-health" name="app_dept2" value="second-mental-health">
                 Department of Mental Health (DMH)<br>
-                <input type="radio" id="second-marginalized-community" name="dept-second-choice"
+                <input type="radio" id="second-marginalized-community" name="app_dept2"
                     value="second-marginalized-community"> Department of Marginalized Community Action (DMCA)<br>
-                <input type="radio" id="second-sogie-rights" name="dept-second-choice" value="second-sogie-rights">
+                <input type="radio" id="second-sogie-rights" name="app_dept2" value="second-sogie-rights">
                 Department of SOGIE Rights (DSR)<br>
-                <input type="radio" id="second-initiatives-taft" name="dept-second-choice"
+                <input type="radio" id="second-initiatives-taft" name="app_dept2"
                     value="second-initiatives-taft"> Department of Initiatives - Project Taft (DI-PT)<br>
-                <input type="radio" id="second-initiatives-espana" name="dept-second-choice"
+                <input type="radio" id="second-initiatives-espana" name="app_dept2"
                     value="second-initiatives-espana"> Department of Initiatives - Project Espana (DI-PE)<br>
-                <input type="radio" id="second-initiatives-katipunan" name="dept-second-choice"
+                <input type="radio" id="second-initiatives-katipunan" name="app_dept2"
                     value="second-initiatives-katipunan"> Department of Initiatives - Project Katipunan (DI-PK)<br>
             </div>
         </div>
@@ -370,7 +370,7 @@
         <!-- DESIRED POSITION 2 -->
         <div class="div-position-2">
             <p class="sub-caption" style="font-size: 20px; margin-top: 15px;">What's your desired position? </p>
-            <select name="position2" id="position2" style="width: 50%; margin-bottom: 15px;">
+            <select name="app_position2" id="app_position2" style="width: 50%; margin-bottom: 15px;">
                 <option value="hr-officer">HR Officer</option>
                 <option value="secretary">Secretary</option>
                 <option value="multimedia-artist">Multimedia Artist</option>
@@ -391,7 +391,7 @@
             <h6 class="sub-caption" style="font-size: 20px; margin-top: 15px;"><strong>Reason for Volunteering </strong>
                 (Answer in 140 characters or less.)</h6>
             {{!-- <textarea name="comment-txt" id="comment-txt" cols="50" rows="8"></textarea> --}}
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            <textarea class="form-control" id="app_reason" name="app_reason" rows="3" required></textarea>
         </div>
         <hr>
         <!-- PORTFOLIO -->
@@ -418,7 +418,7 @@
 
             <!-- PORTFOLIO UPLOAD -->
             <div class="file-upload">
-                <input type="file" name="upload" class="portfolio-upload">
+                <input type="file" name="app_portfolio" id="app_portfolio" class="portfolio-upload">
             </div>
         </div>
     </div>
@@ -427,7 +427,7 @@
     <div class="row m-auto pt-5 pb-4">
         <div class="col text-center">
             {{!-- <button class="btn btn-success" type="submit"><strong>SUBMIT</strong></button> --}}
-            <button class="apps-button apps-font-texts" type="submit"><strong>S U B M I T</strong></button>
+            <button class="apps-button apps-font-texts" type="submit" id="app_submit_btn" name="app_submit_btn"><strong>S U B M I T</strong></button>
         </div>
     </div>
 </form>

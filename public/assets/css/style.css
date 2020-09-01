@@ -161,7 +161,7 @@ ul li{
 
 .object-container {
     position: relative;
-    text-align: center;
+    text-align: left;
     width: 80%;
     margin: auto;
 }
@@ -171,7 +171,7 @@ ul li{
     width: 100%;
     padding: 15px;
     color: white;
-    text-align: center;
+    text-align: left;
     border: none;
 }
 
