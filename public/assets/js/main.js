@@ -1,3 +1,10 @@
+//About Us Toggle
+$(document).ready(function (){
+  $('.about-info').click(function() { 
+    $(this).find('i').toggleClass('fas fa-plus-circle fas fa-minus-circle'); 
+  });   
+})
+
 // CMS Table Sort
 $(document).ready(function () {
   $('#pages-table').DataTable({

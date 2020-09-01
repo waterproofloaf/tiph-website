@@ -105,8 +105,10 @@ const formsController = {
       var app_twitter = `${req.body.app_twitter}`;
       var app_findout = `${req.body.app_findout}`;
       var app_expertise = `${req.body.app_expertise}`;
-      var app_dept = `${req.body.app_dept}`;
-      var app_position = `${req.body.app_position}`;
+      var app_dept1 = `${req.body.app_dept1}`;
+      var app_position1 = `${req.body.app_position1}`;
+      var app_dept2 = `${req.body.app_dept2}`;
+      var app_position2 = `${req.body.app_position2}`;
       var app_reason = `${req.body.app_reason}`;
       var app_portfolio = `${req.body.app_portfolio}`;
 
@@ -123,8 +125,10 @@ const formsController = {
         app_twitter: app_twitter,
         app_findout: app_findout,
         app_expertise: app_expertise,
-        app_dept: app_dept,
-        app_position: app_position,
+        app_dept1: app_dept1,
+        app_position1: app_position1,
+        app_dept2: app_dept2,
+        app_position2: app_position2,
         app_reason: app_reason,
         app_portfolio: app_portfolio,
     }

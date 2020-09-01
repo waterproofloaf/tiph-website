@@ -34,8 +34,16 @@ const blogController = {
         var query = req.query.id;
         database.findOne(Blog, {_id: query}, {}, function(blog){
             console.log(blog.blog_title);
+            res.render('a-blog', {
+                layout:'/layouts/main',
+                title: blog.blog_title + ' | The Initiative PH',
+                blog_title: blog.blog_title,
+                blog_author: blog.blog_author,
+                blog_date: blog.blog_date,
+                blog_content: blog.blog_content,
+                blog_active: true,
+            });
         });
-
     },
 
     deleteBlog: function (req, res) {
