@@ -10,7 +10,8 @@ var projects = [
         proj_date: '03/07/2020',
         proj_keywords: 'Lumad',
         proj_status: 'Approved',
-        proj_preview: 'Project Lumad aims to raise funds to procure food and care packages for the Bakwit Lumad students in the University of the Philippines-Diliman, under the Department of Marginalized Community Action of The Initiative PH.'
+        proj_preview: 'Project Lumad aims to raise funds to procure food and care packages for the Bakwit Lumad students in the University of the Philippines-Diliman, under the Department of Marginalized Community Action of The Initiative PH.',
+        proj_published: true,
     },
 
     {
@@ -19,7 +20,8 @@ var projects = [
         proj_date: '03/30/2020',
         proj_keywords: 'Kapatid',
         proj_status: 'Approved',
-        proj_preview: 'Hatid Kapatid is an independent youth volunteer effort organized to provide financial and information aid to taxi and ride-hailing app drivers in Metro Manila affected by the COVID-19 pandemic.'
+        proj_preview: 'Hatid Kapatid is an independent youth volunteer effort organized to provide financial and information aid to taxi and ride-hailing app drivers in Metro Manila affected by the COVID-19 pandemic.',
+        proj_published: true,
     },
 
     {
@@ -28,7 +30,8 @@ var projects = [
         proj_date: '04/08/2020',
         proj_keywords: 'Pagsibol',
         proj_status: 'Approved',
-        proj_preview: 'Project Pagsibol is a donation drive by The Scarecrow PH, in partnership with The Initiative PH.'
+        proj_preview: 'Project Pagsibol is a donation drive by The Scarecrow PH, in partnership with The Initiative PH.',
+        proj_published: true,
     },
 ];
 
