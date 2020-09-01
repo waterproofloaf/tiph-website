@@ -211,6 +211,13 @@ ul li{
   cursor: not-allowed !important;
 }
 
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between
+}
+
 footer {
   font-family: "Montserrat";
   background-color: #dabd7e;
