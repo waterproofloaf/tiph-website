@@ -2,6 +2,7 @@
 const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
 const Blog = require('../models/ProjectModel.js');
+const Project = require('../models/ProjectModel.js');
 
 // URL of MongoDB database
 const url = "mongodb://localhost:27017/tiph";
@@ -382,13 +383,24 @@ const controller = {
     },
 
     getCMSProjectPage: function (req, res) {
+
         if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-project-page', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Project Edit | The Initiative PH',
-                project_active: true,
-            })
+            var query = req.query.id;
+            database.findOne(Project, { _id: query }, {}, function (proj) {
+                res.render('cms-project-page', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Project Edit | The Initiative PH',
+                    proj_title: proj.proj_title,
+                    proj_status: proj.proj_status,
+                    proj_date: proj.proj_date,
+                    proj_content: proj.proj_content,
+                    proj_preview: proj.proj_preview,
+                    proj_keywords: proj.proj_keywords,
+                    project_active: true,
+                });
+            });
         }
+
         else {
             res.redirect('cms-login')
         }

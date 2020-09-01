@@ -35,7 +35,6 @@ const projectController = {
     findProject: function (req, res) {
         var query = req.query.id;
         database.findOne(Project, { _id: query }, {}, function (proj) {
-            console.log(proj.proj_title);
             res.render('a-project', {
                 layout: '/layouts/main',
                 title: proj.proj_title + ' | The Initiative PH',
@@ -43,6 +42,7 @@ const projectController = {
                 proj_status: proj.proj_status,
                 proj_date: proj.proj_date,
                 proj_content: proj.proj_content,
+                proj_keywords: proj.proj_keywords,
                 proj_active: true,
             });
         });
