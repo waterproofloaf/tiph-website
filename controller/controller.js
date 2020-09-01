@@ -255,16 +255,40 @@ const controller = {
     },
 
     getCMSApplicant: function (req, res) {
-        if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-applicant', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Applicants | The Initiative PH',
-                applicant_active: true,
-            })
-        }
-        else {
-            res.redirect('cms-login')
-        }
+        var MongoClient = require('mongodb').MongoClient;
+        // var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, { useUnifiedTopology: true },
+            function (err, db) {
+                if (err) throw err;
+                var preappArray = [];
+                var appArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("preapps").find();
+                var cursor1 = dbo.collection("apps").find();
+                cursor.forEach(function (doc, err) {
+                    preappArray.push(doc);
+                },
+                    function () {
+                        cursor1.forEach(function (doc, err) {
+                            appArray.push(doc);
+                        },
+                            function() {
+                                if (req.session.user && req.cookies.user_sid) {
+                                    res.render('cms-applicant', {
+                                        layout: '/layouts/cms-layout',
+                                        title: 'CMS Applicants | The Initiative PH',
+                                        applicant_active: true,
+                                        preapp_info: preappArray,
+                                        app_info: appArray,
+                                    });
+                                }
+                                else {
+                                    res.redirect('cms-login')
+                                }
+                                db.close();
+                            });
+                    });
+            });
     },
 
     getCMSAdmin: function (req, res) {

@@ -48,11 +48,19 @@ var AppModel = new mongoose.Schema({
         type: String,
         required: true,
     },
-    app_dept: {
+    app_dept1: {
         type: String,
         required: true,
     },
-    app_position:{
+    app_position1:{
+        type: String,
+        required: true,
+    },
+    app_dept2: {
+        type: String,
+        required: true,
+    },
+    app_position2:{
         type: String,
         required: true,
     },
