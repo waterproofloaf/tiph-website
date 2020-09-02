@@ -99,6 +99,7 @@ app.get('/cms-applicant-overview', controller.getCMSApplicantOverview);
 app.get('/cms-applicant-pre', controller.getCMSApplicantPre);
 app.get('/cms-pre-app-profile', controller.getCMSApplicantPreProf);
 app.get('/cms-applicant-app', controller.getCMSApplicantApp);
+app.get('/cms-app-profile', controller.getCMSApplicantProf);
 
 app.get('/cms-admin', controller.getCMSAdmin);
 app.get('/cms-admin-new', controller.getCMSNewAdmin);

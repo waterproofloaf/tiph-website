@@ -330,6 +330,23 @@ const controller = {
             });
     },
 
+    getCMSApplicantProf: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            res.render('cms-app-profile', {
+                layout: '/layouts/cms-layout',
+                //Applicant Name should be changed
+                title: 'Applicant Name | The Initiative PH',
+                applicant_active: true,
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
+            })
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+
     getCMSAdmin: function (req, res) {
         var MongoClient = require('mongodb').MongoClient;
         MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
