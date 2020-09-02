@@ -1,4 +1,7 @@
 <div class="content">
+  <div class="cms-breadcrumbs text-uppercase pb-3">
+    <a href="cms-applicant-overview">Manage Applicants</a> / All Pre-Application Applicants
+  </div>
   <div class="row">
     <div class="col-md-12">
       <form>
@@ -92,16 +95,16 @@
                       {{this.pre_email}}
                     </td>
                     <td class="text-center">
-                        <a href="/cms-applicant/review?id={{this.id}}"><button id="{{this.id}}" type="button"
-                         class="btn btn-outline-info">Review</button></a>
+                      <a href="/cms-applicant/review?id={{this.id}}"><button id="{{this.id}}" type="button"
+                          class="btn btn-outline-info">Review</button></a>
                     </td>
                     <td class="text-center">
                       <a href="/cms-applicant/edit?id={{this.id}}"><button id="{{this.id}}" type="button"
-                         class="btn btn-outline-success">Accept</button></a>
+                          class="btn btn-outline-success">Accept</button></a>
                     </td>
                     <td class="text-center">
                       <a href="/cms-applicant/reject?id={{this.id}}"><button id="{{this.id}}" type="button"
-                         class="btn btn-outline-danger">Reject</button></a>
+                          class="btn btn-outline-danger">Reject</button></a>
                     </td>
                   </tr>
                   {{/each}}
@@ -206,16 +209,16 @@
                       {{this.app_email}}
                     </td>
                     <td class="text-center">
-                        <a href="/cms-applicant/review?id={{this.id}}"><button id="{{this.id}}" type="button"
-                         class="btn btn-outline-info">Review</button></a>
+                      <a href="/cms-applicant/review?id={{this.id}}"><button id="{{this.id}}" type="button"
+                          class="btn btn-outline-info">Review</button></a>
                     </td>
                     <td class="text-center">
                       <a href="/cms-applicant/edit?id={{this.id}}"><button id="{{this.id}}" type="button"
-                         class="btn btn-outline-success">Accept</button></a>
+                          class="btn btn-outline-success">Accept</button></a>
                     </td>
                     <td class="text-center">
                       <a href="/cms-applicant/reject?id={{this.id}}"><button id="{{this.id}}" type="button"
-                         class="btn btn-outline-danger">Reject</button></a>
+                          class="btn btn-outline-danger">Reject</button></a>
                     </td>
                   </tr>
                   {{/each}}
