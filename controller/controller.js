@@ -280,6 +280,23 @@ const controller = {
             });
     },
 
+    getCMSApplicantPreProf: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            res.render('cms-pre-app-profile', {
+                layout: '/layouts/cms-layout',
+                //Applicant Name should be changed
+                title: 'Applicant Name | The Initiative PH',
+                applicant_active: true,
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
+            })
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+
     getCMSApplicantApp: function (req, res) {
         var MongoClient = require('mongodb').MongoClient;
         // var url = "mongodb://localhost:27017/tiph";
