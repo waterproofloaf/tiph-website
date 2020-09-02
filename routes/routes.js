@@ -112,6 +112,7 @@ app.get('/cms-blog', controller.getCMSBlog);
 app.get('/cms-blog/delete/', blogController.deleteBlog);
 app.get('/cms-blog/toggle/', blogController.blogToggle);
 app.get('/cms-blog-page', controller.getCMSBlogPage);
+app.post('/cms-blog-page', blogController.editBlog);
 app.get('/cms-blog-new-page', controller.getCMSBlogNewPage);
 app.post('/cms-blog-new-page', blogController.postBlog);
 

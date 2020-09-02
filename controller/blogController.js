@@ -56,30 +56,28 @@ const blogController = {
         res.redirect('/cms-blog');
     },
 
-    editProject: function (req, res) {
-        var proj_title = req.body.proj_title;
-        var proj_date = req.body.proj_date;
-        var proj_content = req.body.proj_content;
-        var proj_preview = req.body.proj_preview;
-        var proj_status = req.body.proj_status;
-        var proj_keywords = req.body.proj_keywords;
-        var proj_id = req.query.id;
+    editBlog: function (req, res) {
+        var blog_title = req.body.blog_title;
+        var blog_author = req.body.blog_author;
+        var blog_content = req.body.blog_content;
+        var blog_date = req.body.blog_date;
+        var blog_keywords = req.body.blog_keywords;
+        var blog_id = req.query.id;
 
         var filter = {
-            _id: ObjectID(proj_id)
+            _id: ObjectID(blog_id)
         }
 
-        var proj_details = {
-            proj_title: proj_title,
-            proj_date: proj_date,
-            proj_content: proj_content,
-            proj_preview: proj_preview,
-            proj_status: proj_status,
-            proj_keywords: proj_keywords,
+        var blog_details = {
+            blog_title: blog_title,
+            blog_author: blog_author,
+            blog_content: blog_content,
+            blog_date: blog_date,
+            blog_keywords: blog_keywords,
         }
 
-        database.updateOne(Blog, filter, proj_details);
-        res.redirect('/cms-project');
+        database.updateOne(Blog, filter, blog_details);
+        res.redirect('/cms-blog');
     },
 
     blogToggle: function (req, res) {

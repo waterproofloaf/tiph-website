@@ -1,7 +1,7 @@
 // import module from db.js in models directory
 const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
-const Blog = require('../models/ProjectModel.js');
+const Blog = require('../models/BlogModel.js');
 const Project = require('../models/ProjectModel.js');
 const User = require('../models/UserModel.js');
 
@@ -276,7 +276,7 @@ const controller = {
                         }
                         db.close();
                     });
-                    
+
             });
     },
 
@@ -326,7 +326,7 @@ const controller = {
                         }
                         db.close();
                     });
-                    
+
             });
     },
 
@@ -369,7 +369,7 @@ const controller = {
                             admin_info: resultArray,
                         });
                     }
-                    else if(!req.session.type){
+                    else if (!req.session.type) {
                         res.redirect('cms-home')
                     }
                     else {
@@ -392,7 +392,7 @@ const controller = {
                 userid: req.session.userid,
             })
         }
-        else if(!req.session.type){
+        else if (!req.session.type) {
             res.redirect('cms-home')
         }
         else {
@@ -455,14 +455,22 @@ const controller = {
 
     getCMSBlogPage: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-blog-page', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Blog Edit | The Initiative PH',
-                blog_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
-            })
+            var query = req.query.id;
+            database.findOne(Blog, { _id: query }, {}, function (blog) {
+                res.render('cms-blog-page', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Blog Edit | The Initiative PH',
+                    blog_title: blog.blog_title,
+                    blog_author: blog.blog_author,
+                    blog_content: blog.blog_content,
+                    blog_date: blog.blog_date,
+                    blog_keywords: blog.blog_keywords,
+                    blog_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                });
+            });
         }
         else {
             res.redirect('cms-login')
