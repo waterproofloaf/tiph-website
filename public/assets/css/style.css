@@ -694,21 +694,29 @@ ul{
 }
 
 .card-gcash{
+  min-width: 250px;
+  max-width: 250px;
   background-color:	#007dfe;
   color: white;
 }
 
 .card-paymaya{
+  min-width: 250px;
+  max-width: 250px;
   background-color:	#00344e;
   color: white;
 }
 
 .card-bdo{
+  min-width: 250px;
+  max-width: 250px;
   background-color:	#0b2972;
   color: white;
 }
 
 .card-bpi{
+  min-width: 250px;
+  max-width: 250px;
   background-color:	#b20000;
   color: white;
 }

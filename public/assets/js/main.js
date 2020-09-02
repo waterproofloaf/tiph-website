@@ -106,7 +106,7 @@ function donate_change(checkbox) {
   if (checkbox.checked) {
     $.ajax({
       url: "/cms-donate/toggle/",
-      data: { id: self, hide: "true" },
+      data: { id: self, visible: "true" },
       success: function (response) {
         $(this).attr("checked", "checked");
       },
@@ -118,7 +118,7 @@ function donate_change(checkbox) {
   else {
     $.ajax({
       url: "/cms-donate/toggle/",
-      data: { id: self, hide: "false" },
+      data: { id: self, visible: "false" },
       success: function (response) {
         $(this).removeAttr("checked");
       },

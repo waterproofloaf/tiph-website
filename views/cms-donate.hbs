@@ -40,7 +40,7 @@
                     Delete
                   </th>
                   <th class="text-center" style="width:10%">
-                    Hide
+                    Visible
                   </th>
                 </thead>
                 <tbody id="entries-table">
@@ -73,7 +73,7 @@
                     <td class="text-center donate-switch">
                       <label class="switch">
                         <input type="checkbox" id={{this._id}} onclick="donate_change(this)"
-                          {{#if donate_hide}}checked{{/if}}>
+                          {{#if donate_visible}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>
                     </td>
