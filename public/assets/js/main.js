@@ -209,6 +209,13 @@ var blogQuill = new Quill('#blog-quill', {
   theme: 'snow'
 });
 
+var blog_form = document.getElementById('blog_form');
+blog_form.onsubmit = function () {
+  var blog_content = document.querySelector('input[name=blog_content]');
+  blog_content.value = blogQuill.root.innerHTML;
+  return true;
+};
+
 //cms-proj-new-page quill
 var projQuill = new Quill('#proj-quill', {
   modules: {
@@ -226,15 +233,6 @@ var proj_form = document.getElementById("proj_form");
 proj_form.onsubmit = function () {
   var proj_content = document.querySelector('input[name=proj_content]');
   proj_content.value = projQuill.root.innerHTML;
-  console.log(proj_content);
-  return true;
-};
-
-var blog_form = document.getElementById('blog_form');
-blog_form.onsubmit = function () {
-  var blog_content = document.querySelector('input[name=blog_content]');
-  blog_content.value = blogQuill.root.innerHTML;
-  console.log(blog_content);
   return true;
 };
 
