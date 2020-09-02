@@ -96,10 +96,12 @@ app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
 app.get('/cms-applicant', controller.getCMSApplicant);
+
 app.get('/cms-admin', controller.getCMSAdmin);
 app.get('/cms-admin-new', controller.getCMSNewAdmin);
 app.post('/cms-admin-new', adminController.postAdmin);
 app.get('/cms-admin-edit', controller.getCMSEditAdmin);
+app.get('/cms-admin/delete/', adminController.deleteAdmin);
 
 app.get('/cms-blog', controller.getCMSBlog);
 app.get('/cms-blog/delete/', blogController.deleteBlog);

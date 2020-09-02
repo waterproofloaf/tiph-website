@@ -3,6 +3,7 @@ const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
 const Blog = require('../models/ProjectModel.js');
 const Project = require('../models/ProjectModel.js');
+const Users = require('../models/UserModel.js');
 
 // URL of MongoDB database
 const url = "mongodb://localhost:27017/tiph";
@@ -255,16 +256,31 @@ const controller = {
     },
 
     getCMSAdmin: function (req, res) {
-        if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-admin', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Admin | The Initiative PH',
-                admin_active: true,
-            })
-        }
-        else {
-            res.redirect('cms-login')
-        }
+        var MongoClient = require('mongodb').MongoClient;
+        MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
+            if (err) throw err;
+            var resultArray = [];
+            var dbo = db.db("tiph");
+            var cursor = dbo.collection("users").find();
+            cursor.forEach(function (doc, err) {
+                resultArray.push(doc);
+            },
+                function () {
+                    if (req.session.user && req.cookies.user_sid) {
+                        res.render('cms-admin', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Admin | The Initiative PH',
+                            admin_active: true,
+                            admin_info: resultArray,
+                        });
+                    }
+                    else {
+                        res.redirect('cms-login')
+                    }
+                    db.close();
+                });
+
+        });
     },
 
     getCMSNewAdmin: function (req, res) {

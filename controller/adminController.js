@@ -37,15 +37,15 @@ const adminController = {
         })
     },
 
-    // deleteDonate: function (req, res) {
-    //     var donate_id = req.query.id;
-    //     var donate_details = {
-    //         _id: ObjectID(donate_id)
-    //     }
+    deleteAdmin: function (req, res) {
+        var admin_id = req.query.id;
+        var admin_details = {
+            _id: ObjectID(admin_id)
+        }
 
-    //     database.deleteOne(Donate, donate_details);
-    //     res.redirect('/cms-donate');
-    // },
+        database.deleteOne(User, admin_details);
+        res.redirect('/cms-admin');
+    },
 
     // editDonate: function (req, res) {
     //     var donate_type = req.body.donate_type;
