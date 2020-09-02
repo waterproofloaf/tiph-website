@@ -95,6 +95,9 @@ app.get('/cms-home', controller.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
+//TEST
+app.get('/cms-applicant-overview', controller.getCMSApplicantOverview);
+//TEST
 app.get('/cms-applicant', controller.getCMSApplicant);
 app.get('/cms-admin', controller.getCMSAdmin);
 app.get('/cms-admin-new', controller.getCMSNewAdmin);

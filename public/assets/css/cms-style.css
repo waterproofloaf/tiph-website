@@ -80,6 +80,12 @@ input:checked + .slider:before {
     height: 0;
 }
 
+
+/* CMS Applicant Table*/
+.volunteer-hidden{
+    display: none;
+}
+
 /* CMS Breadcrumbs */
 .cms-breadcrumbs {
     font-size: 11px;
