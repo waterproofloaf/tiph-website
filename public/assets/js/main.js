@@ -194,25 +194,6 @@ $(document).ready(function () {
     else
       element.style.display = 'none';
   }
-
-  // add blog POST called
-  $('#addBlog').click(function () {
-    // Get the data from the form
-    var blog_title = $('#new_blog_title').val();
-    var blog_content = $('#new_blog_content').val();
-    var keywords = $('#new_blog_keywords').val();
-
-    //COMMENTED OUT BECAUSE IT MAKES THE QUILL EDITOR DISAPPEAR
-    //        var newBlog = {
-    //            blog_title: blog_title,
-    //            blog_content: blog_content;
-    //        };
-
-    $.post('addBlog', newBlog, function (data, status) {
-      console.log(data);
-
-    });
-  });
 });
 
 //cms-blog-new-page quill
@@ -249,6 +230,14 @@ proj_form.onsubmit = function () {
   return true;
 };
 
+var blog_form = document.getElementById('blog_form');
+blog_form.onsubmit = function () {
+  var blog_content = document.querySelector('input[name=blog_content]');
+  blog_content.value = blogQuill.root.innerHTML;
+  console.log(blog_content);
+  return true;
+};
+
 var quill = new Quill('#editor-container', {
   modules: {
     toolbar: [
@@ -260,21 +249,3 @@ var quill = new Quill('#editor-container', {
   placeholder: 'Insert body here.',
   theme: 'snow'
 });
-
-var blogForm = document.querySelector('form');
-form.onsubmit = function () {
-  // Populate hidden form on submit
-  var proj_content = document.getElementById('blog_content');
-
-  editor.on('text-change', function () {
-    var deltaBlog = editor.getContents();
-    var innerBlog = projQuill.root.innerHTML;
-    proj_content.innerHTML = JSON.stringify(deltaBlog);
-    //proj_content.innerHTML = innerBlog;
-  });
-
-  console.log("New Blog Submitted", $(form).serialize(), $(form).serializeArray());
-
-  alert('New Blog Submitted!')
-  return false;
-};
