@@ -21,7 +21,8 @@ const logIncontroller = {
                         // console.log('Username and password is correct.. Redirecting..');
                         req.session.user = user.username;
                         req.session.name = user.name;
-                        req.session.type = user.userType;
+                        req.session.type = user.userTypeMain;
+                        req.session.userid = user._id;
                         res.redirect('/cms-home');
                     }
                     else{

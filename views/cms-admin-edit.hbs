@@ -3,34 +3,35 @@
     <div class="content">
         <div id="form-container" class="row">
             <div class="col-md-12">
-                <form>
+                <form method="POST" action="cms-admin-edit">
                     <div class="card cms-blog">
                         <div class="card-header">
                             <h5>Edit Account:</h5>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Full Name</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Full Name">
+                                <label for="admin_name">Full Name</label>
+                                <input type="text" class="form-control" id="admin_name" name="admin_name"
+                                    placeholder="{{this.admin_name}}" value="{{this.admin_name}}">
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Username</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Username">
+                                <label for="admin_username">Username</label>
+                                <input type="text" class="form-control" id="admin_username" name="admin_username"
+                                    placeholder={{this.admin_username}} value="{{this.admin_username}}">
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Old Password</label>
-                                <input type="password" class="form-control" id="exampleFormControlInput1">
+                                <label for="admin_password">Old Password</label>
+                                <input type="password" class="form-control" id="admin_password" name="admin_password" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">New Password</label>
-                                <input type="password" class="form-control" id="exampleFormControlInput1">
+                                <label for="admin_new_password">New Password</label>
+                                <input type="password" class="form-control" id="admin_new_password" name="admin_new_password" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">Department</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                <label for="admin_dept">Department</label>
+                                {{#equals admin_dept "Administrative Affairs"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
                                     <option value="Publications and Communications">Publications and Communications
                                     </option>
                                     <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
@@ -45,7 +46,197 @@
                                     <option value="Project España">Project España</option>
                                     <option value="Project Katipunan">Project Katipunan</option>
                                 </select>
+                                {{/equals}}
+
+                                {{#equals admin_dept "Publications and Communications"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
+                                    <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
+                                    </option>
+                                    <option value="Operations">Operations</option>
+                                    <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
+                                    </option>
+                                    <option value="Marginalized Community Action">Marginalized Community Action</option>
+                                    <option value="SOGIE Rights">SOGIE Rights</option>
+                                    <option value="Mental Health">Mental Health</option>
+                                    <option value="Project Taft">Project Taft</option>
+                                    <option value="Project España">Project España</option>
+                                    <option value="Project Katipunan">Project Katipunan</option>
+                                </select>
+                                {{/equals}}
+
+                                {{#equals admin_dept "Marketing, Finance and Logistics"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    <option value="Publications and Communications">Publications and Communications
+                                    </option>
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
+                                    <option value="Operations">Operations</option>
+                                    <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
+                                    </option>
+                                    <option value="Marginalized Community Action">Marginalized Community Action</option>
+                                    <option value="SOGIE Rights">SOGIE Rights</option>
+                                    <option value="Mental Health">Mental Health</option>
+                                    <option value="Project Taft">Project Taft</option>
+                                    <option value="Project España">Project España</option>
+                                    <option value="Project Katipunan">Project Katipunan</option>
+                                </select>
+                                {{/equals}}
+
+                                {{#equals admin_dept "Operations"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    <option value="Publications and Communications">Publications and Communications
+                                    </option>
+                                    <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
+                                    </option>
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
+                                    <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
+                                    </option>
+                                    <option value="Marginalized Community Action">Marginalized Community Action</option>
+                                    <option value="SOGIE Rights">SOGIE Rights</option>
+                                    <option value="Mental Health">Mental Health</option>
+                                    <option value="Project Taft">Project Taft</option>
+                                    <option value="Project España">Project España</option>
+                                    <option value="Project Katipunan">Project Katipunan</option>
+                                </select>
+                                {{/equals}}
+
+                                {{#equals admin_dept "Animal and Environmental Welfare"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    <option value="Publications and Communications">Publications and Communications
+                                    </option>
+                                    <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
+                                    </option>
+                                    <option value="Operations">Operations</option>
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
+                                    <option value="Marginalized Community Action">Marginalized Community Action</option>
+                                    <option value="SOGIE Rights">SOGIE Rights</option>
+                                    <option value="Mental Health">Mental Health</option>
+                                    <option value="Project Taft">Project Taft</option>
+                                    <option value="Project España">Project España</option>
+                                    <option value="Project Katipunan">Project Katipunan</option>
+                                </select>
+                                {{/equals}}
+
+                                {{#equals admin_dept "Marginalized Community Action"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    <option value="Publications and Communications">Publications and Communications
+                                    </option>
+                                    <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
+                                    </option>
+                                    <option value="Operations">Operations</option>
+                                    <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
+                                    </option>
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
+                                    <option value="SOGIE Rights">SOGIE Rights</option>
+                                    <option value="Mental Health">Mental Health</option>
+                                    <option value="Project Taft">Project Taft</option>
+                                    <option value="Project España">Project España</option>
+                                    <option value="Project Katipunan">Project Katipunan</option>
+                                </select>
+                                {{/equals}}
+
+                                {{#equals admin_dept "SOGIE Rights"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    <option value="Publications and Communications">Publications and Communications
+                                    </option>
+                                    <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
+                                    </option>
+                                    <option value="Operations">Operations</option>
+                                    <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
+                                    </option>
+                                    <option value="Marginalized Community Action">Marginalized Community Action</option>
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
+                                    <option value="Mental Health">Mental Health</option>
+                                    <option value="Project Taft">Project Taft</option>
+                                    <option value="Project España">Project España</option>
+                                    <option value="Project Katipunan">Project Katipunan</option>
+                                </select>
+                                {{/equals}}
+
+                                {{#equals admin_dept "Mental Health"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    <option value="Publications and Communications">Publications and Communications
+                                    </option>
+                                    <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
+                                    </option>
+                                    <option value="Operations">Operations</option>
+                                    <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
+                                    </option>
+                                    <option value="Marginalized Community Action">Marginalized Community Action</option>
+                                    <option value="SOGIE Rights">SOGIE Rights</option>
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
+                                    <option value="Project Taft">Project Taft</option>
+                                    <option value="Project España">Project España</option>
+                                    <option value="Project Katipunan">Project Katipunan</option>
+                                </select>
+                                {{/equals}}
+
+                                {{#equals admin_dept "Project Taft"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    <option value="Publications and Communications">Publications and Communications
+                                    </option>
+                                    <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
+                                    </option>
+                                    <option value="Operations">Operations</option>
+                                    <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
+                                    </option>
+                                    <option value="Marginalized Community Action">Marginalized Community Action</option>
+                                    <option value="SOGIE Rights">SOGIE Rights</option>
+                                    <option value="Mental Health">Mental Health</option>
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
+                                    <option value="Project España">Project España</option>
+                                    <option value="Project Katipunan">Project Katipunan</option>
+                                </select>
+                                {{/equals}}
+
+                                {{#equals admin_dept "Project España"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    <option value="Publications and Communications">Publications and Communications
+                                    </option>
+                                    <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
+                                    </option>
+                                    <option value="Operations">Operations</option>
+                                    <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
+                                    </option>
+                                    <option value="Marginalized Community Action">Marginalized Community Action</option>
+                                    <option value="SOGIE Rights">SOGIE Rights</option>
+                                    <option value="Mental Health">Mental Health</option>
+                                    <option value="Project Taft">Project Taft</option>
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
+                                    <option value="Project Katipunan">Project Katipunan</option>
+                                </select>
+                                {{/equals}}
+
+                                {{#equals admin_dept "Project Katipunan"}}
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    <option value="Publications and Communications">Publications and Communications
+                                    </option>
+                                    <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
+                                    </option>
+                                    <option value="Operations">Operations</option>
+                                    <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
+                                    </option>
+                                    <option value="Marginalized Community Action">Marginalized Community Action</option>
+                                    <option value="SOGIE Rights">SOGIE Rights</option>
+                                    <option value="Mental Health">Mental Health</option>
+                                    <option value="Project Taft">Project Taft</option>
+                                    <option value="Project España">Project España</option>
+                                    <option value="{{this.admin_dept}}" selected>{{this.admin_dept}}</option>
+                                </select>
+                                {{/equals}}
                             </div>
+                            <br>
+                            <h5 class="cms-font-text-error">{{loginErrorMessage}}</h5>
                             <button type="submit" class="btn btn-outline-success">Save</button>
                         </div>
                     </div>

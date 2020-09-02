@@ -101,6 +101,7 @@ app.get('/cms-admin', controller.getCMSAdmin);
 app.get('/cms-admin-new', controller.getCMSNewAdmin);
 app.post('/cms-admin-new', adminController.postAdmin);
 app.get('/cms-admin-edit', controller.getCMSEditAdmin);
+app.post('/cms-admin-edit', adminController.editAdmin);
 app.get('/cms-admin/delete/', adminController.deleteAdmin);
 
 app.get('/cms-blog', controller.getCMSBlog);

@@ -3,7 +3,7 @@ const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
 const Blog = require('../models/ProjectModel.js');
 const Project = require('../models/ProjectModel.js');
-const Users = require('../models/UserModel.js');
+const User = require('../models/UserModel.js');
 
 // URL of MongoDB database
 const url = "mongodb://localhost:27017/tiph";
@@ -175,6 +175,7 @@ const controller = {
                 home_active: true,
                 name: req.session.name,
                 type: req.session.type,
+                userid: req.session.userid,
             })
         }
         else {
@@ -190,6 +191,7 @@ const controller = {
                 application_active: true,
                 name: req.session.name,
                 type: req.session.type,
+                userid: req.session.userid,
             })
         }
         else {
@@ -205,6 +207,7 @@ const controller = {
                 application_active: true,
                 name: req.session.name,
                 type: req.session.type,
+                userid: req.session.userid,
             })
         }
         else {
@@ -220,6 +223,7 @@ const controller = {
                 application_active: true,
                 name: req.session.name,
                 type: req.session.type,
+                userid: req.session.userid,
             })
         }
         else {
@@ -253,6 +257,7 @@ const controller = {
                                         applicant_active: true,
                                         name: req.session.name,
                                         type: req.session.type,
+                                        userid: req.session.userid,
                                         preapp_info: preappArray,
                                         app_info: appArray,
                                     });
@@ -284,6 +289,7 @@ const controller = {
                             admin_active: true,
                             type: req.session.type,
                             name: req.session.name,
+                            userid: req.session.userid,
                             admin_info: resultArray,
                         });
                     }
@@ -307,6 +313,7 @@ const controller = {
                 admin_active: true,
                 type: req.session.type,
                 name: req.session.name,
+                userid: req.session.userid,
             })
         }
         else if(!req.session.type){
@@ -319,13 +326,19 @@ const controller = {
 
     getCMSEditAdmin: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-admin-edit', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Edit Admin | The Initiative PH',
-                admin_active: true,
-                type: req.session.type,
-                name: req.session.name,
-            })
+            var query = req.session.userid;
+            database.findOne(User, { _id: query }, {}, function (admin) {
+                res.render('cms-admin-edit', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Edit Admin | The Initiative PH',
+                    admin_name: admin.name,
+                    admin_username: admin.username,
+                    admin_dept: admin.userDepartment,
+                    type: req.session.type,
+                    name: req.session.name,
+                    userid: req.session.userid,
+                });
+            });
         }
         else {
             res.redirect('cms-login')
@@ -352,6 +365,7 @@ const controller = {
                                 blog_active: true,
                                 type: req.session.type,
                                 name: req.session.name,
+                                userid: req.session.userid,
                                 blog_info: blogArray,
                             });
                         }
@@ -371,6 +385,7 @@ const controller = {
                 blog_active: true,
                 name: req.session.name,
                 type: req.session.type,
+                userid: req.session.userid,
             })
         }
         else {
@@ -386,6 +401,7 @@ const controller = {
                 blog_active: true,
                 name: req.session.name,
                 type: req.session.type,
+                userid: req.session.userid,
             })
         }
         else {
@@ -413,6 +429,7 @@ const controller = {
                                 project_active: true,
                                 name: req.session.name,
                                 type: req.session.type,
+                                userid: req.session.userid,
                                 proj_info: projArray,
                             });
                         }
@@ -446,6 +463,7 @@ const controller = {
                     project_active: true,
                     name: req.session.name,
                     type: req.session.type,
+                    userid: req.session.userid,
                 });
             });
         }
@@ -463,6 +481,7 @@ const controller = {
                 project_active: true,
                 name: req.session.name,
                 type: req.session.type,
+                userid: req.session.userid,
             })
         }
         else {
@@ -488,6 +507,7 @@ const controller = {
                             donate_active: true,
                             name: req.session.name,
                             type: req.session.type,
+                            userid: req.session.userid,
                             donate_info: resultArray,
                         });
                     }
@@ -508,6 +528,7 @@ const controller = {
                 donate_active: true,
                 name: req.session.name,
                 type: req.session.type,
+                userid: req.session.userid,
             })
         }
         else {
@@ -532,6 +553,7 @@ const controller = {
                 donate_active: true,
                 name: req.session.name,
                 type: req.session.type,
+                userid: req.session.userid,
             })
         }
         else {

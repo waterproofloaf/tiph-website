@@ -18,7 +18,7 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    userType: {
+    userTypeMain: {
         type: Boolean,
         required: true,
     }
