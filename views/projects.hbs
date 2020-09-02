@@ -63,10 +63,12 @@
   <div class="project-item" {{#if this.proj_published}}{{else}}style="display:none;" {{/if}}>
     <div class="row py-2 align-items-center project-row" style="display:flex;">
       <div class="col-lg-4 p-3">
-        <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
+        <a href="/a-project?id={{this._id}}">
+          <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
+        </a>
       </div>
       <div class="col-lg-8 project-post">
-        <h5 class="card-title text-uppercase project-title" style="font-size: 25px;">{{this.proj_title}}</h5>
+        <a href="/a-project?id={{this._id}}" style="text-decoration: none"><h5 class="card-title text-uppercase project-title" style="font-size: 25px;">{{this.proj_title}}</h5></a>
         <p class="project-subtitle project-date">{{this.proj_status}} • {{this.proj_date}}</p>
         <p class="sub-caption project-caption">
           {{this.proj_preview}}
