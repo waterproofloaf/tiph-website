@@ -16,11 +16,12 @@ const logIncontroller = {
         database.findOne(User, {username: username}, {}, function(user){
             if (user){
                 bcrypt.compare(password, user.password, function(err, equal){
-                    console.log(equal)
+                    // console.log(equal)
                     if(equal){
-                        console.log('Username and password is correct.. Redirecting..');
+                        // console.log('Username and password is correct.. Redirecting..');
                         req.session.user = user.username;
                         req.session.name = user.name;
+                        req.session.type = user.userType;
                         res.redirect('/cms-home');
                     }
                     else{

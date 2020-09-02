@@ -27,7 +27,7 @@ $(document).ready(function () {
     "aaSorting": [],
     columnDefs: [{
       orderable: false,
-      targets: [3, 4]
+      targets: [ 4]
     }]
   })
 
