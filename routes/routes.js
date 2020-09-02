@@ -16,6 +16,7 @@ const donateController = require('../controller/donateController.js');
 const formsController = require('../controller/formsController.js');
 const blogController = require('../controller/blogController.js');
 const projectController = require('../controller/projectController.js');
+const adminController = require('../controller/adminController.js');
 
 const app = express();
 
@@ -97,6 +98,7 @@ app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
 app.get('/cms-applicant', controller.getCMSApplicant);
 app.get('/cms-admin', controller.getCMSAdmin);
 app.get('/cms-admin-new', controller.getCMSNewAdmin);
+app.post('/cms-admin-new', adminController.postAdmin);
 app.get('/cms-admin-edit', controller.getCMSEditAdmin);
 
 app.get('/cms-blog', controller.getCMSBlog);

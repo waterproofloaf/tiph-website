@@ -6,47 +6,55 @@
         </div>
         <div id="form-container" class="row">
             <div class="col-md-12">
-                <form>
+                <form method="POST" action="cms-admin-new">
                     <div class="card cms-blog">
                         <div class="card-header">
                             <h5>New Admin:</h5>
                         </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Full Name</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Full Name">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="admin_name">Full Name</label>
+                                    <input type="text" class="form-control" id="admin_name" name="admin_name"
+                                        placeholder="Full Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="admin_username">Username</label>
+                                    <input type="text" class="form-control" id="admin_username" name="admin_username"
+                                        placeholder="Username">
+                                </div>
+                                <div class="form-group">
+                                    <label for="admin_password">Password</label>
+                                    <input type="password" class="form-control" id="admin_password" name="admin_password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="admin_dept">Department</label>
+                                    <select class="form-control" id="admin_dept" name="admin_dept">
+                                        <option value="Administrative Affairs">Administrative Affairs</option>
+                                        <option value="Publications and Communications">Publications and Communications
+                                        </option>
+                                        <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
+                                        </option>
+                                        <option value="Operations">Operations</option>
+                                        <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
+                                        </option>
+                                        <option value="Marginalized Community Action">Marginalized Community Action</option>
+                                        <option value="SOGIE Rights">SOGIE Rights</option>
+                                        <option value="Mental Health">Mental Health</option>
+                                        <option value="Project Taft">Project Taft</option>
+                                        <option value="Project España">Project España</option>
+                                        <option value="Project Katipunan">Project Katipunan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="admin_main">Main Admin Privilege</label>
+                                    <br>
+                                        <input type="radio" id="main_yes" name="is_main" value="Yes">
+                                        <label for="main_yes">Yes</label>
+                                        <input type="radio" id="main_no" name="is_main" value="No" checked>
+                                        <label for="main_no">No</label>
+                                </div>
+                                <button type="submit" class="btn btn-outline-success">SUBMIT</button>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Username</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Username">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlInput1">Password</label>
-                                <input type="password" class="form-control" id="exampleFormControlInput1">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Department</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option value="Administrative Affairs">Administrative Affairs</option>
-                                    <option value="Publications and Communications">Publications and Communications
-                                    </option>
-                                    <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
-                                    </option>
-                                    <option value="Operations">Operations</option>
-                                    <option value="Animal and Environmental Welfare">Animal and Environmental Welfare
-                                    </option>
-                                    <option value="Marginalized Community Action">Marginalized Community Action</option>
-                                    <option value="SOGIE Rights">SOGIE Rights</option>
-                                    <option value="Mental Health">Mental Health</option>
-                                    <option value="Project Taft">Project Taft</option>
-                                    <option value="Project España">Project España</option>
-                                    <option value="Project Katipunan">Project Katipunan</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-outline-success">SUBMIT</button>
-                        </div>
                     </div>
                 </form>
             </div>
