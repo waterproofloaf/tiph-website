@@ -18,15 +18,15 @@
                                     name="blog_title">
                             </div>
                             <div class="form-group">
+                                <label for="blog_author">Author</label>
+                                <input type="text" class="form-control" id="blog_author" placeholder="Author"
+                                    name="blog_author">
+                            </div>
+                            <div class="form-group">
                                 <label for="blog_content">Content</label>
                                 <input name="blog_content" type="hidden" id="blog_content">
                                 <div id="blog-quill">
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="blog_author">Author</label>
-                                <input type="text" class="form-control" id="blog_author" placeholder="Author"
-                                    name="blog_author">
                             </div>
                             <div class="form-group">
                                 <label for="blog_keywords">Keywords</label>
@@ -45,3 +45,26 @@
         </div>
     </div>
 </div>
+
+<script>
+    //cms-blog-new-page quill
+    var blogQuill = new Quill('#blog-quill', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                ['link', 'blockquote', 'code-block', 'image'],
+                [{ list: 'ordered' }, { list: 'bullet' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var blog_form = document.getElementById('blog_form');
+    blog_form.onsubmit = function () {
+        var blog_content = document.querySelector('input[name=blog_content]');
+        blog_content.value = blogQuill.root.innerHTML;
+        console.log(blog_content);
+        return true;
+    };
+</script>

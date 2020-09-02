@@ -56,6 +56,32 @@ const blogController = {
         res.redirect('/cms-blog');
     },
 
+    editProject: function (req, res) {
+        var proj_title = req.body.proj_title;
+        var proj_date = req.body.proj_date;
+        var proj_content = req.body.proj_content;
+        var proj_preview = req.body.proj_preview;
+        var proj_status = req.body.proj_status;
+        var proj_keywords = req.body.proj_keywords;
+        var proj_id = req.query.id;
+
+        var filter = {
+            _id: ObjectID(proj_id)
+        }
+
+        var proj_details = {
+            proj_title: proj_title,
+            proj_date: proj_date,
+            proj_content: proj_content,
+            proj_preview: proj_preview,
+            proj_status: proj_status,
+            proj_keywords: proj_keywords,
+        }
+
+        database.updateOne(Blog, filter, proj_details);
+        res.redirect('/cms-project');
+    },
+
     blogToggle: function (req, res) {
         var blog_id = req.query.id;
         var blog_published = req.query.publish;
