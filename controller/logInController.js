@@ -20,6 +20,7 @@ const logIncontroller = {
                     if(equal){
                         console.log('Username and password is correct.. Redirecting..');
                         req.session.user = user.username;
+                        req.session.name = user.name;
                         res.redirect('/cms-home');
                     }
                     else{

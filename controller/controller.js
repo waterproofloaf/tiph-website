@@ -172,6 +172,7 @@ const controller = {
                 layout: '/layouts/cms-layout',
                 title: 'CMS Home | The Initiative PH',
                 home_active: true,
+                name: req.session.name,
             })
         }
         else {
@@ -185,6 +186,7 @@ const controller = {
                 layout: '/layouts/cms-layout',
                 title: 'CMS Application | The Initiative PH',
                 application_active: true,
+                name: req.session.name,
             })
         }
         else {
@@ -198,6 +200,7 @@ const controller = {
                 layout: '/layouts/cms-layout',
                 title: 'CMS Application Form Edit | The Initiative PH',
                 application_active: true,
+                name: req.session.name,
             })
         }
         else {
@@ -211,6 +214,7 @@ const controller = {
                 layout: '/layouts/cms-layout',
                 title: 'CMS Pre-Application Form Edit | The Initiative PH',
                 application_active: true,
+                name: req.session.name,
             })
         }
         else {
@@ -242,6 +246,7 @@ const controller = {
                                         layout: '/layouts/cms-layout',
                                         title: 'CMS Applicants | The Initiative PH',
                                         applicant_active: true,
+                                        name: req.session.name,
                                         preapp_info: preappArray,
                                         app_info: appArray,
                                     });
@@ -271,6 +276,7 @@ const controller = {
                             layout: '/layouts/cms-layout',
                             title: 'CMS Admin | The Initiative PH',
                             admin_active: true,
+                            name: req.session.name,
                             admin_info: resultArray,
                         });
                     }
@@ -289,6 +295,7 @@ const controller = {
                 layout: '/layouts/cms-layout',
                 title: 'CMS Add Admin | The Initiative PH',
                 admin_active: true,
+                name: req.session.name,
             })
         }
         else {
@@ -302,6 +309,7 @@ const controller = {
                 layout: '/layouts/cms-layout',
                 title: 'CMS Edit Admin | The Initiative PH',
                 admin_active: true,
+                name: req.session.name,
             })
         }
         else {
@@ -327,6 +335,7 @@ const controller = {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Blog | The Initiative PH',
                                 blog_active: true,
+                                name: req.session.name,
                                 blog_info: blogArray,
                             });
                         }
@@ -344,6 +353,7 @@ const controller = {
                 layout: '/layouts/cms-layout',
                 title: 'CMS Blog Edit | The Initiative PH',
                 blog_active: true,
+                name: req.session.name,
             })
         }
         else {
@@ -357,6 +367,7 @@ const controller = {
                 layout: '/layouts/cms-layout',
                 title: 'CMS New Blog Entry | The Initiative PH',
                 blog_active: true,
+                name: req.session.name,
             })
         }
         else {
@@ -382,6 +393,7 @@ const controller = {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Project | The Initiative PH',
                                 project_active: true,
+                                name: req.session.name,
                                 proj_info: projArray,
                             });
                         }
@@ -413,6 +425,7 @@ const controller = {
                     proj_preview: proj.proj_preview,
                     proj_keywords: proj.proj_keywords,
                     project_active: true,
+                    name: req.session.name,
                 });
             });
         }
@@ -428,6 +441,7 @@ const controller = {
                 layout: '/layouts/cms-layout',
                 title: 'CMS New Project Page | The Initiative PH',
                 project_active: true,
+                name: req.session.name,
             })
         }
         else {
@@ -451,6 +465,7 @@ const controller = {
                             layout: '/layouts/cms-layout',
                             title: 'CMS Donate | The Initiative PH',
                             donate_active: true,
+                            name: req.session.name,
                             donate_info: resultArray,
                         });
                     }
@@ -469,6 +484,7 @@ const controller = {
                 layout: '/layouts/cms-layout',
                 title: 'CMS Add Donation Option | The Initiative PH',
                 donate_active: true,
+                name: req.session.name,
             })
         }
         else {
@@ -491,6 +507,7 @@ const controller = {
                 donate_number: donate_number,
                 donate_id: donate_id,
                 donate_active: true,
+                name: req.session.name,
             })
         }
         else {
