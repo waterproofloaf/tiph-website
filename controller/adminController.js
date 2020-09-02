@@ -54,6 +54,7 @@ const adminController = {
         var admin_username = helper.sanitize(req.body.admin_username);
         var admin_password = helper.sanitize(req.body.admin_password);
         var admin_new_password = `${req.body.admin_new_password}`;
+        var admin_confirm_password = `${req.body.admin_confirm_password}`;
         var admin_dept = `${req.body.admin_dept}`;
 
         var filter = {
@@ -64,8 +65,37 @@ const adminController = {
             if (user){
                 bcrypt.compare(admin_password, user.password, function(err, equal){
                     if(equal){
+                        if(admin_new_password != admin_confirm_password){
+                            var query = req.session.userid;
+                            database.findOne(User, { _id: query }, {}, function (admin) {
+                                res.render('cms-admin-edit', {
+                                    layout: '/layouts/cms-layout',
+                                    title: 'CMS Edit Admin | The Initiative PH',
+                                    admin_name: admin.name,
+                                    admin_username: admin.username,
+                                    admin_dept: admin.userDepartment,
+                                    type: req.session.type,
+                                    name: req.session.name,
+                                    userid: req.session.userid,
+                                    loginErrorMessage: 'New Password and Confirm Password do not match!'
+                                });
+                            });
+                        }
                         database.findOne(User, {username: admin_username}, {}, function(all){
-                            if(all.username == admin_username && req.session.userid != all._id){
+                            if(all == null){
+                                bcrypt.hash(admin_new_password, 10, function(err, hash){
+                                    let admin_details = {
+                                        name: admin_name,
+                                        username: admin_username,
+                                        password: hash,
+                                        userDepartment: admin_dept,
+                                    }
+                        
+                                    database.updateOne(User, filter, admin_details);
+                                    res.redirect('/cms-logout');
+                                })
+                            }
+                            else if(all.username == admin_username && req.session.userid != all._id){
                                 var query = req.session.userid;
                                 database.findOne(User, { _id: query }, {}, function (admin) {
                                     res.render('cms-admin-edit', {
@@ -94,7 +124,7 @@ const adminController = {
                                     res.redirect('/cms-logout');
                                 })
                             }
-                        })
+                        });
                         
                     }
                     else{
@@ -109,7 +139,7 @@ const adminController = {
                                 type: req.session.type,
                                 name: req.session.name,
                                 userid: req.session.userid,
-                                loginErrorMessage: 'Old password do not match the database!'
+                                loginErrorMessage: 'Old password is incorrect!'
                             });
                         });
                     }

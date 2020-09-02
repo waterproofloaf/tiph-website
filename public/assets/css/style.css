@@ -672,6 +672,16 @@ ul{
   margin-top: 30px;
 }
 
+#cmssubmit {
+  transition-duration: 0.4s;
+}
+
+#cmssubmit:hover {
+  transition-duration: 0.4s;
+  background-color: #0c5865;
+}
+
+
 /* Donate Icon */
 .fa-circle{
   color: #0c5865 !important;
