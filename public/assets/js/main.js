@@ -1,8 +1,8 @@
 //About Us Toggle
-$(document).ready(function (){
-  $('.about-info').click(function() { 
-    $(this).find('i').toggleClass('fas fa-plus-circle fas fa-minus-circle'); 
-  });   
+$(document).ready(function () {
+  $('.about-info').click(function () {
+    $(this).find('i').toggleClass('fas fa-plus-circle fas fa-minus-circle');
+  });
 })
 
 // CMS Table Sort
@@ -27,7 +27,7 @@ $(document).ready(function () {
     "aaSorting": [],
     columnDefs: [{
       orderable: false,
-      targets: [ 4]
+      targets: [4]
     }]
   })
 
@@ -241,6 +241,14 @@ var projQuill = new Quill('#proj-quill', {
   theme: 'snow'
 });
 
+var proj_form = document.getElementById("proj_form");
+proj_form.onsubmit = function () {
+  var proj_content = document.querySelector('input[name=proj_content]');
+  proj_content.value = projQuill.root.innerHTML;
+  console.log(proj_content);
+  return true;
+};
+
 var quill = new Quill('#editor-container', {
   modules: {
     toolbar: [
@@ -268,23 +276,5 @@ form.onsubmit = function () {
   console.log("New Blog Submitted", $(form).serialize(), $(form).serializeArray());
 
   alert('New Blog Submitted!')
-  return false;
-};
-
-var projForm = document.querySelector('form');
-form.onsubmit = function () {
-  // Populate hidden form on submit
-  var proj_content = document.getElementById('proj_content');
-
-  editor.on('text-change', function () {
-    var deltaProj = editor.getContents();
-    var innerProj = projQuill.root.innerHTML;
-    proj_content.innerHTML = JSON.stringify(deltaProj);
-    //proj_content.innerHTML = innerProj;
-  });
-
-  console.log("New Project Submitted", $(form).serialize(), $(form).serializeArray());
-
-  alert('New Project Submitted!')
   return false;
 };
