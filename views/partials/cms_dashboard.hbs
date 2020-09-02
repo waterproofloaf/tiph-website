@@ -33,12 +33,14 @@
           <p>Applicants</p>
         </a>
       </li>
+      {{#if type}}
       <li class="{{#if admin_active}} active {{/if}}">
         <a href="cms-admin">
           <i class="nc-icon nc-single-02"></i>
           <p>Admins</p>
         </a>
       </li>
+      {{/if}}
       <li {{#if blog_active}}class="active " {{/if}}>
         <a href="cms-blog">
           <i class="nc-icon nc-laptop"></i>

@@ -32,71 +32,34 @@
                   <th class="text-left" style="width:30%">
                     Department
                   </th>
-                  <th class="text-center" style="width:10%">
-                    Edit
+                  <th class="text-left" style="width:40%">
+                    Main Admin
                   </th>
                   <th class="text-center" style="width:10%">
                     Delete
                   </th>
                 </thead>
                 <tbody>
+                  {{#each admin_info}}
                   <tr>
                     <td>
-                      Juan Dela Cruz
+                      {{this.name}}
                     </td>
                     <td class="admin-username">
-                      juandelacruz
+                      {{this.username}}
                     </td>
                     <td>
-                      Administrative Affairs
+                      {{this.userDepartment}}
+                    </td>
+                    <td>
+                      {{this.userType}}
                     </td>
                     <td class="text-right">
-                      <a href="cms-admin-edit"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
+                      <a href="/cms-admin/delete?id={{this._id}}"><button id="{{this._id}}" type="button"
                           class="btn btn-outline-danger">Delete</button></a>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      Kang Seulgi
-                    </td>
-                    <td class="admin-username">
-                      kang_seulgi
-                    </td>
-                    <td>
-                      Publications and Communications
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-admin-edit"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Oh Sehun
-                    </td>
-                    <td class="admin-username">
-                      ohsehun
-                    </td>
-                    <td>
-                      Marketing, Finance, and Logistics
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-admin-edit"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                  </tr>
+                  {{/each}}
                 </tbody>
               </table>
             </div>
