@@ -58,7 +58,7 @@
         {{!-- FOR MONGODB --}}
         {{# each donate_info}}
         {{!-- {{if donate_hide}}{{else}} --}}
-        <div class="col-lg mb-3" style={{# if this.donate_hide}}"display: none;"{{else}}"display: flex;"{{/if}}>
+        <div class="col-lg mb-3 justify-content-center" style={{# if this.donate_visible}}"display: flex;"{{else}}"display: none;"{{/if}}>
           <div
             class="card-body {{#equals this.donate_type "GCash"}}card-gcash{{/equals}}{{#equals this.donate_type "PayMaya"}}card-paymaya{{/equals}}{{#equals this.donate_type "BDO"}}card-bdo{{/equals}}{{#equals this.donate_type "BPI"}}card-bpi{{/equals}}">
             {{#equals this.donate_type "GCash"}}

@@ -13,7 +13,7 @@ var DonateModel = new mongoose.Schema({
         type: Number,
         required: true
     },
-    donate_hide: {
+    donate_visible: {
         type: Boolean,
         required: true
     }

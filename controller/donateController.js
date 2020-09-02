@@ -10,13 +10,13 @@ const donateController = {
         var donate_type = req.body.donate_type;
         var donate_name = req.body.donate_name;
         var donate_number = req.body.donate_number;
-        var donate_hide = false;
+        var donate_visible = true;
 
         var donate_details = {
             donate_type: donate_type,
             donate_name: donate_name,
             donate_number: donate_number,
-            donate_hide: donate_hide
+            donate_visible: donate_visible
         }
 
         database.insertOne(Donate, donate_details, function (flag) {
@@ -59,14 +59,14 @@ const donateController = {
 
     donateToggle: function (req, res) {
         var donate_id = req.query.id;
-        var donate_hide = req.query.hide;
+        var donate_visible = req.query.visible;
 
         var filter = {
             _id: ObjectID(donate_id)
         }
 
         var donate_details = {
-            donate_hide: donate_hide
+            donate_visible: donate_visible
         }
 
         database.updateOne(Donate, filter, donate_details);
