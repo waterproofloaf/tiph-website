@@ -218,6 +218,19 @@ const controller = {
         }
     },
 
+    getCMSApplicantOverview: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            res.render('cms-applicant-overview', {
+                layout: '/layouts/cms-layout',
+                title: 'Volunteer Applicants | The Initiative PH',
+                applicant_active: true,
+            })
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+
     getCMSApplicant: function (req, res) {
         var MongoClient = require('mongodb').MongoClient;
         // var url = "mongodb://localhost:27017/tiph";
