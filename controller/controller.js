@@ -156,7 +156,8 @@ const controller = {
 
     getCMSLogin: function (req, res) {
         res.render('cms-login', {
-            title: 'CMS Login | The Initiative PH',
+            layout: '/layouts/main',
+            title: 'Login | The Initiative PH',
         })
     },
 

@@ -25,7 +25,8 @@ const logIncontroller = {
                     }
                     else{
                         res.render('cms-login', {
-                            title: 'Login | TIPH',
+                            layout: '/layouts/main',
+                            title: 'Login | The Initiative PH',
                             login_active: true,
                             loginErrorMessage: 'Invalid credentials!'
                         });
@@ -34,7 +35,8 @@ const logIncontroller = {
             }
             else{
                 res.render('cms-login', {
-                    title: 'Login | TIPH',
+                    layout: '/layouts/main',
+                    title: 'Login | The Initiative PH',
                     login_active: true,
                     loginErrorMessage: 'Invalid credentials!'
                 });
