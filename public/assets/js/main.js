@@ -11,7 +11,7 @@ $(document).ready(function () {
     "aaSorting": [],
     columnDefs: [{
       orderable: false,
-      targets: [3, 4, 5]
+      targets: [3, 4, 5, 6]
     }]
   })
 
@@ -148,6 +148,35 @@ function proj_change(checkbox) {
     $.ajax({
       url: "/cms-project/toggle/",
       data: { id: self, publish: "false" },
+      success: function (response) {
+        $(this).removeAttr("checked");
+      },
+      error: function (xhr) { }
+    });
+  }
+}
+
+// CMS Project Showcase Toggle
+function proj_showcase(checkbox) {
+
+  //If it is checked.
+  var self = $(checkbox).attr('id');
+  if (checkbox.checked) {
+    $.ajax({
+      url: "/cms-project/showcase/",
+      data: { id: self, showcase: "true" },
+      success: function (response) {
+        $(this).attr("checked", "checked");
+      },
+      error: function (xhr) { }
+    });
+  }
+
+  //If it has been unchecked.
+  else {
+    $.ajax({
+      url: "/cms-project/showcase/",
+      data: { id: self, showcase: "false" },
       success: function (response) {
         $(this).removeAttr("checked");
       },
