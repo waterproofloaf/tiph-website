@@ -11,7 +11,7 @@ var BlogModel = new mongoose.Schema({
     },
     blog_content: {
         type: String,
-        //required: true -- commented out, to be fixed
+        required: true
     },
     blog_date: {
         type: String,
@@ -24,6 +24,9 @@ var BlogModel = new mongoose.Schema({
         type: String,
         required: true
     },
+    blog_preview:{
+        type: String
+    },
     blog_published: {
         type: Boolean,
         required: true
@@ -31,15 +34,3 @@ var BlogModel = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Blog', BlogModel);
-
-exports.getAll = function (next) {
-    BlogModel.find({}).sort({}).exec(function (err, result) {
-        if (err) throw err;
-        var blogObjects = [];
-
-        result.forEach(function (doc) {
-            blogObjects.push(doc.toObject());
-        });
-        next(blogObjects);
-    })
-}

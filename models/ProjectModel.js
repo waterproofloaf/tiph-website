@@ -7,7 +7,7 @@ var ProjectModel = new mongoose.Schema({
     },
     proj_content: {
         type: String,
-        //required: true -- commented out to be fixed
+        required: true
     },
     proj_date: {
         type: String,
@@ -39,15 +39,3 @@ var ProjectModel = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Project', ProjectModel);
-
-exports.getAll = function (next) {
-    ProjectModel.find({}).sort({}).exec(function (err, result) {
-        if (err) throw err;
-        var projObjects = [];
-
-        result.forEach(function (doc) {
-            projObjects.push(doc.toObject());
-        });
-        next(projObjects);
-    })
-}

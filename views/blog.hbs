@@ -46,9 +46,7 @@
       <div class="col-lg-9 blog-post">
         <a href="/ablog?id={{this._id}}" style="text-decoration: none"><h5 class="card-title blog-title" style="font-size: 25px;">{{this.blog_title}}</h5></a>
         <h6 class="card-subtitle mb-2 text-muted blog-author">By {{this.blog_author}}</h6>
-        <p class="sub-caption blog-caption">Some quick example text to build on the card title and make up the bulk of
-          the card's
-          content.</p>
+        <p class="sub-caption blog-caption">{{this.blog_preview}}</p>
         {{!-- <a href="/a-blog/view?id={{this._id}}&title={{this.blog_title}}&author={{this.blog_author}}&date={{this.blog_date}}" class="card-link" id="{{this._id}}">Read more</a> --}}
         <a href="/a-blog?id={{this._id}}" class="card-link" id="{{this._id}}">Read more</a>
       </div>

@@ -11,6 +11,7 @@ const blogController = {
         var blog_content = req.body.blog_content;
         var blog_date = today.getMonth() + "/" + today.getDate() + "/" + today.getFullYear();
         var blog_keywords = req.body.blog_keywords;
+        var blog_preview = req.body.blog_preview;
         var blog_published = true;
 
         var newBlog = {
@@ -19,6 +20,7 @@ const blogController = {
             blog_content: blog_content,
             blog_date: blog_date,
             blog_keywords: blog_keywords,
+            blog_preview: blog_preview,
             blog_published: blog_published
         }
 
@@ -41,6 +43,7 @@ const blogController = {
                 blog_author: blog.blog_author,
                 blog_date: blog.blog_date,
                 blog_content: blog.blog_content,
+                blog_preview: blog.blog_preview,
                 blog_active: true,
             });
         });
@@ -61,6 +64,7 @@ const blogController = {
         var blog_author = req.body.blog_author;
         var blog_content = req.body.blog_content;
         var blog_date = req.body.blog_date;
+        var blog_preview = req.body.blog_preview;
         var blog_keywords = req.body.blog_keywords;
         var blog_id = req.query.id;
 
@@ -72,6 +76,7 @@ const blogController = {
             blog_title: blog_title,
             blog_author: blog_author,
             blog_content: blog_content,
+            blog_preview: blog_preview,
             blog_date: blog_date,
             blog_keywords: blog_keywords,
         }
