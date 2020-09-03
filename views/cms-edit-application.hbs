@@ -6,10 +6,10 @@
         </div>
         <div id="cms-app-form-container" class="row">
             <div class="col-md-12">
-                <form method="get">
+                <form method="post" id="apps_form">
                     <div class="card cms-app">
                         <div class="card-header">
-                            <h5>Edit Application Form</h5>
+                            <h5>Edit Application Form:</h5>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -20,7 +20,7 @@
                             <div class="form-group">
                                 <label for="cms-apps-content">Description</label>
                                 <input name="cms-apps-content" type="hidden" id="cms-apps-content">
-                                <div id="editor-container" class="cms-apps-content">
+                                <div id="apps-quill">
                                     The Initiative PH (TIPH) is a youth-run volunteer organization that coordinates
                                     relief efforts and organizes sustainable programs for poverty-, calamity-, and
                                     conflict- ridden areas
@@ -201,7 +201,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-outline-success">SAVE</button>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success">SAVE</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -209,3 +211,25 @@
         </div>
     </div>
 </div>
+
+<script>
+    var appQuill = new Quill('#apps-quill', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                ['link', 'blockquote', 'code-block', 'image'],
+                [{ list: 'ordered' }, { list: 'bullet' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var apps_form = document.getElementById("apps_form");
+    apps_form.onsubmit = function () {
+        var apps_content = document.querySelector('input[name=cms-apps-content]');
+        apps_content.value = appQuill.root.innerHTML;
+        console.log(apps_content);
+        return true;
+    };
+</script>

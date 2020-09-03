@@ -6,45 +6,27 @@
         </div>
         <div id="form-container" class="row">
             <div class="col-md-12">
-                <form method="get">
+                <form method="post" id="preapps_form">
                     <div class="card cms-blog">
                         <div class="card-header">
                             <h5>Edit Pre-Application Form:</h5>
                         </div>
                         <div class="card-body">
-                            <!-- <form method="post" action="/addBlog"> -->
                             <div class="form-group">
-                                <label for="cms-pre-apps-date">Year</label>
-                                <input type="number" class="form-control" id="cms-pre-apps-date" placeholder="Year"
-                                    name="cms-pre-apps-date">
+                                <label for="cms_pre_apps_date">Year</label>
+                                <input type="number" class="form-control" id="cms_pre_apps_date" placeholder="Year"
+                                    name="cms_pre_apps_date" value="{{preform_year}}">
                             </div>
                             <div class="form-group">
-                                <label for="cms-pre-apps-content">Description</label>
-                                <input name="cms-pre-apps-content" type="hidden" id="cms-pre-apps-content">
-                                <div id="editor-container" class="cms-pre-apps-content">
-                                    Thank you for showing interest!
-                                    <br><br>
-                                    The Initiative PH (TIPH) is a youth-run volunteer organization that coordinates
-                                    relief efforts and organizes
-                                    sustainable programs for poverty-, calamity, and conflict-ridden areas and
-                                    communities in the Philippines.
-                                    By spearheading youth volunteer efforts, we build solidarity and social
-                                    consciousness among the youth
-                                    regardless of school or social background.
-                                    <br><br>
-                                    Volunteer applications are currently closed until next year, however if you would
-                                    like us to notify you
-                                    immediately when applications will open, you may leave your details here. Signing up
-                                    here does not confirm
-                                    your application to the organization.
-                                    <br><br>
-                                    By filling up this form, you are subscribing to updates regarding when the
-                                    applications will be open. Rest
-                                    assured that your information will be kept confidential in compliance to the Data
-                                    Privacy Act of 2012.
+                                <label for="cms_pre_apps_content">Description</label>
+                                <input name="cms_pre_apps_content" type="hidden" id="cms_pre_apps_content">
+                                <div id="preapps-quill">
+                                    {{{preform_desc}}}
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-outline-success" id="addBlog">SAVE</button>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success">SAVE</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -53,16 +35,24 @@
     </div>
 </div>
 
-{{!-- <div class="cms-blog-form-container">
-    <!-- Form -->
-    <h6><strong> TITLE </strong></h6>
-    <input type="text" name="cms-blog-title" id="cms-blog-title" class="cms-blog-form-text" placeholder="News Title"
-        value required>
-    <h6><strong> CONTENT </strong></h6>
-    <textarea name="cms-blog-content" id="cms-blog-content" class="cms-blog-form-text" placeholder="Lorem ipsum" value
-        required></textarea>
-    <h6><strong> IMAGE </strong></h6>
-    <input type='file' name='upload' class="cms-blog-form-text">
-    <a href="cms-dashboard-b"><button name="cms-blog-submit" id="cms-blog-submit" class="button"><strong>S U B M I
-                T</strong></button></a>
-</div> --}}
+<script>
+    var preappQuill = new Quill('#preapps-quill', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                ['link', 'blockquote', 'code-block', 'image'],
+                [{ list: 'ordered' }, { list: 'bullet' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var preapps_form = document.getElementById("preapps_form");
+    preapps_form.onsubmit = function () {
+        var preapps_content = document.querySelector('input[name=cms_pre_apps_content]');
+        preapps_content.value = preappQuill.root.innerHTML;
+        console.log(preapps_content);
+        return true;
+    };
+</script>

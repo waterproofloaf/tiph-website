@@ -6,6 +6,7 @@ const Project = require('../models/ProjectModel.js');
 const User = require('../models/UserModel.js');
 const PreApp = require('../models/PreAppModel.js');
 const App = require('../models/AppModel.js');
+const PreAppForm = require('../models/PreAppFormModel.js');
 
 // URL of MongoDB database
 const url = "mongodb://localhost:27017/tiph";
@@ -69,11 +70,21 @@ const controller = {
     },
 
     getPreApp: function (req, res) {
-        res.render('pre-application', {
-            layout: '/layouts/main',
-            title: 'Pre-Application | The Initiative PH',
-            volunteer_active: true,
-        })
+        database.findOne(PreAppForm, {}, {}, function (preapp) {
+            res.render('pre-application', {
+                layout: '/layouts/main',
+                title: 'Pre-Application | The Initiative PH',
+                volunteer_active: true,
+                preform_year: preapp.preform_year,
+                preform_desc: preapp.preform_desc,
+            })
+        });
+
+        // res.render('pre-application', {
+        //     layout: '/layouts/main',
+        //     title: 'Pre-Application | The Initiative PH',
+        //     volunteer_active: true,
+        // })
     },
 
     getApplication: function (req, res) {
@@ -225,19 +236,37 @@ const controller = {
     },
 
     getCMSApplication: function (req, res) {
+
         if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-application', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Application | The Initiative PH',
-                application_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
-            })
+            database.findOne(PreAppForm, {}, {}, function (preappsform) {
+                res.render('cms-application', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Application | The Initiative PH',
+                    application_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    preappsform_id: preappsform._id,
+                })
+            });
         }
         else {
             res.redirect('cms-login')
         }
+
+        // if (req.session.user && req.cookies.user_sid) {
+        //     res.render('cms-application', {
+        //         layout: '/layouts/cms-layout',
+        //         title: 'CMS Application | The Initiative PH',
+        //         application_active: true,
+        //         name: req.session.name,
+        //         type: req.session.type,
+        //         userid: req.session.userid,
+        //     })
+        // }
+        // else {
+        //     res.redirect('cms-login')
+        // }
     },
 
     getCMSEditApplication: function (req, res) {
@@ -257,15 +286,20 @@ const controller = {
     },
 
     getCMSEditPreApplication: function (req, res) {
+        var query = req.query.id;
         if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-edit-pre-application', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Pre-Application Form Edit | The Initiative PH',
-                application_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
-            })
+            database.findOne(PreAppForm, { _id: query }, {}, function (preapp) {
+                res.render('cms-edit-pre-application', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Pre-Application Form Edit | The Initiative PH',
+                    application_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    preform_year: preapp.preform_year,
+                    preform_desc: preapp.preform_desc,
+                })
+            });
         }
         else {
             res.redirect('cms-login')
@@ -423,28 +457,28 @@ const controller = {
     getCMSApplicantPreProf: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
             var query = req.query.id;
-        database.findOne(PreApp, { _id: query }, {}, function (prof) {
-            res.render('cms-pre-app-profile', {
-                layout: '/layouts/cms-layout',
-                title: prof.pre_firstname + ' ' + prof.pre_lastname + ' | The Initiative PH',
-                pre_id: prof._id,
-                pre_firstname: prof.pre_firstname,
-                pre_lastname: prof.pre_lastname,
-                pre_age: prof.pre_age,
-                pre_number: prof.pre_number,
-                pre_email: prof.pre_email,
-                pre_schoolcompany: prof.pre_schoolcompany,
-                pre_affiliation: prof.pre_affiliation,
-                pre_facebook: prof.pre_facebook,
-                pre_notify: prof.pre_notify,
-                pre_comments: prof.pre_comments,
-                pre_status: prof.pre_status,
-                applicant_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
+            database.findOne(PreApp, { _id: query }, {}, function (prof) {
+                res.render('cms-pre-app-profile', {
+                    layout: '/layouts/cms-layout',
+                    title: prof.pre_firstname + ' ' + prof.pre_lastname + ' | The Initiative PH',
+                    pre_id: prof._id,
+                    pre_firstname: prof.pre_firstname,
+                    pre_lastname: prof.pre_lastname,
+                    pre_age: prof.pre_age,
+                    pre_number: prof.pre_number,
+                    pre_email: prof.pre_email,
+                    pre_schoolcompany: prof.pre_schoolcompany,
+                    pre_affiliation: prof.pre_affiliation,
+                    pre_facebook: prof.pre_facebook,
+                    pre_notify: prof.pre_notify,
+                    pre_comments: prof.pre_comments,
+                    pre_status: prof.pre_status,
+                    applicant_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                });
             });
-        });
         }
         else {
             res.redirect('cms-login')
