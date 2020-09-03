@@ -16,16 +16,27 @@ const formsController = {
         <p>${req.body.contact_inquiry}</p>
         `;
         if(req.body.contact_upload){
-          var attachment = {
-            filename: `${req.file.filename}`,
-            encoding: `${req.file.encoding}`,
-            path: `${req.file.path}`
-          }
+          var mailOptions = {
+            from: `${req.body.contact_email}`,
+            to: 'victor_tulabot@dlsu.edu.ph',
+            subject: `${req.body.contact_subject}`,
+            html: output,
+            attachments: [
+                {
+                  filename: `${req.file.filename}`,
+                  encoding: `${req.file.encoding}`,
+                  path: `${req.file.path}`
+                }
+            ]
+          };
         }
         else{
-          var attachment = {
-
-          }
+          var mailOptions = {
+            from: `${req.body.contact_email}`,
+            to: 'victor_tulabot@dlsu.edu.ph',
+            subject: `${req.body.contact_subject}`,
+            html: output,
+          };
         }
         
         var transporter = nodemailer.createTransport({
@@ -41,18 +52,6 @@ const formsController = {
               // clientSecret: '0HFvRJ8I4J9A7HhHpGJJFwgC'
             }
           });
-          
-          var mailOptions = {
-            from: `${req.body.contact_email}`,
-            to: 'victor_tulabot@dlsu.edu.ph',
-            subject: `${req.body.contact_subject}`,
-            html: output,
-            attachments: [
-                {
-                    attachment
-                }
-            ]
-          };
           
           transporter.sendMail(mailOptions, function(error, info){
             if (error) {
