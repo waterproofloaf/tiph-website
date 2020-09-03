@@ -113,6 +113,10 @@ const formsController = {
       var app_reason = `${req.body.app_reason}`;
       var app_portfolio = `${req.body.app_portfolio}`;
 
+      if(app_findout == "other"){
+        app_findout = `${req.body.app_others}`
+      }
+
       var newApp = {
         app_firstname: app_firstname,
         app_lastname: app_lastname,

@@ -5,6 +5,7 @@ const Blog = require('../models/BlogModel.js');
 const Project = require('../models/ProjectModel.js');
 const User = require('../models/UserModel.js');
 const PreApp = require('../models/PreAppModel.js');
+const App = require('../models/AppModel.js');
 
 // URL of MongoDB database
 const url = "mongodb://localhost:27017/tiph";
@@ -348,12 +349,13 @@ const controller = {
     },
 
     getCMSApplicantPreProf: function (req, res) {
-        var query = req.query.id;
+        if (req.session.user && req.cookies.user_sid) {
+            var query = req.query.id;
             database.findOne(PreApp, { _id: query }, {}, function (prof) {
                 res.render('cms-pre-app-profile', {
                     layout: '/layouts/cms-layout',
                     //Applicant Name should be changed
-                    title: 'Applicant Name | The Initiative PH',
+                    title: prof.pre_firstname + ' ' + prof.pre_lastname + ' | The Initiative PH',
                     pre_id: prof._id,
                     pre_firstname: prof.pre_firstname,
                     pre_lastname: prof.pre_lastname,
@@ -372,6 +374,10 @@ const controller = {
                     userid: req.session.userid,
                 });
             });
+        }
+        else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplicantApp: function (req, res) {
@@ -407,17 +413,106 @@ const controller = {
             });
     },
 
+    getCMSApplicantAppAccepted: function (req, res) {
+        var MongoClient = require('mongodb').MongoClient;
+        // var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, { useUnifiedTopology: true },
+            function (err, db) {
+                if (err) throw err;
+                var appArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("apps").find();
+                cursor.forEach(function (doc, err) {
+                    appArray.push(doc);
+                },
+                    function () {
+                        if (req.session.user && req.cookies.user_sid) {
+                            res.render('cms-applicant-app-accepted', {
+                                layout: '/layouts/cms-layout',
+                                title: 'CMS Applicants | The Initiative PH',
+                                applicant_active: true,
+                                name: req.session.name,
+                                type: req.session.type,
+                                userid: req.session.userid,
+                                app_info: appArray,
+                            });
+                        }
+                        else {
+                            res.redirect('cms-login')
+                        }
+                        db.close();
+                    });
+
+            });
+    },
+
+    getCMSApplicantAppRejected: function (req, res) {
+        var MongoClient = require('mongodb').MongoClient;
+        // var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, { useUnifiedTopology: true },
+            function (err, db) {
+                if (err) throw err;
+                var appArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("apps").find();
+                cursor.forEach(function (doc, err) {
+                    appArray.push(doc);
+                },
+                    function () {
+                        if (req.session.user && req.cookies.user_sid) {
+                            res.render('cms-applicant-app-rejected', {
+                                layout: '/layouts/cms-layout',
+                                title: 'CMS Applicants | The Initiative PH',
+                                applicant_active: true,
+                                name: req.session.name,
+                                type: req.session.type,
+                                userid: req.session.userid,
+                                app_info: appArray,
+                            });
+                        }
+                        else {
+                            res.redirect('cms-login')
+                        }
+                        db.close();
+                    });
+
+            });
+    },
+
     getCMSApplicantProf: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-app-profile', {
-                layout: '/layouts/cms-layout',
-                //Applicant Name should be changed
-                title: 'Applicant Name | The Initiative PH',
-                applicant_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
-            })
+            var query = req.query.id;
+            database.findOne(App, { _id: query }, {}, function (prof) {
+                res.render('cms-app-profile', {
+                    layout: '/layouts/cms-layout',
+                    //Applicant Name should be changed
+                    title: prof.app_firstname + ' ' + prof.app_lastname + ' | The Initiative PH',
+                    app_id: prof._id,
+                    app_firstname: prof.app_firstname,
+                    app_lastname: prof.app_lastname,
+                    app_nickname: prof.app_nickname,
+                    app_email: prof.app_email,
+                    app_bday: prof.app_bday,
+                    app_cResidence: prof.app_cResidence,
+                    app_schoolcompany: prof.app_schoolcompany,
+                    app_number: prof.app_number,
+                    app_facebook: prof.app_facebook,
+                    app_twitter: prof.app_twitter,
+                    app_findout: prof.app_findout,
+                    app_expertise: prof.app_expertise,
+                    app_dept1: prof.app_dept1,
+                    app_position1: prof.app_position1,
+                    app_dept2: prof.app_dept2,
+                    app_position2: prof.app_position2,
+                    app_reason: prof.app_reason,
+                    app_portfolio: prof.app_portfolio,
+                    app_status: prof.app_status,
+                    applicant_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                });
+            });
         }
         else {
             res.redirect('cms-login')

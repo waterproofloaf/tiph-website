@@ -1,6 +1,6 @@
 <div class="content">
   <div class="cms-breadcrumbs text-uppercase pb-3">
-    <a href="cms-applicant-overview">Manage Applicants</a> / All Application Applicants
+    <a href="cms-applicant-overview">Manage Applicants</a> / All Accepted Application Applicants
   </div>
   <div class="row">
     <div class="col-md-12">
@@ -10,7 +10,7 @@
             <div class="row d-flex align-items-center">
               <div class="col">
                 <h4 class="card-title">
-                  Application Applicants
+                  Accepted Application Applicants
                 </h4>
               </div>
             </div>
@@ -81,24 +81,26 @@
                     </td>
                   </tr> --}}
                   {{#each app_info}}
-                  <tr>
-                    <td>
-                      {{this.app_lastname}}
-                    </td>
-                    <td>
-                      {{this.app_firstname}}
-                    </td>
-                    <td>
-                      {{this.app_email}}
-                    </td>
-                    <td>
-                      {{this.app_status}}
-                    </td>
-                    <td class="text-center">
-                      <a href="/cms-app-profile?id={{this._id}}"><button id="{{this._id}}" type="button"
-                          class="btn btn-outline-info">Review</button></a>
-                    </td>
-                  </tr>
+                    {{#equals app_status "Accepted"}}
+                        <tr>
+                            <td>
+                            {{this.app_lastname}}
+                            </td>
+                            <td>
+                            {{this.app_firstname}}
+                            </td>
+                            <td>
+                            {{this.app_email}}
+                            </td>
+                            <td>
+                            {{this.app_status}}
+                            </td>
+                            <td class="text-center">
+                            <a href="/cms-app-profile?id={{this._id}}"><button id="{{this._id}}" type="button"
+                                class="btn btn-outline-info">Review</button></a>
+                            </td>
+                        </tr>
+                    {{/equals}}
                   {{/each}}
                 </tbody>
               </table>

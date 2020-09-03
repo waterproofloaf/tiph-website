@@ -1,4 +1,5 @@
 const PreApp = require('../models/PreAppModel.js');
+const App = require('../models/AppModel.js');
 const database = require('../models/db.js');
 const { ObjectID } = require('mongodb');
 
@@ -60,6 +61,51 @@ const applicationController = {
 
         database.updateOne(PreApp, filter, pre_details);
         res.redirect('/cms-applicant-pre');
+    },
+
+    AcceptAppApplicant: function (req, res) {
+        var app_id = req.query.id;
+
+        var filter = {
+            _id: ObjectID(app_id)
+        }
+
+        var app_details = {
+            app_status: "Accepted"
+        }
+
+        database.updateOne(App, filter, app_details);
+        res.redirect('/cms-applicant-app');
+    },
+
+    RejectAppApplicant: function (req, res) {
+        var app_id = req.query.id;
+
+        var filter = {
+            _id: ObjectID(app_id)
+        }
+
+        var app_details = {
+            app_status: "Rejected"
+        }
+
+        database.updateOne(App, filter, app_details);
+        res.redirect('/cms-applicant-app');
+    },
+
+    PendingAppApplicant: function (req, res) {
+        var app_id = req.query.id;
+
+        var filter = {
+            _id: ObjectID(app_id)
+        }
+
+        var app_details = {
+            app_status: "Pending"
+        }
+
+        database.updateOne(App, filter, app_details);
+        res.redirect('/cms-applicant-app');
     },
 }
 

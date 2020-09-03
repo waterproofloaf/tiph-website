@@ -43,7 +43,7 @@ $(document).ready(function () {
     "aaSorting": [],
     columnDefs: [{
       orderable: false,
-      targets: [3, 4, 5]
+      targets: [4]
     }]
   });
 });

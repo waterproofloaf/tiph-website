@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         {{!-- Applicant Name should be changed --}}
-                        <h4 class="card-title">Applicant's Name Pre-Application Details</h4>
+                        <h4 class="card-title">{{this.app_firstname}} {{this.app_lastname}} Application Details</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive text-center">
@@ -25,44 +25,44 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            Name: test
+                                            <b>Name: </b> {{this.app_firstname}} {{this.app_lastname}}
                                         </td>
                                         <td>
-                                            Contact Number: 09#########
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Nickname: test
-                                        </td>
-                                        <td>
-                                            Email Address: email@email.com
+                                            <b>Contact Number: </b> {{this.app_number}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Date of Birth: 30/01/1999
+                                            <b>Nickname: </b> {{this.app_nickname}}
                                         </td>
                                         <td>
-                                            Facebook URL: facebook name
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            City of Residence: Sta. Rosa
-                                        </td>
-                                        <td>
-                                            Twitter URL: optional
+                                            <b>Email Address: </b> {{this.app_email}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            School/Company: DLSU
+                                            <b>Date of Birth: </b> {{this.app_bday}}
+                                        </td>
+                                        <td>
+                                            <b>Facebook URL: </b> {{this.app_facebook}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            How did you find out about TIPH: indicate their choice
+                                            <b>City of Residence: </b> {{this.app_cResidence}}
+                                        </td>
+                                        <td>
+                                            <b>Twitter URL: </b> {{this.app_twitter}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>School/Company: </b> {{this.app_schoolcompany}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>How did you find out about TIPH: </b> {{this.app_findout}}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -77,8 +77,7 @@
                                     <tr>
                                         {{!-- Every new line should break to be more readable--}}
                                         <td>
-                                            Legal Matters
-                                            <br>File Organization
+                                            {{this.app_expertise}}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -95,18 +94,18 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            Department of Mental Health
+                                            {{this.app_dept1}}
                                         </td>
                                         <td>
-                                            Multimedia Artist
+                                            {{this.app_position1}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Department of SOGIE Rights
+                                            {{this.app_dept2}}
                                         </td>
                                         <td>
-                                            Multimedia Artist
+                                            {{this.app_position2}}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -120,7 +119,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            I volunteer because....
+                                            {{this.app_reason}}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -128,23 +127,53 @@
                             {{!-- Add Upload Code Here maybe on Sprint 3--}}
                             <table class="table text-left">
                                 <thead class="text-primary">
+                                    {{#equals this.app_status "Pending"}}
                                     <th>
                                         Do you accept or reject this applicant?
                                     </th>
                                     <tr>
                                         <td>
-                                            <a href="">
-                                                <button id="blogeditbtn" type="button" class="btn btn-outline-success">
-                                                    Accept
+                                            <a href="/cms-applicant-app/accept?id={{this.app_id}}">
+                                                <button id="{{this.app_id}}" type="button" class="btn btn-outline-success">
+                                                 Accept
                                                 </button>
                                             </a>
-                                            <a href="">
-                                                <button id="blogeditbtn" type="button" class="btn btn-outline-danger">
+                                            <a href="/cms-applicant-app/reject?id={{this.app_id}}">
+                                                <button id="{{this.app_id}}" type="button" class="btn btn-outline-danger">
                                                     Reject
                                                 </button>
                                             </a>
                                         </td>
                                     </tr>
+                                    {{/equals}}
+                                    {{#equals this.app_status "Accepted"}}
+                                        <th>
+                                            Revert status of this applicant
+                                        </th>
+                                        <tr>
+                                            <td>
+                                                <a href="/cms-applicant-app/pending?id={{this.app_id}}">
+                                                    <button id="{{this.app_id}}" type="button" class="btn btn-outline-success">
+                                                    Pending
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {{/equals}}
+                                    {{#equals this.app_status "Rejected"}}
+                                        <th>
+                                            Revert status of this applicant
+                                        </th>
+                                        <tr>
+                                            <td>
+                                                <a href="/cms-applicant-pre/pending?id={{this.app_id}}">
+                                                    <button id="{{this.app_id}}" type="button" class="btn btn-outline-success">
+                                                    Pending
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {{/equals}}
                                 </thead>
                             </table>
                         </div>
