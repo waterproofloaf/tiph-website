@@ -13,6 +13,7 @@ const projectController = {
         var proj_preview = req.body.proj_preview;
         var proj_status = req.body.proj_status;
         var proj_published = true;
+        var proj_showcase = true;
 
         var newProject = {
             proj_title: proj_title,
@@ -21,7 +22,8 @@ const projectController = {
             proj_keywords: proj_keywords,
             proj_preview: proj_preview,
             proj_status: proj_status,
-            proj_published: proj_published
+            proj_published: proj_published,
+            proj_showcase: proj_showcase,
         }
 
         database.insertOne(Project, newProject, function (f) {
@@ -94,6 +96,22 @@ const projectController = {
 
         var proj_details = {
             proj_published: proj_published
+        }
+
+        database.updateOne(Project, filter, proj_details);
+        res.redirect('/cms-project');
+    },
+
+    projShowcase: function (req, res) {
+        var proj_id = req.query.id;
+        var proj_showcase = req.query.showcase;
+
+        var filter = {
+            _id: ObjectID(proj_id)
+        }
+
+        var proj_details = {
+            proj_showcase: proj_showcase
         }
 
         database.updateOne(Project, filter, proj_details);

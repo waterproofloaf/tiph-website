@@ -132,6 +132,7 @@ app.post('/cms-blog-new-page', blogController.postBlog);
 app.get('/cms-project', controller.getCMSProject);
 app.get('/cms-project/delete/', projectController.deleteProject);
 app.get('/cms-project/toggle/', projectController.projToggle);
+app.get('/cms-project/showcase/', projectController.projShowcase);
 app.get('/cms-project-page', controller.getCMSProjectPage);
 app.post('/cms-project-page', projectController.editProject);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);

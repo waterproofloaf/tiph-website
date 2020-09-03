@@ -14,11 +14,39 @@ const url = "mongodb://localhost:27017/tiph";
 const controller = {
 
     getHomePage: function (req, res) {
-        res.render('home', {
-            layout: '/layouts/main',
-            title: 'Home | The Initiative PH',
-            home_active: true,
-        })
+        var MongoClient = require('mongodb').MongoClient;
+        MongoClient.connect(url, { useUnifiedTopology: true },
+            function (err, db) {
+                if (err) throw err;
+                var homeActive = [];
+                var homeCarousel = [];
+                var query = { proj_showcase: true };
+                var dbo = db.db("tiph");
+                var homeactive = dbo.collection("projects").find(query).limit(1);
+                homeactive.forEach(function (doc, err) {
+                    homeActive.push(doc);
+                    var homecarousel = dbo.collection("projects").find(query).skip(1);
+                    homecarousel.forEach(function (doc, err) {
+                        homeCarousel.push(doc);
+                    },
+                        function () {
+                            res.render('home', {
+                                layout: '/layouts/main',
+                                title: 'Home | The Initiative PH',
+                                home_active: true,
+                                homeactive: homeActive,
+                                home_carousel: homeCarousel,
+                            });
+                            db.close();
+                        });
+                });
+            });
+
+        // res.render('home', {
+        //     layout: '/layouts/main',
+        //     title: 'Home | The Initiative PH',
+        //     home_active: true,
+        // })
     },
 
     getAboutUs: function (req, res) {

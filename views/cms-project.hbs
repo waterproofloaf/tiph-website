@@ -29,7 +29,7 @@
                   <th style="width:15%">
                     Date
                   </th>
-                  <th style="width:25%">
+                  <th style="width:15%">
                     Status
                   </th>
                   <th class="text-center" style="width:10%">
@@ -40,6 +40,9 @@
                   </th>
                   <th class="text-center" style="width:10%">
                     Published
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Showcase
                   </th>
                 </thead>
                 <tbody id="entries-table">
@@ -95,10 +98,17 @@
                       <a href="/cms-project/delete?id={{this._id}}"><button id="blogeditbtn" type="button"
                           class="btn btn-outline-danger">Delete</button></a>
                     </td>
-                    <td class="text-right">
+                    <td class="text-center">
                       <label class="switch">
                         <input type="checkbox" id="{{this._id}}" onclick="proj_change(this)"
                           {{#if proj_published}}checked{{/if}}>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                    <td class="text-center">
+                      <label class="switch">
+                        <input type="checkbox" id="{{this._id}}" onclick="proj_showcase(this)"
+                          {{#if proj_showcase}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>
                     </td>

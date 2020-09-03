@@ -31,6 +31,10 @@ var ProjectModel = new mongoose.Schema({
     proj_published: {
         type: Boolean,
         required: true
+    },
+    proj_showcase: {
+        type: Boolean,
+        required: true
     }
 });
 
