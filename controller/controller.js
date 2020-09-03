@@ -4,6 +4,7 @@ const Donate = require('../models/DonateModel.js');
 const Blog = require('../models/BlogModel.js');
 const Project = require('../models/ProjectModel.js');
 const User = require('../models/UserModel.js');
+const PreApp = require('../models/PreAppModel.js');
 
 // URL of MongoDB database
 const url = "mongodb://localhost:27017/tiph";
@@ -280,21 +281,96 @@ const controller = {
             });
     },
 
+    getCMSApplicantPreAccepted: function (req, res) {
+        var MongoClient = require('mongodb').MongoClient;
+        // var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, { useUnifiedTopology: true },
+            function (err, db) {
+                if (err) throw err;
+                var preappArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("preapps").find();
+                cursor.forEach(function (doc, err) {
+                    preappArray.push(doc);
+                },
+                    function () {
+                        if (req.session.user && req.cookies.user_sid) {
+                            res.render('cms-applicant-pre-accepted', {
+                                layout: '/layouts/cms-layout',
+                                title: 'CMS Applicants | The Initiative PH',
+                                applicant_active: true,
+                                name: req.session.name,
+                                type: req.session.type,
+                                userid: req.session.userid,
+                                preapp_info: preappArray,
+                            });
+                        }
+                        else {
+                            res.redirect('cms-login')
+                        }
+                        db.close();
+                    });
+
+            });
+    },
+
+    getCMSApplicantPreRejected: function (req, res) {
+        var MongoClient = require('mongodb').MongoClient;
+        // var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, { useUnifiedTopology: true },
+            function (err, db) {
+                if (err) throw err;
+                var preappArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("preapps").find();
+                cursor.forEach(function (doc, err) {
+                    preappArray.push(doc);
+                },
+                    function () {
+                        if (req.session.user && req.cookies.user_sid) {
+                            res.render('cms-applicant-pre-rejected', {
+                                layout: '/layouts/cms-layout',
+                                title: 'CMS Applicants | The Initiative PH',
+                                applicant_active: true,
+                                name: req.session.name,
+                                type: req.session.type,
+                                userid: req.session.userid,
+                                preapp_info: preappArray,
+                            });
+                        }
+                        else {
+                            res.redirect('cms-login')
+                        }
+                        db.close();
+                    });
+
+            });
+    },
+
     getCMSApplicantPreProf: function (req, res) {
-        if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-pre-app-profile', {
-                layout: '/layouts/cms-layout',
-                //Applicant Name should be changed
-                title: 'Applicant Name | The Initiative PH',
-                applicant_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
-            })
-        }
-        else {
-            res.redirect('cms-login')
-        }
+        var query = req.query.id;
+            database.findOne(PreApp, { _id: query }, {}, function (prof) {
+                res.render('cms-pre-app-profile', {
+                    layout: '/layouts/cms-layout',
+                    //Applicant Name should be changed
+                    title: 'Applicant Name | The Initiative PH',
+                    pre_id: prof._id,
+                    pre_firstname: prof.pre_firstname,
+                    pre_lastname: prof.pre_lastname,
+                    pre_age: prof.pre_age,
+                    pre_number: prof.pre_number,
+                    pre_email: prof.pre_email,
+                    pre_schoolcompany: prof.pre_schoolcompany,
+                    pre_affiliation: prof.pre_affiliation,
+                    pre_facebook: prof.pre_facebook,
+                    pre_notify: prof.pre_notify,
+                    pre_comments: prof.pre_comments,
+                    applicant_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                });
+            });
     },
 
     getCMSApplicantApp: function (req, res) {

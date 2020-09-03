@@ -5,11 +5,11 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form>
+            <form method="POST">
                 <div class="card">
                     <div class="card-header">
                         {{!-- Applicant Name should be changed --}}
-                        <h4 class="card-title">Applicant's Name Pre-Application Details</h4>
+                        <h4 class="card-title">{{this.pre_firstname}} {{this.pre_lastname}} Pre-Application Details</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive text-center">
@@ -22,22 +22,22 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            Name: test
+                                            <b>Name: </b> {{this.pre_firstname}} {{this.pre_lastname}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Age: 19
+                                            <b>Age: </b> {{this.pre_age}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            School/Company: DLSU
+                                            <b>School/Company: </b> {{this.pre_schoolcompany}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Affilation with School/Company: Student
+                                            <b>Affilation with School/Company: </b> {{this.pre_affiliation}}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -51,22 +51,22 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            Contact Number: 09#########
+                                            <b>Contact Number: </b> {{this.pre_number}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Email Address: email@email.com
+                                            <b>Email Address: </b> {{this.pre_email}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Facebook URL: facebook name
+                                            <b>Facebook URL: </b> {{this.pre_facebook}}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            Mode of Notification: depends on the application answer
+                                            <b>Mode of Notification: </b> {{this.pre_notify}}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -80,7 +80,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            Put comments here!
+                                            {{this.pre_comments}}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -92,13 +92,13 @@
                                     </th>
                                     <tr>
                                         <td>
-                                            <a href="">
-                                                <button id="blogeditbtn" type="button" class="btn btn-outline-success">
+                                            <a href="/cms-applicant-pre/accept?id={{this.pre_id}}">
+                                                <button id="{{this.pre_id}}" type="button" class="btn btn-outline-success">
                                                  Accept
                                                 </button>
                                             </a>
-                                            <a href="">
-                                                <button id="blogeditbtn" type="button" class="btn btn-outline-danger">
+                                            <a href="/cms-applicant-pre/reject?id={{this.pre_id}}">
+                                                <button id="{{this.pre_id}}" type="button" class="btn btn-outline-danger">
                                                     Reject
                                                 </button>
                                             </a>
