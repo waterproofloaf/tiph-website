@@ -70,6 +70,10 @@ var AppModel = new mongoose.Schema({
     },
     app_portfolio: {
         type: String,
+    },
+    app_status: {
+        type: String,
+        required: true,
     }
 });
 

@@ -81,7 +81,8 @@ const formsController = {
           pre_affiliation: pre_affiliation,
           pre_facebook: pre_facebook,
           pre_notify: pre_notify,
-          pre_comments: pre_comments
+          pre_comments: pre_comments,
+          pre_status: "Pending"
       }
 
       database.insertOne(PreApp, newPreApp, function (f) {
@@ -131,6 +132,7 @@ const formsController = {
         app_position2: app_position2,
         app_reason: app_reason,
         app_portfolio: app_portfolio,
+        app_status: "Pending"
     }
 
       database.insertOne(App, newApp, function (f) {
