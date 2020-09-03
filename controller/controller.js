@@ -21,24 +21,35 @@ const controller = {
                 var homeCarousel = [];
                 var query = { proj_showcase: true };
                 var dbo = db.db("tiph");
-                var homeactive = dbo.collection("projects").find(query).limit(1);
-                homeactive.forEach(function (doc, err) {
-                    homeActive.push(doc);
-                    var homecarousel = dbo.collection("projects").find(query).skip(1);
-                    homecarousel.forEach(function (doc, err) {
-                        homeCarousel.push(doc);
-                    },
-                        function () {
-                            res.render('home', {
-                                layout: '/layouts/main',
-                                title: 'Home | The Initiative PH',
-                                home_active: true,
-                                homeactive: homeActive,
-                                home_carousel: homeCarousel,
-                            });
-                            db.close();
+                var count = dbo.collection("projects").find(query).count();
+                count.then(function (result) {
+                    if (result == 0) {
+                        res.render('home', {
+                            layout: '/layouts/main',
+                            title: 'Home | The Initiative PH',
+                            home_active: true,
+                        })
+                    } else {
+                        var homeactive = dbo.collection("projects").find(query).limit(1);
+                        homeactive.forEach(function (doc, err) {
+                            homeActive.push(doc);
+                            var homecarousel = dbo.collection("projects").find(query).skip(1);
+                            homecarousel.forEach(function (doc, err) {
+                                homeCarousel.push(doc);
+                            },
+                                function () {
+                                    res.render('home', {
+                                        layout: '/layouts/main',
+                                        title: 'Home | The Initiative PH',
+                                        home_active: true,
+                                        homeactive: homeActive,
+                                        home_carousel: homeCarousel,
+                                    });
+                                    db.close();
+                                });
                         });
-                });
+                    }
+                })
             });
 
         // res.render('home', {
@@ -377,29 +388,29 @@ const controller = {
 
     getCMSApplicantPreProf: function (req, res) {
         var query = req.query.id;
-            database.findOne(PreApp, { _id: query }, {}, function (prof) {
-                res.render('cms-pre-app-profile', {
-                    layout: '/layouts/cms-layout',
-                    //Applicant Name should be changed
-                    title: 'Applicant Name | The Initiative PH',
-                    pre_id: prof._id,
-                    pre_firstname: prof.pre_firstname,
-                    pre_lastname: prof.pre_lastname,
-                    pre_age: prof.pre_age,
-                    pre_number: prof.pre_number,
-                    pre_email: prof.pre_email,
-                    pre_schoolcompany: prof.pre_schoolcompany,
-                    pre_affiliation: prof.pre_affiliation,
-                    pre_facebook: prof.pre_facebook,
-                    pre_notify: prof.pre_notify,
-                    pre_comments: prof.pre_comments,
-                    pre_status: prof.pre_status,
-                    applicant_active: true,
-                    name: req.session.name,
-                    type: req.session.type,
-                    userid: req.session.userid,
-                });
+        database.findOne(PreApp, { _id: query }, {}, function (prof) {
+            res.render('cms-pre-app-profile', {
+                layout: '/layouts/cms-layout',
+                //Applicant Name should be changed
+                title: 'Applicant Name | The Initiative PH',
+                pre_id: prof._id,
+                pre_firstname: prof.pre_firstname,
+                pre_lastname: prof.pre_lastname,
+                pre_age: prof.pre_age,
+                pre_number: prof.pre_number,
+                pre_email: prof.pre_email,
+                pre_schoolcompany: prof.pre_schoolcompany,
+                pre_affiliation: prof.pre_affiliation,
+                pre_facebook: prof.pre_facebook,
+                pre_notify: prof.pre_notify,
+                pre_comments: prof.pre_comments,
+                pre_status: prof.pre_status,
+                applicant_active: true,
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
             });
+        });
     },
 
     getCMSApplicantApp: function (req, res) {
