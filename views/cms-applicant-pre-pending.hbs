@@ -1,0 +1,117 @@
+<div class="content">
+  <div class="cms-breadcrumbs text-uppercase pb-3">
+    <a href="cms-applicant-overview">Manage Applicants</a> / All Pending Pre-Application Applicants
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="card">
+          <div class="card-header">
+            <div class="row d-flex align-items-center">
+              <div class="col">
+                <h4 class="card-title">
+                  Pending Pre-Application Applicants
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive text-center">
+              <table class="table text-left blog-project-table" id="preapps-table">
+                <thead class=" text-primary">
+                  <th style="width:20%">
+                    Last Name
+                  </th>
+                  <th style="width:20%">
+                    First Name
+                  </th>
+                  <th style="width:30%">
+                    E-Mail
+                  </th>
+                  <th style="width: 20%">
+                    Status
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Review Application
+                  </th>
+                </thead>
+                <tbody id="entries-table">
+                  {{!-- <tr>
+                    <td>
+                      Salamante
+                    </td>
+                    <td>
+                      Stephen
+                    </td>
+                    <td>
+                      <time class="entry-date">stephen_salamante@dlsu.edu.ph</time>
+                    </td>
+                    <td class="text-center">
+                      <a href="cms-pre-app-profile">
+                        <button id="blogeditbtn" type="button" class="btn btn-outline-info">
+                          Review
+                        </button>
+                      </a>
+                    </td>
+                    <td class="text-center">
+                      <a href=""><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Accept</button></a>
+                    </td>
+                    <td class="text-center">
+                      <a href=""><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-danger">Reject</button></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Gelvoleo
+                    </td>
+                    <td>
+                      Michele
+                    </td>
+                    <td>
+                      <time class="entry-date">michele_gelvoleo@dlsu.edu.ph</time>
+                    </td>
+                    <td class="text-center">
+                      <a href=""><button id="blogeditbtn" type="button" class="btn btn-outline-info">Review</button></a>
+                    </td>
+                    <td class="text-center">
+                      <a href=""><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Accept</button></a>
+                    </td>
+                    <td class="text-center">
+                      <a href=""><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-danger">Reject</button></a>
+                    </td>
+                  </tr> --}}
+                  {{#each preapp_info}}
+                    {{#equals this.pre_status "Pending"}}
+                        <tr>
+                            <td>
+                            {{this.pre_lastname}}
+                            </td>
+                            <td>
+                            {{this.pre_firstname}}
+                            </td>
+                            <td>
+                            {{this.pre_email}}
+                            </td>
+                            <td>
+                            {{this.pre_status}}
+                            </td>
+                            <td class="text-center">
+                            <a href="/cms-pre-app-profile?id={{this._id}}"><button id="{{this._id}}" type="button"
+                                class="btn btn-outline-info">Review</button></a>
+                            </td>
+                        </tr>
+                    {{/equals}}
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

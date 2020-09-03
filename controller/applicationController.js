@@ -30,7 +30,7 @@ const applicationController = {
         }
 
         database.updateOne(PreApp, filter, pre_details);
-        res.redirect('/cms-applicant-pre');
+        res.redirect('/cms-applicant-pre-pending');
     },
 
     RejectPreApplicant: function (req, res) {
@@ -45,7 +45,7 @@ const applicationController = {
         }
 
         database.updateOne(PreApp, filter, pre_details);
-        res.redirect('/cms-applicant-pre');
+        res.redirect('/cms-applicant-pre-pending');
     },
 
     PendingPreApplicant: function (req, res) {
@@ -75,7 +75,7 @@ const applicationController = {
         }
 
         database.updateOne(App, filter, app_details);
-        res.redirect('/cms-applicant-app');
+        res.redirect('/cms-applicant-app-pending');
     },
 
     RejectAppApplicant: function (req, res) {
@@ -90,7 +90,7 @@ const applicationController = {
         }
 
         database.updateOne(App, filter, app_details);
-        res.redirect('/cms-applicant-app');
+        res.redirect('/cms-applicant-app-pending');
     },
 
     PendingAppApplicant: function (req, res) {

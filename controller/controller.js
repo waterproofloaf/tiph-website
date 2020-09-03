@@ -387,6 +387,39 @@ const controller = {
             });
     },
 
+    getCMSApplicantPrePending: function (req, res) {
+        var MongoClient = require('mongodb').MongoClient;
+        // var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, { useUnifiedTopology: true },
+            function (err, db) {
+                if (err) throw err;
+                var preappArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("preapps").find();
+                cursor.forEach(function (doc, err) {
+                    preappArray.push(doc);
+                },
+                    function () {
+                        if (req.session.user && req.cookies.user_sid) {
+                            res.render('cms-applicant-pre-pending', {
+                                layout: '/layouts/cms-layout',
+                                title: 'CMS Applicants | The Initiative PH',
+                                applicant_active: true,
+                                name: req.session.name,
+                                type: req.session.type,
+                                userid: req.session.userid,
+                                preapp_info: preappArray,
+                            });
+                        }
+                        else {
+                            res.redirect('cms-login')
+                        }
+                        db.close();
+                    });
+
+            });
+    },
+
     getCMSApplicantPreProf: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
             var query = req.query.id;
@@ -499,6 +532,39 @@ const controller = {
                     function () {
                         if (req.session.user && req.cookies.user_sid) {
                             res.render('cms-applicant-app-rejected', {
+                                layout: '/layouts/cms-layout',
+                                title: 'CMS Applicants | The Initiative PH',
+                                applicant_active: true,
+                                name: req.session.name,
+                                type: req.session.type,
+                                userid: req.session.userid,
+                                app_info: appArray,
+                            });
+                        }
+                        else {
+                            res.redirect('cms-login')
+                        }
+                        db.close();
+                    });
+
+            });
+    },
+
+    getCMSApplicantAppPending: function (req, res) {
+        var MongoClient = require('mongodb').MongoClient;
+        // var url = "mongodb://localhost:27017/tiph";
+        MongoClient.connect(url, { useUnifiedTopology: true },
+            function (err, db) {
+                if (err) throw err;
+                var appArray = [];
+                var dbo = db.db("tiph");
+                var cursor = dbo.collection("apps").find();
+                cursor.forEach(function (doc, err) {
+                    appArray.push(doc);
+                },
+                    function () {
+                        if (req.session.user && req.cookies.user_sid) {
+                            res.render('cms-applicant-app-pending', {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Applicants | The Initiative PH',
                                 applicant_active: true,

@@ -101,6 +101,7 @@ app.get('/cms-applicant-overview', controller.getCMSApplicantOverview);
 app.get('/cms-applicant-pre', controller.getCMSApplicantPre);
 app.get('/cms-applicant-pre-accepted', controller.getCMSApplicantPreAccepted);
 app.get('/cms-applicant-pre-rejected', controller.getCMSApplicantPreRejected);
+app.get('/cms-applicant-pre-pending', controller.getCMSApplicantPrePending);
 app.get('/cms-pre-app-profile', controller.getCMSApplicantPreProf);
 app.get('/cms-applicant-pre/accept/', applicationController.AcceptPreApplicant);
 app.get('/cms-applicant-pre/reject/', applicationController.RejectPreApplicant);
@@ -109,6 +110,7 @@ app.get('/cms-applicant-pre/pending/', applicationController.PendingPreApplicant
 app.get('/cms-applicant-app', controller.getCMSApplicantApp);
 app.get('/cms-applicant-app-accepted', controller.getCMSApplicantAppAccepted);
 app.get('/cms-applicant-app-rejected', controller.getCMSApplicantAppRejected);
+app.get('/cms-applicant-app-pending', controller.getCMSApplicantAppPending);
 app.get('/cms-app-profile', controller.getCMSApplicantProf);
 app.get('/cms-applicant-app/accept/', applicationController.AcceptAppApplicant);
 app.get('/cms-applicant-app/reject/', applicationController.RejectAppApplicant);
