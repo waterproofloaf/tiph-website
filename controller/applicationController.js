@@ -46,6 +46,21 @@ const applicationController = {
         database.updateOne(PreApp, filter, pre_details);
         res.redirect('/cms-applicant-pre');
     },
+
+    PendingPreApplicant: function (req, res) {
+        var pre_id = req.query.id;
+
+        var filter = {
+            _id: ObjectID(pre_id)
+        }
+
+        var pre_details = {
+            pre_status: "Pending"
+        }
+
+        database.updateOne(PreApp, filter, pre_details);
+        res.redirect('/cms-applicant-pre');
+    },
 }
 
 module.exports = applicationController;

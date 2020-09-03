@@ -104,6 +104,7 @@ app.get('/cms-applicant-pre-rejected', controller.getCMSApplicantPreRejected);
 app.get('/cms-pre-app-profile', controller.getCMSApplicantPreProf);
 app.get('/cms-applicant-pre/accept/', applicationController.AcceptPreApplicant);
 app.get('/cms-applicant-pre/reject/', applicationController.RejectPreApplicant);
+app.get('/cms-applicant-pre/pending/', applicationController.PendingPreApplicant);
 
 app.get('/cms-applicant-app', controller.getCMSApplicantApp);
 app.get('/cms-app-profile', controller.getCMSApplicantProf);

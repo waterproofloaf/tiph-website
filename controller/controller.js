@@ -365,6 +365,7 @@ const controller = {
                     pre_facebook: prof.pre_facebook,
                     pre_notify: prof.pre_notify,
                     pre_comments: prof.pre_comments,
+                    pre_status: prof.pre_status,
                     applicant_active: true,
                     name: req.session.name,
                     type: req.session.type,

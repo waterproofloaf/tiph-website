@@ -87,6 +87,7 @@
                             </table>
                             <table class="table text-left">
                                 <thead class="text-primary">
+                                    {{#equals this.pre_status "Pending"}}
                                     <th>
                                         Do you accept or reject this pre-applicant?
                                     </th>
@@ -104,6 +105,35 @@
                                             </a>
                                         </td>
                                     </tr>
+                                    {{/equals}}
+                                    {{#equals this.pre_status "Accepted"}}
+                                        <th>
+                                            Revert status of this pre-applicant
+                                        </th>
+                                        <tr>
+                                            <td>
+                                                <a href="/cms-applicant-pre/pending?id={{this.pre_id}}">
+                                                    <button id="{{this.pre_id}}" type="button" class="btn btn-outline-success">
+                                                    Pending
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {{/equals}}
+                                    {{#equals this.pre_status "Rejected"}}
+                                        <th>
+                                            Revert status of this pre-applicant
+                                        </th>
+                                        <tr>
+                                            <td>
+                                                <a href="/cms-applicant-pre/pending?id={{this.pre_id}}">
+                                                    <button id="{{this.pre_id}}" type="button" class="btn btn-outline-success">
+                                                    Pending
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {{/equals}}
                                 </thead>
                             </table>
                         </div>
