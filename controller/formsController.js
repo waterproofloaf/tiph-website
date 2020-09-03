@@ -15,6 +15,18 @@ const formsController = {
         <h3>Inquiry</h3>
         <p>${req.body.contact_inquiry}</p>
         `;
+        if(req.body.contact_upload){
+          var attachment = {
+            filename: `${req.file.filename}`,
+            encoding: `${req.file.encoding}`,
+            path: `${req.file.path}`
+          }
+        }
+        else{
+          var attachment = {
+
+          }
+        }
         
         var transporter = nodemailer.createTransport({
             // host: 'smtp.gmail.com',
@@ -37,9 +49,7 @@ const formsController = {
             html: output,
             attachments: [
                 {
-                    filename: `${req.file.filename}`,
-                    encoding: `${req.file.encoding}`,
-                    path: `${req.file.path}`,
+                    attachment
                 }
             ]
           };
