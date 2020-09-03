@@ -17,6 +17,7 @@ const formsController = require('../controller/formsController.js');
 const blogController = require('../controller/blogController.js');
 const projectController = require('../controller/projectController.js');
 const adminController = require('../controller/adminController.js');
+const applicationController = require('../controller/applicationController.js');
 
 const app = express();
 
@@ -96,8 +97,15 @@ app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
 app.get('/cms-applicant-overview', controller.getCMSApplicantOverview);
+
 app.get('/cms-applicant-pre', controller.getCMSApplicantPre);
+app.get('/cms-applicant-pre-accepted', controller.getCMSApplicantPreAccepted);
+app.get('/cms-applicant-pre-rejected', controller.getCMSApplicantPreRejected);
 app.get('/cms-pre-app-profile', controller.getCMSApplicantPreProf);
+app.get('/cms-applicant-pre/accept/', applicationController.AcceptPreApplicant);
+app.get('/cms-applicant-pre/reject/', applicationController.RejectPreApplicant);
+app.get('/cms-applicant-pre/pending/', applicationController.PendingPreApplicant);
+
 app.get('/cms-applicant-app', controller.getCMSApplicantApp);
 app.get('/cms-app-profile', controller.getCMSApplicantProf);
 
