@@ -37,6 +37,7 @@ const formsController = {
         var mailOptions = {
           from: `${req.body.contact_email}`,
           to: 'victor_tulabot@dlsu.edu.ph',
+          cc: 'tulabot18@gmail.com',
           subject: `${req.body.contact_subject}`,
           html: output,
           attachments: [
@@ -52,6 +53,7 @@ const formsController = {
         var mailOptions = {
           from: `${req.body.contact_email}`,
           to: 'victor_tulabot@dlsu.edu.ph',
+          cc: 'tulabot18@gmail.com',
           subject: `${req.body.contact_subject}`,
           html: output,
         };
