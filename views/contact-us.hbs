@@ -28,8 +28,7 @@
         <h6 class="contact-font-texts">{{msg}}</h6>
         <br>
         <h6 class="contact-font-texts"><strong> SUBJECT</strong></h6>
-        <input type="text" list="subjects" name="contact_subject" id="contact_subject" class="contact-form-text " value
-          required>
+        <input type="text" list="subjects" name="contact_subject" id="contact_subject" class="contact-form-text " required>
         <datalist id="subjects">
           <option value="[INQUIRY] Organization Partnership"></option>
           <option value="[INQUIRY] Organization Sponsorship"></option>
@@ -43,14 +42,16 @@
         <input type="text" name="contact_name" id="contact_name" class="contact-form-text ">
 
         <h6 class="contact-font-texts"><strong> EMAIL</strong></h6>
-        <input type="text" name="contact_email" id="contact_email" class="contact-form-text " value required>
+        <input type="text" name="contact_email" id="contact_email" class="contact-form-text "  required>
 
         <h6 class="contact-font-texts"><strong>INQUIRY</strong></h6>
-        <textarea name="contact_inquiry" id="contact_inquiry" class="contact-form-text " value required></textarea>
+        <textarea name="contact_inquiry" id="contact_inquiry" class="contact-form-text "  required></textarea>
 
         <h6 class="contact-font-texts"><strong>FOR MOA/MOU</strong></h6>
         <input type="file" name="contact_upload" id="contact_upload" class="contact-form-upload">
         <button type="submit" class="contact-button contact-font-texts"><strong>S U B M I T</strong></button>
+        <br><br>
+        <h4 class="cms-font-text-error" id="contact-error">{{contactErrorMessage}}</h4>
       </form>
 
     </div>

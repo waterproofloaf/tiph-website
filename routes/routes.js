@@ -20,6 +20,9 @@ const adminController = require('../controller/adminController.js');
 const applicationController = require('../controller/applicationController.js');
 const preappformController = require('../controller/preappformController.js');
 
+// import module 'Validators' from '../validators/...'
+const formsValidator = require("../validators/formsValidator.js");
+
 const app = express();
 
 // SET STORAGE FOR ATTACHMENT
@@ -68,14 +71,17 @@ app.delete('/donates/:id', (req, res) => {
 })
 
 // call function getIndex when client sends a request for '/' defined in routes.js
-// controller
+// Views page
 app.get('/', controller.getHomePage);
 app.get('/home', controller.getHomePage);
+
 app.get('/about', controller.getAboutUs);
+
 app.get('/pre-application', controller.getPreApp);
-app.post('/pre-application', formsController.postPreApp);
+app.post('/pre-application', formsValidator.preValidation(), formsController.postPreApp);
+
 app.get('/application', controller.getApplication);
-app.post('/application', formsController.postAppForm);
+app.post('/application', formsValidator.appValidation(), formsController.postAppForm);
 
 app.get('/projects', controller.getProjects);
 app.post('/projects', projectController.postProject);
@@ -86,20 +92,24 @@ app.post('/blog', blogController.postBlog);
 app.get('/a-blog', blogController.findBlog);
 
 app.get('/contact-us', controller.getContactUs);
-app.post('/contact-us', upload.single('contact_upload'), formsController.postContactUs);
+app.post('/contact-us', upload.single('contact_upload'), formsValidator.contactValidation(), formsController.postContactUs);
 app.get('/donate', controller.getDonate);
 
+// CMS Login
 app.get('/cms-login', controller.getCMSLogin);
 app.post('/cms-login', logIncontroller.postLogIn);
 app.get('/cms-logout', controller.getCMSLogout);
 
+// CMS Home and Application
 app.get('/cms-home', controller.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
 app.post('/cms-edit-pre-application', preappformController.editPreAppForm);
-app.get('/cms-applicant-overview', controller.getCMSApplicantOverview);
 
+// CMS Applicant
+app.get('/cms-applicant-overview', controller.getCMSApplicantOverview);
+// CMS Pre-Applicant
 app.get('/cms-applicant-pre', controller.getCMSApplicantPre);
 app.get('/cms-applicant-pre-accepted', controller.getCMSApplicantPreAccepted);
 app.get('/cms-applicant-pre-rejected', controller.getCMSApplicantPreRejected);
@@ -108,7 +118,7 @@ app.get('/cms-pre-app-profile', controller.getCMSApplicantPreProf);
 app.get('/cms-applicant-pre/accept/', applicationController.AcceptPreApplicant);
 app.get('/cms-applicant-pre/reject/', applicationController.RejectPreApplicant);
 app.get('/cms-applicant-pre/pending/', applicationController.PendingPreApplicant);
-
+// CMS App-Applicant
 app.get('/cms-applicant-app', controller.getCMSApplicantApp);
 app.get('/cms-applicant-app-accepted', controller.getCMSApplicantAppAccepted);
 app.get('/cms-applicant-app-rejected', controller.getCMSApplicantAppRejected);
@@ -118,6 +128,7 @@ app.get('/cms-applicant-app/accept/', applicationController.AcceptAppApplicant);
 app.get('/cms-applicant-app/reject/', applicationController.RejectAppApplicant);
 app.get('/cms-applicant-app/pending/', applicationController.PendingAppApplicant);
 
+// CMS Admins
 app.get('/cms-admin', controller.getCMSAdmin);
 app.get('/cms-admin-new', controller.getCMSNewAdmin);
 app.post('/cms-admin-new', adminController.postAdmin);
@@ -125,6 +136,7 @@ app.get('/cms-admin-edit', controller.getCMSEditAdmin);
 app.post('/cms-admin-edit', adminController.editAdmin);
 app.get('/cms-admin/delete/', adminController.deleteAdmin);
 
+// CMS Blog
 app.get('/cms-blog', controller.getCMSBlog);
 app.get('/cms-blog/delete/', blogController.deleteBlog);
 app.get('/cms-blog/toggle/', blogController.blogToggle);
@@ -133,6 +145,7 @@ app.post('/cms-blog-page', blogController.editBlog);
 app.get('/cms-blog-new-page', controller.getCMSBlogNewPage);
 app.post('/cms-blog-new-page', blogController.postBlog);
 
+// CMS Project
 app.get('/cms-project', controller.getCMSProject);
 app.get('/cms-project/delete/', projectController.deleteProject);
 app.get('/cms-project/toggle/', projectController.projToggle);
@@ -142,6 +155,7 @@ app.post('/cms-project-page', projectController.editProject);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);
 app.post('/cms-project-new-page', projectController.postProject);
 
+// CMS Donate
 app.get('/cms-donate', controller.getCMSDonate);
 app.get('/cms-donate/delete/', donateController.deleteDonate);
 app.get('/cms-donate/toggle/', donateController.donateToggle);

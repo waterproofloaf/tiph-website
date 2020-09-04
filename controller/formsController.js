@@ -6,69 +6,101 @@ const PreApp = require('../models/PreAppModel.js');
 const App = require('../models/AppModel.js');
 const database = require('../models/db.js');
 
+const { validationResult } = require('express-validator');
+
 const formsController = {
     postContactUs: function (req, res) {
-        const output = `<p>You have a new message from the TIPH website<p>
-        <h3>Contact Details</h3>
-        <p>Name: ${req.body.contact_name}<p>
-        <p>Email: ${req.body.contact_email}<p>
-        <h3>Inquiry</h3>
-        <p>${req.body.contact_inquiry}</p>
-        `;
-        if(req.body.contact_upload){
-          var mailOptions = {
-            from: `${req.body.contact_email}`,
-            to: 'victor_tulabot@dlsu.edu.ph',
-            subject: `${req.body.contact_subject}`,
-            html: output,
-            attachments: [
-                {
-                  filename: `${req.file.filename}`,
-                  encoding: `${req.file.encoding}`,
-                  path: `${req.file.path}`
-                }
-            ]
-          };
+      let errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        errors = errors.errors;
+
+        res.render('contact-us', {
+          layout: '/layouts/main',
+            title: 'Contact Us | The Initiative PH',
+            contact_active: true,
+            contactErrorMessage: errors[0].msg
+        });
+
+        return;
+      }
+
+      const output = `<p>You have a new message from the TIPH website<p>
+      <h3>Contact Details</h3>
+      <p>Name: ${req.body.contact_name}<p>
+      <p>Email: ${req.body.contact_email}<p>
+      <h3>Inquiry</h3>
+      <p>${req.body.contact_inquiry}</p>
+      `;
+      if(req.body.contact_upload){
+        var mailOptions = {
+          from: `${req.body.contact_email}`,
+          to: 'victor_tulabot@dlsu.edu.ph',
+          subject: `${req.body.contact_subject}`,
+          html: output,
+          attachments: [
+              {
+                filename: `${req.file.filename}`,
+                encoding: `${req.file.encoding}`,
+                path: `${req.file.path}`
+              }
+          ]
+        };
+      }
+      else{
+        var mailOptions = {
+          from: `${req.body.contact_email}`,
+          to: 'victor_tulabot@dlsu.edu.ph',
+          subject: `${req.body.contact_subject}`,
+          html: output,
+        };
+      }
+      
+      var transporter = nodemailer.createTransport({
+        // host: 'smtp.gmail.com',
+        // port: 465,
+        // secure: true,
+        service: 'gmail',
+        auth: {
+          user: process.env.EMAIL,
+          pass: process.env.PASSWORD
+          // type: 'OAuth2',
+          // clientId: '832603771533-vfgm7kldqp7o8gmk96pvvro9q0lejg10.apps.googleusercontent.com',
+          // clientSecret: '0HFvRJ8I4J9A7HhHpGJJFwgC'
         }
-        else{
-          var mailOptions = {
-            from: `${req.body.contact_email}`,
-            to: 'victor_tulabot@dlsu.edu.ph',
-            subject: `${req.body.contact_subject}`,
-            html: output,
-          };
-        }
+      });
         
-        var transporter = nodemailer.createTransport({
-            // host: 'smtp.gmail.com',
-            // port: 465,
-            // secure: true,
-            service: 'gmail',
-            auth: {
-              user: process.env.EMAIL,
-              pass: process.env.PASSWORD
-              // type: 'OAuth2',
-              // clientId: '832603771533-vfgm7kldqp7o8gmk96pvvro9q0lejg10.apps.googleusercontent.com',
-              // clientSecret: '0HFvRJ8I4J9A7HhHpGJJFwgC'
-            }
-          });
-          
-          transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-              console.log(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-              res.render('contact-us', {
-                layout: '/layouts/main',
-                title: 'Contact Us | The Initiative PH',
-                contact_active: true,
-                msg: 'Your message has been sent!'
-            })
-            }
-          });
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+          res.render('contact-us', {
+            layout: '/layouts/main',
+            title: 'Contact Us | The Initiative PH',
+            contact_active: true,
+            msg: 'Your message has been sent!'
+        })
+        }
+      });
     },
 
     postPreApp: function (req, res) {
+      let errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        errors = errors.errors;
+
+        res.render('pre-application', {
+          layout: '/layouts/main',
+            title: 'Pre-Application | The Initiative PH',
+            volunteer_active: true,
+            preappErrorMessage: errors[0].msg
+        });
+
+        return;
+      }
+
       var pre_firstname = req.body.pre_firstname;
       var pre_lastname = req.body.pre_lastname;
       var pre_age = req.body.pre_age;
@@ -103,6 +135,21 @@ const formsController = {
     },
 
     postAppForm: function (req, res) {
+      let errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        errors = errors.errors;
+
+        res.render('application', {
+          layout: '/layouts/main',
+            title: 'Application | The Initiative PH',
+            volunteer_active: true,
+            appErrorMessage: errors[0].msg
+        });
+
+        return;
+      }
+
       var app_firstname = `${req.body.app_firstname}`;
       var app_lastname = `${req.body.app_lastname}`;
       var app_nickname = `${req.body.app_nickname}`;
