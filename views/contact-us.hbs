@@ -26,6 +26,7 @@
     <div class="contact-form-container">
       <form method="POST" action="contact-us" class="needs-validation" enctype="multipart/form-data">
         <h6 class="contact-font-texts">{{msg}}</h6>
+        <h4 class="cms-font-text-error" id="contact-error">{{contactErrorMessage}}</h4>
         <br>
         <h6 class="contact-font-texts"><strong> SUBJECT</strong></h6>
         <input type="text" list="subjects" name="contact_subject" id="contact_subject" class="contact-form-text " required>
@@ -50,8 +51,6 @@
         <h6 class="contact-font-texts"><strong>FOR MOA/MOU</strong></h6>
         <input type="file" name="contact_upload" id="contact_upload" class="contact-form-upload">
         <button type="submit" class="contact-button contact-font-texts"><strong>S U B M I T</strong></button>
-        <br><br>
-        <h4 class="cms-font-text-error" id="contact-error">{{contactErrorMessage}}</h4>
       </form>
 
     </div>

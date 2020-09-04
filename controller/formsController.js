@@ -25,14 +25,15 @@ const formsController = {
         return;
       }
 
-      const output = `<p>You have a new message from the TIPH website<p>
+      const output = `
+      <p>You have a new message from the TIPH website<p>
       <h3>Contact Details</h3>
       <p>Name: ${req.body.contact_name}<p>
       <p>Email: ${req.body.contact_email}<p>
       <h3>Inquiry</h3>
       <p>${req.body.contact_inquiry}</p>
       `;
-      if(req.body.contact_upload){
+      if(req.file != null){
         var mailOptions = {
           from: `${req.body.contact_email}`,
           to: 'victor_tulabot@dlsu.edu.ph',
@@ -57,16 +58,16 @@ const formsController = {
       }
       
       var transporter = nodemailer.createTransport({
-        // host: 'smtp.gmail.com',
-        // port: 465,
-        // secure: true,
-        service: 'gmail',
+        host: 'smtp.gmail.com',
+        // service: 'gmail',
         auth: {
+          // user: process.env.EMAIL,
+          // pass: process.env.PASSWORD,
+          type: 'OAuth2',
           user: process.env.EMAIL,
-          pass: process.env.PASSWORD
-          // type: 'OAuth2',
-          // clientId: '832603771533-vfgm7kldqp7o8gmk96pvvro9q0lejg10.apps.googleusercontent.com',
-          // clientSecret: '0HFvRJ8I4J9A7HhHpGJJFwgC'
+          clientId: '832603771533-vfgm7kldqp7o8gmk96pvvro9q0lejg10.apps.googleusercontent.com',
+          clientSecret: '0HFvRJ8I4J9A7HhHpGJJFwgC',
+          refreshToken: '1//048kPu7WQDXAhCgYIARAAGAQSNwF-L9Irg7g3UJdUFj17tN_B-Rdr71vSiPXSI2YJgXne1-Qhr9yOj82LTxyC7guEI_p8a5wBztk',
         }
       });
         
