@@ -3,8 +3,8 @@
   <div class="container-fluid px-0 box center">
     <div class="header-home d-flex justify-content-center align-items-center">
       <div class="header-text">
-        <p style="font-weight: bold;">THE INITIATIVE PH</p>
-        <p class="header-sub">Since 2016</p>
+        <p style="font-weight: bold;">{{home_content.home_title}}</p>
+        <p class="header-sub">{{home_content.home_subtitle}}</p>
       </div>
     </div>
   </div>
@@ -18,22 +18,21 @@
       <li data-target="#homeCarousel" data-slide-to="1"></li>
       <li data-target="#homeCarousel" data-slide-to="2"></li>
     </ol> --}}
-
     <div class="carousel-inner">
-      {{#each homeactive}}
-      <div class="carousel-item active">
-        <a href="/a-project?id={{this._id}}">
+      <div class="carousel-item {{#if homeactive.proj_showcase}}active{{/if}}">
+        <a href="/a-project?id={{homeactive._id}}">
           <img class="d-block w-100" src="assets/img/test.jpg">
         </a>
         <div class="carousel-caption text-center">
-          <h5 style="font-size:2vw;">{{this.proj_title}}</h5>
-          <p class="d-none d-md-block" style="font-size:1.3vw;">{{this.proj_preview}}</p>
+          <h5 style="font-size:2vw;">{{homeactive.proj_title}}</h5>
+          <p class="d-none d-md-block" style="font-size:1.3vw;">{{homeactive.proj_preview}}</p>
           {{!-- <a href='/a-project?id={{this._id}}' class="d-none d-md-block">
             <button type="button" class="btn btn-secondary">Learn More</button>
           </a> --}}
         </div>
       </div>
-      {{/each}}
+
+      {{!-- {{/each}} --}}
 
       {{#each home_carousel}}
       <div class="carousel-item">
@@ -49,14 +48,6 @@
         </div>
       </div>
       {{/each}}
-      {{!-- <div class="carousel-item">
-        <img class="d-block w-100" src="assets/img/test.jpg" alt="Second slide">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Project 2</h5>
-          <p>Short Description</p>
-          <a href='a-project'><button type="button" class="btn btn-secondary">Learn More</button></a>
-        </div>
-      </div> --}}
     </div>
     <a class="carousel-control-prev" href="#homeCarousel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -73,11 +64,9 @@
 <div class="container-fluid">
   <div class="row p-5 my-1 align-items-center">
     <div class="col">
-      <h5 class="font-weight-bold text-uppercase sub-title">What we do</h5>
+      <h5 class="font-weight-bold text-uppercase sub-title">{{home_content.home_one_title}}</h5>
       <p class="sub-caption">
-        The Initiative PH (TIPH) is a youth-run, non-profit volunteer organization that coordinates relief efforts and
-        organizes sustainable programs
-        for poverty-, calamity-, and conflict- ridden areas and communities in the Philippines.
+        {{home_content.home_one_content}}
       </p>
       <a href='about'><button type="button" class="btn btn-outline-secondary">Learn More</button></a>
     </div>
@@ -93,17 +82,9 @@
       <img src="assets/img/home-2.png" width=100%>
     </div>
     <div class="col-lg">
-      <h5 class="font-weight-bold text-uppercase sub-title">Our Objectives</h5>
+      <h5 class="font-weight-bold text-uppercase sub-title">{{home_content.home_two_title}}</h5>
       <p class="sub-caption">
-        <i class="fas fa-hands-helping"></i> Coordinate relief efforts for those in immediate need
-        <br><br>
-        <i class="fas fa-users-cog"></i> Organize sustainable programs for vulnerable communities in the Philippines
-        <br><br>
-        <i class="fas fa-bullhorn"></i> Promote timely advocacies in constant pursuit of development through pertinent
-        projects and policies
-        <br><br>
-        <i class="fas fa-people-carry"></i> Enable the youth by giving them opportunities to realize their potential
-        through formative training and active response to Philippine realities
+        {{{home_content.home_two_content}}}
       </p>
     </div>
   </div>
@@ -112,16 +93,9 @@
 <div class="container-fluid">
   <div class="row p-5 my-5 align-items-center">
     <div class="col">
-      <h5 class="font-weight-bold text-uppercase sub-title">Our Goals</h5>
+      <h5 class="font-weight-bold text-uppercase sub-title">{{home_content.home_three_title}}</h5>
       <p class="sub-caption">
-        Our short term goal is to assist poverty-, calamity-, and conflict- affected Filipino areas and communities,
-        envisioning an entire organization of Filipino youth who are driven towards awareness and action and who know
-        how to aid their fellow countrymen.
-        <br>
-        <br>
-        For our long term goal, we want to be a contributor in making youth volunteerism and social involvement a norm
-        for all youth nationwide, aiming to shape generation after generation of initiative, collaborative,
-        compassionate, empathetic, honest, and open individuals.
+        {{{home_content.home_three_content}}}
       </p>
     </div>
     <div class="col-lg d-none d-lg-block">
@@ -136,14 +110,18 @@
       <img src="assets/img/home-4.png" width=100%>
     </div>
     <div class="col-lg">
-      <h5 class="font-weight-bold text-uppercase sub-title">Volunteer Applications</h5>
+      <h5 class="font-weight-bold text-uppercase sub-title">{{home_content.home_four_title}}</h5>
       <p class="sub-caption">
-        Want to make a change? TIPH is looking for more volunteers that will help our cause
-        on building sustainable projects that will aid communities facing different
-        challenges across the country.
+        {{{home_content.home_four_content}}}
       </p>
-      <a href='pre-application'><button type="button" class="btn btn-outline-secondary">Pre-Application</button></a>
-      <a href='application'><button type="button" class="btn btn-outline-secondary">Application</button></a>
+      <a href='pre-application'>
+        <button type="button" class="btn btn-outline-secondary"
+          {{#if home_content.home_preapp_button}}{{else}}disabled{{/if}}>Pre-Application</button>
+      </a>
+      <a href='application'>
+        <button type="button" class="btn btn-outline-secondary"
+          {{#if home_content.home_app_button}}{{else}}disabled{{/if}}>Application</button>
+      </a>
     </div>
   </div>
 </div>

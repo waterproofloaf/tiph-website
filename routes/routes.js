@@ -101,6 +101,7 @@ app.post('/cms-login', logIncontroller.postLogIn);
 app.get('/cms-logout', controller.getCMSLogout);
 
 // CMS Home and Application
+app.get('/cms-web-toggle', controller.getCMSWebToggle);
 app.get('/cms-home', controller.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);

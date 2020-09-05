@@ -1,6 +1,7 @@
 // import module from db.js in models directory
 const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
+const Home = require('../models/HomeModel.js');
 const Blog = require('../models/BlogModel.js');
 const Project = require('../models/ProjectModel.js');
 const User = require('../models/UserModel.js');
@@ -15,50 +16,31 @@ const url = "mongodb://localhost:27017/tiph";
 const controller = {
 
     getHomePage: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var homeActive = [];
-                var homeCarousel = [];
-                var query = { proj_showcase: true };
-                var dbo = db.db("tiph");
-                var count = dbo.collection("projects").find(query).count();
-                count.then(function (result) {
-                    if (result == 0) {
-                        res.render('home', {
-                            layout: '/layouts/main',
-                            title: 'Home | The Initiative PH',
-                            home_active: true,
-                        })
-                    } else {
-                        var homeactive = dbo.collection("projects").find(query).limit(1);
-                        homeactive.forEach(function (doc, err) {
-                            homeActive.push(doc);
-                            var homecarousel = dbo.collection("projects").find(query).skip(1);
-                            homecarousel.forEach(function (doc, err) {
-                                homeCarousel.push(doc);
-                            },
-                                function () {
-                                    res.render('home', {
-                                        layout: '/layouts/main',
-                                        title: 'Home | The Initiative PH',
-                                        home_active: true,
-                                        homeactive: homeActive,
-                                        home_carousel: homeCarousel,
-                                    });
-                                    db.close();
-                                });
+        Project.countDocuments({ proj_showcase: true }, function (err, count) {
+            database.findOne(Home, {}, {}, function (home) {
+                if (count == 0) {
+                    res.render('home', {
+                        layout: '/layouts/main',
+                        title: 'Home | The Initiative PH',
+                        home_active: true,
+                        home_content: home,
+                    })
+                } else {
+                    database.findOne(Project, { proj_showcase: true }, {}, function (carouselActive) {
+                        database.findMany(Project, { proj_showcase: true, _id: { $ne: carouselActive._id } }, {}, function (carouselContent) {
+                            res.render('home', {
+                                layout: '/layouts/main',
+                                title: 'Home | The Initiative PH',
+                                home_active: true,
+                                home_content: home,
+                                homeactive: carouselActive,
+                                home_carousel: carouselContent,
+                            })
                         });
-                    }
-                })
+                    });
+                }
             });
-
-        // res.render('home', {
-        //     layout: '/layouts/main',
-        //     title: 'Home | The Initiative PH',
-        //     home_active: true,
-        // })
+        });
     },
 
     getAboutUs: function (req, res) {
@@ -96,61 +78,88 @@ const controller = {
     },
 
     getProjects: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var projArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("projects").find();
-                cursor.forEach(function (doc, err) {
-                    projArray.push(doc);
-                },
-                    function () {
-                        res.render('projects', {
-                            layout: '/layouts/main',
-                            title: 'Projects | The Initiative PH',
-                            projects_active: true,
-                            proj_info: projArray,
-                        });
-                        db.close();
-                    });
-            });
-        //        res.render('projects', {
-        //            layout: '/layouts/main',
-        //            title: 'Projects | The Initiative PH',
-        //            projects_active: true,
-        //        })
+        // var MongoClient = require('mongodb').MongoClient;
+        // // var url = "mongodb://localhost:27017/tiph";
+        // MongoClient.connect(url, { useUnifiedTopology: true },
+        //     function (err, db) {
+        //         if (err) throw err;
+        //         var projArray = [];
+        //         var dbo = db.db("tiph");
+        //         var cursor = dbo.collection("projects").find();
+        //         cursor.forEach(function (doc, err) {
+        //             projArray.push(doc);
+        //         },
+        //             function () {
+        //                 res.render('projects', {
+        //                     layout: '/layouts/main',
+        //                     title: 'Projects | The Initiative PH',
+        //                     projects_active: true,
+        //                     proj_info: projArray,
+        //                 });
+        //                 db.close();
+        //             });
+        //     });
+
+        Project.countDocuments({}, function (err, count) {
+            if (count == 0) {
+                res.render('projects', {
+                    layout: '/layouts/main',
+                    title: 'Projects | The Initiative PH',
+                    projects_active: true,
+                })
+            } else {
+                database.findMany(Project, {}, {}, function (projArray) {
+                    res.render('projects', {
+                        layout: '/layouts/main',
+                        title: 'Projects | The Initiative PH',
+                        projects_active: true,
+                        proj_info: projArray,
+                    })
+                });
+            }
+        });
     },
 
     getBlogs: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var blogArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("blogs").find();
-                cursor.forEach(function (doc, err) {
-                    blogArray.push(doc);
-                },
-                    function () {
-                        res.render('blog', {
-                            layout: '/layouts/main',
-                            title: 'Blogs | The Initiative PH',
-                            blog_active: true,
-                            blog_info: blogArray,
-                        });
-                        db.close();
+        // var MongoClient = require('mongodb').MongoClient;
+        // MongoClient.connect(url, { useUnifiedTopology: true },
+        //     function (err, db) {
+        //         if (err) throw err;
+        //         var blogArray = [];
+        //         var dbo = db.db("tiph");
+        //         var cursor = dbo.collection("blogs").find();
+        //         cursor.forEach(function (doc, err) {
+        //             blogArray.push(doc);
+        //         },
+        //             function () {
+        //                 res.render('blog', {
+        //                     layout: '/layouts/main',
+        //                     title: 'Blogs | The Initiative PH',
+        //                     blog_active: true,
+        //                     blog_info: blogArray,
+        //                 });
+        //                 db.close();
+        //             });
+        //     });
+
+        Blog.countDocuments({}, function (err, count) {
+            if (count == 0) {
+                res.render('blog', {
+                    layout: '/layouts/main',
+                    title: 'Blogs | The Initiative PH',
+                    blog_active: true,
+                })
+            } else {
+                database.findMany(Blog, {}, {}, function (blogArray) {
+                    res.render('blog', {
+                        layout: '/layouts/main',
+                        title: 'Blogs | The Initiative PH',
+                        blog_active: true,
+                        blog_info: blogArray,
                     });
-            });
-        //        res.render('blog', {
-        //            layout: '/layouts/main',
-        //            title: 'Blog | The Initiative PH',
-        //            blog_active: true,
-        //        })
+                });
+            }
+        });
     },
 
     getABlog: function (req, res) {
@@ -217,6 +226,22 @@ const controller = {
         req.logout;
         req.session.destroy(function (err) { });
         res.redirect('cms-login')
+    },
+
+    getCMSWebToggle: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            res.render('cms-web-toggle', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Web Toggles | The Initiative PH',
+                webtoggle_active: true,
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
+            })
+        }
+        else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSHome: function (req, res) {

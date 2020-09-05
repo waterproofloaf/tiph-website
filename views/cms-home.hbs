@@ -1,107 +1,186 @@
 <div class="content">
-  <div class="row">
-    <div class="col-md-12">
-      <form>
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title">Website Toggles</h4>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive text-center">
-              <table class="table text-left">
-                <thead class=" text-primary">
-                  <th>
-                    Page
-                  </th>
-                  <th class="text-right">
-                    Switch
-                  </th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      Home Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      About Us Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Volunteer Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Project Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Blog Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Contact Us Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Donate Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <button type="submit" class="btn btn-outline-success">Save</button>
+    <!-- Form -->
+    <div class="content">
+        <div id="form-container" class="row">
+            <div class="col-md-12">
+                <form method="post" id="home_form">
+                    <div class="card cms-blog">
+                        <div class="card-header">
+                            <h4 class="card-title">Edit Home Page:</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="home_title">Title</label>
+                                <input type="text" class="form-control" id="home_title" placeholder="Title"
+                                    name="home_title">
+                            </div>
+                            <div class="form-group">
+                                <label for="home_subtitle">Subtitle</label>
+                                <input type="text" class="form-control" id="home_subtitle" placeholder="Subtitle"
+                                    name="home_subtitle">
+                            </div>
+                            <div class="pb-2">
+                                <label for="home_cover_pic">Cover Photo</label>
+                                <input type="file" class="form-control-file" id="home_cover_pic">
+                            </div>
+                            <hr>
+                            <h6 class="card-title">First Row:</h6>
+                            <div class="form-group">
+                                <label for="home_first_title">Title</label>
+                                <input type="text" class="form-control" id="home_first_title" placeholder="Title"
+                                    name="home_first_title">
+                            </div>
+                            <div class="form-group">
+                                <label for="home_first_content">Content</label>
+                                <input name="home_first_content" type="hidden" id="home_first_content">
+                                <div id="home-quill-one">
+                                </div>
+                            </div>
+                            <div class="pb-2">
+                                <label for="home_first_pic">Side Photo</label>
+                                <input type="file" class="form-control-file" id="home_first_pic">
+                            </div>
+                            <hr>
+                            <h6 class="card-title">Second Row:</h6>
+                            <div class="form-group">
+                                <label for="home_second_title">Title</label>
+                                <input type="text" class="form-control" id="home_second_title" placeholder="Title"
+                                    name="home_second_title">
+                            </div>
+                            <div class="form-group">
+                                <label for="home_second_content">Content</label>
+                                <input name="home_second_content" type="hidden" id="home_second_content">
+                                <div id="home-quill-two">
+                                </div>
+                            </div>
+                            <div class="pb-2">
+                                <label for="home_second_pic">Side Photo</label>
+                                <input type="file" class="form-control-file" id="home_second_pic">
+                            </div>
+                            <hr>
+                            <h6 class="card-title">Third Row:</h6>
+                            <div class="form-group">
+                                <label for="home_third_title">Title</label>
+                                <input type="text" class="form-control" id="home_third_title" placeholder="Title"
+                                    name="home_third_title">
+                            </div>
+                            <div class="form-group">
+                                <label for="home_third_content">Content</label>
+                                <input name="home_third_content" type="hidden" id="home_third_content">
+                                <div id="home-quill-three">
+                                </div>
+                            </div>
+                            <div class="pb-2">
+                                <label for="home_third_pic">Side Photo</label>
+                                <input type="file" class="form-control-file" id="home_third_pic">
+                            </div>
+                            <hr>
+                            <h6 class="card-title">Volunteer Row:</h6>
+                            <div class="form-group">
+                                <label for="home_third_title">Title</label>
+                                <input type="text" class="form-control" id="home_third_title" placeholder="Title"
+                                    name="home_third_title">
+                            </div>
+                            <div class="form-group">
+                                <label for="home_third_content">Content</label>
+                                <input name="home_third_content" type="hidden" id="home_third_content">
+                                <div id="home-quill-four">
+                                </div>
+                            </div>
+                            <div class="pb-2">
+                                <label for="home_third_pic">Side Photo</label>
+                                <input type="file" class="form-control-file" id="home_third_pic">
+                            </div>
+                            <div class="form-group">
+                                <div class="form-row d-flex align-items-center">
+                                    <div class="col text-left">
+                                        Enable Pre-Application Button?
+                                    </div>
+                                    <div class="col text-right">
+                                        <label class="switch">
+                                            <input type="checkbox" id="pre_app_button" onclick="blog_change(this)"
+                                                checked>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row d-flex align-items-center">
+                                <div class="col text-left">
+                                    Enable Application Button?
+                                </div>
+                                <div class="col text-right">
+                                    <label class="switch">
+                                        <input type="checkbox" id="app_button" onclick="blog_change(this)" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success" id="updateHome">SAVE</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-          </div>
         </div>
-      </form>
     </div>
-  </div>
 </div>
+
+<script>
+    var homeQuillOne = new Quill('#home-quill-one', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                ['link', 'blockquote', 'code-block', 'image'],
+                [{ list: 'ordered' }, { list: 'bullet' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var homeQuillTwo = new Quill('#home-quill-two', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                ['link', 'blockquote', 'code-block', 'image'],
+                [{ list: 'ordered' }, { list: 'bullet' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var homeQuillThree = new Quill('#home-quill-three', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                ['link', 'blockquote', 'code-block', 'image'],
+                [{ list: 'ordered' }, { list: 'bullet' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var homeQuillFour = new Quill('#home-quill-four', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                ['link', 'blockquote', 'code-block', 'image'],
+                [{ list: 'ordered' }, { list: 'bullet' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var blog_form = document.getElementById('blog_form');
+    blog_form.onsubmit = function () {
+        var blog_content = document.querySelector('input[name=blog_content]');
+        blog_content.value = homeQuill.root.innerHTML;
+        console.log(blog_content);
+        return true;
+    };
+</script>
