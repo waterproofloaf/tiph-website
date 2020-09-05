@@ -35,26 +35,6 @@ const homeController = {
         database.updateOne(Home, {}, home_details);
         res.redirect('/cms-home');
     },
-
-    // homepreappToggle: function (req, res) {
-    //     var home_preapp_button = req.query.state;
-
-    //     var home_details = {
-    //         home_preapp_button: home_preapp_button
-    //     }
-
-    //     database.updateOne(Home, {}, home_details);
-    // },
-
-    // homeappToggle: function (req, res) {
-    //     var home_app_button = req.query.state;
-
-    //     var home_details = {
-    //         home_app_button: home_app_button
-    //     }
-
-    //     database.updateOne(Home, {}, home_details);
-    // },
 }
 
 module.exports = homeController;

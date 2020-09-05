@@ -105,7 +105,6 @@ app.get('/cms-logout', controller.getCMSLogout);
 app.get('/cms-web-toggle', controller.getCMSWebToggle);
 app.get('/cms-home', controller.getCMSHome);
 app.post('/cms-home', homeController.editHome);
-// app.get('/cms-home/toggle', homeController.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
