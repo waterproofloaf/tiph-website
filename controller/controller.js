@@ -246,14 +246,17 @@ const controller = {
 
     getCMSHome: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-home', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Home | The Initiative PH',
-                home_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
-            })
+            database.findOne(Home, {}, {}, function (home) {
+                res.render('cms-home', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Home | The Initiative PH',
+                    home_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    home_content: home,
+                })
+            });
         }
         else {
             res.redirect('cms-login')

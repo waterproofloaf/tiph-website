@@ -12,12 +12,12 @@
                             <div class="form-group">
                                 <label for="home_title">Title</label>
                                 <input type="text" class="form-control" id="home_title" placeholder="Title"
-                                    name="home_title">
+                                    name="home_title" value="{{home_content.home_title}}">
                             </div>
                             <div class="form-group">
                                 <label for="home_subtitle">Subtitle</label>
                                 <input type="text" class="form-control" id="home_subtitle" placeholder="Subtitle"
-                                    name="home_subtitle">
+                                    name="home_subtitle" value="{{home_content.home_subtitle}}">
                             </div>
                             <div class="pb-2">
                                 <label for="home_cover_pic">Cover Photo</label>
@@ -26,14 +26,15 @@
                             <hr>
                             <h6 class="card-title">First Row:</h6>
                             <div class="form-group">
-                                <label for="home_first_title">Title</label>
-                                <input type="text" class="form-control" id="home_first_title" placeholder="Title"
-                                    name="home_first_title">
+                                <label for="home_one_title">Title</label>
+                                <input type="text" class="form-control" id="home_one_title" placeholder="Title"
+                                    name="home_one_title" value="{{home_content.home_one_title}}">
                             </div>
                             <div class="form-group">
-                                <label for="home_first_content">Content</label>
-                                <input name="home_first_content" type="hidden" id="home_first_content">
+                                <label for="home_one_content">Content</label>
+                                <input name="home_one_content" type="hidden" id="home_one_content">
                                 <div id="home-quill-one">
+                                    {{{home_content.home_one_content}}}
                                 </div>
                             </div>
                             <div class="pb-2">
@@ -43,14 +44,15 @@
                             <hr>
                             <h6 class="card-title">Second Row:</h6>
                             <div class="form-group">
-                                <label for="home_second_title">Title</label>
-                                <input type="text" class="form-control" id="home_second_title" placeholder="Title"
-                                    name="home_second_title">
+                                <label for="home_two_title">Title</label>
+                                <input type="text" class="form-control" id="home_two_title" placeholder="Title"
+                                    name="home_two_title" value="{{home_content.home_two_title}}">
                             </div>
                             <div class="form-group">
-                                <label for="home_second_content">Content</label>
-                                <input name="home_second_content" type="hidden" id="home_second_content">
+                                <label for="home_two_content">Content</label>
+                                <input name="home_two_content" type="hidden" id="home_two_content">
                                 <div id="home-quill-two">
+                                    {{{home_content.home_two_content}}}
                                 </div>
                             </div>
                             <div class="pb-2">
@@ -60,14 +62,15 @@
                             <hr>
                             <h6 class="card-title">Third Row:</h6>
                             <div class="form-group">
-                                <label for="home_third_title">Title</label>
-                                <input type="text" class="form-control" id="home_third_title" placeholder="Title"
-                                    name="home_third_title">
+                                <label for="home_three_title">Title</label>
+                                <input type="text" class="form-control" id="home_three_title" placeholder="Title"
+                                    name="home_three_title" value="{{home_content.home_three_title}}">
                             </div>
                             <div class="form-group">
-                                <label for="home_third_content">Content</label>
-                                <input name="home_third_content" type="hidden" id="home_third_content">
+                                <label for="home_three_content">Content</label>
+                                <input name="home_three_content" type="hidden" id="home_three_content">
                                 <div id="home-quill-three">
+                                    {{{home_content.home_three_content}}}
                                 </div>
                             </div>
                             <div class="pb-2">
@@ -77,14 +80,15 @@
                             <hr>
                             <h6 class="card-title">Volunteer Row:</h6>
                             <div class="form-group">
-                                <label for="home_third_title">Title</label>
-                                <input type="text" class="form-control" id="home_third_title" placeholder="Title"
-                                    name="home_third_title">
+                                <label for="home_four_title">Title</label>
+                                <input type="text" class="form-control" id="home_four_title" placeholder="Title"
+                                    name="home_four_title" value="{{home_content.home_four_title}}">
                             </div>
                             <div class="form-group">
-                                <label for="home_third_content">Content</label>
-                                <input name="home_third_content" type="hidden" id="home_third_content">
+                                <label for="home_four_content">Content</label>
+                                <input name="home_four_content" type="hidden" id="home_four_content">
                                 <div id="home-quill-four">
+                                    {{{home_content.home_four_content}}}
                                 </div>
                             </div>
                             <div class="pb-2">
@@ -98,8 +102,11 @@
                                     </div>
                                     <div class="col text-right">
                                         <label class="switch">
-                                            <input type="checkbox" id="pre_app_button" onclick="blog_change(this)"
-                                                checked>
+                                            <input name="home_preapp_button_val" type="hidden"
+                                                id="home_preapp_button_val"
+                                                value={{#if home_content.home_preapp_button}}"true"{{else}}"false"{{/if}}>
+                                            <input type="checkbox" id="home_preapp_button" onclick="home_preapp(this)"
+                                                {{#if home_content.home_preapp_button}}checked{{/if}}>
                                             <span class="slider round"></span>
                                         </label>
                                     </div>
@@ -111,7 +118,10 @@
                                 </div>
                                 <div class="col text-right">
                                     <label class="switch">
-                                        <input type="checkbox" id="app_button" onclick="blog_change(this)" checked>
+                                        <input name="home_app_button_val" type="hidden" id="home_app_button_val"
+                                            value={{#if home_content.home_app_button}}"true"{{else}}"false"{{/if}}>
+                                        <input type="checkbox" id="home_app_button" onclick="home_app(this)"
+                                            {{#if home_content.home_app_button}}checked{{/if}}>
                                         <span class="slider round"></span>
                                     </label>
                                 </div>
@@ -128,6 +138,41 @@
 </div>
 
 <script>
+    // CMS Home Pre-App Button Switch Toggle
+    function home_preapp(checkbox) {
+        var home_preapp_button = document.querySelector('input[id=home_preapp_button_val]');
+
+        //If it is checked.
+        if (checkbox.checked) {
+            home_preapp_button.value = "true";
+            console.log(home_preapp_button);
+        }
+
+        //If it has been unchecked.
+        else {
+            home_preapp_button.value = "false";
+            console.log(home_preapp_button);
+        }
+    }
+
+    // CMS Home App Button Switch Toggle
+    function home_app(checkbox) {
+        var home_app_button = document.querySelector('input[id=home_app_button_val]');
+
+        //If it is checked.
+        if (checkbox.checked) {
+            home_app_button.value = "true";
+            console.log(home_app_button);
+        }
+
+        //If it has been unchecked.
+        else {
+            home_app_button.value = "false";
+            console.log(home_app_button);
+        }
+    }
+
+    // CMS Home Quill Forms
     var homeQuillOne = new Quill('#home-quill-one', {
         modules: {
             toolbar: [
@@ -176,11 +221,20 @@
         theme: 'snow'
     });
 
-    var blog_form = document.getElementById('blog_form');
-    blog_form.onsubmit = function () {
-        var blog_content = document.querySelector('input[name=blog_content]');
-        blog_content.value = homeQuill.root.innerHTML;
-        console.log(blog_content);
+    var home_form = document.getElementById('home_form');
+    home_form.onsubmit = function () {
+        var home_one_content = document.querySelector('input[name=home_one_content]');
+        home_one_content.value = homeQuillOne.root.innerHTML;
+
+        var home_two_content = document.querySelector('input[name=home_two_content]');
+        home_two_content.value = homeQuillTwo.root.innerHTML;
+
+        var home_three_content = document.querySelector('input[name=home_three_content]');
+        home_three_content.value = homeQuillThree.root.innerHTML;
+
+        var home_four_content = document.querySelector('input[name=home_four_content]');
+        home_four_content.value = homeQuillFour.root.innerHTML;
+
         return true;
     };
 </script>

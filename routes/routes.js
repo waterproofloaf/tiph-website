@@ -19,6 +19,7 @@ const projectController = require('../controller/projectController.js');
 const adminController = require('../controller/adminController.js');
 const applicationController = require('../controller/applicationController.js');
 const preappformController = require('../controller/preappformController.js');
+const homeController = require('../controller/homeController.js');
 
 // import module 'Validators' from '../validators/...'
 const formsValidator = require("../validators/formsValidator.js");
@@ -103,6 +104,8 @@ app.get('/cms-logout', controller.getCMSLogout);
 // CMS Home and Application
 app.get('/cms-web-toggle', controller.getCMSWebToggle);
 app.get('/cms-home', controller.getCMSHome);
+app.post('/cms-home', homeController.editHome);
+// app.get('/cms-home/toggle', homeController.getCMSHome);
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
