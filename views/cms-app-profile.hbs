@@ -131,6 +131,9 @@
                                     <th>
                                         Do you accept or reject this applicant?
                                     </th>
+                                    <th>
+                                        Do you want to delete this application?
+                                    </th>
                                     <tr>
                                         <td>
                                             <a href="/cms-applicant-app/accept?id={{this.app_id}}">
@@ -144,25 +147,21 @@
                                                 </button>
                                             </a>
                                         </td>
+                                        <td>
+                                            <a href="/cms-applicant-app/delete?id={{this.app_id}}">
+                                                <button id="{{this.app_id}}" type="button" class="btn btn-outline-danger">
+                                                    Delete
+                                                </button>
+                                            </a>
+                                        </td>
                                     </tr>
                                     {{/equals}}
                                     {{#equals this.app_status "Accepted"}}
                                         <th>
                                             Revert status of this applicant
                                         </th>
-                                        <tr>
-                                            <td>
-                                                <a href="/cms-applicant-app/pending?id={{this.app_id}}">
-                                                    <button id="{{this.app_id}}" type="button" class="btn btn-outline-info">
-                                                    Pending
-                                                    </button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    {{/equals}}
-                                    {{#equals this.app_status "Rejected"}}
                                         <th>
-                                            Revert status of this applicant
+                                            Do you want to delete this application?
                                         </th>
                                         <tr>
                                             <td>
@@ -172,6 +171,37 @@
                                                     </button>
                                                 </a>
                                             </td>
+                                            <td>
+                                            <a href="/cms-applicant-app/delete?id={{this.app_id}}">
+                                                <button id="{{this.app_id}}" type="button" class="btn btn-outline-danger">
+                                                    Delete
+                                                </button>
+                                            </a>
+                                        </td>
+                                        </tr>
+                                    {{/equals}}
+                                    {{#equals this.app_status "Rejected"}}
+                                        <th>
+                                            Revert status of this applicant
+                                        </th>
+                                        <th>
+                                            Do you want to delete this application?
+                                        </th>
+                                        <tr>
+                                            <td>
+                                                <a href="/cms-applicant-app/pending?id={{this.app_id}}">
+                                                    <button id="{{this.app_id}}" type="button" class="btn btn-outline-info">
+                                                    Pending
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                            <a href="/cms-applicant-app/delete?id={{this.app_id}}">
+                                                <button id="{{this.app_id}}" type="button" class="btn btn-outline-danger">
+                                                    Delete
+                                                </button>
+                                            </a>
+                                        </td>
                                         </tr>
                                     {{/equals}}
                                 </thead>

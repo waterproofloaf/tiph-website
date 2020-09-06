@@ -8,15 +8,15 @@ const url = "mongodb://localhost:27017/tiph";
 
 const applicationController = {
 
-    // deleteDonate: function (req, res) {
-    //     var donate_id = req.query.id;
-    //     var donate_details = {
-    //         _id: ObjectID(donate_id)
-    //     }
+    deletePreApplicant: function (req, res) {
+        var preprof_id = req.query.id;
+        var preprof_details = {
+            _id: ObjectID(preprof_id)
+        }
 
-    //     database.deleteOne(Donate, donate_details);
-    //     res.redirect('/cms-donate');
-    // },
+        database.deleteOne(PreApp, preprof_details);
+        res.redirect('/cms-applicant-pre');
+    },
 
     AcceptPreApplicant: function (req, res) {
         var pre_id = req.query.id;
@@ -61,6 +61,16 @@ const applicationController = {
 
         database.updateOne(PreApp, filter, pre_details);
         res.redirect('/cms-applicant-pre');
+    },
+
+    deleteAppApplicant: function (req, res) {
+        var appprof_id = req.query.id;
+        var appprof_details = {
+            _id: ObjectID(appprof_id)
+        }
+
+        database.deleteOne(App, appprof_details);
+        res.redirect('/cms-applicant-app');
     },
 
     AcceptAppApplicant: function (req, res) {
