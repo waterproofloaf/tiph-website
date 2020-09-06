@@ -75,8 +75,8 @@
                           class="btn btn-outline-success">Edit</button></a>
                     </td>
                     <td class="text-right">
-                      <a href="/cms-blog/delete?id={{this._id}}"><button id="{{this._id}}" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
+                      <button id="{{this._id}}" type="button" class="btn btn-outline-danger"
+                        onclick="deleteConfirm(this)">Delete</button>
                     </td>
                     <td class="text-center">
                       <label class="switch">
@@ -96,3 +96,19 @@
     </div>
   </div>
 </div>
+
+<script>
+  function deleteConfirm(button) {
+    var self = $(button).attr('id');
+    if (confirm("Are you sure of deleting this blog entry?")) {
+      $.ajax({
+        url: "/cms-blog/delete",
+        data: { id: self },
+        success: function (response) {
+          window.location.href = 'cms-blog';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+</script>

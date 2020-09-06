@@ -46,35 +46,6 @@
                   </th>
                 </thead>
                 <tbody id="entries-table">
-                  {{!-- <tr>
-                    <td>
-                      Project Lumad
-                    </td>
-                    <td>
-                      <span>
-                        <time class="entry-date">03/07/2020</time>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="entry-progress">
-                        Proposed
-                      </span>
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr> --}}
                   {{#each proj_info}}
                   <tr>
                     <td>
@@ -95,8 +66,8 @@
                           class="btn btn-outline-success">Edit</button></a>
                     </td>
                     <td class="text-right">
-                      <a href="/cms-project/delete?id={{this._id}}"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
+                      <button id="{{this._id}}" type="button" class="btn btn-outline-danger"
+                        onclick="deleteConfirm(this)">Delete</button>
                     </td>
                     <td class="text-center">
                       <label class="switch">
@@ -123,3 +94,19 @@
     </div>
   </div>
 </div>
+
+<script>
+  function deleteConfirm(button) {
+    var self = $(button).attr('id');
+    if (confirm("Are you sure of deleting this project entry?")) {
+      $.ajax({
+        url: "/cms-project/delete",
+        data: { id: self },
+        success: function (response) {
+          window.location.href = 'cms-project';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+</script>

@@ -66,9 +66,8 @@
                       </a>
                     </td>
                     <td class="text-right">
-                      <a href="/cms-donate/delete?id={{this._id}}">
-                        <button id={{this._id}} type="button" class="btn btn-outline-danger">Delete</button>
-                      </a>
+                      <button id={{this._id}} type="button" class="btn btn-outline-danger"
+                        onclick="deleteConfirm(this)">Delete</button>
                     </td>
                     <td class="text-center donate-switch">
                       <label class="switch">
@@ -88,3 +87,19 @@
     </div>
   </div>
 </div>
+
+<script>
+  function deleteConfirm(button) {
+    var self = $(button).attr('id');
+    if (confirm("Are you sure of deleting this donation option?")) {
+      $.ajax({
+        url: "/cms-donate/delete",
+        data: { id: self },
+        success: function (response) {
+          window.location.href = 'cms-donate';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+</script>
