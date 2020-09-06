@@ -692,7 +692,9 @@ const controller = {
             var dbo = db.db("tiph");
             var cursor = dbo.collection("users").find();
             cursor.forEach(function (doc, err) {
-                resultArray.push(doc);
+                if(doc._id != req.session.userid){
+                    resultArray.push(doc);
+                }
             },
                 function () {
                     if (req.session.user && req.cookies.user_sid && req.session.type) {
