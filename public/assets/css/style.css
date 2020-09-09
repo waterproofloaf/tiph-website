@@ -300,6 +300,9 @@ footer {
 }
 
 /* About */
+.about-us-acc{
+  margin-bottom: 24px;
+}
 
 .about-us-acc .content {
   text-align: justify;

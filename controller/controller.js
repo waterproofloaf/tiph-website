@@ -269,7 +269,7 @@ const controller = {
             database.findOne(PreAppForm, {}, {}, function (preappsform) {
                 res.render('cms-application', {
                     layout: '/layouts/cms-layout',
-                    title: 'CMS Application | The Initiative PH',
+                    title: 'Volunteer Forms | The Initiative PH',
                     application_active: true,
                     name: req.session.name,
                     type: req.session.type,
