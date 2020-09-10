@@ -334,12 +334,30 @@ const controller = {
         }
     },
 
-    getCMSApplicantOverview: function (req, res) {
+    getCMSApplicantPreOverview: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-applicant-overview', {
+            res.render('cms-applicant-pre-overview', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS Volunteer Pre-Applicants | The Initiative PH',
+                applicant_active: true,
+                pre_app_active: true,
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
+            })
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+
+    getCMSApplicantAppOverview: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            res.render('cms-applicant-app-overview', {
                 layout: '/layouts/cms-layout',
                 title: 'CMS Volunteer Applicants | The Initiative PH',
                 applicant_active: true,
+                app_active: true,
                 name: req.session.name,
                 type: req.session.type,
                 userid: req.session.userid,
@@ -368,6 +386,7 @@ const controller = {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Applicants | The Initiative PH',
                                 applicant_active: true,
+                                pre_app_active: true,
                                 name: req.session.name,
                                 type: req.session.type,
                                 userid: req.session.userid,
@@ -401,6 +420,7 @@ const controller = {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Applicants | The Initiative PH',
                                 applicant_active: true,
+                                pre_app_active: true,
                                 name: req.session.name,
                                 type: req.session.type,
                                 userid: req.session.userid,
@@ -434,6 +454,7 @@ const controller = {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Applicants | The Initiative PH',
                                 applicant_active: true,
+                                pre_app_active: true,
                                 name: req.session.name,
                                 type: req.session.type,
                                 userid: req.session.userid,
@@ -467,6 +488,7 @@ const controller = {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Applicants | The Initiative PH',
                                 applicant_active: true,
+                                pre_app_active: true,
                                 name: req.session.name,
                                 type: req.session.type,
                                 userid: req.session.userid,
@@ -502,6 +524,7 @@ const controller = {
                     pre_comments: prof.pre_comments,
                     pre_status: prof.pre_status,
                     applicant_active: true,
+                    pre_app_active: true,
                     name: req.session.name,
                     type: req.session.type,
                     userid: req.session.userid,
@@ -531,6 +554,7 @@ const controller = {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Applicants | The Initiative PH',
                                 applicant_active: true,
+                                app_active: true,
                                 name: req.session.name,
                                 type: req.session.type,
                                 userid: req.session.userid,
@@ -564,6 +588,7 @@ const controller = {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Applicants | The Initiative PH',
                                 applicant_active: true,
+                                app_active: true,
                                 name: req.session.name,
                                 type: req.session.type,
                                 userid: req.session.userid,
@@ -597,6 +622,7 @@ const controller = {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Applicants | The Initiative PH',
                                 applicant_active: true,
+                                app_active: true,
                                 name: req.session.name,
                                 type: req.session.type,
                                 userid: req.session.userid,
@@ -630,6 +656,7 @@ const controller = {
                                 layout: '/layouts/cms-layout',
                                 title: 'CMS Applicants | The Initiative PH',
                                 applicant_active: true,
+                                app_active: true,
                                 name: req.session.name,
                                 type: req.session.type,
                                 userid: req.session.userid,
@@ -673,6 +700,7 @@ const controller = {
                     app_portfolio: prof.app_portfolio,
                     app_status: prof.app_status,
                     applicant_active: true,
+                    app_active: true, 
                     name: req.session.name,
                     type: req.session.type,
                     userid: req.session.userid,

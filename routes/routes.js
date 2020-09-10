@@ -112,7 +112,8 @@ app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
 app.post('/cms-edit-pre-application', preappformController.editPreAppForm);
 
 // CMS Applicant
-app.get('/cms-applicant-overview', controller.getCMSApplicantOverview);
+app.get('/cms-applicant-pre-overview', controller.getCMSApplicantPreOverview);
+app.get('/cms-applicant-app-overview', controller.getCMSApplicantAppOverview);
 // CMS Pre-Applicant
 app.get('/cms-applicant-pre', controller.getCMSApplicantPre);
 app.get('/cms-applicant-pre-accepted', controller.getCMSApplicantPreAccepted);
