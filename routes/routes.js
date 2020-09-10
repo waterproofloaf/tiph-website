@@ -23,6 +23,7 @@ const homeController = require('../controller/homeController.js');
 
 // import module 'Validators' from '../validators/...'
 const formsValidator = require("../validators/formsValidator.js");
+const cmsValidator = require("../validators/cmsValidator.js");
 
 const app = express();
 
@@ -136,9 +137,9 @@ app.get('/cms-applicant-app/pending/', applicationController.PendingAppApplicant
 // CMS Admins
 app.get('/cms-admin', controller.getCMSAdmin);
 app.get('/cms-admin-new', controller.getCMSNewAdmin);
-app.post('/cms-admin-new', adminController.postAdmin);
+app.post('/cms-admin-new', cmsValidator.addAdminValidation(), adminController.postAdmin);
 app.get('/cms-admin-edit', controller.getCMSEditAdmin);
-app.post('/cms-admin-edit', adminController.editAdmin);
+app.post('/cms-admin-edit', cmsValidator.editAdminValidation(), adminController.editAdmin);
 app.get('/cms-admin/delete/', adminController.deleteAdmin);
 
 // CMS Blog

@@ -4,12 +4,28 @@ const database = require('../models/db.js');
 const bcrypt = require('bcrypt');
 const helper = require('./helper.js')
 const { ObjectID } = require('mongodb');
-
-// URL of MongoDB database
-const url = "mongodb://localhost:27017/tiph";
+const { validationResult } = require('express-validator');
 
 const adminController = {
     postAdmin: function (req, res) {
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            errors = errors.errors;
+
+            res.render('cms-admin-new', {
+            layout: '/layouts/cms-layout',
+                title: 'CMS Add Admin | The Initiative PH',
+                admin_active: true,
+                type: req.session.type,
+                name: req.session.name,
+                userid: req.session.userid,
+                adminErrorMessage: errors[0].msg
+            });
+
+            return;
+        }
+
         var admin_name = `${req.body.admin_name}`;
         var admin_username = `${req.body.admin_username}`;
         var admin_password = `${req.body.admin_password}`;
@@ -22,21 +38,37 @@ const adminController = {
         else{
             admin_userTypeMain = true;
         }
+        database.findOne(User, {username: admin_username}, {}, function(all){
 
-        bcrypt.hash(admin_password, 10, function(err, hash){
-            let admin_details = {
-                name: admin_name,
-                username: admin_username,
-                password: hash,
-                userDepartment: admin_dept,
-                userTypeMain: admin_userTypeMain
+            if(all.username == admin_username){
+                res.render('cms-admin-new', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Add Admin | The Initiative PH',
+                    admin_active: true,
+                    type: req.session.type,
+                    name: req.session.name,
+                    userid: req.session.userid,
+                    adminErrorMessage: 'Username already exists!'
+                });
             }
-        
-            database.insertOne(User, admin_details, (result) => {
-                console.log(result);
-                res.redirect('/cms-admin');
-            });
-        })
+            else{
+                bcrypt.hash(admin_password, 10, function(err, hash){
+                    let admin_details = {
+                        name: admin_name,
+                        username: admin_username,
+                        password: hash,
+                        userDepartment: admin_dept,
+                        userTypeMain: admin_userTypeMain
+                    }
+                
+                    database.insertOne(User, admin_details, (result) => {
+                        console.log(result);
+                        res.redirect('/cms-admin');
+                    });
+                });
+            }
+
+        });
     },
 
     deleteAdmin: function (req, res) {
@@ -50,6 +82,28 @@ const adminController = {
     },
 
     editAdmin: function (req, res) {
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            errors = errors.errors;
+            var query = req.session.userid;
+            database.findOne(User, { _id: query }, {}, function (admin) {
+                res.render('cms-admin-edit', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Edit Admin | The Initiative PH',
+                    admin_name: admin.name,
+                    admin_username: admin.username,
+                    admin_dept: admin.userDepartment,
+                    type: req.session.type,
+                    name: req.session.name,
+                    userid: req.session.userid,
+                    adminErrorMessage: errors[0].msg
+                });
+            });
+
+            return;
+        }
+
         var admin_name = `${req.body.admin_name}`;
         var admin_username = helper.sanitize(req.body.admin_username);
         var admin_password = helper.sanitize(req.body.admin_password);
@@ -77,55 +131,56 @@ const adminController = {
                                     type: req.session.type,
                                     name: req.session.name,
                                     userid: req.session.userid,
-                                    loginErrorMessage: 'New Password and Confirm Password do not match!'
+                                    adminErrorMessage: 'New Password and Confirm Password do not match!'
                                 });
                             });
                         }
-                        database.findOne(User, {username: admin_username}, {}, function(all){
-                            if(all == null){
-                                bcrypt.hash(admin_new_password, 10, function(err, hash){
-                                    let admin_details = {
-                                        name: admin_name,
-                                        username: admin_username,
-                                        password: hash,
-                                        userDepartment: admin_dept,
-                                    }
-                        
-                                    database.updateOne(User, filter, admin_details);
-                                    res.redirect('/cms-logout');
-                                })
-                            }
-                            else if(all.username == admin_username && req.session.userid != all._id){
-                                var query = req.session.userid;
-                                database.findOne(User, { _id: query }, {}, function (admin) {
-                                    res.render('cms-admin-edit', {
-                                        layout: '/layouts/cms-layout',
-                                        title: 'CMS Edit Admin | The Initiative PH',
-                                        admin_name: admin.name,
-                                        admin_username: admin.username,
-                                        admin_dept: admin.userDepartment,
-                                        type: req.session.type,
-                                        name: req.session.name,
-                                        userid: req.session.userid,
-                                        loginErrorMessage: 'Username already exists!'
+                        else{
+                            database.findOne(User, {username: admin_username}, {}, function(all){
+                                if(all == null){
+                                    bcrypt.hash(admin_new_password, 10, function(err, hash){
+                                        let admin_details = {
+                                            name: admin_name,
+                                            username: admin_username,
+                                            password: hash,
+                                            userDepartment: admin_dept,
+                                        }
+                            
+                                        database.updateOne(User, filter, admin_details);
+                                        res.redirect('/cms-logout');
+                                    })
+                                }
+                                else if(all.username == admin_username && req.session.userid != all._id){
+                                    var query = req.session.userid;
+                                    database.findOne(User, { _id: query }, {}, function (admin) {
+                                        res.render('cms-admin-edit', {
+                                            layout: '/layouts/cms-layout',
+                                            title: 'CMS Edit Admin | The Initiative PH',
+                                            admin_name: admin.name,
+                                            admin_username: admin.username,
+                                            admin_dept: admin.userDepartment,
+                                            type: req.session.type,
+                                            name: req.session.name,
+                                            userid: req.session.userid,
+                                            adminErrorMessage: 'Username already exists!'
+                                        });
                                     });
-                                });
-                            }
-                            else{
-                                bcrypt.hash(admin_new_password, 10, function(err, hash){
-                                    let admin_details = {
-                                        name: admin_name,
-                                        username: admin_username,
-                                        password: hash,
-                                        userDepartment: admin_dept,
-                                    }
-                        
-                                    database.updateOne(User, filter, admin_details);
-                                    res.redirect('/cms-logout');
-                                })
-                            }
-                        });
-                        
+                                }
+                                else{
+                                    bcrypt.hash(admin_new_password, 10, function(err, hash){
+                                        let admin_details = {
+                                            name: admin_name,
+                                            username: admin_username,
+                                            password: hash,
+                                            userDepartment: admin_dept,
+                                        }
+                            
+                                        database.updateOne(User, filter, admin_details);
+                                        res.redirect('/cms-logout');
+                                    })
+                                }
+                            });
+                        }
                     }
                     else{
                         var query = req.session.userid;
@@ -139,7 +194,7 @@ const adminController = {
                                 type: req.session.type,
                                 name: req.session.name,
                                 userid: req.session.userid,
-                                loginErrorMessage: 'Old password is incorrect!'
+                                adminErrorMessage: 'Old password is incorrect!'
                             });
                         });
                     }

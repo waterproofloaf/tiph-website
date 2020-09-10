@@ -9,15 +9,16 @@
                             <h5>Edit Account:</h5>
                         </div>
                         <div class="card-body">
+                        <h5 class="cms-font-text-error" id="admin-error">{{adminErrorMessage}}</h5>
                             <div class="form-group">
                                 <label for="admin_name">Full Name</label>
                                 <input type="text" class="form-control" id="admin_name" name="admin_name"
-                                    placeholder="{{this.admin_name}}" value="{{this.admin_name}}">
+                                    placeholder="{{this.admin_name}}" value="{{this.admin_name}}" requried>
                             </div>
                             <div class="form-group">
                                 <label for="admin_username">Username</label>
                                 <input type="text" class="form-control" id="admin_username" name="admin_username"
-                                    placeholder={{this.admin_username}} value="{{this.admin_username}}">
+                                    placeholder={{this.admin_username}} value="{{this.admin_username}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="admin_password">Old Password</label>
@@ -239,8 +240,6 @@
                                 </select>
                                 {{/equals}}
                             </div>
-                            <br>
-                            <h5 class="cms-font-text-error">{{loginErrorMessage}}</h5>
                             <button type="submit" class="btn btn-outline-success">Save</button>
                         </div>
                     </div>
