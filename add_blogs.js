@@ -10,6 +10,7 @@ var blogs = [
         blog_date: '3/07/2020',
         blog_author: 'Juan Dela Cruz',
         blog_keywords: 'Lumad',
+        blog_preview: 'Test Preview 1',
         blog_published: true,
     },
 
@@ -19,6 +20,7 @@ var blogs = [
         blog_date: '3/30/2020',
         blog_author: 'Juan Dela Cruz',
         blog_keywords: 'Kapatid',
+        blog_preview: 'Test Preview 2',
         blog_published: true,
     },
 
@@ -28,6 +30,7 @@ var blogs = [
         blog_date: '4/08/2020',
         blog_author: 'Anton Rodriguez',
         blog_keywords: 'Pagsibol',
+        blog_preview: 'Test Preview 3',
         blog_published: true,
     },
 
@@ -37,6 +40,7 @@ var blogs = [
         blog_date: '6/17/2020',
         blog_author: 'Maria Tolentino',
         blog_keywords: 'Example',
+        blog_preview: 'Test Preview 4',
         blog_published: true,
     },
 
@@ -46,6 +50,7 @@ var blogs = [
         blog_date: '12/17/2020',
         blog_author: 'Anton Rodriguez',
         blog_keywords: 'Example',
+        blog_preview: 'Test Preview 5',
         blog_published: true,
     },
 
