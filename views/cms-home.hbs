@@ -24,7 +24,7 @@
                                 <input type="file" class="form-control-file" id="home_cover_pic">
                             </div>
                             <hr>
-                            <h6 class="card-title">First Row:</h6>
+                            <h6 class="card-title">Background Row:</h6>
                             <div class="form-group">
                                 <label for="home_one_title">Title</label>
                                 <input type="text" class="form-control" id="home_one_title" placeholder="Title"
@@ -42,7 +42,7 @@
                                 <input type="file" class="form-control-file" id="home_first_pic">
                             </div>
                             <hr>
-                            <h6 class="card-title">Second Row:</h6>
+                            <h6 class="card-title">Objectives Row:</h6>
                             <div class="form-group">
                                 <label for="home_two_title">Title</label>
                                 <input type="text" class="form-control" id="home_two_title" placeholder="Title"
@@ -60,7 +60,7 @@
                                 <input type="file" class="form-control-file" id="home_second_pic">
                             </div>
                             <hr>
-                            <h6 class="card-title">Third Row:</h6>
+                            <h6 class="card-title">Goals Row:</h6>
                             <div class="form-group">
                                 <label for="home_three_title">Title</label>
                                 <input type="text" class="form-control" id="home_three_title" placeholder="Title"
@@ -95,7 +95,8 @@
                                 <label for="home_third_pic">Side Photo</label>
                                 <input type="file" class="form-control-file" id="home_third_pic">
                             </div>
-                            <div class="form-group">
+
+                            {{!-- <div class="form-group">
                                 <div class="form-row d-flex align-items-center">
                                     <div class="col text-left">
                                         Enable Pre-Application Button?
@@ -111,13 +112,15 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
+
                             <div class="form-row d-flex align-items-center">
                                 <div class="col text-left">
                                     Enable Application Button?
                                 </div>
                                 <div class="col text-right">
                                     <label class="switch">
+                                        <input name="home_preapp_button_val" type="hidden" id="home_preapp_button_val">
                                         <input name="home_app_button_val" type="hidden" id="home_app_button_val"
                                             value={{#if home_content.home_app_button}}"true"{{else}}"false"{{/if}}>
                                         <input type="checkbox" id="home_app_button" onclick="home_app(this)"
@@ -138,36 +141,40 @@
 </div>
 
 <script>
+
     // CMS Home Pre-App Button Switch Toggle
-    function home_preapp(checkbox) {
-        var home_preapp_button = document.querySelector('input[id=home_preapp_button_val]');
+    //function home_preapp(checkbox) {
+    //var home_preapp_button = document.querySelector('input[id=home_preapp_button_val]');
 
-        //If it is checked.
-        if (checkbox.checked) {
-            home_preapp_button.value = "true";
-            console.log(home_preapp_button);
-        }
+    //If it is checked.
+    //if (checkbox.checked) {
+    //  home_preapp_button.value = "true";
+    //console.log(home_preapp_button);
+    //    }
 
-        //If it has been unchecked.
-        else {
-            home_preapp_button.value = "false";
-            console.log(home_preapp_button);
-        }
-    }
+    //If it has been unchecked.
+    // else {
+    //home_preapp_button.value = "false";
+    //console.log(home_preapp_button);
+    //}
+    //}
 
     // CMS Home App Button Switch Toggle
     function home_app(checkbox) {
         var home_app_button = document.querySelector('input[id=home_app_button_val]');
+        var home_preapp_button = document.querySelector('input[id=home_preapp_button_val]');
 
         //If it is checked.
         if (checkbox.checked) {
             home_app_button.value = "true";
+            home_preapp_button.value = "false";
             console.log(home_app_button);
         }
 
         //If it has been unchecked.
         else {
             home_app_button.value = "false";
+            home_preapp_button.value = "true";
             console.log(home_app_button);
         }
     }
