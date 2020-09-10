@@ -11,7 +11,7 @@
           <i class="fas fa-circle fa-stack-2x"></i>
           <i class="fas fa-heart fa-stack-1x fa-inverse"></i>
         </span>
-        <p class="pt-3">Like and follow our social media accounts: </p>
+        <p class="sub-caption pt-3">Like and follow our social media accounts: </p>
         <a class="fb-ic soc-button" href="https://www.facebook.com/theinitiativeph" target="_blank">
           <i class="fab fa-facebook-square fa-3x mar-left-8"></i>
         </a>
@@ -27,14 +27,14 @@
           <i class="fas fa-circle fa-stack-2x"></i>
           <i class="fas fa-share-square fa-stack-1x fa-inverse"></i>
         </span>
-        <p class="pt-3">Actively share TIPH's posts to boost them to the public</p>
+        <p class="sub-caption pt-3">Actively share TIPH's posts to boost them to the public</p>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 mt-5">
         <span class="fa-stack fa-2x">
           <i class="fas fa-circle fa-stack-2x"></i>
           <i class="fas fa-calendar-check fa-stack-1x fa-inverse"></i>
         </span>
-        <p class="pt-3">Attend our activites and events! <br>You may join us in the complete confidence that all
+        <p class="sub-caption pt-3">Attend our activites and events! You may join us in the complete confidence that all
           proceeds go to TIPH
           causes!</p>
       </div>
@@ -43,7 +43,7 @@
           <i class="fas fa-circle fa-stack-2x"></i>
           <i class="fas fa-handshake fa-stack-1x fa-inverse"></i>
         </span>
-        <p class="pt-3">Offer partnerships or sponsorships. <br>Microsponsorships from individuals, families, and
+        <p class="sub-caption pt-3">Offer partnerships or sponsorships. Microsponsorships from individuals, families, and
           informal groups are
           accepted!</p>
       </div>
@@ -53,12 +53,12 @@
   <section style="overflow-x: hidden;">
     <div class="container-fluid mt-5">
       <h1 class="font-weight-bold text-uppercase sub-title mar-top-40 pb-3"><strong>Donate to Us</i></strong></h1>
-      <div class="row">
-
+      <div class="row justify-content-center">
+        <h5 class="sub-caption">{{donateMessage}}</h5>
         {{!-- FOR MONGODB --}}
         {{# each donate_info}}
         {{!-- {{if donate_hide}}{{else}} --}}
-        <div class="col-lg mb-3 justify-content-center" style={{# if this.donate_visible}}"display: flex;"{{else}}"display: none;"{{/if}}>
+        <div class="donation-card mb-3 justify-content-center" style={{# if this.donate_visible}}"display: flex;"{{else}}"display: none;"{{/if}}>
           <div
             class="card-body {{#equals this.donate_type "GCash"}}card-gcash{{/equals}}{{#equals this.donate_type "PayMaya"}}card-paymaya{{/equals}}{{#equals this.donate_type "BDO"}}card-bdo{{/equals}}{{#equals this.donate_type "BPI"}}card-bpi{{/equals}}">
             {{#equals this.donate_type "GCash"}}
