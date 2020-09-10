@@ -39,7 +39,6 @@ var PreAppModel = new mongoose.Schema({
     },
     pre_comments: {
         type: String,
-        required: true,
     },
     pre_status: {
         type: String,
