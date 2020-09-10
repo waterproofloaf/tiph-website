@@ -82,7 +82,7 @@ const formsController = {
             layout: '/layouts/main',
             title: 'Contact Us | The Initiative PH',
             contact_active: true,
-            msg: 'Your message has been sent!'
+            msg: '<mark>Your message has been sent!</mark>'
         })
         }
       });
