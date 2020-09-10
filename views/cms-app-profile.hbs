@@ -5,7 +5,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form>
+            <form method="POST">
                 <div class="card">
                     <div class="card-header">
                         {{!-- Applicant Name should be changed --}}
@@ -127,84 +127,91 @@
                             {{!-- Add Upload Code Here maybe on Sprint 3--}}
                             <table class="table text-left">
                                 <thead class="text-primary">
+                                    <th>
+                                        Previous Reason for Status
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{this.app_status_reason}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
                                     {{#equals this.app_status "Pending"}}
                                     <th>
-                                        Do you accept or reject this applicant?
-                                    </th>
-                                    <th>
-                                        Do you want to delete this application?
+                                        Status of this applicant
                                     </th>
                                     <tr>
                                         <td>
-                                            <a href="/cms-applicant-app/accept?id={{this.app_id}}">
-                                                <button id="{{this.app_id}}" type="button" class="btn btn-outline-success">
-                                                 Accept
-                                                </button>
-                                            </a>
-                                            <a href="/cms-applicant-app/reject?id={{this.app_id}}">
-                                                <button id="{{this.app_id}}" type="button" class="btn btn-outline-danger">
-                                                    Reject
-                                                </button>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="/cms-applicant-app/delete?id={{this.app_id}}">
-                                                <button id="{{this.app_id}}" type="button" class="btn btn-outline-danger">
-                                                    Delete
-                                                </button>
-                                            </a>
+                                            <select name="app_status" id="app_status" style="color:black">
+                                                <option value="{{this.app_status}}" style="color:#51bcda" selected>Pending</option>
+                                                <option value="Accepted" style="color: #6bd098">Accepted</option>
+                                                <option value="Rejected" style="color: #ef8157">Rejected</option>
+                                            </select>
                                         </td>
                                     </tr>
                                     {{/equals}}
                                     {{#equals this.app_status "Accepted"}}
                                         <th>
-                                            Revert status of this applicant
-                                        </th>
-                                        <th>
-                                            Do you want to delete this application?
+                                            Status of this applicant
                                         </th>
                                         <tr>
                                             <td>
-                                                <a href="/cms-applicant-app/pending?id={{this.app_id}}">
-                                                    <button id="{{this.app_id}}" type="button" class="btn btn-outline-info">
-                                                    Pending
-                                                    </button>
-                                                </a>
+                                                <select name="app_status" id="app_status" style="color:black">
+                                                    <option value="Pending" style="color:#51bcda">Pending</option>
+                                                    <option value="{{this.app_status}}" style="color: #6bd098" selected>Accepted</option>
+                                                    <option value="Rejected" style="color: #ef8157">Rejected</option>
+                                                </select>
                                             </td>
-                                            <td>
-                                            <a href="/cms-applicant-app/delete?id={{this.app_id}}">
-                                                <button id="{{this.app_id}}" type="button" class="btn btn-outline-danger">
-                                                    Delete
-                                                </button>
-                                            </a>
-                                        </td>
                                         </tr>
                                     {{/equals}}
                                     {{#equals this.app_status "Rejected"}}
                                         <th>
-                                            Revert status of this applicant
-                                        </th>
-                                        <th>
-                                            Do you want to delete this application?
+                                            Status of this applicant
                                         </th>
                                         <tr>
                                             <td>
-                                                <a href="/cms-applicant-app/pending?id={{this.app_id}}">
-                                                    <button id="{{this.app_id}}" type="button" class="btn btn-outline-info">
-                                                    Pending
-                                                    </button>
-                                                </a>
+                                                <select name="app_status" id="app_status" style="color:black">
+                                                    <option value="Pending" style="color:#51bcda">Pending</option>
+                                                    <option value="Accepted" style="color: #6bd098">Accepted</option>
+                                                    <option value="{{this.app_status}}" style="color: #ef8157" selected>Rejected</option>
+                                                </select>
                                             </td>
-                                            <td>
-                                            <a href="/cms-applicant-app/delete?id={{this.app_id}}">
-                                                <button id="{{this.app_id}}" type="button" class="btn btn-outline-danger">
-                                                    Delete
-                                                </button>
-                                            </a>
-                                        </td>
                                         </tr>
                                     {{/equals}}
                                 </thead>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Reason for Changing the Status
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <textarea id="app_status_reason" name="app_status_reason" rows="3" class="form-control" required></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-primary">
+                                <tbody>
+                                    <td class="text-left">
+                                        <button type="submit" class="btn btn-lg btn-outline-success" id="{{this.app_id}}">SUBMIT</button>
+                                    </td>
+                                    <td class="text-right">
+                                        <a href="/cms-applicant-app/delete?id={{this.app_id}}">
+                                            <button id="{{this.app_id}}" type="button" class="btn btn-sm btn-outline-danger">
+                                                Delete
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tbody>
                             </table>
                         </div>
                     </div>

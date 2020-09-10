@@ -18,48 +18,32 @@ const applicationController = {
         res.redirect('/cms-applicant-pre');
     },
 
-    AcceptPreApplicant: function (req, res) {
+    EditPreApplicant: function (req, res) {
         var pre_id = req.query.id;
+        var change_status = req.body.pre_status;
+        var change_status_reason = req.body.pre_status_reason;
 
         var filter = {
             _id: ObjectID(pre_id)
         }
 
-        var pre_details = {
-            pre_status: "Accepted"
+        if (change_status == "Pending"){
+            var status = "Pending"
         }
-
-        database.updateOne(PreApp, filter, pre_details);
-        res.redirect('/cms-applicant-pre-pending');
-    },
-
-    RejectPreApplicant: function (req, res) {
-        var pre_id = req.query.id;
-
-        var filter = {
-            _id: ObjectID(pre_id)
+        else if (change_status == "Accepted"){
+            var status = "Accepted"
+        }
+        else if (change_status == "Rejected"){
+            var status = "Rejected"
         }
 
         var pre_details = {
-            pre_status: "Rejected"
+            pre_status: status,
+            pre_status_reason: change_status_reason
         }
 
         database.updateOne(PreApp, filter, pre_details);
-        res.redirect('/cms-applicant-pre-pending');
-    },
 
-    PendingPreApplicant: function (req, res) {
-        var pre_id = req.query.id;
-
-        var filter = {
-            _id: ObjectID(pre_id)
-        }
-
-        var pre_details = {
-            pre_status: "Pending"
-        }
-
-        database.updateOne(PreApp, filter, pre_details);
         res.redirect('/cms-applicant-pre');
     },
 
@@ -73,45 +57,28 @@ const applicationController = {
         res.redirect('/cms-applicant-app');
     },
 
-    AcceptAppApplicant: function (req, res) {
+    EditAppApplicant: function (req, res) {
         var app_id = req.query.id;
+        var change_status = req.body.app_status;
+        var change_status_reason = req.body.app_status_reason;
 
         var filter = {
             _id: ObjectID(app_id)
         }
 
-        var app_details = {
-            app_status: "Accepted"
+        if (change_status == "Pending"){
+            var status = "Pending"
         }
-
-        database.updateOne(App, filter, app_details);
-        res.redirect('/cms-applicant-app-pending');
-    },
-
-    RejectAppApplicant: function (req, res) {
-        var app_id = req.query.id;
-
-        var filter = {
-            _id: ObjectID(app_id)
+        else if (change_status == "Accepted"){
+            var status = "Accepted"
+        }
+        else if (change_status == "Rejected"){
+            var status = "Rejected"
         }
 
         var app_details = {
-            app_status: "Rejected"
-        }
-
-        database.updateOne(App, filter, app_details);
-        res.redirect('/cms-applicant-app-pending');
-    },
-
-    PendingAppApplicant: function (req, res) {
-        var app_id = req.query.id;
-
-        var filter = {
-            _id: ObjectID(app_id)
-        }
-
-        var app_details = {
-            app_status: "Pending"
+            app_status: status,
+            app_status_reason: change_status_reason
         }
 
         database.updateOne(App, filter, app_details);

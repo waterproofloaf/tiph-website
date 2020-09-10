@@ -120,20 +120,16 @@ app.get('/cms-applicant-pre-accepted', controller.getCMSApplicantPreAccepted);
 app.get('/cms-applicant-pre-rejected', controller.getCMSApplicantPreRejected);
 app.get('/cms-applicant-pre-pending', controller.getCMSApplicantPrePending);
 app.get('/cms-pre-app-profile', controller.getCMSApplicantPreProf);
+app.post('/cms-pre-app-profile', applicationController.EditPreApplicant);
 app.get('/cms-applicant-pre/delete/', applicationController.deletePreApplicant);
-app.get('/cms-applicant-pre/accept/', applicationController.AcceptPreApplicant);
-app.get('/cms-applicant-pre/reject/', applicationController.RejectPreApplicant);
-app.get('/cms-applicant-pre/pending/', applicationController.PendingPreApplicant);
 // CMS App-Applicant
 app.get('/cms-applicant-app', controller.getCMSApplicantApp);
 app.get('/cms-applicant-app-accepted', controller.getCMSApplicantAppAccepted);
 app.get('/cms-applicant-app-rejected', controller.getCMSApplicantAppRejected);
 app.get('/cms-applicant-app-pending', controller.getCMSApplicantAppPending);
 app.get('/cms-app-profile', controller.getCMSApplicantProf);
+app.post('/cms-app-profile', applicationController.EditAppApplicant);
 app.get('/cms-applicant-app/delete/', applicationController.deleteAppApplicant);
-app.get('/cms-applicant-app/accept/', applicationController.AcceptAppApplicant);
-app.get('/cms-applicant-app/reject/', applicationController.RejectAppApplicant);
-app.get('/cms-applicant-app/pending/', applicationController.PendingAppApplicant);
 
 // CMS Admins
 app.get('/cms-admin', controller.getCMSAdmin);

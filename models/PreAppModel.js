@@ -44,6 +44,10 @@ var PreAppModel = new mongoose.Schema({
     pre_status: {
         type: String,
         required: true,
+    },
+    pre_status_reason: {
+        type: String,
+        required: true,
     }
 });
 

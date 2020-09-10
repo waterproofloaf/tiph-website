@@ -126,7 +126,8 @@ const formsController = {
           pre_facebook: pre_facebook,
           pre_notify: pre_notify,
           pre_comments: pre_comments,
-          pre_status: "Pending"
+          pre_status: "Pending",
+          pre_status_reason: "This Pre-Application's status hasn't been changed yet."
       }
 
       database.insertOne(PreApp, newPreApp, function (f) {
@@ -195,7 +196,8 @@ const formsController = {
         app_position2: app_position2,
         app_reason: app_reason,
         app_portfolio: app_portfolio,
-        app_status: "Pending"
+        app_status: "Pending",
+        app_status_reason: "This Application's status hasn't been changed yet."
     }
 
       database.insertOne(App, newApp, function (f) {

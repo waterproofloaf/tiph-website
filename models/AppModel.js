@@ -74,6 +74,10 @@ var AppModel = new mongoose.Schema({
     app_status: {
         type: String,
         required: true,
+    },
+    app_status_reason: {
+        type: String,
+        required: true,
     }
 });
 
