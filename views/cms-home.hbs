@@ -120,7 +120,8 @@
                                 </div>
                                 <div class="col text-right">
                                     <label class="switch">
-                                        <input name="home_preapp_button_val" type="hidden" id="home_preapp_button_val">
+                                        <input name="home_preapp_button_val" type="hidden" id="home_preapp_button_val"
+                                            value={{#if home_content.home_preapp_button}}"true"{{else}}"false"{{/if}}>
                                         <input name="home_app_button_val" type="hidden" id="home_app_button_val"
                                             value={{#if home_content.home_app_button}}"true"{{else}}"false"{{/if}}>
                                         <input type="checkbox" id="home_app_button" onclick="home_app(this)"
