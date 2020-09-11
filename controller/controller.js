@@ -46,23 +46,28 @@ const controller = {
     },
 
     getAboutUs: function (req, res) {
-        About.countDocuments({}, function (err, count) {
-            if (count == 0) {
-                res.render('about', {
-                    layout: '/layouts/main',
-                    title: 'About | The Initiative PH',
-                    about_active: true,
-                })
-            } else {
-                database.findOne(About, {}, {}, function (aboutContent) {
+        About.countDocuments({}, function (err, count_about) {
+            Department.countDocuments({}, function (err, count_department) {
+                if (count_about == 0 || count_department == 0) {
                     res.render('about', {
                         layout: '/layouts/main',
                         title: 'About | The Initiative PH',
                         about_active: true,
-                        about_content: aboutContent,
                     })
-                });
-            }
+                } else {
+                    database.findOne(About, {}, {}, function (aboutContent) {
+                        database.findMany(Department, {}, {}, function (deptContent) {
+                            res.render('about', {
+                                layout: '/layouts/main',
+                                title: 'About | The Initiative PH',
+                                about_active: true,
+                                about_content: aboutContent,
+                                department_content: deptContent,
+                            })
+                        });
+                    });
+                }
+            });
         });
     },
 
