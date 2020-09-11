@@ -37,16 +37,21 @@ const projectController = {
     findProject: function (req, res) {
         var query = req.query.id;
         database.findOne(Project, { _id: query }, {}, function (proj) {
-            res.render('a-project', {
-                layout: '/layouts/main',
-                title: proj.proj_title + ' | The Initiative PH',
-                proj_title: proj.proj_title,
-                proj_status: proj.proj_status,
-                proj_date: proj.proj_date,
-                proj_content: proj.proj_content,
-                proj_keywords: proj.proj_keywords,
-                proj_active: true,
-            });
+            if (proj.proj_published) {
+                res.render('a-project', {
+                    layout: '/layouts/main',
+                    title: proj.proj_title + ' | The Initiative PH',
+                    proj_title: proj.proj_title,
+                    proj_status: proj.proj_status,
+                    proj_date: proj.proj_date,
+                    proj_content: proj.proj_content,
+                    proj_keywords: proj.proj_keywords,
+                    proj_active: true,
+                });
+            }
+            else {
+                res.redirect('/projects');
+            }
         });
     },
 
