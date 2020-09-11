@@ -753,8 +753,17 @@ const controller = {
             var dbo = db.db("tiph");
             var cursor = dbo.collection("users").find();
             cursor.forEach(function (doc, err) {
-                if(doc._id != req.session.userid){
-                    resultArray.push(doc);
+                if(doc._id != req.session.userid){						
+					var converted = {
+						_id: doc._id,
+						name: doc.name,
+						username: doc.username,
+						password: doc.password,
+						userDepartment: doc.userDepartment,
+						userTypeMain: doc.userTypeMain ? "Yes" : "No"
+					}
+					
+					resultArray.push(converted);
                 }
             },
                 function () {
