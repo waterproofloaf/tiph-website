@@ -20,6 +20,8 @@ const adminController = require('../controller/adminController.js');
 const applicationController = require('../controller/applicationController.js');
 const preappformController = require('../controller/preappformController.js');
 const homeController = require('../controller/homeController.js');
+const aboutController = require('../controller/aboutController.js');
+const departmentController = require('../controller/departmentController.js');
 
 // import module 'Validators' from '../validators/...'
 const formsValidator = require("../validators/formsValidator.js");
@@ -103,9 +105,16 @@ app.post('/cms-login', logIncontroller.postLogIn);
 app.get('/cms-logout', controller.getCMSLogout);
 
 // CMS Home and Application
-app.get('/cms-web-toggle', controller.getCMSWebToggle);
 app.get('/cms-home', controller.getCMSHome);
 app.post('/cms-home', homeController.editHome);
+app.get('/cms-about', controller.getCMSAbout);
+app.post('/cms-about', aboutController.editAbout);
+app.get('/cms-department', controller.getCMSDepartment);
+app.get('/cms-department-new', controller.getCMSDepartmentNew);
+app.post('/cms-department-new', departmentController.newDepartment);
+app.get('/cms-department-edit', controller.getCMSDepartmentEdit);
+app.post('/cms-department-edit', departmentController.editDepartment);
+app.get('/cms-department/delete/', departmentController.deleteDepartment);
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
