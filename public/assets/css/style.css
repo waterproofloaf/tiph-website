@@ -143,6 +143,14 @@ star{
 
 /* Blog */
 
+.blog-sort-b{
+    background-color: #0c5865 !important;
+}
+
+.sort-by:hover{
+    background-color: #043841 !important;
+}
+
 .hr-line {
   display: block;
   height: 1px;
