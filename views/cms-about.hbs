@@ -1,0 +1,59 @@
+<div class="content">
+    <!-- Form -->
+    <div class="content">
+        <div id="form-container" class="row">
+            <div class="col-md-12">
+                <form method="post" id="about_form">
+                    <div class="card cms-blog">
+                        <div class="card-header">
+                            <h4 class="card-title">Edit About Page:</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="about_title">Title</label>
+                                <input type="text" class="form-control" id="about_title" placeholder="Title"
+                                    name="about_title" value="{{about_content.about_title}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="about_description">Content</label>
+                                <input name="about_description" type="hidden" id="about_description">
+                                <div id="about-quill">
+                                    {{{about_content.about_description}}}
+                                </div>
+                            </div>
+                            <div class="pb-2">
+                                <label for="about_pic">Side Photo</label>
+                                <input type="file" class="form-control-file" id="about_pic">
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success" id="updateAbout">SAVE</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // CMS About Quill Form
+    var aboutQuill = new Quill('#about-quill', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var about_form = document.getElementById('about_form');
+    about_form.onsubmit = function () {
+        var about_description = document.querySelector('input[name=about_description]');
+        about_description.value = aboutQuill.root.innerHTML;
+
+        return true;
+    };
+</script>
