@@ -27,7 +27,8 @@
       <form method="POST" action="contact-us" class="needs-validation" enctype="multipart/form-data">
         <h6 class="contact-font-texts">{{{msg}}}</h6>
         <h4 class="cms-font-text-error" id="contact-error">{{contactErrorMessage}}</h4>
-        <br>
+        <star>*</star> Required Fields
+        <br><br>
         <h6 class="contact-font-texts"><strong> SUBJECT</strong> <star>*</star></h6>
         <input type="text" list="subjects" name="contact_subject" id="contact_subject" class="contact-form-text " required>
         <datalist id="subjects">
@@ -51,8 +52,6 @@
         <h6 class="contact-font-texts"><strong>FILE</strong></h6>
         <input type="file" name="contact_upload" id="contact_upload" class="contact-form-upload">
 
-        <br><br>
-        <star>*</star> Required Fields
         <button type="submit" class="contact-button contact-font-texts"><strong>S U B M I T</strong></button>
       </form>
 

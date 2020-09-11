@@ -174,38 +174,52 @@ const formsController = {
       var app_portfolio = `${req.body.app_portfolio}`;
 
       if(app_findout == "other"){
-        app_findout = `${req.body.app_others}`
+
+        if(`${req.body.app_others}` == ''){
+          res.render('application', {
+            layout: '/layouts/main',
+              title: 'Application | The Initiative PH',
+              volunteer_active: true,
+              appErrorMessage: 'Where you found out TIPH is requried!'
+          });
+          
+        }
+        else{
+          app_findout = `${req.body.app_others}`
+
+          var newApp = {
+            app_firstname: app_firstname,
+            app_lastname: app_lastname,
+            app_nickname: app_nickname,
+            app_email: app_email,
+            app_bday: app_bday,
+            app_cResidence: app_cResidence,
+            app_schoolcompany: app_schoolcompany,
+            app_number: app_number,
+            app_facebook: app_facebook,
+            app_twitter: app_twitter,
+            app_findout: app_findout,
+            app_expertise: app_expertise,
+            app_dept1: app_dept1,
+            app_position1: app_position1,
+            app_dept2: app_dept2,
+            app_position2: app_position2,
+            app_reason: app_reason,
+            app_portfolio: app_portfolio,
+            app_status: "Pending",
+            app_status_reason: "This Application's status hasn't been changed yet."
+          }
+    
+          database.insertOne(App, newApp, function (f) {
+            if (f) {
+              console.log('Application Added: ' + app_firstname + " " + app_lastname);
+              res.redirect('/application');
+            }
+          });
+        }
+
       }
 
-      var newApp = {
-        app_firstname: app_firstname,
-        app_lastname: app_lastname,
-        app_nickname: app_nickname,
-        app_email: app_email,
-        app_bday: app_bday,
-        app_cResidence: app_cResidence,
-        app_schoolcompany: app_schoolcompany,
-        app_number: app_number,
-        app_facebook: app_facebook,
-        app_twitter: app_twitter,
-        app_findout: app_findout,
-        app_expertise: app_expertise,
-        app_dept1: app_dept1,
-        app_position1: app_position1,
-        app_dept2: app_dept2,
-        app_position2: app_position2,
-        app_reason: app_reason,
-        app_portfolio: app_portfolio,
-        app_status: "Pending",
-        app_status_reason: "This Application's status hasn't been changed yet."
-    }
-
-      database.insertOne(App, newApp, function (f) {
-        if (f) {
-            console.log('Application Added: ' + app_firstname + " " + app_lastname);
-            res.redirect('/application');
-        }
-    });
     }
 }
 

@@ -39,49 +39,51 @@
     <br><br>
     <div class="container-fluid m-auto px-5">
         <h4 class="cms-font-text-error" id="app-error">{{appErrorMessage}}</h4>
+        <h5><star>*</star> Required Fields</h5>
+        <br>
         <h5 class="font-weight-bold apps-sub-header pb-1" id="step1">STEP 1: FILL OUT THE FORM</h5>
+        <h6 class="apps-sub-header pb-1" style="font-size: 20px;">Personal Information</h6>
         <div class="sub-caption">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="form-firstname">First Name</label>
+                    <label for="form-firstname">First Name <star>*</star></label>
                     <input type="text" class="form-control" name="app_firstname" id="app_firstname"
                         placeholder="First Name" required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="form-lastname">Last Name</label>
+                    <label for="form-lastname">Last Name <star>*</star></label>
                     <input type="text" class="form-control" name="app_lastname" id="app_lastname"
                         placeholder="Last Name" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="form-nickname">Nickname</label>
+                    <label for="form-nickname">Nickname <star>*</star></label>
                     <input type="text" class="form-control" name="app_nickname" id="app_nickname"
                         placeholder="Nickname" required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="form-birthday">Date of Birth</label>
+                    <label for="form-birthday">Date of Birth <star>*</star></label>
                     <input type="date" class="form-control" name="app_bday" id="app_bday"
                         placeholder="Date of Birth" required>
                 </div>
                 
             </div>
             <div class="form-row">
-                
                 <div class="form-group col-md-6">
-                    <label for="form-city">City of Residence</label>
+                    <label for="form-city">City of Residence <star>*</star></label>
                     <input type="text" class="form-control" name="app_cResidence" id="app_cResidence"
                         placeholder="City of Residence" required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="form-schoolcompany">School/Company</label>
+                    <label for="form-schoolcompany">School/Company <star>*</star></label>
                     <input type="text" class="form-control" name="app_schoolcompany" id="app_schoolcompany"
                         placeholder="School/Company" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="app_findout">How did you find out about TIPH?</label>
+                    <label for="app_findout">How did you find out about TIPH? <star>*</star></label>
                     <select class="form-control" id="app_findout" name="app_findout" required>
                         <option value="Family">Family</option>
                         <option value="Friend">Friend</option>
@@ -103,21 +105,22 @@
 
             <br><br>
 
+            <h6 class="apps-sub-header pb-1" style="font-size: 20px;">Contact Information</h6>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="form-email">Email</label>
+                    <label for="form-email">Email <star>*</star></label>
                     <input type="email" class="form-control" name="app_email" id="app_email" placeholder="Email"
                         required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="form-number">Contact Number</label>
+                    <label for="form-number">Contact Number <star>*</star></label>
                     <input type="tel" class="form-control" name="app_number" id="app_number"
                         placeholder="Contact Number" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="form-facebook">Facebook URL</label>
+                    <label for="form-facebook">Facebook URL <star>*</star></label>
                     <input type="text" class="form-control" name="app_facebook" id="app_facebook"
                         placeholder="Facebook URL" required>
                 </div>
@@ -231,7 +234,7 @@
         </div> --}}
         <h6 class="apps-sub-header">STEP 2: ROLE REGISTRATION</h6>
         <div class="div-expertise-txt div-flex pt-3">
-            <h5 class="apps-sub-header">Areas of Expertise</h5>
+            <h5 class="apps-sub-header">Areas of Expertise <star>*</star></h5>
             <p class="sub-caption" style="margin-top: 10px; margin-left: 6px;"> (choose as many as you can)</p>
         </div>
         <div class="div-expertise sub-caption">
@@ -317,7 +320,7 @@
 
         <!-- DEPARTMENT OF CHOICE 1 -->
         <div class="div-dept-choice">
-            <h6 class="apps-sub-header pt-3">Department of Choice</h6>
+            <h6 class="apps-sub-header pt-3">Department of Choice <star>*</star></h6>
             <div class="form-container margin-left sub-caption">
                 <input type="radio" id="publications-communications" name="app_dept1"
                     value="Department of Publications and Communications (DPC)"> Department of Publications and Communications (DPC) <br>
@@ -334,7 +337,7 @@
         
         <!-- DESIRED POSITION 1 -->
         <div class="div-position">
-            <p class="sub-caption" style="font-size: 20px;">What's your desired position? </p>
+            <p class="sub-caption" style="font-size: 20px;">What's your desired position? <star>*</star> </p>
             <select name="app_position1" id="app_position1" style="min-width: 50%; margin-bottom: 15px;" required>
                 <option value="Secretary">Secretary</option>
                 <option value="Multimedia Artist">Multimedia Artist</option>
@@ -350,7 +353,7 @@
 
         <!-- DEPARTMENT OF CHOICE 2 -->
         <div class="div-dept-choice-second pt-3">
-            <h6 class="apps-sub-header">Department of Choice (Second Option)</h6>
+            <h6 class="apps-sub-header">Department of Choice <star>*</star> (Second Option)</h6>
             {{!-- <div class="form-container margin-left"> --}}
             <div class="container-fluid sub-caption">
                 <input type="radio" id="second-disaster-mitigation" name="app_dept2"
@@ -374,7 +377,7 @@
 
         <!-- DESIRED POSITION 2 -->
         <div class="div-position-2">
-            <p class="sub-caption" style="font-size: 20px; margin-top: 15px;">What's your desired position? </p>
+            <p class="sub-caption" style="font-size: 20px; margin-top: 15px;">What's your desired position? <star>*</star> </p>
             <select name="app_position2" id="app_position2" style="width: 50%; margin-bottom: 15px;">
                 <option value="HR Officer">HR Officer</option>
                 <option value="Secretary">Secretary</option>
@@ -393,7 +396,7 @@
 
         <!-- REASON FOR JOINING -->
         <div class="div-reason">
-            <h6 class="sub-caption" style="font-size: 20px; margin-top: 15px;"><strong>Reason for Volunteering </strong>
+            <h6 class="sub-caption" style="font-size: 20px; margin-top: 15px;"><strong>Reason for Volunteering <star>*</star> </strong>
                 (Answer in 140 characters or less.)</h6>
             {{!-- <textarea name="comment-txt" id="comment-txt" cols="50" rows="8"></textarea> --}}
             <textarea class="form-control" id="app_reason" name="app_reason" rows="3" required></textarea>
@@ -432,9 +435,11 @@
     <div class="row m-auto pt-5 pb-4">
         <div class="col text-center">
             {{!-- <button class="btn btn-success" type="submit"><strong>SUBMIT</strong></button> --}}
-            <input type="checkbox" id="form_agree" name="form_agree" value="Agree" style="width: auto;" required>
-            <label for="form-agree" class="sub-caption"><strong>I Agree</strong></label><br>
-            <button class="apps-button apps-font-texts" type="submit" id="app_submit_btn" name="app_submit_btn"><strong>S U B M I T</strong></button>
+            {{!-- <input type="checkbox" id="form_agree" name="form_agree" value="Agree" style="width: auto;" required>
+            <label for="form-agree" class="sub-caption"><strong>I Agree</strong></label><br> --}}
+            <button class="apps-button apps-font-texts" type="submit" id="app_submit_btn" name="app_submit_btn"
+            onclick="submitConfirm(this)"
+            ><strong>S U B M I T</strong></button>
         </div>
     </div>
 </form>
@@ -458,4 +463,18 @@
             });
         }, false);
     })();
+</script>
+
+<script>
+  function submitConfirm(button) {
+    if (confirm("Do you agree to the Terms and Conditions of TIPH?")) {
+      $.ajax({
+        url: "/application",
+        success: function (response) {
+          window.location.href = 'application';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
 </script>

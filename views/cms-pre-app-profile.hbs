@@ -165,11 +165,11 @@
                                         <button type="submit" class="btn btn-lg btn-outline-success" id="{{this.pre_id}}">SUBMIT</button>
                                     </td>
                                     <td class="text-right">
-                                        <a href="/cms-applicant-app/delete?id={{this.app_id}}">
-                                            <button id="{{this.app_id}}" type="button" class="btn btn-sm btn-outline-danger">
+                                        {{!-- <a href="/cms-applicant-app/delete?id={{this.app_id}}"> --}}
+                                            <button id="{{this.pre_id}}" type="button" class="btn btn-sm btn-outline-danger" onclick="deleteConfirm(this)">
                                                 Delete
                                             </button>
-                                        </a>
+                                        {{!-- </a> --}}
                                     </td>
                                 </tbody>
                             </table>
@@ -180,3 +180,19 @@
         </div>
     </div>
 </div>
+
+<script>
+  function deleteConfirm(button) {
+    var self = $(button).attr('id');
+    if (confirm("Are you sure of deleting this applicant?")) {
+      $.ajax({
+        url: "/cms-applicant-pre/delete/",
+        data: { id: self },
+        success: function (response) {
+          window.location.href = 'cms-applicant-pre';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+</script>

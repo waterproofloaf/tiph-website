@@ -29,7 +29,7 @@ const formsValidator = {
 
     appValidation: function() {
         var validation = [
-            check('form_agree').isIn(['Agree']).withMessage('Must agree to terms!'),
+            // check('form_agree').isIn(['Agree']).withMessage('Must agree to terms!'),
             check('app_lastname').notEmpty().withMessage('Lastname is required!'),
             check('app_firstname').notEmpty().withMessage('Firstname is required!'),
             check('app_nickname').notEmpty().withMessage('Nickname is required!'),
