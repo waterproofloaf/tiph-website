@@ -27,18 +27,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="department_category">Category</label>
-                                {{#equals department_content.department_category "Management"}}
                                 <select class="form-control" name="department_category" id="department_category">
-                                    <option value="Management" selected>Management</option>
-                                    <option value="Operations">Operations</option>
+                                    <option value="Management" {{#equals department_content.department_category "Management"}}selected{{/equals}}>Management</option>
+                                    <option value="Operations"{{#equals department_content.department_category "Operations"}}selected{{/equals}}>Operations</option>
                                 </select>
-                                {{/equals}}
-                                {{#equals department_content.department_category "Operations"}}
-                                <select class="form-control" name="department_category" id="department_category">
-                                    <option value="Operations" selected>Operations</option>
-                                    <option value="Management">Management</option>
-                                </select>
-                                {{/equals}}
                             </div>
                             <div class="form-group">
                                 <label for="department_contact">Contact</label>

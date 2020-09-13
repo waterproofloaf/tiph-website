@@ -15,41 +15,12 @@
                             <h5 class="cms-font-text-error" id="donate-error">{{donateErrorMessage}}</h5>
                             <div class="form-group">
                                 <label for="donate_type">Mode</label>
-                                {{#equals donate_type "GCash"}}
                                 <select class="form-control" name="donate_type" id="donate_type">
-                                    <option value="{{donate_type}}" selected>{{donate_type}}</option>
-                                    <option value="Paymaya">PayMaya</option>
-                                    <option value="BPI">BPI
-                                    </option>
-                                    <option value="BDO">BDO</option>
+                                    <option value="GCash" {{#equals donate_type "GCash"}}selected{{/equals}}>GCash</option>
+                                    <option value="Paymaya"{{#equals donate_type "PayMaya"}}selected{{/equals}}>PayMaya</option>
+                                    <option value="BPI"{{#equals donate_type "BPI"}}selected{{/equals}}>BPI</option>
+                                    <option value="BDO"{{#equals donate_type "BDO"}}selected{{/equals}}>BDO</option>
                                 </select>
-                                {{/equals}}
-                                {{#equals donate_type "PayMaya"}}
-                                <select class="form-control" name="donate_type" id="donate_type">
-                                    <option value="{{donate_type}}" selected>{{donate_type}}</option>
-                                    <option value="GCash">GCash</option>
-                                    <option value="BPI">BPI
-                                    </option>
-                                    <option value="BDO">BDO</option>
-                                </select>
-                                {{/equals}}
-                                {{#equals donate_type "BPI"}}
-                                <select class="form-control" name="donate_type" id="donate_type">
-                                    <option value="{{donate_type}}" selected>{{donate_type}}</option>
-                                    <option value="GCash">GCash</option>
-                                    <option value="Paymaya">PayMaya</option>
-                                    <option value="BDO">BDO</option>
-                                </select>
-                                {{/equals}}
-                                {{#equals donate_type "BDO"}}
-                                <select class="form-control" name="donate_type" id="donate_type">
-                                    <option value="{{donate_type}}" selected>{{donate_type}}</option>
-                                    <option value="GCash">GCash</option>
-                                    <option value="Paymaya">PayMaya</option>
-                                    <option value="BPI">BPI
-                                    </option>
-                                </select>
-                                {{/equals}}
                             </div>
                             <div class="form-group">
                                 <label for="donate_name">Account Name</label>

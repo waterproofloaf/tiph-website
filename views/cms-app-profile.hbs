@@ -142,48 +142,18 @@
                             </table>
                             <table class="table text-left">
                                 <thead class="text-primary">
-                                    {{#equals this.app_status "Pending"}}
                                     <th>
                                         Status of this applicant
                                     </th>
                                     <tr>
                                         <td>
                                             <select name="app_status" id="app_status" style="color:black">
-                                                <option value="{{this.app_status}}" style="color:#51bcda" selected>Pending</option>
-                                                <option value="Accepted" style="color: #6bd098">Accepted</option>
-                                                <option value="Rejected" style="color: #ef8157">Rejected</option>
+                                                <option value="Pending" style="color:#51bcda" {{#equals this.app_status "Pending"}}selected{{/equals}}>Pending</option>
+                                                <option value="Accepted" style="color: #6bd098"{{#equals this.app_status "Accepted"}}selected{{/equals}}>Accepted</option>
+                                                <option value="Rejected" style="color: #ef8157"{{#equals this.app_status "Rejected"}}selected{{/equals}}>Rejected</option>
                                             </select>
                                         </td>
                                     </tr>
-                                    {{/equals}}
-                                    {{#equals this.app_status "Accepted"}}
-                                        <th>
-                                            Status of this applicant
-                                        </th>
-                                        <tr>
-                                            <td>
-                                                <select name="app_status" id="app_status" style="color:black">
-                                                    <option value="Pending" style="color:#51bcda">Pending</option>
-                                                    <option value="{{this.app_status}}" style="color: #6bd098" selected>Accepted</option>
-                                                    <option value="Rejected" style="color: #ef8157">Rejected</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                    {{/equals}}
-                                    {{#equals this.app_status "Rejected"}}
-                                        <th>
-                                            Status of this applicant
-                                        </th>
-                                        <tr>
-                                            <td>
-                                                <select name="app_status" id="app_status" style="color:black">
-                                                    <option value="Pending" style="color:#51bcda">Pending</option>
-                                                    <option value="Accepted" style="color: #6bd098">Accepted</option>
-                                                    <option value="{{this.app_status}}" style="color: #ef8157" selected>Rejected</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                    {{/equals}}
                                 </thead>
                             </table>
                             <table class="table text-left">
