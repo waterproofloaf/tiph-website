@@ -1,9 +1,27 @@
 const Project = require('../models/ProjectModel.js');
 const database = require('../models/db.js');
 const { ObjectID } = require('mongodb');
+const { validationResult } = require('express-validator');
 
 const projectController = {
     postProject: function (req, res) {
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            errors = errors.errors;
+            res.render('cms-project-new-page', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS New Project Page | The Initiative PH',
+                project_active: true,
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
+                projectErrorMessage: errors[0].msg,
+            })
+
+            return;
+        }
+
         var today = new Date();
 
         var proj_title = req.body.proj_title;
@@ -61,6 +79,32 @@ const projectController = {
     },
 
     editProject: function (req, res) {
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            errors = errors.errors;
+            var query = req.query.id;
+            database.findOne(Project, { _id: query }, {}, function (proj) {
+                res.render('cms-project-page', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Project Edit | The Initiative PH',
+                    proj_title: proj.proj_title,
+                    proj_status: proj.proj_status,
+                    proj_date: proj.proj_date,
+                    proj_content: proj.proj_content,
+                    proj_preview: proj.proj_preview,
+                    proj_keywords: proj.proj_keywords,
+                    project_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    projectErrorMessage: errors[0].msg,
+                });
+            });
+
+            return;
+        }
+
         var proj_title = req.body.proj_title;
         var proj_date = req.body.proj_date;
         var proj_content = req.body.proj_content;

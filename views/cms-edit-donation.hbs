@@ -12,6 +12,7 @@
                             <h5>Edit Donation Option:</h5>
                         </div>
                         <div class="card-body">
+                            <h5 class="cms-font-text-error" id="donate-error">{{donateErrorMessage}}</h5>
                             <div class="form-group">
                                 <label for="donate_type">Mode</label>
                                 {{#equals donate_type "GCash"}}

@@ -120,7 +120,7 @@ app.get('/cms-applicant-pre-accepted', controller.getCMSApplicantPreAccepted);
 app.get('/cms-applicant-pre-rejected', controller.getCMSApplicantPreRejected);
 app.get('/cms-applicant-pre-pending', controller.getCMSApplicantPrePending);
 app.get('/cms-pre-app-profile', controller.getCMSApplicantPreProf);
-app.post('/cms-pre-app-profile', applicationController.EditPreApplicant);
+app.post('/cms-pre-app-profile', cmsValidator.ApplicantValidation(), applicationController.EditPreApplicant);
 app.get('/cms-applicant-pre/delete/', applicationController.deletePreApplicant);
 // CMS App-Applicant
 app.get('/cms-applicant-app', controller.getCMSApplicantApp);
@@ -128,7 +128,7 @@ app.get('/cms-applicant-app-accepted', controller.getCMSApplicantAppAccepted);
 app.get('/cms-applicant-app-rejected', controller.getCMSApplicantAppRejected);
 app.get('/cms-applicant-app-pending', controller.getCMSApplicantAppPending);
 app.get('/cms-app-profile', controller.getCMSApplicantProf);
-app.post('/cms-app-profile', applicationController.EditAppApplicant);
+app.post('/cms-app-profile', cmsValidator.ApplicantValidation(), applicationController.EditAppApplicant);
 app.get('/cms-applicant-app/delete/', applicationController.deleteAppApplicant);
 
 // CMS Admins
@@ -144,9 +144,9 @@ app.get('/cms-blog', controller.getCMSBlog);
 app.get('/cms-blog/delete/', blogController.deleteBlog);
 app.get('/cms-blog/toggle/', blogController.blogToggle);
 app.get('/cms-blog-page', controller.getCMSBlogPage);
-app.post('/cms-blog-page', blogController.editBlog);
+app.post('/cms-blog-page', cmsValidator.BlogValidation(), blogController.editBlog);
 app.get('/cms-blog-new-page', controller.getCMSBlogNewPage);
-app.post('/cms-blog-new-page', blogController.postBlog);
+app.post('/cms-blog-new-page', cmsValidator.BlogValidation(), blogController.postBlog);
 
 // CMS Project
 app.get('/cms-project', controller.getCMSProject);
@@ -154,18 +154,18 @@ app.get('/cms-project/delete/', projectController.deleteProject);
 app.get('/cms-project/toggle/', projectController.projToggle);
 app.get('/cms-project/showcase/', projectController.projShowcase);
 app.get('/cms-project-page', controller.getCMSProjectPage);
-app.post('/cms-project-page', projectController.editProject);
+app.post('/cms-project-page', cmsValidator.ProjectValidation(), projectController.editProject);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);
-app.post('/cms-project-new-page', projectController.postProject);
+app.post('/cms-project-new-page', cmsValidator.ProjectValidation(), projectController.postProject);
 
 // CMS Donate
 app.get('/cms-donate', controller.getCMSDonate);
 app.get('/cms-donate/delete/', donateController.deleteDonate);
 app.get('/cms-donate/toggle/', donateController.donateToggle);
 app.get('/cms-donation-new-option', controller.getCMSNewDonate);
-app.post('/cms-donation-new-option', donateController.postDonate);
+app.post('/cms-donation-new-option', cmsValidator.DonateValidation(), donateController.postDonate);
 app.get('/cms-edit-donation', controller.getCMSEditDonate);
-app.post('/cms-edit-donation', donateController.editDonate);
+app.post('/cms-edit-donation', cmsValidator.DonateValidation(), donateController.editDonate);
 
 // enables to export app object when called in another .js file
 module.exports = app;

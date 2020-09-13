@@ -12,6 +12,7 @@
                         <h4 class="card-title">{{this.pre_firstname}} {{this.pre_lastname}} Pre-Application Details</h4>
                     </div>
                     <div class="card-body">
+                        <h5 class="cms-font-text-error" id="applicant-error">{{applicantErrorMessage}}</h5>
                         <div class="table-responsive text-center">
                             <table class="table text-left">
                                 <thead class="text-primary">
@@ -154,7 +155,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <textarea id="pre_status_reason" name="pre_status_reason" rows="3" class="form-control" required></textarea>
+                                            <textarea id="pre_status_reason" name="pre_status_reason" rows="3" class="form-control" ></textarea>
                                         </td>
                                     </tr>
                                 </tbody>

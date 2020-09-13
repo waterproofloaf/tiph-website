@@ -12,6 +12,7 @@
                         <h4 class="card-title">{{this.app_firstname}} {{this.app_lastname}} Application Details</h4>
                     </div>
                     <div class="card-body">
+                        <h5 class="cms-font-text-error" id="applicant-error">{{applicantErrorMessage}}</h5>
                         <div class="table-responsive text-center">
                             <table class="table text-left">
                                 <thead class="text-primary">
@@ -194,7 +195,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <textarea id="app_status_reason" name="app_status_reason" rows="3" class="form-control" required></textarea>
+                                            <textarea id="app_status_reason" name="app_status_reason" rows="3" class="form-control" ></textarea>
                                         </td>
                                     </tr>
                                 </tbody>

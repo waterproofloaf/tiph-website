@@ -1,9 +1,27 @@
 const Blog = require('../models/BlogModel.js');
 const database = require('../models/db.js');
 const { ObjectID } = require('mongodb');
+const { validationResult } = require('express-validator');
 
 const blogController = {
     postBlog: function (req, res) {
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            errors = errors.errors;
+            res.render('cms-blog-new-page', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS New Blog Entry | The Initiative PH',
+                blog_active: true,
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
+                blogErrorMessage: errors[0].msg,
+            })
+
+            return;
+        }
+
         var today = new Date();
 
         var blog_title = req.body.blog_title;
@@ -60,6 +78,31 @@ const blogController = {
     },
 
     editBlog: function (req, res) {
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            errors = errors.errors;
+            var query = req.query.id;
+            database.findOne(Blog, { _id: query }, {}, function (blog) {
+                res.render('cms-blog-page', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Blog Edit | The Initiative PH',
+                    blog_title: blog.blog_title,
+                    blog_author: blog.blog_author,
+                    blog_content: blog.blog_content,
+                    blog_date: blog.blog_date,
+                    blog_keywords: blog.blog_keywords,
+                    blog_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    blogErrorMessage: errors[0].msg,
+                });
+            });
+
+            return;
+        }
+
         var blog_title = req.body.blog_title;
         var blog_author = req.body.blog_author;
         var blog_content = req.body.blog_content;
