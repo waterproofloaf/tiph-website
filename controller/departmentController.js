@@ -1,9 +1,27 @@
 const Department = require('../models/DepartmentModel.js');
 const database = require('../models/db.js');
 const { ObjectID } = require('mongodb');
+const { validationResult } = require('express-validator');
 
 const departmentController = {
     newDepartment: function (req, res) {
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            errors = errors.errors;
+            res.render('cms-department-new', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS New Department | The Initiative PH',
+                department_active: true,
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
+                departmentErrorMessage: errors[0].msg,
+            })
+
+            return;
+        }
+
         var department_title = req.body.department_title;
         var department_description = req.body.department_description;
         var department_category = req.body.department_category;
@@ -35,6 +53,27 @@ const departmentController = {
     },
 
     editDepartment: function (req, res) {
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            errors = errors.errors;
+            var query = req.query.id;
+            database.findOne(Department, { _id: query }, {}, function (departmentContent) {
+                res.render('cms-department-edit', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Edit Department | The Initiative PH',
+                    department_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    department_content: departmentContent,
+                    departmentErrorMessage: errors[0].msg,
+                });
+            });
+
+            return;
+        }
+
         var department_title = req.body.department_title;
         var department_description = req.body.department_description;
         var department_category = req.body.department_category;

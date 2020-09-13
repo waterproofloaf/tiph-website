@@ -23,7 +23,19 @@ const cmsValidator = {
         return validation
     },
 
-    BlogValidation: function() {
+    addBlogValidation: function() {
+        var validation = [
+            check('blog_title').notEmpty().withMessage('Blog Title is required!'),
+            check('blog_author').notEmpty().withMessage('Blog Author is required!'),
+            check('blog_content').notEmpty().withMessage('Blog Content is required!'),
+            check('blog_preview').notEmpty().withMessage('Blog Preview is required!'),
+            check('blog_keywords').notEmpty().withMessage('Blog Keywords is required!'),
+        ];
+
+        return validation
+    },
+
+    editBlogValidation: function() {
         var validation = [
             check('blog_title').notEmpty().withMessage('Blog Title is required!'),
             check('blog_author').notEmpty().withMessage('Blog Author is required!'),
@@ -36,7 +48,19 @@ const cmsValidator = {
         return validation
     },
 
-    ProjectValidation: function() {
+    addProjectValidation: function() {
+        var validation = [
+            check('proj_title').notEmpty().withMessage('Project Title is required!'),
+            check('proj_author').notEmpty().withMessage('Project Author is required!'),
+            check('proj_content').notEmpty().withMessage('Project Content is required!'),
+            check('proj_preview').notEmpty().withMessage('Project Preview is required!'),
+            check('proj_keywords').notEmpty().withMessage('Project Keywords is required!'),
+        ];
+
+        return validation
+    },
+
+    editProjectValidation: function() {
         var validation = [
             check('proj_title').notEmpty().withMessage('Project Title is required!'),
             check('proj_author').notEmpty().withMessage('Project Author is required!'),
@@ -61,6 +85,25 @@ const cmsValidator = {
     ApplicantValidation: function() {
         var validation = [
             check('pre_status_reason').notEmpty().withMessage('Reason for changing status of applicant is required!'),
+        ];
+
+        return validation
+    },
+
+    AboutValidation: function() {
+        var validation = [
+            check('about_tite').notEmpty().withMessage('About Title is required!'),
+            check('about_description').notEmpty().withMessage('About Content is required!'),
+        ];
+
+        return validation
+    },
+
+    DepartmentValidation: function() {
+        var validation = [
+            check('department_title').notEmpty().withMessage('Department Title is required!'),
+            check('department_description').notEmpty().withMessage('Department Description is required!'),
+            check('department_contact').notEmpty().withMessage('Department Contact is required!'),
         ];
 
         return validation

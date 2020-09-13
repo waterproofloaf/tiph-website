@@ -108,12 +108,12 @@ app.get('/cms-logout', controller.getCMSLogout);
 app.get('/cms-home', controller.getCMSHome);
 app.post('/cms-home', homeController.editHome);
 app.get('/cms-about', controller.getCMSAbout);
-app.post('/cms-about', aboutController.editAbout);
+app.post('/cms-about', cmsValidator.AboutValidation(), aboutController.editAbout);
 app.get('/cms-department', controller.getCMSDepartment);
 app.get('/cms-department-new', controller.getCMSDepartmentNew);
-app.post('/cms-department-new', departmentController.newDepartment);
+app.post('/cms-department-new', cmsValidator.DepartmentValidation(), departmentController.newDepartment);
 app.get('/cms-department-edit', controller.getCMSDepartmentEdit);
-app.post('/cms-department-edit', departmentController.editDepartment);
+app.post('/cms-department-edit', cmsValidator.DepartmentValidation(), departmentController.editDepartment);
 app.get('/cms-department/delete/', departmentController.deleteDepartment);
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
@@ -153,9 +153,9 @@ app.get('/cms-blog', controller.getCMSBlog);
 app.get('/cms-blog/delete/', blogController.deleteBlog);
 app.get('/cms-blog/toggle/', blogController.blogToggle);
 app.get('/cms-blog-page', controller.getCMSBlogPage);
-app.post('/cms-blog-page', cmsValidator.BlogValidation(), blogController.editBlog);
+app.post('/cms-blog-page', cmsValidator.addBlogValidation(), blogController.editBlog);
 app.get('/cms-blog-new-page', controller.getCMSBlogNewPage);
-app.post('/cms-blog-new-page', cmsValidator.BlogValidation(), blogController.postBlog);
+app.post('/cms-blog-new-page', cmsValidator.editBlogValidation(), blogController.postBlog);
 
 // CMS Project
 app.get('/cms-project', controller.getCMSProject);
@@ -163,9 +163,9 @@ app.get('/cms-project/delete/', projectController.deleteProject);
 app.get('/cms-project/toggle/', projectController.projToggle);
 app.get('/cms-project/showcase/', projectController.projShowcase);
 app.get('/cms-project-page', controller.getCMSProjectPage);
-app.post('/cms-project-page', cmsValidator.ProjectValidation(), projectController.editProject);
+app.post('/cms-project-page', cmsValidator.addProjectValidation(), projectController.editProject);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);
-app.post('/cms-project-new-page', cmsValidator.ProjectValidation(), projectController.postProject);
+app.post('/cms-project-new-page', cmsValidator.editProjectValidation(), projectController.postProject);
 
 // CMS Donate
 app.get('/cms-donate', controller.getCMSDonate);
