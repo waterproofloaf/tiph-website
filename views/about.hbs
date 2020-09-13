@@ -5,10 +5,14 @@
             <img src="assets/img/about-1.png" width="100%">
         </div>
         <div class="col">
-            <h5 class="font-weight-bold text-uppercase sub-title">How TIPH was founded</h5>
-            <p class="sub-caption">TIPH was established by De La Salle University - Senior High School (DLSU - SHS) Taft
+            {{!-- <h5 class="font-weight-bold text-uppercase sub-title">How TIPH was founded</h5> --}}
+            <h5 class="font-weight-bold text-uppercase sub-title">{{about_content.about_title}}</h5>
+            {{!-- <p class="sub-caption">TIPH was established by De La Salle University - Senior High School (DLSU - SHS) Taft
                 Campus students
-                After that, it slowly expanded to other schools across Metro Manila.</p>
+                After that, it slowly expanded to other schools across Metro Manila.</p> --}}
+            <div class="sub-caption">
+                {{{about_content.about_description}}}
+            </div>
         </div>
     </div>
 
@@ -17,90 +21,69 @@
             <p class="font-weight-bold text-uppercase sub-header">Management</p>
         </div>
     </div>
+
     <div id="accordion" class="about-us-acc">
+        {{#each department_content}}{{#equals this.department_category "Management"}}
         <div class="object-container card">
-            <div class="card-header" id="headingOne" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseOne"
-                    aria-expanded="false" aria-controls="collapseOne">
-                    <i class="fa fa-angle-down"></i>
-                    Department of Administrative Affairs
-                </button>
-            </h5>
+            <div class="card-header" id="header_{{this._id}}" style="background-color: #a67f46">
+                <h5 class="mb-0">
+                    <button class="collapsible collapsed " data-toggle="collapse" data-target="#{{this._id}}"
+                        aria-expanded="false" aria-controls="{{this._id}}">
+                        <i class="fa fa-angle-down"></i>
+                        {{this.department_title}}
+                    </button>
+                </h5>
             </div>
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="{{this._id}}" class="collapse" aria-labelledby="header_{{this._id}}" data-parent="#accordion">
                 <div class="card-body content">
-                    <p>The Department of Administrative Affairs concerns itself with the executive functions of the
-                        organization.
-                        They also enforce bylaws, manage human resources, administer general task assignments, and
-                        preside over organization-wide decision making.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
+                    {{{this.department_description}}}<br>
+                    <p>{{{this.department_contact}}}<br></p>
                 </div>
             </div>
         </div>
-        <div class="object-container card">
-            <div class="card-header" id="headingTwo" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">
-                    <i class="fa fa-angle-right"></i>
-                    Department of Publications and Communications
-                </button>
-            </h5>
-            </div>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>The Department of Publications and Communications curates the organization's publicly published
-                        content.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            <div class="card-header" id="headingThree" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="false" aria-controls="collapseThree">
-                    <i class="fa fa-angle-right"></i>
-                    Department of Marketing, Finance and Logistics
-                </button>
-            </h5>
-            </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>The Department of Marketing, Finance, and Logistics handles the finances and logistics of the
-                        organization and monitors cash and kind donations.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
+        {{/equals}}{{/each}}
         <br><br>
         <hr><br>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <p class="font-weight-bold text-uppercase sub-header">Operations</p>
+        </div>
+    </div>
 
-        <div class="row">
-            <div class="col text-center">
-                <p class="font-weight-bold text-uppercase sub-header">Operations</p>
+    <div id="accordion" class="about-us-acc">
+        {{#each department_content}}{{#equals this.department_category "Operations"}}
+        <div class="object-container card">
+            <div class="card-header" id="header_{{this._id}}" style="background-color: #a67f46">
+                <h5 class="mb-0">
+                    <button class="collapsible collapsed " data-toggle="collapse" data-target="#{{this._id}}"
+                        aria-expanded="false" aria-controls="{{this._id}}">
+                        <i class="fa fa-angle-down"></i>
+                        {{this.department_title}}
+                    </button>
+                </h5>
+            </div>
+
+            <div id="{{this._id}}" class="collapse" aria-labelledby="header_{{this._id}}" data-parent="#accordion">
+                <div class="card-body content">
+                    {{{this.department_description}}}<br>
+                    <p>{{{this.department_contact}}}<br></p>
+                </div>
             </div>
         </div>
-        <div class="object-container card">
+        {{/equals}}{{/each}}
+
+        {{!-- REFERENCE --}}
+        {{!-- <div class="object-container card">
             <div class="card-header" id="headingFour" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseFour"
-                    aria-expanded="false" aria-controls="collapseFour">
-                    <i class="fa fa-angle-right"></i>
-                    Department of Disaster Mitigation and Recovery
-                </button>
-            </h5>
+                <h5 class="mb-0">
+                    <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseFour"
+                        aria-expanded="false" aria-controls="collapseFour">
+                        <i class="fa fa-angle-right"></i>
+                        Department of Disaster Mitigation and Recovery
+                    </button>
+                </h5>
             </div>
 
             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
@@ -113,174 +96,23 @@
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="object-container card">
-            <div class="card-header" id="headingFive" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseFive"
-                    aria-expanded="false" aria-controls="collapseFive">
-                    <i class="fa fa-angle-right"></i>
-                    Department of Animal and Environmental Welfare
-                </button>
-            </h5>
-            </div>
-            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>DAEW works towards responding to issues affecting animals and natural resources.</p>
-                    <br>
-                    <p>tiph.daew@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            <div class="card-header" id="headingSix" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseSix"
-                    aria-expanded="false" aria-controls="collapseSix">
-                    <i class="fa fa-angle-right"></i>
-                    Department of Marginalized Community Action
-                </button>
-            </h5>
-            </div>
-            <div id="collapseSix" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body content">
-                    <p> DMCA works towards responding to areas and communities affected by violence and other forms of
-                        oppression.
-                        They also oversee any events, projects, partnerships, and sponsorships formed by the
-                        organization for the benefit of these areas and communities.</p>
-                    <br>
-                    <p>tiph.dmca@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            <div class="card-header" id="headingSeven" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseSeven"
-                    aria-expanded="false" aria-controls="collapseSeven">
-                    <i class="fa fa-angle-right"></i>
-                    Department of SOGIE Rights
-                </button>
-            </h5>
-            </div>
-            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>DSR works towards responding to the conditions arising from SOGIE inequality and gender
-                        discrimination.</p>
-                    <br>
-                    <p>tiph.dsr@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            <div class="card-header" id="headingEight" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseEight"
-                    aria-expanded="false" aria-controls="collapseEight">
-                    <i class="fa fa-angle-right"></i>
-                    Department of Mental Health
-                </button>
-            </h5>
-            </div>
-            <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>DMH focuses on alleviating areas and communities affected by terminal illness and mental health
-                        issues.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            <div class="card-header" id="headingNine" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseNine"
-                    aria-expanded="false" aria-controls="collapseNine">
-                    <i class="fa fa-angle-right"></i>
-                    Project Taft
-                </button>
-            </h5>
-            </div>
-            <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            <div class="card-header" id="headingTen" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseTen"
-                    aria-expanded="false" aria-controls="collapseTen">
-                    <i class="fa fa-angle-right"></i>
-                    Project España
-                </button>
-            </h5>
-            </div>
-            <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            <div class="card-header" id="headingEleven" style="background-color: #a67f46">
-            <h5 class="mb-0">
-                <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseEleven"
-                    aria-expanded="false" aria-controls="collapseEleven">
-                    <i class="fa fa-angle-right"></i>
-                    Project Katipunan
-                </button>
-            </h5>
-            </div>
-            <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 <br><br>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         // Add down arrow icon for collapse element which is open by default
-        $(".collapse.show").each(function(){
-        	$(this).prev(".card-header").find(".fa").addClass("fa-angle-down").removeClass("fa-angle-right");
+        $(".collapse.show").each(function () {
+            $(this).prev(".card-header").find(".fa").addClass("fa-angle-down").removeClass("fa-angle-right");
         });
-        
+
         // Toggle right and down arrow icon on show hide of collapse element
-        $(".collapse").on('show.bs.collapse', function(){
-        	$(this).prev(".card-header").find(".fa").removeClass("fa-angle-right").addClass("fa-angle-down");
-        }).on('hide.bs.collapse', function(){
-        	$(this).prev(".card-header").find(".fa").removeClass("fa-angle-down").addClass("fa-angle-right");
+        $(".collapse").on('show.bs.collapse', function () {
+            $(this).prev(".card-header").find(".fa").removeClass("fa-angle-right").addClass("fa-angle-down");
+        }).on('hide.bs.collapse', function () {
+            $(this).prev(".card-header").find(".fa").removeClass("fa-angle-down").addClass("fa-angle-right");
         });
     });
 </script>

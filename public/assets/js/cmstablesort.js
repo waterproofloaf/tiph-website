@@ -8,6 +8,14 @@ $(document).ready(function () {
     }]
   })
 
+  $('#dept-table').DataTable({
+    "aaSorting": [],
+    columnDefs: [{
+      orderable: false,
+      targets: [3, 4]
+    }]
+  })
+
   $('#blog-table').DataTable({
     "aaSorting": [],
     columnDefs: [{

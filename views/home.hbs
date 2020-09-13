@@ -114,14 +114,25 @@
       <div class="sub-caption">
         {{{home_content.home_four_content}}}
       </div>
-      <a href='pre-application'>
+
+      {{!-- <a href='pre-application'>
         <button type="button" class="btn btn-secondary"
           {{#if home_content.home_preapp_button}}{{else}}disabled{{/if}}>Pre-Application</button>
       </a>
       <a href='application'>
         <button type="button" class="btn btn-secondary"
           {{#if home_content.home_app_button}}{{else}}disabled{{/if}}>Application</button>
+      </a> --}}
+
+      {{#if home_content.home_preapp_button}}
+      <a href='pre-application'>
+        <button type="button" class="btn btn-secondary">Pre-Application</button>
       </a>
+      {{else}}
+      <a href='application'>
+        <button type="button" class="btn btn-secondary">Application</button>
+      </a>
+      {{/if}}
     </div>
   </div>
 </div>

@@ -2,6 +2,8 @@
 const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
 const Home = require('../models/HomeModel.js');
+const About = require('../models/AboutModel.js');
+const Department = require('../models/DepartmentModel.js');
 const Blog = require('../models/BlogModel.js');
 const Project = require('../models/ProjectModel.js');
 const User = require('../models/UserModel.js');
@@ -44,11 +46,29 @@ const controller = {
     },
 
     getAboutUs: function (req, res) {
-        res.render('about', {
-            layout: '/layouts/main',
-            title: 'About | The Initiative PH',
-            about_active: true,
-        })
+        About.countDocuments({}, function (err, count_about) {
+            Department.countDocuments({}, function (err, count_department) {
+                if (count_about == 0 || count_department == 0) {
+                    res.render('about', {
+                        layout: '/layouts/main',
+                        title: 'About | The Initiative PH',
+                        about_active: true,
+                    })
+                } else {
+                    database.findOne(About, {}, {}, function (aboutContent) {
+                        database.findMany(Department, {}, {}, function (deptContent) {
+                            res.render('about', {
+                                layout: '/layouts/main',
+                                title: 'About | The Initiative PH',
+                                about_active: true,
+                                about_content: aboutContent,
+                                department_content: deptContent,
+                            })
+                        });
+                    });
+                }
+            });
+        });
     },
 
     getPreApp: function (req, res) {
@@ -192,8 +212,8 @@ const controller = {
         //     title: 'Donate | The Initiative PH',
         //     donate_active: true
         // })
-        Donate.countDocuments({ donate_visible: true }, function (err, count){
-            if (count == 0){
+        Donate.countDocuments({ donate_visible: true }, function (err, count) {
+            if (count == 0) {
                 res.render('donate', {
                     layout: '/layouts/main',
                     title: 'Donate | The Initiative PH',
@@ -201,7 +221,7 @@ const controller = {
                     donateMessage: 'There is currently no donation option available.'
                 });
             }
-            else{
+            else {
                 var MongoClient = require('mongodb').MongoClient;
                 MongoClient.connect(url, { useUnifiedTopology: true },
                     function (err, db) {
@@ -259,22 +279,6 @@ const controller = {
         res.redirect('cms-login')
     },
 
-    getCMSWebToggle: function (req, res) {
-        if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-web-toggle', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Web Toggles | The Initiative PH',
-                webtoggle_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
-            })
-        }
-        else {
-            res.redirect('cms-login')
-        }
-    },
-
     getCMSHome: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
             database.findOne(Home, {}, {}, function (home) {
@@ -294,8 +298,107 @@ const controller = {
         }
     },
 
-    getCMSApplication: function (req, res) {
+    getCMSAbout: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            About.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    res.render('cms-about', {
+                        layout: '/layouts/cms-layout',
+                        title: 'CMS About Page | The Initiative PH',
+                        about_active: true,
+                        name: req.session.name,
+                        type: req.session.type,
+                        userid: req.session.userid,
+                    })
+                } else {
+                    database.findOne(About, {}, {}, function (aboutContent) {
+                        res.render('cms-about', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS About Page | The Initiative PH',
+                            about_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            about_content: aboutContent,
+                        })
+                    });
+                }
+            });
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
 
+    getCMSDepartment: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            Department.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    res.render('cms-department', {
+                        layout: '/layouts/cms-layout',
+                        title: 'CMS Departments | The Initiative PH',
+                        department_active: true,
+                        name: req.session.name,
+                        type: req.session.type,
+                        userid: req.session.userid,
+                    })
+                } else {
+                    database.findMany(Department, {}, {}, function (departmentArray) {
+                        res.render('cms-department', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Departments | The Initiative PH',
+                            department_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            department_info: departmentArray,
+                        })
+                    });
+                }
+            });
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+
+    getCMSDepartmentNew: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            res.render('cms-department-new', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS New Department | The Initiative PH',
+                department_active: true,
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
+            })
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+
+    getCMSDepartmentEdit: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            var query = req.query.id;
+            database.findOne(Department, { _id: query }, {}, function (departmentContent) {
+                res.render('cms-department-edit', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Edit Department | The Initiative PH',
+                    department_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    department_content: departmentContent,
+                });
+            });
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+
+    getCMSApplication: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
             database.findOne(PreAppForm, {}, {}, function (preappsform) {
                 res.render('cms-application', {
@@ -733,7 +836,7 @@ const controller = {
                     app_status: prof.app_status,
                     app_status_reason: prof.app_status_reason,
                     applicant_active: true,
-                    app_active: true, 
+                    app_active: true,
                     name: req.session.name,
                     type: req.session.type,
                     userid: req.session.userid,
@@ -753,8 +856,17 @@ const controller = {
             var dbo = db.db("tiph");
             var cursor = dbo.collection("users").find();
             cursor.forEach(function (doc, err) {
-                if(doc._id != req.session.userid){
-                    resultArray.push(doc);
+                if (doc._id != req.session.userid) {
+                    var converted = {
+                        _id: doc._id,
+                        name: doc.name,
+                        username: doc.username,
+                        password: doc.password,
+                        userDepartment: doc.userDepartment,
+                        userTypeMain: doc.userTypeMain ? "Yes" : "No"
+                    }
+
+                    resultArray.push(converted);
                 }
             },
                 function () {
