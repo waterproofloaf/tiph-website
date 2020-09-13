@@ -445,6 +445,30 @@
     </div>
 </form>
 
+<div id="appModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Your Application Form Has Been Submitted!</h4>
+            </div>
+            <div class="modal-body">
+				<p>Your Application Form has been submitted! 
+                <br><br>Please schedule an interview with our HR at the link below
+                <a href="tinyurl.com/tiphinterviews2020">Interview Schedule</a>
+                <br><br>Please wait for more details in your given email.</p>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#if confirmed}}
+<script>
+  $(document).ready(function () { $('#appModal').modal('show'); });
+</script>
+{{/if}}
+
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {

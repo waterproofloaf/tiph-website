@@ -84,6 +84,7 @@ const formsController = {
             title: 'Contact Us | The Initiative PH',
             contact_active: true,
             msg: '<mark>Your message has been sent!</mark>',
+            confirmed: true,
         })
         }
       });
@@ -142,6 +143,7 @@ const formsController = {
                     preform_year: preapp.preform_year,
                     preform_desc: preapp.preform_desc,
                     msg: '<mark>Your Pre-Application form has been submitted!</mark>',
+                    confirmed: true,
                 })
             });
           }
@@ -228,6 +230,7 @@ const formsController = {
                 title: 'Application | The Initiative PH',
                 volunteer_active: true,
                 msg: '<mark>Your Application form has been submitted!</mark>',
+                confirmed: true,
               })
             }
           });
@@ -266,6 +269,7 @@ const formsController = {
               title: 'Application | The Initiative PH',
               volunteer_active: true,
               msg: '<mark>Your Application form has been submitted!</mark>',
+              confirmed: true,
             })
           }
         });

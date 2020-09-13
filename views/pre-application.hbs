@@ -163,6 +163,29 @@
     --}}
 </div>
 
+<div id="preappModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Your Pre-Application Form Has Been Submitted!</h4>
+            </div>
+            <div class="modal-body">
+				<p>Your Pre-Application Form has been submitted!
+                <br><br>We will contact you through your given email once the Application Period has begun!
+                <br><br>Please wait for more details in your given email.</p>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#if confirmed}}
+<script>
+  $(document).ready(function () { $('#preappModal').modal('show'); });
+</script>
+{{/if}}
+
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function () {
