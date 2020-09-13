@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 
 const PreApp = require('../models/PreAppModel.js');
 const App = require('../models/AppModel.js');
+const PreAppForm = require('../models/PreAppFormModel.js');
 const database = require('../models/db.js');
 
 const { validationResult } = require('express-validator');
@@ -82,7 +83,7 @@ const formsController = {
             layout: '/layouts/main',
             title: 'Contact Us | The Initiative PH',
             contact_active: true,
-            msg: '<mark>Your message has been sent!</mark>'
+            msg: '<mark>Your message has been sent!</mark>',
         })
         }
       });
@@ -133,7 +134,16 @@ const formsController = {
       database.insertOne(PreApp, newPreApp, function (f) {
           if (f) {
               console.log('Pre Application Added: ' + pre_firstname + " " + pre_lastname);
-              res.redirect('/pre-application');
+              database.findOne(PreAppForm, {}, {}, function (preapp) {
+                res.render('pre-application', {
+                    layout: '/layouts/main',
+                    title: 'Pre-Application | The Initiative PH',
+                    volunteer_active: true,
+                    preform_year: preapp.preform_year,
+                    preform_desc: preapp.preform_desc,
+                    msg: '<mark>Your Pre-Application form has been submitted!</mark>',
+                })
+            });
           }
       });
     },
@@ -213,11 +223,52 @@ const formsController = {
           database.insertOne(App, newApp, function (f) {
             if (f) {
               console.log('Application Added: ' + app_firstname + " " + app_lastname);
-              res.redirect('/application');
+              res.render('application', {
+                layout: '/layouts/main',
+                title: 'Application | The Initiative PH',
+                volunteer_active: true,
+                msg: '<mark>Your Application form has been submitted!</mark>',
+              })
             }
           });
         }
 
+      }
+      else{
+        var newApp = {
+          app_firstname: app_firstname,
+          app_lastname: app_lastname,
+          app_nickname: app_nickname,
+          app_email: app_email,
+          app_bday: app_bday,
+          app_cResidence: app_cResidence,
+          app_schoolcompany: app_schoolcompany,
+          app_number: app_number,
+          app_facebook: app_facebook,
+          app_twitter: app_twitter,
+          app_findout: app_findout,
+          app_expertise: app_expertise,
+          app_dept1: app_dept1,
+          app_position1: app_position1,
+          app_dept2: app_dept2,
+          app_position2: app_position2,
+          app_reason: app_reason,
+          app_portfolio: app_portfolio,
+          app_status: "Pending",
+          app_status_reason: "This Application's status hasn't been changed yet."
+        }
+  
+        database.insertOne(App, newApp, function (f) {
+          if (f) {
+            console.log('Application Added: ' + app_firstname + " " + app_lastname);
+            res.render('application', {
+              layout: '/layouts/main',
+              title: 'Application | The Initiative PH',
+              volunteer_active: true,
+              msg: '<mark>Your Application form has been submitted!</mark>',
+            })
+          }
+        });
       }
 
     }
