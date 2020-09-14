@@ -39,8 +39,23 @@ const adminController = {
             admin_userTypeMain = true;
         }
         database.findOne(User, {username: admin_username}, {}, function(all){
-
-            if(all.username == admin_username){
+            if(all == null){
+                bcrypt.hash(admin_password, 10, function(err, hash){
+                    let admin_details = {
+                        name: admin_name,
+                        username: admin_username,
+                        password: hash,
+                        userDepartment: admin_dept,
+                        userTypeMain: admin_userTypeMain
+                    }
+                
+                    database.insertOne(User, admin_details, (result) => {
+                        console.log(result);
+                        res.redirect('/cms-admin');
+                    });
+                });
+            }
+            else if(all.username == admin_username){
                 res.render('cms-admin-new', {
                     layout: '/layouts/cms-layout',
                     title: 'CMS Add Admin | The Initiative PH',
@@ -67,7 +82,6 @@ const adminController = {
                     });
                 });
             }
-
         });
     },
 
