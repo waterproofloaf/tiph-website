@@ -22,20 +22,21 @@
         </div>
     </div>
 
-    <div id="accordion" class="about-us-acc">
+    <div class="accordion about-us-acc">
         {{#each department_content}}{{#equals this.department_category "Management"}}
         <div class="object-container card">
-            <div class="card-header" id="header_{{this._id}}" style="background-color: #a67f46">
+            <div class="card-header" id="heading{{this._id}}" style="background-color: #a67f46">
                 <h5 class="mb-0">
-                    <button class="collapsible collapsed " data-toggle="collapse" data-target="#{{this._id}}"
-                        aria-expanded="false" aria-controls="{{this._id}}">
+                    <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapse{{this._id}}"
+                        aria-expanded="false" aria-controls="collapse{{this._id}}">
                         <i class="fa fa-angle-down"></i>
                         {{this.department_title}}
                     </button>
                 </h5>
             </div>
 
-            <div id="{{this._id}}" class="collapse" aria-labelledby="header_{{this._id}}" data-parent="#accordion">
+            <div id="collapse{{this._id}}" class="collapse" aria-labelledby="heading{{this._id}}"
+                data-parent=".accordion">
                 <div class="card-body content">
                     {{{this.department_description}}}<br>
                     <p>{{{this.department_contact}}}<br></p>
@@ -52,20 +53,21 @@
         </div>
     </div>
 
-    <div id="accordion" class="about-us-acc">
+    <div class="accordion about-us-acc">
         {{#each department_content}}{{#equals this.department_category "Operations"}}
         <div class="object-container card">
-            <div class="card-header" id="header_{{this._id}}" style="background-color: #a67f46">
+            <div class="card-header" id="heading{{this._id}}" style="background-color: #a67f46">
                 <h5 class="mb-0">
-                    <button class="collapsible collapsed " data-toggle="collapse" data-target="#{{this._id}}"
-                        aria-expanded="false" aria-controls="{{this._id}}">
+                    <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapse{{this._id}}"
+                        aria-expanded="false" aria-controls="collapse{{this._id}}">
                         <i class="fa fa-angle-down"></i>
                         {{this.department_title}}
                     </button>
                 </h5>
             </div>
 
-            <div id="{{this._id}}" class="collapse" aria-labelledby="header_{{this._id}}" data-parent="#accordion">
+            <div id="collapse{{this._id}}" class="collapse" aria-labelledby="heading{{this._id}}"
+                data-parent=".accordion">
                 <div class="card-body content">
                     {{{this.department_description}}}<br>
                     <p>{{{this.department_contact}}}<br></p>
@@ -86,7 +88,7 @@
                 </h5>
             </div>
 
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent=".accordion">
                 <div class="card-body content">
                     <p>DDMR works towards responding to areas and communities affected by natural calamity or
                         catastrophic accidents.</p>
