@@ -39,7 +39,7 @@ const adminController = {
             admin_userTypeMain = true;
         }
         database.findOne(User, {username: admin_username}, {}, function(all){
-            if(all == null){
+            if(all == null || all.username != admin_username){
                 bcrypt.hash(admin_password, 10, function(err, hash){
                     let admin_details = {
                         name: admin_name,
@@ -64,22 +64,6 @@ const adminController = {
                     name: req.session.name,
                     userid: req.session.userid,
                     adminErrorMessage: 'Username already exists!'
-                });
-            }
-            else{
-                bcrypt.hash(admin_password, 10, function(err, hash){
-                    let admin_details = {
-                        name: admin_name,
-                        username: admin_username,
-                        password: hash,
-                        userDepartment: admin_dept,
-                        userTypeMain: admin_userTypeMain
-                    }
-                
-                    database.insertOne(User, admin_details, (result) => {
-                        console.log(result);
-                        res.redirect('/cms-admin');
-                    });
                 });
             }
         });
