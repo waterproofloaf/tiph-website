@@ -26,7 +26,7 @@ const projectController = {
 
         var proj_title = req.body.proj_title;
         var proj_content = req.body.proj_content;
-        var proj_date = today.getMonth() + "/" + today.getDate() + "/" + today.getFullYear();
+        var proj_date = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
         var proj_keywords = req.body.proj_keywords;
         var proj_preview = req.body.proj_preview;
         var proj_status = req.body.proj_status;
