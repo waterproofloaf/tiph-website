@@ -68,7 +68,7 @@
                       {{this.blog_title}}
                     </td>
                     <td>
-                      <time class="entry-date">{{this.blog_date}}</time>
+                      <time class="entry-date">{{dateFormat this.blog_date "YYYY-MM-DD"}}</time>
                     </td>
                     <td class="text-right">
                       <a href="/cms-blog-page?id={{this._id}}"><button id="blogeditbtn" type="button"

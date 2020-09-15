@@ -98,28 +98,6 @@ const controller = {
     },
 
     getProjects: function (req, res) {
-        // var MongoClient = require('mongodb').MongoClient;
-        // // var url = "mongodb://localhost:27017/tiph";
-        // MongoClient.connect(url, { useUnifiedTopology: true },
-        //     function (err, db) {
-        //         if (err) throw err;
-        //         var projArray = [];
-        //         var dbo = db.db("tiph");
-        //         var cursor = dbo.collection("projects").find();
-        //         cursor.forEach(function (doc, err) {
-        //             projArray.push(doc);
-        //         },
-        //             function () {
-        //                 res.render('projects', {
-        //                     layout: '/layouts/main',
-        //                     title: 'Projects | The Initiative PH',
-        //                     projects_active: true,
-        //                     proj_info: projArray,
-        //                 });
-        //                 db.close();
-        //             });
-        //     });
-
         Project.countDocuments({}, function (err, count) {
             if (count == 0) {
                 res.render('projects', {
@@ -972,11 +950,7 @@ const controller = {
                 res.render('cms-blog-page', {
                     layout: '/layouts/cms-layout',
                     title: 'CMS Blog Edit | The Initiative PH',
-                    blog_title: blog.blog_title,
-                    blog_author: blog.blog_author,
-                    blog_content: blog.blog_content,
-                    blog_date: blog.blog_date,
-                    blog_keywords: blog.blog_keywords,
+                    blog_content: blog,
                     blog_active: true,
                     name: req.session.name,
                     type: req.session.type,
@@ -1050,12 +1024,7 @@ const controller = {
                 res.render('cms-project-page', {
                     layout: '/layouts/cms-layout',
                     title: 'CMS Project Edit | The Initiative PH',
-                    proj_title: proj.proj_title,
-                    proj_status: proj.proj_status,
-                    proj_date: proj.proj_date,
-                    proj_content: proj.proj_content,
-                    proj_preview: proj.proj_preview,
-                    proj_keywords: proj.proj_keywords,
+                    proj_content: proj,
                     project_active: true,
                     name: req.session.name,
                     type: req.session.type,

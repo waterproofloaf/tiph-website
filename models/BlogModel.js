@@ -14,7 +14,7 @@ var BlogModel = new mongoose.Schema({
         required: true
     },
     blog_date: {
-        type: String,
+        type: Date,
         required: true
     },
     blog_img: {
@@ -24,7 +24,7 @@ var BlogModel = new mongoose.Schema({
         type: String,
         required: true
     },
-    blog_preview:{
+    blog_preview: {
         type: String
     },
     blog_published: {

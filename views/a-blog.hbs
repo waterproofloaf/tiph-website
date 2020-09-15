@@ -3,7 +3,8 @@
     <div class="container-fluid center">
         <div class="header-title text-center">
             <h5 class="font-weight-bold text-uppercase sub-title">{{this.blog_title}}</h5>
-            <p class="sub-caption text-center" id="blog-datetime">{{this.blog_author}} | {{this.blog_date}}</p>
+            <p class="sub-caption text-center" id="blog-datetime">{{this.blog_author}} |
+                {{dateFormat this.blog_date "MMMM Do, YYYY"}}</p>
         </div>
     </div>
 </section>
