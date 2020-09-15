@@ -42,6 +42,8 @@ app.listen(port, function () {
 
 // Helpers
 
+hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+
 hbs.registerHelper('equals', function (arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });

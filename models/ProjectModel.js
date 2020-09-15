@@ -10,7 +10,7 @@ var ProjectModel = new mongoose.Schema({
         required: true
     },
     proj_date: {
-        type: String,
+        type: Date,
         required: true
     },
     proj_img: {
