@@ -13,6 +13,7 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
     "handlebars": "^4.7.6",
+    "handlebars-dateformat": "^1.1.1",
     "hbs": "^4.1.1",
     "mongo-sanitize": "^1.1.0",
     "mongodb": "^3.6.0",

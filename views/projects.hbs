@@ -72,7 +72,8 @@
         <a href="/a-project?id={{this._id}}" style="text-decoration: none">
           <h5 class="card-title text-uppercase project-title" style="font-size: 25px;">{{this.proj_title}}</h5>
         </a>
-        <p class="project-subtitle project-date">{{this.proj_status}} • {{this.proj_date}}</p>
+        <p class="project-subtitle project-date">{{this.proj_status}} •
+          {{dateFormat this.proj_date "MMMM Do, YYYY"}}</p>
         <p class="sub-caption project-caption">
           {{this.proj_preview}}
         </p>
@@ -85,23 +86,23 @@
   </div>
   {{/if}}
   {{/each}}
-    
-    <!-- PAGINATION -->
-    <nav aria-label="...">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1<span class="sr-only">(current)</span></a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">2 </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
+
+  <!-- PAGINATION -->
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      </li>
+      <li class="page-item active"><a class="page-link" href="#">1<span class="sr-only">(current)</span></a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">2 </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>
 
 {{!-- <div class="row m-auto py-3 px-5">
