@@ -183,7 +183,29 @@ const formsController = {
       var app_dept2 = `${req.body.app_dept2}`;
       var app_position2 = `${req.body.app_position2}`;
       var app_reason = `${req.body.app_reason}`;
-      var app_portfolio = `${req.body.app_portfolio}`;
+      // var app_portfolio = `${req.body.app_portfolio}`;
+
+      var files = [];
+      var filenames = [];
+      var fileKeys = Object.keys(req.files);
+
+      fileKeys.forEach(function(key){
+        files.push(req.files[key]);
+      });
+      console.log("files uploaded: ", files[0].filename)
+      files.forEach(function(names){
+        filenames.push(names.filename);
+      });
+      console.log(filenames)
+      console.log(app_expertise)
+
+      if(req.files){
+        var app_portfolio = filenames;
+      }
+      else{
+        var app_portfolio = []
+      }
+      
 
       if(app_findout == "other"){
 

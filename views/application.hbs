@@ -1,4 +1,4 @@
-<form class="needs-validation" method="POST" action="application" novalidate>
+<form class="needs-validation" method="POST" action="application" enctype="multipart/form-data" novalidate>
     <div class="container-fluid m-auto pb-5" style="text-align: center">
         <!-- HEADER -->
         <h5 class="font-weight-bold text-uppercase sub-title pt-5" style="margin-top: 20px;">APPLICATION FORM</h5>
@@ -427,7 +427,7 @@
 
             <!-- PORTFOLIO UPLOAD -->
             <div class="file-upload">
-                <input type="file" name="app_portfolio" id="app_portfolio" class="portfolio-upload">
+                <input type="file" name="app_portfolio" id="app_portfolio" class="portfolio-upload" enctype="multipart/form-data" multiple>
             </div>
         </div>
     </div>

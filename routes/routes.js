@@ -85,7 +85,7 @@ app.get('/pre-application', controller.getPreApp);
 app.post('/pre-application', formsValidator.preValidation(), formsController.postPreApp);
 
 app.get('/application', controller.getApplication);
-app.post('/application', formsValidator.appValidation(), formsController.postAppForm);
+app.post('/application', upload.array('app_portfolio', 5), formsValidator.appValidation(), formsController.postAppForm);
 
 app.get('/projects', controller.getProjects);
 app.post('/projects', projectController.postProject);
