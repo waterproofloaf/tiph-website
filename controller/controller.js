@@ -97,7 +97,7 @@ const controller = {
         })
     },
 
-    getProjects: function (req, res) {
+    getProjects: function (req, res, next) {
         Project.countDocuments({}, function (err, count) {
             if (count == 0) {
                 res.render('projects', {
@@ -106,14 +106,34 @@ const controller = {
                     projects_active: true,
                 })
             } else {
-                database.findMany(Project, {}, {}, function (projArray) {
-                    res.render('projects', {
-                        layout: '/layouts/main',
-                        title: 'Projects | The Initiative PH',
-                        projects_active: true,
-                        proj_info: projArray,
-                    })
-                });
+                var perPage = 5
+                var page = req.params.page || 1
+
+                Project
+                    .find({})
+                    .skip((perPage * page) - perPage)
+                    .limit(perPage)
+                    .exec(function(err, projArray) {
+                        Project.count().exec(function(err, count) {
+                            if (err) return next(err)
+                            res.render('projects', {
+                                layout: '/layouts/main',
+                                title: 'Projects | The Initiative PH',
+                                proj_active: true,
+                                proj_info: projArray,
+                                current: page,
+                                pages: Math.ceil(count / perPage)
+                            });
+                        });
+                    });
+//                database.findMany(Project, {}, {}, function (projArray) {
+//                    res.render('projects', {
+//                        layout: '/layouts/main',
+//                        title: 'Projects | The Initiative PH',
+//                        projects_active: true,
+//                        proj_info: projArray,
+//                    })
+//                });
             }
         });
     },
@@ -127,14 +147,26 @@ const controller = {
                     projects_active: true,
                 })
             } else {
-                database.findMany(Project, {proj_status: 'Approved'}, {}, function (projArray) {
-                    res.render('projects', {
-                        layout: '/layouts/main',
-                        title: 'Projects | The Initiative PH',
-                        projects_active: true,
-                        proj_info: projArray,
-                    })
-                });
+                var perPage = 5
+                var page = req.params.page || 1
+
+                Project
+                    .find({proj_status: 'Approved'})
+                    .skip((perPage * page) - perPage)
+                    .limit(perPage)
+                    .exec(function(err, projArray) {
+                        Project.count().exec(function(err, count) {
+                            if (err) return next(err)
+                            res.render('projects', {
+                                layout: '/layouts/main',
+                                title: 'Projects | The Initiative PH',
+                                proj_active: true,
+                                proj_info: projArray,
+                                current: page,
+                                pages: Math.ceil(count / perPage)
+                            });
+                        });
+                    });
             }
         });
     },
@@ -148,14 +180,26 @@ const controller = {
                     projects_active: true,
                 })
             } else {
-                database.findMany(Project, {proj_status: 'Ongoing'}, {}, function (projArray) {
-                    res.render('projects', {
-                        layout: '/layouts/main',
-                        title: 'Projects | The Initiative PH',
-                        projects_active: true,
-                        proj_info: projArray,
-                    })
-                });
+                var perPage = 5
+                var page = req.params.page || 1
+
+                Project
+                    .find({proj_status:'Ongoing'})
+                    .skip((perPage * page) - perPage)
+                    .limit(perPage)
+                    .exec(function(err, projArray) {
+                        Project.count().exec(function(err, count) {
+                            if (err) return next(err)
+                            res.render('projects', {
+                                layout: '/layouts/main',
+                                title: 'Projects | The Initiative PH',
+                                proj_active: true,
+                                proj_info: projArray,
+                                current: page,
+                                pages: Math.ceil(count / perPage)
+                            });
+                        });
+                    });
             }
         });
     },
@@ -169,14 +213,26 @@ const controller = {
                     projects_active: true,
                 })
             } else {
-                database.findMany(Project, {proj_status: 'Proposed'}, {}, function (projArray) {
-                    res.render('projects', {
-                        layout: '/layouts/main',
-                        title: 'Projects | The Initiative PH',
-                        projects_active: true,
-                        proj_info: projArray,
-                    })
-                });
+                var perPage = 5
+                var page = req.params.page || 1
+
+                Project
+                    .find({proj_status: 'Proposed'})
+                    .skip((perPage * page) - perPage)
+                    .limit(perPage)
+                    .exec(function(err, projArray) {
+                        Project.count().exec(function(err, count) {
+                            if (err) return next(err)
+                            res.render('projects', {
+                                layout: '/layouts/main',
+                                title: 'Projects | The Initiative PH',
+                                proj_active: true,
+                                proj_info: projArray,
+                                current: page,
+                                pages: Math.ceil(count / perPage)
+                            });
+                        });
+                    });
             }
         });
     },
@@ -211,15 +267,37 @@ const controller = {
                     blog_active: true,
                 })
             } else {
-                database.findMany(Blog, {}, {}, function (blogArray) {
-                    res.render('blog', {
-                        layout: '/layouts/main',
-                        title: 'Blogs | The Initiative PH',
-                        blog_active: true,
-                        blog_info: blogArray,
+                var perPage = 5
+                var page = req.params.page || 1
+
+                Blog
+                    .find({})
+                    .skip((perPage * page) - perPage)
+                    .limit(perPage)
+                    .exec(function(err, blogArray) {
+                        Blog.count().exec(function(err, count) {
+                            if (err) return next(err)
+                            res.render('blog', {
+                                layout: '/layouts/main',
+                                title: 'Blogs | The Initiative PH',
+                                proj_active: true,
+                                blog_info: blogArray,
+                                current: page,
+                                pages: Math.ceil(count / perPage)
+                            });
+                        });
                     });
-                });
-            }
+//                else {
+//                database.findMany(Blog, {}, {}, function (blogArray) 
+//                    res.render('blog', {
+//                        layout: '/layouts/main',
+//                        title: 'Blogs | The Initiative PH',
+//                        blog_active: true,
+//                        blog_info: blogArray,
+//                    });
+//                });
+//            }
+            };
         });
     },
 
