@@ -7,28 +7,36 @@
           <i class="fa fa-newspaper-o"></i>
         </h5>
       </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle btn-sm blog-sort-b" type="button" id="blog-sort-by"
-          name="blog_sort_by" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Sort by
-        </button>
-        <div class="dropdown-menu blog-sort-b" aria-labelledby="dropdownMenuButton" id="sort-blog">
-          <a class="dropdown-item sort-by" href="#">Date (Latest)</a>
-          <a class="dropdown-item sort-by" href="#">Date (Oldest)</a>
-          <a class="dropdown-item sort-by" href="#">Title (A-Z)</a>
-          <a class="dropdown-item sort-by" href="#">Title (Z-A)</a>
-        </div>
-      </div>
       <div class="col-lg text-right d-flex flex-row">
         <input class="form-control sub-caption" type="text" placeholder="Search..." id="blog-search"
           onkeyup="blog_search()" aria-label="Search">
       </div>
     </div>
   </div>
+    <div class="row px-5 pt-4 d-flex align-self-center">
+        <p class="sub-caption p-3">
+          We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
+          Our projects seek to address issues that arised within our country and at the same time, encourage the youth
+          to become more aware on their role as a citizen with social responsibilities.
+        </p>
+  </div>
+    <br>
+    <div class="container-fluid sort-view d-flex">
+        <div class="blog-project-sort d-flex">
+            <label for="blog_sort_by" style="margin-top: 5px; margin-right: 5px;" class="sub-caption">Sort by: </label>
+            <select class="form-control form-control-sm" id="blog-sort-by" name="blog_sort_by" onchange="this.form.submit()">
+                <option value="adate">Date (Latest)</option>
+                <option value="ddate">Date (Oldest)</option>
+                <option value="atitle">Title (A-Z)</option>
+                <option value="dtitle">Title (Z-A)</option>
+            </select>
+        </div>
+    </div>
   <hr>
 </section>
 
 <!-- BODY -->
+<div id="light-pagination" class="pagination">
 <div class="container-fluid px-5 py-3 pb-5" id="blog-container">
   {{!-- <div class="blog-item">
     <div class="row d-flex align-items-center blog-row">
@@ -71,7 +79,9 @@
   </div>
   {{/if}}
   {{/each}}
-  <!-- PAGINATION -->
+</div>
+</div>
+<!-- PAGINATION -->
   <nav aria-label="...">
     <ul class="pagination justify-content-center">
       <li class="page-item disabled">
@@ -87,8 +97,6 @@
       </li>
     </ul>
   </nav>
-</div>
-
 {{!-- <div class="container-fluid d-flex flex-lg-row flex-column justify-content-lg-between align-items-center px-5 mb-3">
   <div class="card bg-light" style="width: 100vp;">
     <img class="card-img-top" src="assets/img/test.jpg" alt="Card image cap">
