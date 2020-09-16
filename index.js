@@ -42,7 +42,21 @@ app.listen(port, function () {
 
 // Helpers
 
+// var helpers = require('handlebars-helpers')({
+//   hbs: hbs
+// });
+
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+
+hbs.registerHelper('repeat', require('handlebars-helper-repeat'));
+
+hbs.registerHelper("add", function (a, b) {
+  return parseInt(a) + b;
+});
+
+hbs.registerHelper("minus", function (a, b) {
+  return parseInt(a) - b;
+});
 
 hbs.registerHelper('equals', function (arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
