@@ -143,12 +143,22 @@ star{
 
 /* Blog */
 
-.blog-sort-b{
+.view-b{
     background-color: #0c5865 !important;
 }
-
-.sort-by:hover{
+.proj-view-by:hover{
     background-color: #043841 !important;
+}
+.sort-view{
+    justify-content: flex-end;
+}
+
+.blog-project-sort{
+    margin-right: 26px;
+}
+
+.view-by{
+    margin-right: 47px;
 }
 
 .hr-line {
@@ -457,6 +467,7 @@ footer {
 }
 
 /* Projects */
+
 .project-subtitle {
     font-family: "Montserrat";
     font-weight: 500;

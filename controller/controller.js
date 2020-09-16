@@ -117,6 +117,69 @@ const controller = {
             }
         });
     },
+    
+    getProjectsApproved: function (req, res) {
+        Project.countDocuments({}, function (err, count) {
+            if (count == 0) {
+                res.render('projects', {
+                    layout: '/layouts/main',
+                    title: 'Projects | The Initiative PH',
+                    projects_active: true,
+                })
+            } else {
+                database.findMany(Project, {proj_status: 'Approved'}, {}, function (projArray) {
+                    res.render('projects', {
+                        layout: '/layouts/main',
+                        title: 'Projects | The Initiative PH',
+                        projects_active: true,
+                        proj_info: projArray,
+                    })
+                });
+            }
+        });
+    },
+    
+    getProjectsOngoing: function (req, res) {
+        Project.countDocuments({}, function (err, count) {
+            if (count == 0) {
+                res.render('projects', {
+                    layout: '/layouts/main',
+                    title: 'Projects | The Initiative PH',
+                    projects_active: true,
+                })
+            } else {
+                database.findMany(Project, {proj_status: 'Ongoing'}, {}, function (projArray) {
+                    res.render('projects', {
+                        layout: '/layouts/main',
+                        title: 'Projects | The Initiative PH',
+                        projects_active: true,
+                        proj_info: projArray,
+                    })
+                });
+            }
+        });
+    },
+    
+    getProjectsProposed: function (req, res) {
+        Project.countDocuments({}, function (err, count) {
+            if (count == 0) {
+                res.render('projects', {
+                    layout: '/layouts/main',
+                    title: 'Projects | The Initiative PH',
+                    projects_active: true,
+                })
+            } else {
+                database.findMany(Project, {proj_status: 'Proposed'}, {}, function (projArray) {
+                    res.render('projects', {
+                        layout: '/layouts/main',
+                        title: 'Projects | The Initiative PH',
+                        projects_active: true,
+                        proj_info: projArray,
+                    })
+                });
+            }
+        });
+    },
 
     getBlogs: function (req, res) {
         // var MongoClient = require('mongodb').MongoClient;
