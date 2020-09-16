@@ -120,12 +120,11 @@ const controller = {
                             res.render('projects', {
                                 layout: '/layouts/main',
                                 title: 'Projects | The Initiative PH',
-                                proj_active: true,
+                                projects_active: true,
                                 proj_info: projArray,
                                 current: page,
                                 pages: Math.ceil(count / perPage)
                             });
-
                         });
                     });
                 //                database.findMany(Project, {}, {}, function (projArray) {
@@ -163,7 +162,7 @@ const controller = {
                             res.render('projects', {
                                 layout: '/layouts/main',
                                 title: 'Projects | The Initiative PH',
-                                proj_active: true,
+                                projects_active: true,
                                 proj_info: projArray,
                                 current: page,
                                 pages: Math.ceil(count / perPage)
@@ -196,7 +195,7 @@ const controller = {
                             res.render('projects', {
                                 layout: '/layouts/main',
                                 title: 'Projects | The Initiative PH',
-                                proj_active: true,
+                                projects_active: true,
                                 proj_info: projArray,
                                 current: page,
                                 pages: Math.ceil(count / perPage)
@@ -229,7 +228,7 @@ const controller = {
                             res.render('projects', {
                                 layout: '/layouts/main',
                                 title: 'Projects | The Initiative PH',
-                                proj_active: true,
+                                projects_active: true,
                                 proj_info: projArray,
                                 current: page,
                                 pages: Math.ceil(count / perPage)
@@ -262,7 +261,7 @@ const controller = {
                             res.render('blog', {
                                 layout: '/layouts/main',
                                 title: 'Blogs | The Initiative PH',
-                                proj_active: true,
+                                blog_active: true,
                                 blog_info: blogArray,
                                 current: page,
                                 pages: Math.ceil(count / perPage)
