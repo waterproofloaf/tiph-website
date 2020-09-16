@@ -416,7 +416,7 @@
                 <br>
                 <strong>Videographer</strong> - Any video taken and edited by the volunteer (3)
                 <br><br>
-                You may upload through here or send it via our Email
+                You may place your portfolio link through here or send it via our Email
                 <strong>tiph.humanresources@gmail.com </strong>with the subject <br>
                 <strong>[LAST NAME] Portfolio</strong>
                 <br>
@@ -427,7 +427,9 @@
 
             <!-- PORTFOLIO UPLOAD -->
             <div class="file-upload">
-                <input type="file" name="app_portfolio" id="app_portfolio" class="portfolio-upload" enctype="multipart/form-data" multiple>
+                {{!-- <input type="file" name="app_portfolio" id="app_portfolio" class="portfolio-upload" enctype="multipart/form-data" multiple> --}}
+                <label for="form-facebook">Google Drive/Portfolio URL </label>
+                <input type="url" class="form-control" name="app_portfolio" id="app_portfolio" placeholder="Google Drive/Portfolio URL">
             </div>
         </div>
     </div>

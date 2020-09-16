@@ -69,7 +69,7 @@ var AppModel = new mongoose.Schema({
         required: true,
     },
     app_portfolio: {
-        type: Array,
+        type: String,
     },
     app_status: {
         type: String,
