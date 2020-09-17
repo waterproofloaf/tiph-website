@@ -186,5 +186,9 @@ app.post('/cms-donation-new-option', cmsValidator.DonateValidation(), donateCont
 app.get('/cms-edit-donation', controller.getCMSEditDonate);
 app.post('/cms-edit-donation', cmsValidator.DonateValidation(), donateController.editDonate);
 
+app.use((req, res, next) => {
+  res.status(404).redirect('/404');
+});
+
 // enables to export app object when called in another .js file
 module.exports = app;
