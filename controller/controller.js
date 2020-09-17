@@ -90,11 +90,15 @@ const controller = {
     },
 
     getApplication: function (req, res) {
-        res.render('application', {
-            layout: '/layouts/main',
-            title: 'Application | The Initiative PH',
-            volunteer_active: true,
+        database.findMany(Department, {}, {}, function (departmentArray){
+            res.render('application', {
+                layout: '/layouts/main',
+                title: 'Application | The Initiative PH',
+                volunteer_active: true,
+                department_info: departmentArray,
+            })
         })
+        
     },
 
     getProjects: function (req, res, next) {
@@ -1033,7 +1037,6 @@ const controller = {
                         userid: req.session.userid,
                         department_info: departmentArray,
                     });
-                    console.log(departmentArray)
                 })
             });
         }

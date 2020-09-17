@@ -323,7 +323,7 @@
         <div class="div-dept-choice">
             <h6 class="apps-sub-header pt-3">Department of Choice <star>*</star></h6>
             <div class="form-container margin-left sub-caption">
-                <input type="radio" id="publications-communications" name="app_dept1"
+                {{!-- <input type="radio" id="publications-communications" name="app_dept1"
                     value="Department of Publications and Communications (DPC)"> Department of Publications and Communications (DPC) <br>
                 <input type="radio" id="disaster-mitigation" name="app_dept1" value="Department of Disaster Mitigation and Recovery (DDMR)"> Department
                 of Disaster Mitigation and Recovery (DDMR) <br>
@@ -332,7 +332,10 @@
                 <input type="radio" id="initiatives-espana" name="app_dept1" value="Department of Initiatives - Project Espana (DI-PE)"> Department of
                 Initiatives - Project Espana (DI-PE)<br>
                 <input type="radio" id="initiatives-taft" name="app_dept1" value="Department of Initiatives - Project Taft (DI-PT)"> Department of
-                Initiatives - Project Taft (DI-PT)<br>
+                Initiatives - Project Taft (DI-PT)<br> --}}
+                {{#each department_info}}
+                    <input type="radio" id="{{this.department_title}}" name="app_dept1" value="{{this.department_title}}">{{this.department_title}}<br>
+                {{/each}}
             </div>
         </div> <br>
         
@@ -357,7 +360,7 @@
             <h6 class="apps-sub-header">Department of Choice <star>*</star> (Second Option)</h6>
             {{!-- <div class="form-container margin-left"> --}}
             <div class="container-fluid sub-caption">
-                <input type="radio" id="second-disaster-mitigation" name="app_dept2"
+                {{!-- <input type="radio" id="second-disaster-mitigation" name="app_dept2"
                     value="Department of Disaster Mitigation and Recovery (DDMR)"> Department of Disaster Mitigation and Recovery (DDMR) <br>
                 <input type="radio" id="second-animal-welfare" name="app_dept2" value="Department of Animal and Environmental Welfare (DAEW)">
                 Department of Animal and Environmental Welfare (DAEW)<br>
@@ -372,7 +375,10 @@
                 <input type="radio" id="second-initiatives-espana" name="app_dept2"
                     value="Department of Initiatives - Project Espana (DI-PE)"> Department of Initiatives - Project Espana (DI-PE)<br>
                 <input type="radio" id="second-initiatives-katipunan" name="app_dept2"
-                    value="Department of Initiatives - Project Katipunan (DI-PK)"> Department of Initiatives - Project Katipunan (DI-PK)<br>
+                    value="Department of Initiatives - Project Katipunan (DI-PK)"> Department of Initiatives - Project Katipunan (DI-PK)<br> --}}
+                {{#each department_info}}
+                    <input type="radio" id="{{this.department_title}}" name="app_dept2" value="{{this.department_title}}">{{this.department_title}}<br>
+                {{/each}}
             </div>
         </div>
 
