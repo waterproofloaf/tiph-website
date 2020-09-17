@@ -105,6 +105,8 @@ app.get('/contact-us', controller.getContactUs);
 app.post('/contact-us', upload.single('contact_upload'), formsValidator.contactValidation(), formsController.postContactUs);
 app.get('/donate', controller.getDonate);
 
+app.get('/404', controller.get404);
+
 // CMS Login
 app.get('/cms-login', controller.getCMSLogin);
 app.post('/cms-login', logIncontroller.postLogIn);

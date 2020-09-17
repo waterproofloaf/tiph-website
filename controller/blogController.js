@@ -68,7 +68,7 @@ const blogController = {
                 });
             }
             else {
-                res.redirect('/blog');
+                res.redirect('/404');
             }
         });
     },

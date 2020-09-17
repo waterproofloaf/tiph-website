@@ -68,7 +68,7 @@ const projectController = {
                 });
             }
             else {
-                res.redirect('/projects');
+                res.redirect('/404');
             }
         });
     },
