@@ -28,67 +28,81 @@
                                 <label for="cms-apps-position">Departments Open for Application and Positions</label>
                                 <div class="div-choices sub-caption">
                                     {{#each department_info}}
-                                        {{!-- <input type="checkbox" name="department" id="{{this.department_title}}" value="{{this.department_title}}"
+                                    {{!-- <input type="checkbox" name="department" id="{{this.department_title}}" value="{{this.department_title}}"
                                             data-toggle="collapse" data-target="#pos_{{this.department_title}}">{{this.department_title}} <br>
                                             <div class="dept-positions" id="pos_{{this.department_title}}">
                                                 <input type="checkbox" name="dept_pos" id=""> SOME POSITON <br>
                                             </div> --}}
-                                        <input type="checkbox" name="department" id="{{this._id}}" value="{{this.department_title}}"
-                                            data-toggle="collapse" data-target="#pos-{{this._id}}" 
-                                            onclick="department_change(this)" {{#if this.department_available}}checked{{/if}}> {{this.department_title}} <br>
-                                        <div class="dept-positions {{#if this.department_available}}collapse show{{/if}}" id="pos-{{this._id}}" 
-                                            {{#if this.department_available}}aria-expended="true"{{/if}}>
-                                            <form method="get">
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <input type="checkbox" name="dept_pos" id="pos_secretary"
-                                                            value="pos_secretary"> Secretary <br>
+                                    <input type="checkbox" name="department" id="{{this._id}}"
+                                        value="{{this.department_title}}" data-toggle="collapse"
+                                        data-target="#pos-{{this._id}}" onclick="department_change(this)"
+                                        {{#if this.department_available}}checked{{/if}}> {{this.department_title}} <br>
+                                    <div class="dept-positions {{#if this.department_available}}collapse show{{/if}}"
+                                        id="pos-{{this._id}}" {{#if this.department_available}}aria-expended="true"
+                                        {{/if}}>
+                                        <form method="get">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <input type="checkbox" name="dept_pos" id="pos_secretary"
+                                                        value="pos_secretary"> Secretary <br>
 
-                                                        <input type="checkbox" name="dept_pos" id="pos_hr_officer"
-                                                            value="pos_hr_officer"> HR Officer <br>
+                                                    <input type="checkbox" name="dept_pos" id="pos_hr_officer"
+                                                        value="pos_hr_officer"> HR Officer <br>
 
-                                                        <input type="checkbox" name="dept_pos" id="pos_internal_policy_director"
-                                                            value="pos_internal_policy_director"> Internal Policy Director <br>
-                                                        
-                                                        <input type="checkbox" name="dept_pos" id="pos_external_policy_director"
-                                                            value="pos_external_policy_director"> Extrnal Policy Director <br>
+                                                    <input type="checkbox" name="dept_pos"
+                                                        id="pos_internal_policy_director"
+                                                        value="pos_internal_policy_director"> Internal Policy Director
+                                                    <br>
 
-                                                        <input type="checkbox" name="dept_pos" id="pos_legal_affiliation_officer"
-                                                            value="pos_legal_affiliation_officer"> Legal Affiliation Officer <br>
+                                                    <input type="checkbox" name="dept_pos"
+                                                        id="pos_external_policy_director"
+                                                        value="pos_external_policy_director"> Extrnal Policy Director
+                                                    <br>
 
-                                                        <input type="checkbox" name="dept_pos" id="pos_external_relations_officer"
-                                                            value="pos_external_relations_officer"> External Relations Officer <br>
-                                                        
-                                                        <input type="checkbox" name="dept_pos" id="pos_finance_officer"
-                                                            value="pos_finance_officer"> Finance Officer <br>
-                                                    </div>
+                                                    <input type="checkbox" name="dept_pos"
+                                                        id="pos_legal_affiliation_officer"
+                                                        value="pos_legal_affiliation_officer"> Legal Affiliation Officer
+                                                    <br>
 
-                                                    <div class="form-group col-md-6">
-                                                        <input type="checkbox" name="dept_pos" id="pos_logistics_officer"
-                                                            value="pos_logistics_officer"> Logistics Officer <br>
+                                                    <input type="checkbox" name="dept_pos"
+                                                        id="pos_external_relations_officer"
+                                                        value="pos_external_relations_officer"> External Relations
+                                                    Officer <br>
 
-                                                        <input type="checkbox" name="dept_pos" id="pos_multimedia_artist"
-                                                            value="pos_multimedia_artist"> Creative/Multimedia Artist <br>
+                                                    <input type="checkbox" name="dept_pos" id="pos_finance_officer"
+                                                        value="pos_finance_officer"> Finance Officer <br>
+                                                </div>
 
-                                                        <input type="checkbox" name="dept_pos" id="pos_documentation_officer"
-                                                            value="pos_documentation_officer"> Photographer/Videographer/Documentation Officer <br>
+                                                <div class="form-group col-md-6">
+                                                    <input type="checkbox" name="dept_pos" id="pos_logistics_officer"
+                                                        value="pos_logistics_officer"> Logistics Officer <br>
 
-                                                        <input type="checkbox" name="dept_pos" id="pos_content_writer"
-                                                            value="pos_content_writer"> Content Writer <br>
+                                                    <input type="checkbox" name="dept_pos" id="pos_multimedia_artist"
+                                                        value="pos_multimedia_artist"> Creative/Multimedia Artist <br>
 
-                                                        <input type="checkbox" name="dept_pos" id="pos_research_officer"
-                                                            value="pos_research_officer"> Research Officer <br>
+                                                    <input type="checkbox" name="dept_pos"
+                                                        id="pos_documentation_officer"
+                                                        value="pos_documentation_officer">
+                                                    Photographer/Videographer/Documentation Officer <br>
 
-                                                        <input type="checkbox" name="dept_pos" id="pos_social_media_curator"
-                                                            value="pos_social_media_curator"> Social Media Curator <br>
+                                                    <input type="checkbox" name="dept_pos" id="pos_content_writer"
+                                                        value="pos_content_writer"> Content Writer <br>
 
-                                                        <input type="checkbox" name="dept_pos" id="pos_social_media_engagement_officer"
-                                                            value="pos_social_engagement_officer"> Social Media Engagement Officer <br>
-                                                    </div>
-                                                    
-                                                </div>  
-                                            </form>
-                                        </div>
+                                                    <input type="checkbox" name="dept_pos" id="pos_research_officer"
+                                                        value="pos_research_officer"> Research Officer <br>
+
+                                                    <input type="checkbox" name="dept_pos" id="pos_social_media_curator"
+                                                        value="pos_social_media_curator"> Social Media Curator <br>
+
+                                                    <input type="checkbox" name="dept_pos"
+                                                        id="pos_social_media_engagement_officer"
+                                                        value="pos_social_engagement_officer"> Social Media Engagement
+                                                    Officer <br>
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
                                     {{/each}}
                                     {{!-- <input type="checkbox" name="department" id="admin-affairs" value="admin-affairs"
                                         data-toggle="collapse" data-target="#pos-admin-affairs"> Department of
@@ -240,7 +254,7 @@
         modules: {
             toolbar: [
                 ['bold', 'italic'],
-                ['link', 'blockquote', 'code-block', 'image'],
+                ['link', 'blockquote', 'code-block'],
                 [{ list: 'ordered' }, { list: 'bullet' }]
             ]
         },
@@ -250,7 +264,7 @@
 
     var apps_form = document.getElementById("apps_form");
     apps_form.onsubmit = function () {
-        var apps_content = document.querySelector('input[name=cms-apps-content]');
+        var apps_content = document.querySelector('input[name=cms_apps_content]');
         apps_content.value = appQuill.root.innerHTML;
         console.log(apps_content);
         return true;
