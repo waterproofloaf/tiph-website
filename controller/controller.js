@@ -936,14 +936,18 @@ const controller = {
 
     getCMSNewAdmin: function (req, res) {
         if (req.session.user && req.cookies.user_sid && req.session.type) {
-            res.render('cms-admin-new', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Add Admin | The Initiative PH',
-                admin_active: true,
-                type: req.session.type,
-                name: req.session.name,
-                userid: req.session.userid,
-            })
+            database.findMany(Department, {}, {}, function (departmentArray) {
+                res.render('cms-admin-new', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Add Admin | The Initiative PH',
+                    admin_active: true,
+                    type: req.session.type,
+                    name: req.session.name,
+                    userid: req.session.userid,
+                    department_info: departmentArray,
+                })
+            });
+            
         }
         else if (!req.session.type) {
             res.redirect('cms-home')
@@ -957,16 +961,20 @@ const controller = {
         if (req.session.user && req.cookies.user_sid) {
             var query = req.session.userid;
             database.findOne(User, { _id: query }, {}, function (admin) {
-                res.render('cms-admin-edit', {
-                    layout: '/layouts/cms-layout',
-                    title: 'CMS Edit Admin | The Initiative PH',
-                    admin_name: admin.name,
-                    admin_username: admin.username,
-                    admin_dept: admin.userDepartment,
-                    type: req.session.type,
-                    name: req.session.name,
-                    userid: req.session.userid,
-                });
+                database.findMany(Department, {}, {}, function (departmentArray) {
+                    res.render('cms-admin-edit', {
+                        layout: '/layouts/cms-layout',
+                        title: 'CMS Edit Admin | The Initiative PH',
+                        admin_name: admin.name,
+                        admin_username: admin.username,
+                        admin_dept: admin.userDepartment,
+                        type: req.session.type,
+                        name: req.session.name,
+                        userid: req.session.userid,
+                        department_info: departmentArray,
+                    });
+                    console.log(departmentArray)
+                })
             });
         }
         else {

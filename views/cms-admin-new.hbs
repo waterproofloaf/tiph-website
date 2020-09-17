@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label for="admin_dept">Department</label>
                                 <select class="form-control" id="admin_dept" name="admin_dept">
-                                    <option value="Administrative Affairs">Administrative Affairs</option>
+                                    {{!-- <option value="Administrative Affairs">Administrative Affairs</option>
                                     <option value="Publications and Communications">Publications and Communications
                                     </option>
                                     <option value="Marketing, Finance and Logistics">Marketing, Finance and Logistics
@@ -43,7 +43,10 @@
                                     <option value="Mental Health">Mental Health</option>
                                     <option value="Project Taft">Project Taft</option>
                                     <option value="Project España">Project España</option>
-                                    <option value="Project Katipunan">Project Katipunan</option>
+                                    <option value="Project Katipunan">Project Katipunan</option> --}}
+                                    {{#each department_info}}
+                                    <option value="{{this.department_title}}">{{this.department_title}}</option>
+                                    {{/each}}
                                 </select>
                             </div>
                             <div class="form-group">
