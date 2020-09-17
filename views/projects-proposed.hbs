@@ -32,48 +32,48 @@
       to become more aware on their role as a citizen with social responsibilities.
     </p>
   </div>
-    <br>
-    <div class="container-fluid sort-view d-flex">        
-        <div class="blog-project-sort d-flex">
-            <label for="blog_sort_by" style="margin-top: 5px; margin-right: 5px;" class="sub-caption">Sort by: </label>
-            <select class="form-control form-control-sm" id="proj-sort-by" name="proj_sort_by">
-                <option value="adate">Date (Latest)</option>
-                <option value="ddate">Date (Oldest)</option>
-                <option value="atitle">Title (A-Z)</option>
-                <option value="dtitle">Title (Z-A)</option>
-            </select>
-        </div>
-        <div class="view-by d-flex">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle btn-sm view-b" type="button" id="blog-sort-by"
-                  name="blog_sort_by" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  View (by status):
-                </button>
-                <div class="dropdown-menu view-b" aria-labelledby="dropdownMenuButton" id="proj-view">
-                  <a class="dropdown-item proj-view-by" href="projects">All</a>
-                  <a class="dropdown-item proj-view-by" href="projects-approved">Approved</a>
-                  <a class="dropdown-item proj-view-by" href="projects-ongoing">Ongoing</a>
-                  <a class="dropdown-item proj-view-by" href="projects-proposed">Proposed</a>
-                </div>
-            </div>
-        </div>
+  <br>
+  <div class="container-fluid sort-view d-flex">
+    <div class="blog-project-sort d-flex">
+      <label for="blog_sort_by" style="margin-top: 5px; margin-right: 5px;" class="sub-caption">Sort by: </label>
+      <select class="form-control form-control-sm" id="proj-sort-by" name="proj_sort_by">
+        <option value="adate">Date (Latest)</option>
+        <option value="ddate">Date (Oldest)</option>
+        <option value="atitle">Title (A-Z)</option>
+        <option value="dtitle">Title (Z-A)</option>
+      </select>
     </div>
+    <div class="view-by d-flex">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle btn-sm view-b" type="button" id="blog-sort-by"
+          name="blog_sort_by" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          View (by status):
+        </button>
+        <div class="dropdown-menu view-b" aria-labelledby="dropdownMenuButton" id="proj-view">
+          <a class="dropdown-item proj-view-by" href="/projects">All</a>
+          <a class="dropdown-item proj-view-by" href="/projects-approved">Approved</a>
+          <a class="dropdown-item proj-view-by" href="/projects-ongoing">Ongoing</a>
+          <a class="dropdown-item proj-view-by" href="/projects-proposed">Proposed</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <hr>
 </section>
 
 <!-- CARD -->
 <div class="container-fluid py-3 px-5 pb-5" id="project-container">
-    
-<!-- PROPOSED -->    
-        
-{{#each proj_info}}
+
+  <!-- PROPOSED -->
+
+  {{#each proj_info}}
   {{#if this.proj_published}}
-    {{#equals this.proj_status "Proposed"}}
+  {{#equals this.proj_status "Proposed"}}
   <div class="project-item d-none" id="proj-proposed">
     <div class="row py-2 align-items-center project-row" style="display:flex;">
       <div class="col-lg-4 p-3">
         <a href="/a-project?id={{this._id}}">
-          <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
+          <img src="/assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
         </a>
       </div>
       <div class="col-lg-8 project-post">
@@ -92,7 +92,7 @@
     </div>
     <hr>
   </div>
-    {{/equals}}
+  {{/equals}}
   {{/if}}
   {{/each}}
 

@@ -32,43 +32,43 @@
       to become more aware on their role as a citizen with social responsibilities.
     </p>
   </div>
-    <br>
-    <div class="container-fluid sort-view d-flex">        
-        <div class="blog-project-sort d-flex">
-            <label for="blog_sort_by" style="margin-top: 5px; margin-right: 5px;" class="sub-caption">Sort by: </label>
-            <select class="form-control form-control-sm" id="proj-sort-by" name="proj_sort_by">
-                <option value="adate">Date (Latest)</option>
-                <option value="ddate">Date (Oldest)</option>
-                <option value="atitle">Title (A-Z)</option>
-                <option value="dtitle">Title (Z-A)</option>
-            </select>
-        </div>
-        <div class="view-by d-flex">
-            <form method="post">
-                <label for="proj-view-by" style="margin-top: 5px; margin-right: 5px;" class="sub-caption">View: </label>
-                <select class="form-control form-control-sm" id="proj_view_by" name="proj_view_by">
-                    <option value="all">All</option>
-                    <option value="approved">Approved</option>
-                    <option value="ongoing">Ongoing</option>
-                    <option value="proposed">Proposed</option>
-                </select>
-            </form>
-        </div>
+  <br>
+  <div class="container-fluid sort-view d-flex">
+    <div class="blog-project-sort d-flex">
+      <label for="blog_sort_by" style="margin-top: 5px; margin-right: 5px;" class="sub-caption">Sort by: </label>
+      <select class="form-control form-control-sm" id="proj-sort-by" name="proj_sort_by">
+        <option value="adate">Date (Latest)</option>
+        <option value="ddate">Date (Oldest)</option>
+        <option value="atitle">Title (A-Z)</option>
+        <option value="dtitle">Title (Z-A)</option>
+      </select>
     </div>
+    <div class="view-by d-flex">
+      <form method="post">
+        <label for="proj-view-by" style="margin-top: 5px; margin-right: 5px;" class="sub-caption">View: </label>
+        <select class="form-control form-control-sm" id="proj_view_by" name="proj_view_by">
+          <option value="all">All</option>
+          <option value="approved">Approved</option>
+          <option value="ongoing">Ongoing</option>
+          <option value="proposed">Proposed</option>
+        </select>
+      </form>
+    </div>
+  </div>
   <hr>
 </section>
 
 <!-- CARD -->
 <div class="container-fluid py-3 px-5 pb-5" id="project-container">
-<!-- APPROVED -->    
-{{#each proj_info}}
+  <!-- APPROVED -->
+  {{#each proj_info}}
   {{#if this.proj_published}}
-    {{#equals this.proj_status "Approved"}}
+  {{#equals this.proj_status "Approved"}}
   <div class="project-item d-none" id='proj-approved'>
     <div class="row py-2 align-items-center project-row" style="display:flex;">
       <div class="col-lg-4 p-3">
         <a href="/a-project?id={{this._id}}">
-          <img src="assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
+          <img src="/assets/img/size-test.jpg" width="100%" style="border-radius: 5px;">
         </a>
       </div>
       <div class="col-lg-8 project-post">
@@ -87,7 +87,7 @@
     </div>
     <hr>
   </div>
-    {{/equals}}
+  {{/equals}}
   {{/if}}
   {{/each}}
 
@@ -129,5 +129,3 @@
     </div>
   </div>
 </div> --}}
-
-
