@@ -91,8 +91,8 @@ const controller = {
     },
 
     getApplication: function (req, res) {
-        database.findOne(AppForm, {}, {}, function (appsform){
-            database.findMany(Department, {}, {}, function (departmentArray){
+        database.findOne(AppForm, {}, {}, function (appsform) {
+            database.findMany(Department, {}, {}, function (departmentArray) {
                 res.render('application', {
                     layout: '/layouts/main',
                     title: 'Application | The Initiative PH',
@@ -374,18 +374,6 @@ const controller = {
         //             });
         //     });
     },
-	
-	get404: function (req, res) {
-		res.render('404', {
-			layout: '/layouts/main',
-			title: '404 Not Found | The Initiative PH',
-			links: [
-				{path: '/home', name: 'Home'},
-				{path: '/projects', name: 'Projects'},
-				{path: '/blog', name: 'Blog'},
-			]
-		})
-	},
 
     getCMSLogin: function (req, res) {
         res.render('cms-login', {
@@ -522,7 +510,7 @@ const controller = {
     getCMSApplication: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
             database.findOne(PreAppForm, {}, {}, function (preappsform) {
-                database.findOne(AppForm, {}, {}, function (appsform){
+                database.findOne(AppForm, {}, {}, function (appsform) {
                     res.render('cms-application', {
                         layout: '/layouts/cms-layout',
                         title: 'Volunteer Forms | The Initiative PH',
@@ -534,7 +522,7 @@ const controller = {
                         appsform_id: appsform._id,
                     })
                 })
-                
+
             });
         }
         else {
@@ -560,7 +548,7 @@ const controller = {
         var query = req.query.id;
         if (req.session.user && req.cookies.user_sid) {
             database.findOne(AppForm, { _id: query }, {}, function (app) {
-                database.findMany(Department, {}, {}, function(departments) {
+                database.findMany(Department, {}, {}, function (departments) {
                     res.render('cms-edit-application', {
                         layout: '/layouts/cms-layout',
                         title: 'CMS Application Form Edit | The Initiative PH',
@@ -1039,7 +1027,7 @@ const controller = {
                     department_info: departmentArray,
                 })
             });
-            
+
         }
         else if (!req.session.type) {
             res.redirect('cms-home')

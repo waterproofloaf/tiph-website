@@ -1,8 +1,6 @@
 // import module `express`
 const express = require('express');
-
 const multer = require('multer');
-
 const database = require('../models/db.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -23,6 +21,7 @@ const homeController = require('../controller/homeController.js');
 const aboutController = require('../controller/aboutController.js');
 const departmentController = require('../controller/departmentController.js');
 const appformController = require('../controller/appformController.js');
+const uploadController = require("../controller/uploadImgController.js");
 
 // import module 'Validators' from '../validators/...'
 const formsValidator = require("../validators/formsValidator.js");
@@ -105,7 +104,7 @@ app.get('/contact-us', controller.getContactUs);
 app.post('/contact-us', upload.single('contact_upload'), formsValidator.contactValidation(), formsController.postContactUs);
 app.get('/donate', controller.getDonate);
 
-app.get('/404', controller.get404);
+// app.get('/404', controller.get404);
 
 // CMS Login
 app.get('/cms-login', controller.getCMSLogin);
@@ -115,6 +114,7 @@ app.get('/cms-logout', controller.getCMSLogout);
 // CMS Home and Application
 app.get('/cms-home', controller.getCMSHome);
 app.post('/cms-home', homeController.editHome);
+app.post('/cms-home/upload', uploadController.uploadFile);
 app.get('/cms-about', controller.getCMSAbout);
 app.post('/cms-about', cmsValidator.AboutValidation(), aboutController.editAbout);
 app.get('/cms-department', controller.getCMSDepartment);
