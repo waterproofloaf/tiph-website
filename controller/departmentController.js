@@ -32,6 +32,7 @@ const departmentController = {
             department_description: department_description,
             department_category: department_category,
             department_contact: department_contact,
+            department_available: true,
         }
 
         database.insertOne(Department, newDept, function (f) {
@@ -93,6 +94,22 @@ const departmentController = {
 
         database.updateOne(Department, filter, department_details);
         res.redirect('/cms-department');
+    },
+
+    departmentToggle: function (req, res) {
+        var department_id = req.query.id;
+        var department_available = req.query.available;
+
+        var filter = {
+            _id: ObjectID(department_id)
+        }
+
+        var department_details = {
+            department_available: department_available
+        }
+
+        database.updateOne(Department, filter, department_details);
+        res.redirect('/cms-donate');
     },
 }
 

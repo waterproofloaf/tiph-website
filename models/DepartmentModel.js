@@ -17,6 +17,9 @@ var DepartmentModel = new mongoose.Schema({
         type: String,
         required: true
     },
+    department_available: {
+        type: Boolean,
+    },
 });
 
 module.exports = mongoose.model('Department', DepartmentModel);

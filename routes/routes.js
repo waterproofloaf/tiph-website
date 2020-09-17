@@ -22,6 +22,7 @@ const preappformController = require('../controller/preappformController.js');
 const homeController = require('../controller/homeController.js');
 const aboutController = require('../controller/aboutController.js');
 const departmentController = require('../controller/departmentController.js');
+const appformController = require('../controller/appformController.js');
 
 // import module 'Validators' from '../validators/...'
 const formsValidator = require("../validators/formsValidator.js");
@@ -122,6 +123,8 @@ app.post('/cms-department-edit', cmsValidator.DepartmentValidation(), department
 app.get('/cms-department/delete/', departmentController.deleteDepartment);
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
+app.post('/cms-edit-application', appformController.editAppForm);
+app.get('/cms-edit-application/toggle/', departmentController.departmentToggle);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
 app.post('/cms-edit-pre-application', preappformController.editPreAppForm);
 
