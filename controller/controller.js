@@ -375,6 +375,18 @@ const controller = {
         //     });
     },
 
+    get404: function (req, res) {
+        res.render('404', {
+            layout: '/layouts/main',
+            title: '404 Not Found | The Initiative PH',
+            links: [
+                { path: '/home', name: 'Home' },
+                { path: '/projects', name: 'Projects' },
+                { path: '/blog', name: 'Blog' },
+            ]
+        })
+    },
+
     getCMSLogin: function (req, res) {
         res.render('cms-login', {
             layout: '/layouts/main',

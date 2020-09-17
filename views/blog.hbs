@@ -65,57 +65,25 @@
   </div>
 </div>
 
-{{!-- <div class="container-fluid">
-  {{current}} {{pages}}
-</div> --}}
-
 <!-- PAGINATION -->
 
-
-<nav aria-label="...">
-  <ul class="pagination justify-content-center">
-    <li class="page-item {{#equals current 1}}disabled{{/equals}}">
-      <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}} href="/blog/{{minus current 1}}"
-        {{/equals}}>Previous</a>
-    </li>
-    {{#repeat count=pages start=1}}
-    <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
-        href="/blog/{{@index}}">{{@index}}{{#equals current @index}}<span
-          class="sr-only">(current)</span>{{/equals}}</a></li>
-    {{else}}
-    Nothing :(
-    {{/repeat}}
-    <li class="page-item {{#equals current pages}}disabled{{/equals}}">
-      <a class="page-link" href="/blog/{{add current 1}}">Next</a>
-    </li>
-  </ul>
-</nav>
-</div>
-{{!-- <div class="container-fluid d-flex flex-lg-row flex-column justify-content-lg-between align-items-center px-5 mb-3">
-  <div class="card bg-light" style="width: 100vp;">
-    <img class="card-img-top" src="assets/img/test.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Blog Entry 1</h5>
-      <h6 class="card-subtitle mb-2 text-muted">By Author</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="a-blog" class="card-link">Read more</a>
-    </div>
-  </div>
-</div> --}}
-
-{{!-- <div class="container-fluid pb-4">
-  <nav aria-label="news-pagination">
+<div class="pb-5">
+  <nav aria-label="...">
     <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      <li class="page-item {{#equals current 1}}disabled{{/equals}}">
+        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}} href="/blog/{{minus current 1}}"
+          {{/equals}}>Previous</a>
       </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
+      {{#repeat count=pages start=1}}
+      <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
+          href="/blog/{{@index}}">{{@index}}{{#equals current @index}}<span
+            class="sr-only">(current)</span>{{/equals}}</a></li>
+      {{else}}
+      Nothing :(
+      {{/repeat}}
+      <li class="page-item {{#equals current pages}}disabled{{/equals}}">
+        <a class="page-link" href="/blog/{{add current 1}}">Next</a>
       </li>
     </ul>
   </nav>
-</div> --}}
+</div>

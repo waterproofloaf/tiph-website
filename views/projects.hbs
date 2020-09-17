@@ -96,24 +96,26 @@
   </div> --}}
 
   <!-- PAGINATION -->
-  <nav aria-label="...">
-    <ul class="pagination justify-content-center">
-      <li class="page-item {{#equals current 1}}disabled{{/equals}}">
-        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}} href="/projects/{{minus current 1}}"
-          {{/equals}}>Previous</a>
-      </li>
-      {{#repeat count=pages start=1}}
-      <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
-          href="/projects/{{@index}}">{{@index}}{{#equals current @index}}<span
-            class="sr-only">(current)</span>{{/equals}}</a></li>
-      {{else}}
-      Nothing :(
-      {{/repeat}}
-      <li class="page-item {{#equals current pages}}disabled{{/equals}}">
-        <a class="page-link" href="/projects/{{add current 1}}">Next</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="pt-5">
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        <li class="page-item {{#equals current 1}}disabled{{/equals}}">
+          <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
+            href="/projects/{{minus current 1}}" {{/equals}}>Previous</a>
+        </li>
+        {{#repeat count=pages start=1}}
+        <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
+            href="/projects/{{@index}}">{{@index}}{{#equals current @index}}<span
+              class="sr-only">(current)</span>{{/equals}}</a></li>
+        {{else}}
+        Nothing :(
+        {{/repeat}}
+        <li class="page-item {{#equals current pages}}disabled{{/equals}}">
+          <a class="page-link" href="/projects/{{add current 1}}">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
 
 {{!-- <div class="row m-auto py-3 px-5">
