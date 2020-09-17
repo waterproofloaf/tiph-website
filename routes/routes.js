@@ -88,6 +88,7 @@ app.get('/application', controller.getApplication);
 app.post('/application', upload.array('app_portfolio', 5), formsValidator.appValidation(), formsController.postAppForm);
 
 app.get('/projects', controller.getProjects);
+app.get('/projects/:page', controller.getProjects);
 app.get('/a-project/', projectController.findProject);
 app.get('/projects-approved', controller.getProjectsApproved);
 app.get('/projects-ongoing', controller.getProjectsOngoing);
@@ -95,6 +96,7 @@ app.get('/projects-proposed', controller.getProjectsProposed);
 
 
 app.get('/blog', controller.getBlogs);
+app.get('/blog/:page', controller.getBlogs);
 app.post('/blog', blogController.postBlog);
 app.get('/a-blog', blogController.findBlog);
 
