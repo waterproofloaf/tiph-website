@@ -110,7 +110,7 @@ const departmentController = {
         }
 
         database.updateOne(Department, filter, department_details);
-        res.redirect('/cms-edit-application');
+        // res.redirect('/cms-donate');
     },
 
     positionToggle: function (req, res) {
@@ -126,7 +126,7 @@ const departmentController = {
         }
 
         database.updateOne(Position, filter, position_details);
-        res.redirect('/cms-edit-application');
+        // res.redirect('/cms-donate');
     },
 }
 

@@ -562,7 +562,7 @@ const controller = {
         if (req.session.user && req.cookies.user_sid) {
             database.findOne(AppForm, { _id: query }, {}, function (app) {
                 database.findMany(Department, {}, {}, function (departments) {
-                    database.findMany(Position, {}, {}, function (positions){
+                    database.findMany(Position, {}, {}, function (positions) {
                         res.render('cms-edit-application', {
                             layout: '/layouts/cms-layout',
                             title: 'CMS Application Form Edit | The Initiative PH',
