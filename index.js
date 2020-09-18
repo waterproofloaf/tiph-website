@@ -22,6 +22,7 @@ app.set('view engine', 'hbs');
 // define css, img, js, and views as static 
 app.use(express.static('public'));
 app.use(express.static('views'));
+app.use(express.static('uploads'));
 
 // partials
 hbs.registerPartials(__dirname + '/views/partials');
