@@ -27,7 +27,7 @@
                                 </div>
                                 <label for="home_cover_pic">Cover Photo</label>
                                 <input type="file" name="home_cover_upload" id="home_cover_upload"
-                                    class="home-cover-upload" />
+                                    class="home-cover-upload" name="home_cover" />
                                 {{!-- <input type="file" class="form-control-file" id="home_cover_pic"> --}}
                             </div>
                             <hr>
@@ -155,6 +155,10 @@
             imagesPreview(this, "div.preview-images");
         });
     });
+
+    function change() {
+        var x = document.getElementById("home_cover_upload").name = "home_cover";
+    }
 
     // CMS Home App Button Switch Toggle
     function home_app(checkbox) {
