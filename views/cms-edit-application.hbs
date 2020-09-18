@@ -27,23 +27,25 @@
                             <div class="form-group">
                                 <label for="cms-apps-position">Departments Open for Application and Positions</label>
                                 <div class="div-choices sub-caption">
-                                    {{#each department_info}}
-                                    {{!-- <input type="checkbox" name="department" id="{{this.department_title}}" value="{{this.department_title}}"
-                                            data-toggle="collapse" data-target="#pos_{{this.department_title}}">{{this.department_title}} <br>
-                                            <div class="dept-positions" id="pos_{{this.department_title}}">
-                                                <input type="checkbox" name="dept_pos" id=""> SOME POSITON <br>
-                                            </div> --}}
-                                    <input type="checkbox" name="department" id="{{this._id}}"
+                                    {{#each department_info as |department_info|}}
+                                    <input type="checkbox" name="department" id="{{department_info._id}}"
                                         value="{{this.department_title}}" data-toggle="collapse"
                                         data-target="#pos-{{this._id}}" onclick="department_change(this)"
                                         {{#if this.department_available}}checked{{/if}}> {{this.department_title}} <br>
+
                                     <div class="dept-positions {{#if this.department_available}}collapse show{{/if}}"
-                                        id="pos-{{this._id}}" {{#if this.department_available}}aria-expended="true"
-                                        {{/if}}>
+                                        id="pos-{{this._id}}" {{#if this.department_available}}aria-expended="true"{{/if}}>
                                         <form method="get">
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <input type="checkbox" name="dept_pos" id="pos_secretary"
+                                                    {{#each ../position_info as |position_info|}}
+                                                        {{#equals this.dept_name department_info.department_title}}
+                                                            <input type="checkbox" name="dept_pos" id="{{position_info._id}}" 
+                                                            value="{{this.position_name}}" onclick="position_change(this)"
+                                                            {{#if this.position_available}}checked{{/if}}> {{this.position_name}} <br>
+                                                        {{/equals}}
+                                                    {{/each}}
+                                                    {{!-- <input type="checkbox" name="dept_pos" id="pos_secretary"
                                                         value="pos_secretary"> Secretary <br>
 
                                                     <input type="checkbox" name="dept_pos" id="pos_hr_officer"
@@ -56,7 +58,7 @@
 
                                                     <input type="checkbox" name="dept_pos"
                                                         id="pos_external_policy_director"
-                                                        value="pos_external_policy_director"> Extrnal Policy Director
+                                                        value="pos_external_policy_director"> External Policy Director
                                                     <br>
 
                                                     <input type="checkbox" name="dept_pos"
@@ -70,10 +72,10 @@
                                                     Officer <br>
 
                                                     <input type="checkbox" name="dept_pos" id="pos_finance_officer"
-                                                        value="pos_finance_officer"> Finance Officer <br>
+                                                        value="pos_finance_officer"> Finance Officer <br> --}}
                                                 </div>
 
-                                                <div class="form-group col-md-6">
+                                                {{!-- <div class="form-group col-md-6">
                                                     <input type="checkbox" name="dept_pos" id="pos_logistics_officer"
                                                         value="pos_logistics_officer"> Logistics Officer <br>
 
@@ -98,7 +100,7 @@
                                                         id="pos_social_media_engagement_officer"
                                                         value="pos_social_engagement_officer"> Social Media Engagement
                                                     Officer <br>
-                                                </div>
+                                                </div> --}}
 
                                             </div>
                                         </form>
