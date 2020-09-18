@@ -3,7 +3,7 @@
     <div class="content">
         <div id="form-container" class="row">
             <div class="col-md-12">
-                <form method="post" id="home_form">
+                <form method="post" id="home_form" enctype="multipart/form-data">
                     <div class="card cms-blog">
                         <div class="card-header">
                             <h4 class="card-title">Edit Home Page:</h4>
@@ -20,8 +20,15 @@
                                     name="home_subtitle" value="{{home_content.home_subtitle}}">
                             </div>
                             <div class="pb-2">
-                                <label for="home_cover_pic">Cover Photo</label>
-                                <input type="file" class="form-control-file" id="home_cover_pic">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="preview-images"></div>
+                                    </div>
+                                </div>
+                                <label for="home_cover_pic">Cover Photo (accepts .jpg only!)</label>
+                                <input type="file" name="home_cover_upload" id="home_cover_upload"
+                                    class="home-cover-upload" name="home_cover" accept="image/jpg, image/jpeg" />
+                                {{!-- <input type="file" class="form-control-file" id="home_cover_pic"> --}}
                             </div>
                             <hr>
                             <h6 class="card-title">Background Row:</h6>
@@ -37,10 +44,10 @@
                                     {{{home_content.home_one_content}}}
                                 </div>
                             </div>
-                            <div class="pb-2">
+                            {{!-- <div class="pb-2">
                                 <label for="home_first_pic">Side Photo</label>
                                 <input type="file" class="form-control-file" id="home_first_pic">
-                            </div>
+                            </div> --}}
                             <hr>
                             <h6 class="card-title">Objectives Row:</h6>
                             <div class="form-group">
@@ -55,10 +62,10 @@
                                     {{{home_content.home_two_content}}}
                                 </div>
                             </div>
-                            <div class="pb-2">
+                            {{!-- <div class="pb-2">
                                 <label for="home_second_pic">Side Photo</label>
                                 <input type="file" class="form-control-file" id="home_second_pic">
-                            </div>
+                            </div> --}}
                             <hr>
                             <h6 class="card-title">Goals Row:</h6>
                             <div class="form-group">
@@ -73,10 +80,10 @@
                                     {{{home_content.home_three_content}}}
                                 </div>
                             </div>
-                            <div class="pb-2">
+                            {{!-- <div class="pb-2">
                                 <label for="home_third_pic">Side Photo</label>
                                 <input type="file" class="form-control-file" id="home_third_pic">
-                            </div>
+                            </div> --}}
                             <hr>
                             <h6 class="card-title">Volunteer Row:</h6>
                             <div class="form-group">
@@ -91,29 +98,10 @@
                                     {{{home_content.home_four_content}}}
                                 </div>
                             </div>
-                            <div class="pb-2">
+                            {{!-- <div class="pb-2">
                                 <label for="home_third_pic">Side Photo</label>
                                 <input type="file" class="form-control-file" id="home_third_pic">
-                            </div>
-
-                            {{!-- <div class="form-group">
-                                <div class="form-row d-flex align-items-center">
-                                    <div class="col text-left">
-                                        Enable Pre-Application Button?
-                                    </div>
-                                    <div class="col text-right">
-                                        <label class="switch">
-                                            <input name="home_preapp_button_val" type="hidden"
-                                                id="home_preapp_button_val"
-                                                value={{#if home_content.home_preapp_button}}"true"{{else}}"false"{{/if}}>
-                                            <input type="checkbox" id="home_preapp_button" onclick="home_preapp(this)"
-                                                {{#if home_content.home_preapp_button}}checked{{/if}}>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </div>
-                                </div>
                             </div> --}}
-
                             <div class="form-row d-flex align-items-center">
                                 <div class="col text-left">
                                     Enable Application Button?
@@ -141,24 +129,36 @@
     </div>
 </div>
 
+<style>
+    div.preview-images>img {
+        width: 30%;
+    }
+</style>
+
 <script>
+    $(document).ready(function () {
+        let imagesPreview = function (input, placeToInsertImagePreview) {
+            if (input.files) {
+                let filesAmount = input.files.length;
+                for (i = 0; i < 1; i++) {
+                    let reader = new FileReader();
+                    reader.onload = function (event) {
+                        $($.parseHTML("<img>"))
+                            .attr("src", event.target.result)
+                            .appendTo(placeToInsertImagePreview);
+                    };
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+        $("#home_cover_upload").on("change", function () {
+            imagesPreview(this, "div.preview-images");
+        });
+    });
 
-    // CMS Home Pre-App Button Switch Toggle
-    //function home_preapp(checkbox) {
-    //var home_preapp_button = document.querySelector('input[id=home_preapp_button_val]');
-
-    //If it is checked.
-    //if (checkbox.checked) {
-    //  home_preapp_button.value = "true";
-    //console.log(home_preapp_button);
-    //    }
-
-    //If it has been unchecked.
-    // else {
-    //home_preapp_button.value = "false";
-    //console.log(home_preapp_button);
-    //}
-    //}
+    function change() {
+        var x = document.getElementById("home_cover_upload").name = "home_cover";
+    }
 
     // CMS Home App Button Switch Toggle
     function home_app(checkbox) {
@@ -184,9 +184,8 @@
     var homeQuillOne = new Quill('#home-quill-one', {
         modules: {
             toolbar: [
-                ['bold', 'italic'],
-                ['link', 'blockquote', 'code-block', 'image'],
-                [{ list: 'ordered' }, { list: 'bullet' }]
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
             ]
         },
         placeholder: 'Insert body here.',
@@ -196,9 +195,8 @@
     var homeQuillTwo = new Quill('#home-quill-two', {
         modules: {
             toolbar: [
-                ['bold', 'italic'],
-                ['link', 'blockquote', 'code-block', 'image'],
-                [{ list: 'ordered' }, { list: 'bullet' }]
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
             ]
         },
         placeholder: 'Insert body here.',
@@ -208,9 +206,8 @@
     var homeQuillThree = new Quill('#home-quill-three', {
         modules: {
             toolbar: [
-                ['bold', 'italic'],
-                ['link', 'blockquote', 'code-block', 'image'],
-                [{ list: 'ordered' }, { list: 'bullet' }]
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
             ]
         },
         placeholder: 'Insert body here.',
@@ -220,9 +217,8 @@
     var homeQuillFour = new Quill('#home-quill-four', {
         modules: {
             toolbar: [
-                ['bold', 'italic'],
-                ['link', 'blockquote', 'code-block', 'image'],
-                [{ list: 'ordered' }, { list: 'bullet' }]
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
             ]
         },
         placeholder: 'Insert body here.',

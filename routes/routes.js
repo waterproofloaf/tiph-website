@@ -1,8 +1,7 @@
 // import module `express`
 const express = require('express');
-
 const multer = require('multer');
-
+const path = require('path');
 const database = require('../models/db.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -23,6 +22,7 @@ const homeController = require('../controller/homeController.js');
 const aboutController = require('../controller/aboutController.js');
 const departmentController = require('../controller/departmentController.js');
 const appformController = require('../controller/appformController.js');
+// const uploadController = require("../controller/uploadImgController.js");
 
 // import module 'Validators' from '../validators/...'
 const formsValidator = require("../validators/formsValidator.js");
@@ -36,11 +36,36 @@ var storage = multer.diskStorage({
     cb(null, 'uploads')
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)
+    // cb(null, file.originalname)
+    cb(null, file.fieldname + path.extname(file.originalname))
   }
 })
 
+// var home_storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'public/assets/img/')
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname)
+//   }
+// })
+
+// var home_upload = multer({
+//   dest: 'public/assets/img/',
+//   rename: function (fieldname, filename) {
+//     console.log("Rename...");
+//     return 'homecover_' + fieldname;
+//   },
+//   onFileUploadStart: function () {
+//     console.log("Upload is starting...");
+//   },
+//   onFileUploadComplete: function () {
+//     console.log("File uploaded");
+//   }
+// });
+
 var upload = multer({ storage: storage })
+// var home_upload = multer({ home_storage: home_storage })
 
 //Init Cookie and Body Parser
 
@@ -114,7 +139,9 @@ app.get('/cms-logout', controller.getCMSLogout);
 
 // CMS Home and Application
 app.get('/cms-home', controller.getCMSHome);
-app.post('/cms-home', homeController.editHome);
+// app.post('/cms-home', homeController.editHome);
+app.post('/cms-home', upload.single('home_cover_upload'), homeController.editHome);
+// app.post('/cms-home/upload', uploadController.uploadFile);
 app.get('/cms-about', controller.getCMSAbout);
 app.post('/cms-about', cmsValidator.AboutValidation(), aboutController.editAbout);
 app.get('/cms-department', controller.getCMSDepartment);
