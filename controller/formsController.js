@@ -229,7 +229,7 @@ const formsController = {
                 layout: '/layouts/main',
                 title: 'Application | The Initiative PH',
                 volunteer_active: true,
-                msg: '<mark>Your Application form has been submitted!<br><a href="tinyurl.com/tiphinterviews2020">Interview Schedule Link</a></mark>',
+                msg: '<mark>Your Application form has been submitted!<br><a href="https://tinyurl.com/tiphinterviews2020">Interview Schedule Link</a></mark>',
                 confirmed: true,
               })
             }
@@ -268,7 +268,7 @@ const formsController = {
               layout: '/layouts/main',
               title: 'Application | The Initiative PH',
               volunteer_active: true,
-              msg: '<mark>Your Application form has been submitted!<br><a href="tinyurl.com/tiphinterviews2020">Interview Schedule Link</a></mark>',
+              msg: '<mark>Your Application form has been submitted!<br><a href="https://tinyurl.com/tiphinterviews2020">Interview Schedule Link</a></mark>',
               confirmed: true,
             })
           }
