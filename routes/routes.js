@@ -41,6 +41,15 @@ var storage = multer.diskStorage({
   }
 })
 
+var email_storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+
 // var home_storage = multer.diskStorage({
 //   destination: function (req, file, cb) {
 //     cb(null, 'public/assets/img/')
@@ -65,6 +74,7 @@ var storage = multer.diskStorage({
 // });
 
 var upload = multer({ storage: storage })
+var email_upload = multer({ storage: email_storage })
 // var home_upload = multer({ home_storage: home_storage })
 
 //Init Cookie and Body Parser
@@ -127,7 +137,7 @@ app.post('/blog', blogController.postBlog);
 app.get('/a-blog', blogController.findBlog);
 
 app.get('/contact-us', controller.getContactUs);
-app.post('/contact-us', upload.single('contact_upload'), formsValidator.contactValidation(), formsController.postContactUs);
+app.post('/contact-us', email_upload.single('contact_upload'), formsValidator.contactValidation(), formsController.postContactUs);
 app.get('/donate', controller.getDonate);
 
 app.get('/404', controller.get404);
