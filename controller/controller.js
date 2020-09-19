@@ -427,6 +427,7 @@ const controller = {
                         layout: '/layouts/cms-layout',
                         title: 'CMS About Page | The Initiative PH',
                         about_active: true,
+                        about_page_active: true,
                         name: req.session.name,
                         type: req.session.type,
                         userid: req.session.userid,
@@ -437,6 +438,7 @@ const controller = {
                             layout: '/layouts/cms-layout',
                             title: 'CMS About Page | The Initiative PH',
                             about_active: true,
+                            about_page_active: true,
                             name: req.session.name,
                             type: req.session.type,
                             userid: req.session.userid,
@@ -458,6 +460,7 @@ const controller = {
                     res.render('cms-department', {
                         layout: '/layouts/cms-layout',
                         title: 'CMS Departments | The Initiative PH',
+                        about_active: true,
                         department_active: true,
                         name: req.session.name,
                         type: req.session.type,
@@ -468,6 +471,7 @@ const controller = {
                         res.render('cms-department', {
                             layout: '/layouts/cms-layout',
                             title: 'CMS Departments | The Initiative PH',
+                            about_active: true,
                             department_active: true,
                             name: req.session.name,
                             type: req.session.type,
@@ -488,6 +492,7 @@ const controller = {
             res.render('cms-department-new', {
                 layout: '/layouts/cms-layout',
                 title: 'CMS New Department | The Initiative PH',
+                about_active: true,
                 department_active: true,
                 name: req.session.name,
                 type: req.session.type,
@@ -506,6 +511,7 @@ const controller = {
                 res.render('cms-department-edit', {
                     layout: '/layouts/cms-layout',
                     title: 'CMS Edit Department | The Initiative PH',
+                    about_active: true,
                     department_active: true,
                     name: req.session.name,
                     type: req.session.type,

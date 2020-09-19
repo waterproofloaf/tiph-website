@@ -21,7 +21,8 @@
           <p>Home Page</p>
         </a>
       </li>
-      <li class="{{#if about_active}} active {{/if}}">
+
+      {{!-- <li class="{{#if about_active}} active {{/if}}">
         <a href="cms-about">
           <i class="nc-icon nc-satisfied"></i>
           <p>About</p>
@@ -32,7 +33,34 @@
           <i class="nc-icon nc-paper"></i>
           <p>Departments</p>
         </a>
+      </li> --}}
+
+
+      <li {{#if about_active}}class="active" {{/if}}>
+        <a data-toggle="collapse" href="#dashboardOverviewTwo" {{#if about_active}}aria-expanded="true" {{/if}}>
+          <i class="ti-panel nc-icon nc-favourite-28"></i>
+          <p>
+            About
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse {{#if about_active}}show{{else}}in{{/if}}" id="dashboardOverviewTwo">
+          <ul>
+            <li {{#if about_page_active}} class="active" {{/if}}>
+              <a href="cms-about">
+                <span class="sidebar-normal">About Page</span>
+              </a>
+            </li>
+            <li {{#if department_active}} class="active" {{/if}}>
+              <a href="cms-department">
+                <span class="sidebar-normal">Departments</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
+
+
       <li {{#if application_active}}class="active " {{/if}}>
         <a href="cms-application">
           <i class="nc-icon nc-badge"></i>
