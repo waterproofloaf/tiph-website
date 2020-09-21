@@ -115,11 +115,31 @@ const controller = {
                     no_proj: true,
                 })
             } else {
-                var perPage = 5
-                var page = req.params.page || 1
+                var perPage = 5;
+                var page = req.params.page || 1;
+                
+                var sort_by = {proj_date: 1};
+                
+                proj_sort = req.body.proj_sort_by;
+                
+                switch(proj_sort){
+                    case 'adate':
+                        sort_by = {proj_date: 1};
+                        break;
+                    case 'ddate':
+                        sort_by = {proj_date: -1};
+                        break;
+                    case 'atitle':
+                        sort_by = {proj_title: 1};
+                        break;
+                    case 'dtitle':
+                        sort_by = {proj_title: -1};
+                        break;
+                }
 
                 Project
                     .find({})
+                    .sort(sort_by)
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
@@ -165,7 +185,7 @@ const controller = {
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.count().exec(function (err, count) {
+                        Project.find({proj_status: 'Approved'}).count().exec(function (err, count) {
                             if (err) return next(err)
                             res.render('projects', {
                                 layout: '/layouts/main',
@@ -182,7 +202,7 @@ const controller = {
     },
 
     getProjectsOngoing: function (req, res) {
-        Project.countDocuments({}, function (err, count) {
+        Project.find({proj_status: 'Ongoing'}).countDocuments({}, function (err, count) {
             if (count == 0) {
                 res.render('projects', {
                     layout: '/layouts/main',
@@ -198,7 +218,7 @@ const controller = {
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.count().exec(function (err, count) {
+                        Project.find({proj_status: 'Ongoing'}).count().exec(function (err, count) {
                             if (err) return next(err)
                             res.render('projects', {
                                 layout: '/layouts/main',
@@ -215,7 +235,7 @@ const controller = {
     },
 
     getProjectsProposed: function (req, res) {
-        Project.countDocuments({}, function (err, count) {
+        Project.find({proj_status: 'Proposed'}).countDocuments({}, function (err, count) {
             if (count == 0) {
                 res.render('projects', {
                     layout: '/layouts/main',
@@ -231,7 +251,7 @@ const controller = {
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.count().exec(function (err, count) {
+                        Project.find({proj_status: 'Proposed'}).count().exec(function (err, count) {
                             if (err) return next(err)
                             res.render('projects', {
                                 layout: '/layouts/main',
@@ -256,16 +276,35 @@ const controller = {
                     blog_active: true,
                 })
             } else {
-                var perPage = 5
-                var page = req.params.page || 1
-
+                var perPage = 5;
+                var page = req.params.page || 1;
+                var sort_by = {blog_date: 1};
+                
+                blog_sort = req.body.blog_sort_by;
+                
+                switch(blog_sort){
+                    case 'adate':
+                        sort_by = {blog_date: 1};
+                        break;
+                    case 'ddate':
+                        sort_by = {blog_date: -1};
+                        break;
+                    case 'atitle':
+                        sort_by = {blog_title: 1};
+                        break;
+                    case 'dtitle':
+                        sort_by = {blog_title: -1};
+                        break;
+                }
+                
                 Blog
                     .find({})
+                    .sort(sort_by)
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, blogArray) {
-                        Blog.countDocuments().exec(function (err, count) {
-                            if (err) return next(err)
+                        Blog.countDocuments().exec(function (err,count) {
+                               if (err) return next(err)
                             res.render('blog', {
                                 layout: '/layouts/main',
                                 title: 'Blogs | The Initiative PH',
@@ -273,10 +312,11 @@ const controller = {
                                 blog_info: blogArray,
                                 current: page,
                                 pages: Math.ceil(count / perPage)
-
                             });
                         });
                     });
+                }
+                
                 //                else {
                 //                database.findMany(Blog, {}, {}, function (blogArray) 
                 //                    res.render('blog', {
@@ -287,7 +327,6 @@ const controller = {
                 //                    });
                 //                });
                 //            }
-            };
         });
     },
 
