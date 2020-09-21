@@ -156,7 +156,7 @@ app.get('/cms-logout', controller.getCMSLogout);
 app.get('/cms-home', controller.getCMSHome);
 app.post('/cms-home', upload.any('home_cover_upload', 'home_one_pic', 'home_two_pic', 'home_three_pic', 'home_four_pic'), homeController.editHome);
 app.get('/cms-about', controller.getCMSAbout);
-app.post('/cms-about', upload.any('about_pic'), cmsValidator.AboutValidation(), aboutController.editAbout);
+app.post('/cms-about', upload.any(), cmsValidator.AboutValidation(), aboutController.editAbout);
 app.get('/cms-department', controller.getCMSDepartment);
 app.get('/cms-department-new', controller.getCMSDepartmentNew);
 app.post('/cms-department-new', cmsValidator.DepartmentValidation(), departmentController.newDepartment);
@@ -203,9 +203,9 @@ app.get('/cms-blog', controller.getCMSBlog);
 app.get('/cms-blog/delete/', blogController.deleteBlog);
 app.get('/cms-blog/toggle/', blogController.blogToggle);
 app.get('/cms-blog-page', controller.getCMSBlogPage);
-app.post('/cms-blog-page', upload.any('blog_cover'), cmsValidator.editBlogValidation(), blogController.editBlog);
+app.post('/cms-blog-page', upload.any(), cmsValidator.editBlogValidation(), blogController.editBlog);
 app.get('/cms-blog-new-page', controller.getCMSBlogNewPage);
-app.post('/cms-blog-new-page', cmsValidator.addBlogValidation(), blogController.postBlog);
+app.post('/cms-blog-new-page', upload.any(), cmsValidator.addBlogValidation(), blogController.postBlog);
 
 // CMS Project
 app.get('/cms-project', controller.getCMSProject);
