@@ -78,7 +78,7 @@ star{
 
 .header-home {
   /* background-image: url(../img/test.jpg); */
-  background-image: url(/home_cover_upload.jpeg); 
+  background-image: url(/home_cover_upload); 
   position: relative;
   min-height: 500px;
   background-size: cover;

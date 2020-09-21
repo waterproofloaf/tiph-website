@@ -22,12 +22,14 @@
                             <div class="pb-2">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="preview-images"></div>
+                                        <div class="preview-images home-cover-preview">
+                                            <img src="/home_cover_upload">
+                                        </div>
                                     </div>
                                 </div>
-                                <label for="home_cover_pic">Cover Photo (accepts .jpeg format only!)</label>
+                                <label for="home_cover_upload">Cover Photo</label>
                                 <input type="file" name="home_cover_upload" id="home_cover_upload"
-                                    class="home-cover-upload" accept="image/jpg" />
+                                    class="home-cover-upload" accept="image/*" />
                                 {{!-- <input type="file" class="form-control-file" id="home_cover_pic"> --}}
                             </div>
                             <hr>
@@ -44,10 +46,14 @@
                                     {{{home_content.home_one_content}}}
                                 </div>
                             </div>
-                            {{!-- <div class="pb-2">
-                                <label for="home_first_pic">Side Photo</label>
-                                <input type="file" class="form-control-file" id="home_first_pic">
-                            </div> --}}
+                            <div class="pb-2">
+                                <div class="preview-images home-one-preview">
+                                    <img src="/home_one_pic">
+                                </div>
+                                <label for="home_one_pic">Side Photo</label>
+                                <input type="file" name="home_one_pic" id="home_one_pic" class="home-one-pic"
+                                    accept="image/*" />
+                            </div>
                             <hr>
                             <h6 class="card-title">Objectives Row:</h6>
                             <div class="form-group">
@@ -62,10 +68,14 @@
                                     {{{home_content.home_two_content}}}
                                 </div>
                             </div>
-                            {{!-- <div class="pb-2">
-                                <label for="home_second_pic">Side Photo</label>
-                                <input type="file" class="form-control-file" id="home_second_pic">
-                            </div> --}}
+                            <div class="pb-2">
+                                <div class="preview-images home-two-preview">
+                                    <img src="/home_two_pic">
+                                </div>
+                                <label for="home_two_pic">Side Photo</label>
+                                <input type="file" name="home_two_pic" id="home_two_pic" class="home-two-pic"
+                                    accept="image/*" />
+                            </div>
                             <hr>
                             <h6 class="card-title">Goals Row:</h6>
                             <div class="form-group">
@@ -80,10 +90,14 @@
                                     {{{home_content.home_three_content}}}
                                 </div>
                             </div>
-                            {{!-- <div class="pb-2">
-                                <label for="home_third_pic">Side Photo</label>
-                                <input type="file" class="form-control-file" id="home_third_pic">
-                            </div> --}}
+                            <div class="pb-2">
+                                <div class="preview-images home-three-preview">
+                                    <img src="/home_three_pic">
+                                </div>
+                                <label for="home_three_pic">Side Photo</label>
+                                <input type="file" name="home_three_pic" id="home_three_pic" class="home-three-pic"
+                                    accept="image/*" />
+                            </div>
                             <hr>
                             <h6 class="card-title">Volunteer Row:</h6>
                             <div class="form-group">
@@ -98,10 +112,15 @@
                                     {{{home_content.home_four_content}}}
                                 </div>
                             </div>
-                            {{!-- <div class="pb-2">
-                                <label for="home_third_pic">Side Photo</label>
-                                <input type="file" class="form-control-file" id="home_third_pic">
-                            </div> --}}
+                            <div class="pb-2">
+                                <div class="preview-images home-four-preview">
+                                    <img src="/home_four_pic">
+                                </div>
+                                <label for="home_four_pic">Side Photo</label>
+                                <input type="file" name="home_four_pic" id="home_four_pic" class="home-four-pic"
+                                    accept="image/*" />
+                            </div>
+                            <hr>
                             <div class="form-row d-flex align-items-center">
                                 <div class="col text-left">
                                     Enable Application Button?
@@ -151,8 +170,30 @@
                 }
             }
         };
+
         $("#home_cover_upload").on("change", function () {
-            imagesPreview(this, "div.preview-images");
+            $(".home-cover-preview").empty();
+            imagesPreview(this, "div.home-cover-preview");
+        });
+
+        $("#home_one_pic").on("change", function () {
+            $(".home-one-preview").empty();
+            imagesPreview(this, "div.home-one-preview");
+        });
+
+        $("#home_two_pic").on("change", function () {
+            $(".home-two-preview").empty();
+            imagesPreview(this, "div.home-two-preview");
+        });
+
+        $("#home_three_pic").on("change", function () {
+            $(".home-three-preview").empty();
+            imagesPreview(this, "div.home-three-preview");
+        });
+
+        $("#home_four_pic").on("change", function () {
+            $(".home-four-preview").empty();
+            imagesPreview(this, "div.home-four-preview");
         });
     });
 

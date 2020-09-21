@@ -37,7 +37,8 @@ var storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     // cb(null, file.originalname)
-    cb(null, file.fieldname + path.extname(file.originalname))
+    // cb(null, file.fieldname + path.extname(file.originalname))
+    cb(null, file.fieldname)
   }
 })
 
@@ -150,10 +151,11 @@ app.get('/cms-logout', controller.getCMSLogout);
 // CMS Home and Application
 app.get('/cms-home', controller.getCMSHome);
 // app.post('/cms-home', homeController.editHome);
-app.post('/cms-home', upload.single('home_cover_upload'), homeController.editHome);
+// app.post('/cms-home', upload.any('home_cover_upload'), upload.any('home_one_pic'), upload.any('home_two_pic'), upload.any('home_three_pic'), upload.any('home_four_pic'), homeController.editHome);
+app.post('/cms-home', upload.any('home_cover_upload', 'home_one_pic', 'home_two_pic', 'home_three_pic', 'home_four_pic'), homeController.editHome);
 // app.post('/cms-home/upload', uploadController.uploadFile);
 app.get('/cms-about', controller.getCMSAbout);
-app.post('/cms-about', cmsValidator.AboutValidation(), aboutController.editAbout);
+app.post('/cms-about', upload.any('about_pic'), cmsValidator.AboutValidation(), aboutController.editAbout);
 app.get('/cms-department', controller.getCMSDepartment);
 app.get('/cms-department-new', controller.getCMSDepartmentNew);
 app.post('/cms-department-new', cmsValidator.DepartmentValidation(), departmentController.newDepartment);

@@ -23,8 +23,17 @@
                                 </div>
                             </div>
                             <div class="pb-2">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="preview-images about-pic-preview">
+                                            <img src="/about_pic">
+                                        </div>
+                                    </div>
+                                </div>
                                 <label for="about_pic">Side Photo</label>
-                                <input type="file" class="form-control-file" id="about_pic">
+                                <input type="file" name="about_pic" id="about_pic" class="home-cover-upload"
+                                    accept="image/*" />
+                                {{!-- <input type="file" class="form-control-file" id="home_cover_pic"> --}}
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-outline-success" id="updateAbout">SAVE</button>
@@ -37,7 +46,35 @@
     </div>
 </div>
 
+<style>
+    div.preview-images>img {
+        width: 30%;
+    }
+</style>
+
 <script>
+    $(document).ready(function () {
+        let imagesPreview = function (input, placeToInsertImagePreview) {
+            if (input.files) {
+                let filesAmount = input.files.length;
+                for (i = 0; i < 1; i++) {
+                    let reader = new FileReader();
+                    reader.onload = function (event) {
+                        $($.parseHTML("<img>"))
+                            .attr("src", event.target.result)
+                            .appendTo(placeToInsertImagePreview);
+                    };
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+
+        $("#about_pic").on("change", function () {
+            $(".about-pic-preview").empty();
+            imagesPreview(this, "div.about-pic-preview");
+        });
+    });
+
     // CMS About Quill Form
     var aboutQuill = new Quill('#about-quill', {
         modules: {
