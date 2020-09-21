@@ -24,6 +24,7 @@ const blogController = {
 
         var today = new Date();
 
+        var blog_id = req.body._id;
         var blog_title = req.body.blog_title;
         var blog_author = req.body.blog_author;
         var blog_content = req.body.blog_content;
@@ -33,6 +34,7 @@ const blogController = {
         var blog_published = true;
 
         var newBlog = {
+            _id: ObjectID(blog_id),
             blog_title: blog_title,
             blog_author: blog_author,
             blog_content: blog_content,
@@ -149,11 +151,11 @@ const blogController = {
         database.updateOne(Blog, filter, blog_details);
         res.redirect('/cms-blog');
     },
-    
-    blogSort: function(req, res){
+
+    blogSort: function (req, res) {
         var blog_sort_by = req.body.blog_sort_by;
-        if(blog_sort_by == 'adate'){ //value="adate" Date(Latest)
-            Blog.find({}).sort({date: 1}).toArray(function(err, result){
+        if (blog_sort_by == 'adate') { //value="adate" Date(Latest)
+            Blog.find({}).sort({ date: 1 }).toArray(function (err, result) {
                 if (err) throw err;
                 res.render('blog', {
                     layout: '/layouts/main',
@@ -162,8 +164,8 @@ const blogController = {
                     blog_info: result,
                 });
             });
-        } else if(blog_sort_by == 'ddate'){ //value="ddate" Date(Oldest)
-            Blog.find({}).sort({date: -1}).toArray(function(err, result){
+        } else if (blog_sort_by == 'ddate') { //value="ddate" Date(Oldest)
+            Blog.find({}).sort({ date: -1 }).toArray(function (err, result) {
                 if (err) throw err;
                 res.render('blog', {
                     layout: '/layouts/main',
@@ -172,7 +174,7 @@ const blogController = {
                     blog_info: result,
                 });
             });
-        } 
+        }
     }
 }
 

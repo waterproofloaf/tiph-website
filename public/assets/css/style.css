@@ -118,8 +118,6 @@ star{
   text-align: justify;
 }
 
-
-
 .sub-header {
   font-family: "Roboto";
   font-weight: bolder;
@@ -129,6 +127,18 @@ star{
 
 #carouselExampleIndicators {
   font-family: "Montserrat";
+}
+
+.carousel .carousel-item {
+  height: 400px;
+}
+
+.carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    min-height: 400px;
 }
 
 .carousel-inner img {

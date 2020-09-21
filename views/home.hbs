@@ -11,54 +11,50 @@
 </section>
 
 <!-- CAROUSEL -->
-<div class="container-fluid px-5 pt-5 center">
-  <div id="homeCarousel" class="carousel slide" data-ride="carousel">
-    {{!-- <ol class="carousel-indicators">
-      <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#homeCarousel" data-slide-to="1"></li>
-      <li data-target="#homeCarousel" data-slide-to="2"></li>
-    </ol> --}}
-    <div class="carousel-inner">
-      <div class="carousel-item {{#if homeactive.proj_showcase}}active{{/if}}">
-        <a href="/a-project?id={{homeactive._id}}">
-          <img class="d-block w-100" src="assets/img/test.jpg">
-        </a>
-        <div class="carousel-caption text-center">
-          <h5 style="font-size:2vw;">{{homeactive.proj_title}}</h5>
-          <p class="d-none d-md-block" style="font-size:1.3vw;">{{homeactive.proj_preview}}</p>
-          {{!-- <a href='/a-project?id={{this._id}}' class="d-none d-md-block">
+<section>
+  <div class="container-fluid px-5 pt-5 center ">
+    <div id="homeCarousel" class="carousel slide " data-ride="carousel">
+      <div class="carousel-inner ">
+        <div class="carousel-item {{#if homeactive.proj_showcase}}active{{/if}}">
+          <a href="/a-project?id={{homeactive._id}}">
+            {{!-- <img class="d-block w-100" src="assets/img/test.jpg"> --}}
+            <img width="100%" src="home_two_pic.png">
+          </a>
+          <div class="carousel-caption text-center">
+            <h5 style="font-size:2vw;">{{homeactive.proj_title}}</h5>
+            <p class="d-none d-md-block" style="font-size:1.3vw;">{{homeactive.proj_preview}}</p>
+            {{!-- <a href='/a-project?id={{this._id}}' class="d-none d-md-block">
             <button type="button" class="btn btn-secondary">Learn More</button>
           </a> --}}
+          </div>
         </div>
-      </div>
 
-      {{!-- {{/each}} --}}
-
-      {{#each home_carousel}}
-      <div class="carousel-item">
-        <a href="/a-project?id={{this._id}}">
-          <img class="d-block w-100" src="assets/img/test.jpg">
-        </a>
-        <div class="carousel-caption text-center">
-          <h5 style="font-size:2vw;">{{this.proj_title}}</h5>
-          <p class="d-none d-md-block" style="font-size:1.3vw;">{{this.proj_preview}}</p>
-          {{!-- <a href='/a-project?id={{this._id}}' class="d-none d-md-block">
+        {{#each home_carousel}}
+        <div class="carousel-item">
+          <a href="/a-project?id={{this._id}}">
+            <img width="100%" src="assets/img/test.jpg">
+          </a>
+          <div class="carousel-caption text-center">
+            <h5 style="font-size:2vw;">{{this.proj_title}}</h5>
+            <p class="d-none d-md-block" style="font-size:1.3vw;">{{this.proj_preview}}</p>
+            {{!-- <a href='/a-project?id={{this._id}}' class="d-none d-md-block">
             <button type="button" class="btn btn-secondary">Learn More</button>
           </a> --}}
+          </div>
         </div>
+        {{/each}}
       </div>
-      {{/each}}
+      <a class="carousel-control-prev" href="#homeCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#homeCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <a class="carousel-control-prev" href="#homeCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#homeCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
   </div>
-</div>
+</section>
 
 <!-- BODY -->
 <div class="container-fluid">
