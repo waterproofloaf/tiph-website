@@ -24,6 +24,7 @@ const projectController = {
 
         var today = new Date();
 
+        var proj_id = req.body._id;
         var proj_title = req.body.proj_title;
         var proj_content = req.body.proj_content;
         var proj_date = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
@@ -34,6 +35,7 @@ const projectController = {
         var proj_showcase = true;
 
         var newProject = {
+            _id: ObjectID(proj_id),
             proj_title: proj_title,
             proj_content: proj_content,
             proj_date: proj_date,

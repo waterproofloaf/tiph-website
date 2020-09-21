@@ -6,7 +6,7 @@
         </div>
         <div id="form-container" class="row">
             <div class="col-md-12">
-                <form method="post" id="proj_form">
+                <form method="post" id="proj_form" enctype="multipart/form-data">
                     <div class="card cms-blog">
                         <div class="card-header">
                             <h5>New Project Page:</h5>
@@ -43,9 +43,13 @@
                                     placeholder="Keywords">
                             </div>
                             <div class="pb-2">
-                                <label for="exampleFormControlFile1">Cover Photo</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                <div class="preview-images proj-cover-preview"></div>
+                                <label for="proj_cover">Cover Photo</label>
+                                <input type="file" id="proj_cover" class="proj-cover" accept="image/*" />
                             </div>
+
+                            <input name="_id" type="hidden" id="_id">
+
                             <div class="form-group text-center">
                                 <button type="submit" class="btn btn-outline-success">SUBMIT</button>
                             </div>
@@ -57,7 +61,42 @@
     </div>
 </div>
 
+<style>
+    div.preview-images>img {
+        width: 30%;
+    }
+</style>
+
 <script>
+    var timestamp = (new Date().getTime() / 1000 | 0).toString(16);
+    var id = timestamp + 'xxxxxxxxxxxxxxxx'.replace(/[x]/g, function () {
+        return (Math.random() * 16 | 0).toString(16);
+    }).toLowerCase();
+    document.getElementById("proj_cover").name = "proj_cover" + id;
+    document.getElementById("_id").value = id;
+
+    $(document).ready(function () {
+        let imagesPreview = function (input, placeToInsertImagePreview) {
+            if (input.files) {
+                let filesAmount = input.files.length;
+                for (i = 0; i < 1; i++) {
+                    let reader = new FileReader();
+                    reader.onload = function (event) {
+                        $($.parseHTML("<img>"))
+                            .attr("src", event.target.result)
+                            .appendTo(placeToInsertImagePreview);
+                    };
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+
+        $("#proj_cover").on("change", function () {
+            $(".proj-cover-preview").empty();
+            imagesPreview(this, "div.proj-cover-preview");
+        });
+    });
+
     //cms-proj-new-page quill
     var projQuill = new Quill('#proj-quill', {
         modules: {

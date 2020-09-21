@@ -213,9 +213,9 @@ app.get('/cms-project/delete/', projectController.deleteProject);
 app.get('/cms-project/toggle/', projectController.projToggle);
 app.get('/cms-project/showcase/', projectController.projShowcase);
 app.get('/cms-project-page', controller.getCMSProjectPage);
-app.post('/cms-project-page', cmsValidator.editProjectValidation(), projectController.editProject);
+app.post('/cms-project-page', upload.any(), cmsValidator.editProjectValidation(), projectController.editProject);
 app.get('/cms-project-new-page', controller.getCMSProjectNewPage);
-app.post('/cms-project-new-page', cmsValidator.addProjectValidation(), projectController.postProject);
+app.post('/cms-project-new-page', upload.any(), cmsValidator.addProjectValidation(), projectController.postProject);
 
 // CMS Donate
 app.get('/cms-donate', controller.getCMSDonate);

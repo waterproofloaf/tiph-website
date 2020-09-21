@@ -18,7 +18,7 @@
         <div class="carousel-item {{#if homeactive.proj_showcase}}active{{/if}}">
           <a href="/a-project?id={{homeactive._id}}">
             {{!-- <img class="d-block w-100" src="assets/img/test.jpg"> --}}
-            <img width="100%" src="home_two_pic.png">
+            <img width="100%" src="/proj_cover{{homeactive._id}}">
           </a>
           <div class="carousel-caption text-center">
             <h5 style="font-size:2vw;">{{homeactive.proj_title}}</h5>
@@ -32,7 +32,7 @@
         {{#each home_carousel}}
         <div class="carousel-item">
           <a href="/a-project?id={{this._id}}">
-            <img width="100%" src="assets/img/test.jpg">
+            <img width="100%" src="/proj_cover{{this._id}}">
           </a>
           <div class="carousel-caption text-center">
             <h5 style="font-size:2vw;">{{this.proj_title}}</h5>
