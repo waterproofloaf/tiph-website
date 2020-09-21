@@ -44,15 +44,18 @@
       </select>
     </div>
     <div class="view-by d-flex">
-      <form method="post">
-        <label for="proj-view-by" style="margin-top: 5px; margin-right: 5px;" class="sub-caption">View: </label>
-        <select class="form-control form-control-sm" id="proj_view_by" name="proj_view_by">
-          <option value="all">All</option>
-          <option value="approved">Approved</option>
-          <option value="ongoing">Ongoing</option>
-          <option value="proposed">Proposed</option>
-        </select>
-      </form>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle btn-sm view-b" type="button" id="blog-sort-by"
+          name="blog_sort_by" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          View (by status):
+        </button>
+        <div class="dropdown-menu view-b" aria-labelledby="dropdownMenuButton" id="proj-view">
+          <a class="dropdown-item proj-view-by" href="/projects">All</a>
+          <a class="dropdown-item proj-view-by" href="/projects-approved">Approved</a>
+          <a class="dropdown-item proj-view-by" href="/projects-ongoing">Ongoing</a>
+          <a class="dropdown-item proj-view-by" href="/projects-proposed">Proposed</a>
+        </div>
+      </div>
     </div>
   </div>
   <hr>
@@ -63,7 +66,6 @@
   <!-- APPROVED -->
   {{#each proj_info}}
   {{#if this.proj_published}}
-  {{#equals this.proj_status "Approved"}}
   <div class="project-item d-none" id='proj-approved'>
     <div class="row py-2 align-items-center project-row" style="display:flex;">
       <div class="col-lg-4 p-3">
@@ -87,27 +89,31 @@
     </div>
     <hr>
   </div>
-  {{/equals}}
   {{/if}}
   {{/each}}
 
 
-  <!-- PAGINATION -->
-  <nav aria-label="...">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
-      </li>
-      <li class="page-item active"><a class="page-link" href="#">1<span class="sr-only">(current)</span></a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">2 </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
+<!-- PAGINATION -->
+  <div class="pt-5">
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        <li class="page-item {{#equals current 1}}disabled{{/equals}}">
+          <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
+            href="/projects-approved/{{minus current 1}}" {{/equals}}>Previous</a>
+        </li>
+        {{#repeat count=pages start=1}}
+        <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
+            href="/projects-approved/{{@index}}">{{@index}}{{#equals current @index}}<span
+              class="sr-only">(current)</span>{{/equals}}</a></li>
+        {{else}}
+        Nothing :(
+        {{/repeat}}
+        <li class="page-item {{#equals current pages}}disabled{{/equals}}">
+          <a class="page-link" href="/projects-approved/{{add current 1}}">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
 
 {{!-- <div class="row m-auto py-3 px-5">

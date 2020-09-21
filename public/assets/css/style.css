@@ -164,8 +164,8 @@ star{
     justify-content: flex-end;
 }
 
-.blog-project-sort{
-    margin-right: 26px;
+.blog-sort{
+    margin-right: 50px;
 }
 
 .view-by{
@@ -478,6 +478,10 @@ footer {
 }
 
 /* Projects */
+
+.proj-sort{
+    margin-right: 20px;
+}
 
 .project-subtitle {
     font-family: "Montserrat";
