@@ -50,21 +50,27 @@ const controller = {
         About.countDocuments({}, function (err, count_about) {
             Department.countDocuments({}, function (err, count_department) {
                 if (count_about == 0 || count_department == 0) {
-                    res.render('about', {
-                        layout: '/layouts/main',
-                        title: 'About | The Initiative PH',
-                        about_active: true,
-                    })
+                    database.findOne(Home, {}, {}, function (home) {
+                        res.render('about', {
+                            layout: '/layouts/main',
+                            title: 'About | The Initiative PH',
+                            about_active: true,
+                            home_content: home,
+                        })
+                    });
                 } else {
                     database.findOne(About, {}, {}, function (aboutContent) {
                         database.findMany(Department, {}, {}, function (deptContent) {
-                            res.render('about', {
-                                layout: '/layouts/main',
-                                title: 'About | The Initiative PH',
-                                about_active: true,
-                                about_content: aboutContent,
-                                department_content: deptContent,
-                            })
+                            database.findOne(Home, {}, {}, function (home) {
+                                res.render('about', {
+                                    layout: '/layouts/main',
+                                    title: 'About | The Initiative PH',
+                                    about_active: true,
+                                    about_content: aboutContent,
+                                    department_content: deptContent,
+                                    home_content: home,
+                                })
+                            });
                         });
                     });
                 }
@@ -74,13 +80,20 @@ const controller = {
 
     getPreApp: function (req, res) {
         database.findOne(PreAppForm, {}, {}, function (preapp) {
-            res.render('pre-application', {
-                layout: '/layouts/main',
-                title: 'Pre-Application | The Initiative PH',
-                volunteer_active: true,
-                preform_year: preapp.preform_year,
-                preform_desc: preapp.preform_desc,
-            })
+            database.findOne(Home, {}, {}, function (home) {
+                if (home.home_preapp_button) {
+                     res.render('pre-application', {
+                        layout: '/layouts/main',
+                        title: 'Pre-Application | The Initiative PH',
+                        volunteer_active: true,
+                        preform_year: preapp.preform_year,
+                        preform_desc: preapp.preform_desc,
+                        home_content: home,
+                    })
+                } else {
+                    res.redirect('/404');
+                }  
+            });
         });
 
         // res.render('pre-application', {
@@ -93,13 +106,20 @@ const controller = {
     getApplication: function (req, res) {
         database.findOne(AppForm, {}, {}, function (appsform) {
             database.findMany(Department, {}, {}, function (departmentArray) {
-                res.render('application', {
-                    layout: '/layouts/main',
-                    title: 'Application | The Initiative PH',
-                    volunteer_active: true,
-                    department_info: departmentArray,
-                    appform_year: appsform.appform_year,
-                    appform_desc: appsform.appform_desc,
+                database.findOne(Home, {}, {}, function (home) {
+                    if (home.home_preapp_button) {
+                        res.redirect('/404');
+                    } else {
+                        res.render('application', {
+                        layout: '/layouts/main',
+                        title: 'Application | The Initiative PH',
+                        volunteer_active: true,
+                        department_info: departmentArray,
+                        appform_year: appsform.appform_year,
+                        appform_desc: appsform.appform_desc,
+                        home_content: home,
+                    })
+                    }
                 })
             })
         })
@@ -108,12 +128,15 @@ const controller = {
     getProjects: function (req, res, next) {
         Project.countDocuments({}, function (err, count) {
             if (count == 0) {
-                res.render('projects', {
-                    layout: '/layouts/main',
-                    title: 'Projects | The Initiative PH',
-                    projects_active: true,
-                    no_proj: true,
-                })
+                database.findOne(Home, {}, {}, function (home) {
+                    res.render('projects', {
+                        layout: '/layouts/main',
+                        title: 'Projects | The Initiative PH',
+                        projects_active: true,
+                        no_proj: true,
+                        home_content: home,
+                    })
+                });
             } else {
                 var perPage = 5;
                 var page = req.params.page || 1;
@@ -145,13 +168,16 @@ const controller = {
                     .exec(function (err, projArray) {
                         Project.countDocuments().exec(function (err, count) {
                             if (err) return next(err)
-                            res.render('projects', {
-                                layout: '/layouts/main',
-                                title: 'Projects | The Initiative PH',
-                                projects_active: true,
-                                proj_info: projArray,
-                                current: page,
-                                pages: Math.ceil(count / perPage)
+                            database.findOne(Home, {}, {}, function (home) {
+                                res.render('projects', {
+                                    layout: '/layouts/main',
+                                    title: 'Projects | The Initiative PH',
+                                    projects_active: true,
+                                    proj_info: projArray,
+                                    current: page,
+                                    pages: Math.ceil(count / perPage),
+                                    home_content: home,
+                                });
                             });
                         });
                     });
@@ -170,12 +196,15 @@ const controller = {
     getProjectsApproved: function (req, res) {
         Project.countDocuments({}, function (err, count) {
             if (count == 0) {
-                res.render('projects', {
-                    layout: '/layouts/main',
-                    title: 'Projects | The Initiative PH',
-                    projects_active: true,
-                    no_proj: true,
-                })
+                database.findOne(Home, {}, {}, function (home) {
+                    res.render('projects', {
+                        layout: '/layouts/main',
+                        title: 'Projects | The Initiative PH',
+                        projects_active: true,
+                        no_proj: true,
+                        home_content: home,
+                    })
+                });
             } else {
                 var perPage = 5
                 var page = req.params.page || 1
@@ -187,13 +216,16 @@ const controller = {
                     .exec(function (err, projArray) {
                         Project.find({proj_status: 'Approved'}).count().exec(function (err, count) {
                             if (err) return next(err)
-                            res.render('projects', {
-                                layout: '/layouts/main',
-                                title: 'Projects | The Initiative PH',
-                                projects_active: true,
-                                proj_info: projArray,
-                                current: page,
-                                pages: Math.ceil(count / perPage)
+                            database.findOne(Home, {}, {}, function (home) {
+                                res.render('projects', {
+                                    layout: '/layouts/main',
+                                    title: 'Projects | The Initiative PH',
+                                    projects_active: true,
+                                    proj_info: projArray,
+                                    current: page,
+                                    pages: Math.ceil(count / perPage),
+                                    home_content: home,
+                                });
                             });
                         });
                     });
@@ -204,11 +236,14 @@ const controller = {
     getProjectsOngoing: function (req, res) {
         Project.find({proj_status: 'Ongoing'}).countDocuments({}, function (err, count) {
             if (count == 0) {
-                res.render('projects', {
-                    layout: '/layouts/main',
-                    title: 'Projects | The Initiative PH',
-                    projects_active: true,
-                })
+                database.findOne(Home, {}, {}, function (home) {
+                    res.render('projects', {
+                        layout: '/layouts/main',
+                        title: 'Projects | The Initiative PH',
+                        projects_active: true,
+                        home_content: home,
+                    })
+                });
             } else {
                 var perPage = 5
                 var page = req.params.page || 1
@@ -220,13 +255,16 @@ const controller = {
                     .exec(function (err, projArray) {
                         Project.find({proj_status: 'Ongoing'}).count().exec(function (err, count) {
                             if (err) return next(err)
-                            res.render('projects', {
-                                layout: '/layouts/main',
-                                title: 'Projects | The Initiative PH',
-                                projects_active: true,
-                                proj_info: projArray,
-                                current: page,
-                                pages: Math.ceil(count / perPage)
+                            database.findOne(Home, {}, {}, function (home) {
+                                res.render('projects', {
+                                    layout: '/layouts/main',
+                                    title: 'Projects | The Initiative PH',
+                                    projects_active: true,
+                                    proj_info: projArray,
+                                    current: page,
+                                    pages: Math.ceil(count / perPage),
+                                    home_content: home,
+                                });
                             });
                         });
                     });
@@ -237,11 +275,14 @@ const controller = {
     getProjectsProposed: function (req, res) {
         Project.find({proj_status: 'Proposed'}).countDocuments({}, function (err, count) {
             if (count == 0) {
-                res.render('projects', {
-                    layout: '/layouts/main',
-                    title: 'Projects | The Initiative PH',
-                    projects_active: true,
-                })
+                database.findOne(Home, {}, {}, function (home) {
+                    res.render('projects', {
+                        layout: '/layouts/main',
+                        title: 'Projects | The Initiative PH',
+                        projects_active: true,
+                        home_content: home
+                    })
+                });
             } else {
                 var perPage = 5
                 var page = req.params.page || 1
@@ -253,13 +294,16 @@ const controller = {
                     .exec(function (err, projArray) {
                         Project.find({proj_status: 'Proposed'}).count().exec(function (err, count) {
                             if (err) return next(err)
-                            res.render('projects', {
-                                layout: '/layouts/main',
-                                title: 'Projects | The Initiative PH',
-                                projects_active: true,
-                                proj_info: projArray,
-                                current: page,
-                                pages: Math.ceil(count / perPage)
+                            database.findOne(Home, {}, {}, function (home) {
+                                res.render('projects', {
+                                    layout: '/layouts/main',
+                                    title: 'Projects | The Initiative PH',
+                                    projects_active: true,
+                                    proj_info: projArray,
+                                    current: page,
+                                    pages: Math.ceil(count / perPage),
+                                    home_content: home,
+                                });
                             });
                         });
                     });
@@ -270,11 +314,14 @@ const controller = {
     getBlogs: function (req, res) {
         Blog.countDocuments({}, function (err, count) {
             if (count == 0) {
-                res.render('blog', {
-                    layout: '/layouts/main',
-                    title: 'Blogs | The Initiative PH',
-                    blog_active: true,
-                })
+                database.findOne(Home, {}, {}, function (home) {
+                    res.render('blog', {
+                        layout: '/layouts/main',
+                        title: 'Blogs | The Initiative PH',
+                        blog_active: true,
+                        home_content: home,
+                    })
+                });
             } else {
                 var perPage = 5;
                 var page = req.params.page || 1;
@@ -304,14 +351,17 @@ const controller = {
                     .limit(perPage)
                     .exec(function (err, blogArray) {
                         Blog.countDocuments().exec(function (err,count) {
-                               if (err) return next(err)
-                            res.render('blog', {
-                                layout: '/layouts/main',
-                                title: 'Blogs | The Initiative PH',
-                                blog_active: true,
-                                blog_info: blogArray,
-                                current: page,
-                                pages: Math.ceil(count / perPage)
+                            if (err) return next(err)
+                            database.findOne(Home, {}, {}, function (home) {
+                                res.render('blog', {
+                                    layout: '/layouts/main',
+                                    title: 'Blogs | The Initiative PH',
+                                    blog_active: true,
+                                    blog_info: blogArray,
+                                    current: page,
+                                    pages: Math.ceil(count / perPage),
+                                    home_content: home,
+                                });
                             });
                         });
                     });
@@ -347,11 +397,14 @@ const controller = {
     },
 
     getContactUs: function (req, res) {
-        res.render('contact-us', {
-            layout: '/layouts/main',
-            title: 'Contact Us | The Initiative PH',
-            contact_active: true,
-        })
+        database.findOne(Home, {}, {}, function (home) {
+            res.render('contact-us', {
+                layout: '/layouts/main',
+                title: 'Contact Us | The Initiative PH',
+                contact_active: true,
+                home_content: home,
+            })
+        });
     },
 
     getDonate: function (req, res) {
@@ -362,11 +415,14 @@ const controller = {
         // })
         Donate.countDocuments({ donate_visible: true }, function (err, count) {
             if (count == 0) {
-                res.render('donate', {
-                    layout: '/layouts/main',
-                    title: 'Donate | The Initiative PH',
-                    donate_active: true,
-                    donateMessage: 'There is currently no donation option available.'
+                database.findOne(Home, {}, {}, function (home) {
+                    res.render('donate', {
+                        layout: '/layouts/main',
+                        title: 'Donate | The Initiative PH',
+                        donate_active: true,
+                        donateMessage: 'There is currently no donation option available.',
+                        home_content: home,
+                    });
                 });
             }
             else {
@@ -381,11 +437,14 @@ const controller = {
                             resultArray.push(doc);
                         },
                             function () {
-                                res.render('donate', {
-                                    layout: '/layouts/main',
-                                    title: 'Donate | The Initiative PH',
-                                    donate_active: true,
-                                    donate_info: resultArray
+                                database.findOne(Home, {}, {}, function (home) {
+                                    res.render('donate', {
+                                        layout: '/layouts/main',
+                                        title: 'Donate | The Initiative PH',
+                                        donate_active: true,
+                                        donate_info: resultArray,
+                                        home_content: home,
+                                    });
                                 });
                                 db.close();
                             });
@@ -415,22 +474,28 @@ const controller = {
     },
 
     get404: function (req, res) {
-        res.render('404', {
-            layout: '/layouts/main',
-            title: '404 Not Found | The Initiative PH',
-            links: [
-                { path: '/home', name: 'Home' },
-                { path: '/projects', name: 'Projects' },
-                { path: '/blog', name: 'Blog' },
-            ]
-        })
+        database.findOne(Home, {}, {}, function (home) {
+            res.render('404', {
+                layout: '/layouts/main',
+                title: '404 Not Found | The Initiative PH',
+                links: [
+                    { path: '/home', name: 'Home' },
+                    { path: '/projects', name: 'Projects' },
+                    { path: '/blog', name: 'Blog' },
+                ],
+                home_content: home,
+            })
+        });
     },
 
     getCMSLogin: function (req, res) {
-        res.render('cms-login', {
-            layout: '/layouts/main',
-            title: 'Login | The Initiative PH',
-        })
+        database.findOne(Home, {}, {}, function (home) {
+            res.render('cms-login', {
+                layout: '/layouts/main',
+                title: 'Login | The Initiative PH',
+                home_content: home
+            })
+        });
     },
 
     getCMSLogout: function (req, res) {
