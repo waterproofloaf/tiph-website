@@ -90,7 +90,7 @@ const cmsValidator = {
 
     AboutValidation: function() {
         var validation = [
-            check('about_tite').notEmpty().withMessage('About Title is required!'),
+            check('about_title').notEmpty().withMessage('About Title is required!'),
             check('about_description').notEmpty().withMessage('About Content is required!'),
         ];
 
