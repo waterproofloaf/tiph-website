@@ -194,6 +194,7 @@ const blogController = {
                     blog_info: result,
                 });
             }); 
+        }
     }
 }
 

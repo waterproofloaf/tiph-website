@@ -112,6 +112,7 @@ app.post('/pre-application', formsValidator.preValidation(), formsController.pos
 
 app.get('/application', controller.getApplication);
 app.post('/application', upload.array('app_portfolio', 5), formsValidator.appValidation(), formsController.postAppForm);
+app.get('/application/positions', appformController.listPositions);
 
 app.get('/projects', controller.getProjects);
 app.get('/projects/:page', controller.getProjects);
