@@ -36,17 +36,6 @@
                                 <label for="admin_dept">Department</label>
                                 
                                 <select class="form-control" id="admin_dept" name="admin_dept">
-                                    {{!-- <option value="Administrative Affairs" {{#equals admin_dept "Administrative Affairs"}}selected{{/equals}}>Administrative Affairs</option>
-                                    <option value="Publications and Communications"{{#equals admin_dept "Publications and Communications"}}selected{{/equals}}>Publications and Communications</option>
-                                    <option value="Marketing, Finance and Logistics"{{#equals admin_dept "Marketing, Finance and Logistics"}}selected{{/equals}}>Marketing, Finance and Logistics</option>
-                                    <option value="Operations"{{#equals admin_dept "Operations"}}selected{{/equals}}>Operations</option>
-                                    <option value="Animal and Environmental Welfare"{{#equals admin_dept "Animal and Environmental Welfare"}}selected{{/equals}}>Animal and Environmental Welfare</option>
-                                    <option value="Marginalized Community Action"{{#equals admin_dept "Marginalized Community Action"}}selected{{/equals}}>Marginalized Community Action</option>
-                                    <option value="SOGIE Rights"{{#equals admin_dept "SOGIE Rights"}}selected{{/equals}}>SOGIE Rights</option>
-                                    <option value="Mental Health"{{#equals admin_dept "Mental Health"}}selected{{/equals}}>Mental Health</option>
-                                    <option value="Project Taft"{{#equals admin_dept "Project Taft"}}selected{{/equals}}>Project Taft</option>
-                                    <option value="Project España"{{#equals admin_dept "Project España"}}selected{{/equals}}>Project España</option>
-                                    <option value="Project Katipunan"{{#equals admin_dept "Project Katipunan"}}selected{{/equals}}>Project Katipunan</option> --}}
                                     {{#each department_info}}
                                         <option value="{{this.department_title}}" {{#equals this.admin_dept "{{this.department_title}}"}}selected{{/equals}}>{{this.department_title}}</option>
                                     {{/each}}

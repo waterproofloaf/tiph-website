@@ -11,6 +11,7 @@ const PreApp = require('../models/PreAppModel.js');
 const App = require('../models/AppModel.js');
 const PreAppForm = require('../models/PreAppFormModel.js');
 const AppForm = require('../models/AppFormModel.js');
+const Position = require('../models/PositionModel.js');
 
 // URL of MongoDB database
 const url = "mongodb://localhost:27017/tiph";
@@ -106,20 +107,23 @@ const controller = {
     getApplication: function (req, res) {
         database.findOne(AppForm, {}, {}, function (appsform) {
             database.findMany(Department, {}, {}, function (departmentArray) {
-                database.findOne(Home, {}, {}, function (home) {
-                    if (home.home_preapp_button) {
-                        res.redirect('/404');
-                    } else {
-                        res.render('application', {
-                        layout: '/layouts/main',
-                        title: 'Application | The Initiative PH',
-                        volunteer_active: true,
-                        department_info: departmentArray,
-                        appform_year: appsform.appform_year,
-                        appform_desc: appsform.appform_desc,
-                        home_content: home,
+                database.findMany(Position, {}, {}, function(positionArray){
+                    database.findOne(Home, {}, {}, function (home) {
+                        if (home.home_preapp_button) {
+                            res.redirect('/404');
+                        } else {
+                            res.render('application', {
+                            layout: '/layouts/main',
+                            title: 'Application | The Initiative PH',
+                            volunteer_active: true,
+                            department_info: departmentArray,
+                            position_info: positionArray,
+                            appform_year: appsform.appform_year,
+                            appform_desc: appsform.appform_desc,
+                            home_content: home,
+                        })
+                        }
                     })
-                    }
                 })
             })
         })
@@ -671,16 +675,19 @@ const controller = {
         if (req.session.user && req.cookies.user_sid) {
             database.findOne(AppForm, { _id: query }, {}, function (app) {
                 database.findMany(Department, {}, {}, function (departments) {
-                    res.render('cms-edit-application', {
-                        layout: '/layouts/cms-layout',
-                        title: 'CMS Application Form Edit | The Initiative PH',
-                        application_active: true,
-                        name: req.session.name,
-                        type: req.session.type,
-                        userid: req.session.userid,
-                        appform_year: app.appform_year,
-                        appform_desc: app.appform_desc,
-                        department_info: departments,
+                    database.findMany(Position, {}, {}, function (positions) {
+                        res.render('cms-edit-application', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Application Form Edit | The Initiative PH',
+                            application_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            appform_year: app.appform_year,
+                            appform_desc: app.appform_desc,
+                            department_info: departments,
+                            position_info: positions,
+                        })
                     })
                 })
             })
