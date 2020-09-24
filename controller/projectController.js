@@ -70,7 +70,7 @@ const projectController = {
                 });
             }
             else {
-                res.redirect('/404');
+                res.redirect('/project-not-found');
             }
         });
     },

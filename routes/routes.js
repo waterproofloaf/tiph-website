@@ -146,6 +146,9 @@ app.post('/contact-us', email_upload.single('contact_upload'), formsValidator.co
 app.get('/donate', controller.getDonate);
 
 app.get('/404', controller.get404);
+app.get('/project-not-found', controller.getProjectNotFound);
+app.get('/blog-not-found', controller.getBlogNotFound);
+app.get('/unavailable', controller.getUnavailable);
 
 // CMS Login
 app.get('/cms-login', controller.getCMSLogin);
