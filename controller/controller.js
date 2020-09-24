@@ -83,7 +83,7 @@ const controller = {
         database.findOne(PreAppForm, {}, {}, function (preapp) {
             database.findOne(Home, {}, {}, function (home) {
                 if (home.home_preapp_button) {
-                     res.render('pre-application', {
+                    res.render('pre-application', {
                         layout: '/layouts/main',
                         title: 'Pre-Application | The Initiative PH',
                         volunteer_active: true,
@@ -93,7 +93,7 @@ const controller = {
                     })
                 } else {
                     res.redirect('/404');
-                }  
+                }
             });
         });
 
@@ -107,21 +107,21 @@ const controller = {
     getApplication: function (req, res) {
         database.findOne(AppForm, {}, {}, function (appsform) {
             database.findMany(Department, {}, {}, function (departmentArray) {
-                database.findMany(Position, {}, {}, function(positionArray){
+                database.findMany(Position, {}, {}, function (positionArray) {
                     database.findOne(Home, {}, {}, function (home) {
                         if (home.home_preapp_button) {
                             res.redirect('/404');
                         } else {
                             res.render('application', {
-                            layout: '/layouts/main',
-                            title: 'Application | The Initiative PH',
-                            volunteer_active: true,
-                            department_info: departmentArray,
-                            position_info: positionArray,
-                            appform_year: appsform.appform_year,
-                            appform_desc: appsform.appform_desc,
-                            home_content: home,
-                        })
+                                layout: '/layouts/main',
+                                title: 'Application | The Initiative PH',
+                                volunteer_active: true,
+                                department_info: departmentArray,
+                                position_info: positionArray,
+                                appform_year: appsform.appform_year,
+                                appform_desc: appsform.appform_desc,
+                                home_content: home,
+                            })
                         }
                     })
                 })
@@ -144,23 +144,23 @@ const controller = {
             } else {
                 var perPage = 5;
                 var page = req.params.page || 1;
-                
-                var sort_by = {proj_date: 1};
-                
+
+                var sort_by = { proj_date: 1 };
+
                 proj_sort = req.body.proj_sort_by;
-                
-                switch(proj_sort){
+
+                switch (proj_sort) {
                     case 'adate':
-                        sort_by = {proj_date: 1};
+                        sort_by = { proj_date: 1 };
                         break;
                     case 'ddate':
-                        sort_by = {proj_date: -1};
+                        sort_by = { proj_date: -1 };
                         break;
                     case 'atitle':
-                        sort_by = {proj_title: 1};
+                        sort_by = { proj_title: 1 };
                         break;
                     case 'dtitle':
-                        sort_by = {proj_title: -1};
+                        sort_by = { proj_title: -1 };
                         break;
                 }
 
@@ -218,7 +218,7 @@ const controller = {
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.find({proj_status: 'Approved'}).count().exec(function (err, count) {
+                        Project.find({ proj_status: 'Approved' }).count().exec(function (err, count) {
                             if (err) return next(err)
                             database.findOne(Home, {}, {}, function (home) {
                                 res.render('projects', {
@@ -238,7 +238,7 @@ const controller = {
     },
 
     getProjectsOngoing: function (req, res) {
-        Project.find({proj_status: 'Ongoing'}).countDocuments({}, function (err, count) {
+        Project.find({ proj_status: 'Ongoing' }).countDocuments({}, function (err, count) {
             if (count == 0) {
                 database.findOne(Home, {}, {}, function (home) {
                     res.render('projects', {
@@ -257,7 +257,7 @@ const controller = {
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.find({proj_status: 'Ongoing'}).count().exec(function (err, count) {
+                        Project.find({ proj_status: 'Ongoing' }).count().exec(function (err, count) {
                             if (err) return next(err)
                             database.findOne(Home, {}, {}, function (home) {
                                 res.render('projects', {
@@ -277,7 +277,7 @@ const controller = {
     },
 
     getProjectsProposed: function (req, res) {
-        Project.find({proj_status: 'Proposed'}).countDocuments({}, function (err, count) {
+        Project.find({ proj_status: 'Proposed' }).countDocuments({}, function (err, count) {
             if (count == 0) {
                 database.findOne(Home, {}, {}, function (home) {
                     res.render('projects', {
@@ -296,7 +296,7 @@ const controller = {
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.find({proj_status: 'Proposed'}).count().exec(function (err, count) {
+                        Project.find({ proj_status: 'Proposed' }).count().exec(function (err, count) {
                             if (err) return next(err)
                             database.findOne(Home, {}, {}, function (home) {
                                 res.render('projects', {
@@ -329,32 +329,32 @@ const controller = {
             } else {
                 var perPage = 5;
                 var page = req.params.page || 1;
-                var sort_by = {blog_date: 1};
-                
+                var sort_by = { blog_date: 1 };
+
                 blog_sort = req.body.blog_sort_by;
-                
-                switch(blog_sort){
+
+                switch (blog_sort) {
                     case 'adate':
-                        sort_by = {blog_date: 1};
+                        sort_by = { blog_date: 1 };
                         break;
                     case 'ddate':
-                        sort_by = {blog_date: -1};
+                        sort_by = { blog_date: -1 };
                         break;
                     case 'atitle':
-                        sort_by = {blog_title: 1};
+                        sort_by = { blog_title: 1 };
                         break;
                     case 'dtitle':
-                        sort_by = {blog_title: -1};
+                        sort_by = { blog_title: -1 };
                         break;
                 }
-                
+
                 Blog
                     .find({})
                     .sort(sort_by)
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, blogArray) {
-                        Blog.countDocuments().exec(function (err,count) {
+                        Blog.countDocuments().exec(function (err, count) {
                             if (err) return next(err)
                             database.findOne(Home, {}, {}, function (home) {
                                 res.render('blog', {
@@ -369,18 +369,7 @@ const controller = {
                             });
                         });
                     });
-                }
-                
-                //                else {
-                //                database.findMany(Blog, {}, {}, function (blogArray) 
-                //                    res.render('blog', {
-                //                        layout: '/layouts/main',
-                //                        title: 'Blogs | The Initiative PH',
-                //                        blog_active: true,
-                //                        blog_info: blogArray,
-                //                    });
-                //                });
-                //            }
+            }
         });
     },
 
@@ -412,11 +401,6 @@ const controller = {
     },
 
     getDonate: function (req, res) {
-        // res.render('donate', {
-        //     layout: '/layouts/main',
-        //     title: 'Donate | The Initiative PH',
-        //     donate_active: true
-        // })
         Donate.countDocuments({ donate_visible: true }, function (err, count) {
             if (count == 0) {
                 database.findOne(Home, {}, {}, function (home) {
@@ -430,51 +414,19 @@ const controller = {
                 });
             }
             else {
-                var MongoClient = require('mongodb').MongoClient;
-                MongoClient.connect(url, { useUnifiedTopology: true },
-                    function (err, db) {
-                        if (err) throw err;
-                        var resultArray = [];
-                        var dbo = db.db("tiph");
-                        var cursor = dbo.collection("donates").find();
-                        cursor.forEach(function (doc, err) {
-                            resultArray.push(doc);
-                        },
-                            function () {
-                                database.findOne(Home, {}, {}, function (home) {
-                                    res.render('donate', {
-                                        layout: '/layouts/main',
-                                        title: 'Donate | The Initiative PH',
-                                        donate_active: true,
-                                        donate_info: resultArray,
-                                        home_content: home,
-                                    });
-                                });
-                                db.close();
-                            });
+                database.findMany(Donate, {}, {}, function (donateArray) {
+                    database.findOne(Home, {}, {}, function (home) {
+                        res.render('donate', {
+                            layout: '/layouts/main',
+                            title: 'Donate | The Initiative PH',
+                            donate_active: true,
+                            donate_info: donateArray,
+                            home_content: home,
+                        });
                     });
+                });
             }
         })
-        // var MongoClient = require('mongodb').MongoClient;
-        // MongoClient.connect(url, { useUnifiedTopology: true },
-        //     function (err, db) {
-        //         if (err) throw err;
-        //         var resultArray = [];
-        //         var dbo = db.db("tiph");
-        //         var cursor = dbo.collection("donates").find();
-        //         cursor.forEach(function (doc, err) {
-        //             resultArray.push(doc);
-        //         },
-        //             function () {
-        //                 res.render('donate', {
-        //                     layout: '/layouts/main',
-        //                     title: 'Donate | The Initiative PH',
-        //                     donate_active: true,
-        //                     donate_info: resultArray
-        //                 });
-        //                 db.close();
-        //             });
-        //     });
     },
 
     get404: function (req, res) {
@@ -753,139 +705,147 @@ const controller = {
     },
 
     getCMSApplicantPre: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var preappArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("preapps").find();
-                cursor.forEach(function (doc, err) {
-                    preappArray.push(doc);
-                },
-                    function () {
-                        if (req.session.user && req.cookies.user_sid) {
-                            res.render('cms-applicant-pre', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Applicants | The Initiative PH',
-                                applicant_active: true,
-                                pre_app_active: true,
-                                name: req.session.name,
-                                type: req.session.type,
-                                userid: req.session.userid,
-                                preapp_info: preappArray,
-                            });
-                        }
-                        else {
-                            res.redirect('cms-login')
-                        }
-                        db.close();
+        if (req.session.user && req.cookies.user_sid) {
+            PreApp.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(PreApp, {}, {}, function (preappArray) {
+                        res.render('cms-applicant-pre', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            pre_app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            preapp_info: preappArray,
+                        })
                     });
-
+                } else {
+                    database.findMany(PreApp, {}, {}, function (preappArray) {
+                        res.render('cms-applicant-pre', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            pre_app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            preapp_info: preappArray,
+                        })
+                    });
+                }
             });
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplicantPreAccepted: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var preappArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("preapps").find();
-                cursor.forEach(function (doc, err) {
-                    preappArray.push(doc);
-                },
-                    function () {
-                        if (req.session.user && req.cookies.user_sid) {
-                            res.render('cms-applicant-pre-accepted', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Applicants | The Initiative PH',
-                                applicant_active: true,
-                                pre_app_active: true,
-                                name: req.session.name,
-                                type: req.session.type,
-                                userid: req.session.userid,
-                                preapp_info: preappArray,
-                            });
-                        }
-                        else {
-                            res.redirect('cms-login')
-                        }
-                        db.close();
+        if (req.session.user && req.cookies.user_sid) {
+            PreApp.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(PreApp, {}, {}, function (preappArray) {
+                        res.render('cms-applicant-pre-accepted', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            pre_app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            preapp_info: preappArray,
+                        })
                     });
-
+                } else {
+                    database.findMany(PreApp, {}, {}, function (preappArray) {
+                        res.render('cms-applicant-pre-accepted', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            pre_app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            preapp_info: preappArray,
+                        })
+                    });
+                }
             });
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplicantPreRejected: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var preappArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("preapps").find();
-                cursor.forEach(function (doc, err) {
-                    preappArray.push(doc);
-                },
-                    function () {
-                        if (req.session.user && req.cookies.user_sid) {
-                            res.render('cms-applicant-pre-rejected', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Applicants | The Initiative PH',
-                                applicant_active: true,
-                                pre_app_active: true,
-                                name: req.session.name,
-                                type: req.session.type,
-                                userid: req.session.userid,
-                                preapp_info: preappArray,
-                            });
-                        }
-                        else {
-                            res.redirect('cms-login')
-                        }
-                        db.close();
+        if (req.session.user && req.cookies.user_sid) {
+            PreApp.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(PreApp, {}, {}, function (preappArray) {
+                        res.render('cms-applicant-pre-rejected', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            pre_app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            preapp_info: preappArray,
+                        })
                     });
-
+                } else {
+                    database.findMany(PreApp, {}, {}, function (preappArray) {
+                        res.render('cms-applicant-pre-rejected', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            pre_app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            preapp_info: preappArray,
+                        })
+                    });
+                }
             });
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplicantPrePending: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var preappArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("preapps").find();
-                cursor.forEach(function (doc, err) {
-                    preappArray.push(doc);
-                },
-                    function () {
-                        if (req.session.user && req.cookies.user_sid) {
-                            res.render('cms-applicant-pre-pending', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Applicants | The Initiative PH',
-                                applicant_active: true,
-                                pre_app_active: true,
-                                name: req.session.name,
-                                type: req.session.type,
-                                userid: req.session.userid,
-                                preapp_info: preappArray,
-                            });
-                        }
-                        else {
-                            res.redirect('cms-login')
-                        }
-                        db.close();
+        if (req.session.user && req.cookies.user_sid) {
+            PreApp.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(PreApp, {}, {}, function (preappArray) {
+                        res.render('cms-applicant-pre-pending', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            pre_app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            preapp_info: preappArray,
+                        })
                     });
-
+                } else {
+                    database.findMany(PreApp, {}, {}, function (preappArray) {
+                        res.render('cms-applicant-pre-pending', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            pre_app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            preapp_info: preappArray,
+                        })
+                    });
+                }
             });
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplicantPreProf: function (req, res) {
@@ -922,139 +882,147 @@ const controller = {
     },
 
     getCMSApplicantApp: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var appArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("apps").find();
-                cursor.forEach(function (doc, err) {
-                    appArray.push(doc);
-                },
-                    function () {
-                        if (req.session.user && req.cookies.user_sid) {
-                            res.render('cms-applicant-app', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Applicants | The Initiative PH',
-                                applicant_active: true,
-                                app_active: true,
-                                name: req.session.name,
-                                type: req.session.type,
-                                userid: req.session.userid,
-                                app_info: appArray,
-                            });
-                        }
-                        else {
-                            res.redirect('cms-login')
-                        }
-                        db.close();
+        if (req.session.user && req.cookies.user_sid) {
+            App.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(App, {}, {}, function (appArray) {
+                        res.render('cms-applicant-app', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            app_info: appArray,
+                        })
                     });
-
+                } else {
+                    database.findMany(App, {}, {}, function (appArray) {
+                        res.render('cms-applicant-app', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            app_info: appArray,
+                        })
+                    });
+                }
             });
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplicantAppAccepted: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var appArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("apps").find();
-                cursor.forEach(function (doc, err) {
-                    appArray.push(doc);
-                },
-                    function () {
-                        if (req.session.user && req.cookies.user_sid) {
-                            res.render('cms-applicant-app-accepted', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Applicants | The Initiative PH',
-                                applicant_active: true,
-                                app_active: true,
-                                name: req.session.name,
-                                type: req.session.type,
-                                userid: req.session.userid,
-                                app_info: appArray,
-                            });
-                        }
-                        else {
-                            res.redirect('cms-login')
-                        }
-                        db.close();
+        if (req.session.user && req.cookies.user_sid) {
+            App.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(App, {}, {}, function (appArray) {
+                        res.render('cms-applicant-app-accepted', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            app_info: appArray,
+                        })
                     });
-
+                } else {
+                    database.findMany(App, {}, {}, function (appArray) {
+                        res.render('cms-applicant-app-accepted', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            app_info: appArray,
+                        })
+                    });
+                }
             });
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplicantAppRejected: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var appArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("apps").find();
-                cursor.forEach(function (doc, err) {
-                    appArray.push(doc);
-                },
-                    function () {
-                        if (req.session.user && req.cookies.user_sid) {
-                            res.render('cms-applicant-app-rejected', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Applicants | The Initiative PH',
-                                applicant_active: true,
-                                app_active: true,
-                                name: req.session.name,
-                                type: req.session.type,
-                                userid: req.session.userid,
-                                app_info: appArray,
-                            });
-                        }
-                        else {
-                            res.redirect('cms-login')
-                        }
-                        db.close();
+        if (req.session.user && req.cookies.user_sid) {
+            App.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(App, {}, {}, function (appArray) {
+                        res.render('cms-applicant-app-rejected', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            app_info: appArray,
+                        })
                     });
-
+                } else {
+                    database.findMany(App, {}, {}, function (appArray) {
+                        res.render('cms-applicant-app-rejected', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            app_info: appArray,
+                        })
+                    });
+                }
             });
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplicantAppPending: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var appArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("apps").find();
-                cursor.forEach(function (doc, err) {
-                    appArray.push(doc);
-                },
-                    function () {
-                        if (req.session.user && req.cookies.user_sid) {
-                            res.render('cms-applicant-app-pending', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Applicants | The Initiative PH',
-                                applicant_active: true,
-                                app_active: true,
-                                name: req.session.name,
-                                type: req.session.type,
-                                userid: req.session.userid,
-                                app_info: appArray,
-                            });
-                        }
-                        else {
-                            res.redirect('cms-login')
-                        }
-                        db.close();
+        if (req.session.user && req.cookies.user_sid) {
+            App.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(App, {}, {}, function (appArray) {
+                        res.render('cms-applicant-app-pending', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            app_info: appArray,
+                        })
                     });
-
+                } else {
+                    database.findMany(App, {}, {}, function (appArray) {
+                        res.render('cms-applicant-app-pending', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Applicants | The Initiative PH',
+                            applicant_active: true,
+                            app_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            app_info: appArray,
+                        })
+                    });
+                }
             });
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSApplicantProf: function (req, res) {
@@ -1191,35 +1159,37 @@ const controller = {
     },
 
     getCMSBlog: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var blogArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("blogs").find();
-                cursor.forEach(function (doc, err) {
-                    blogArray.push(doc);
-                },
-                    function () {
-                        if (req.session.user && req.cookies.user_sid) {
-                            res.render('cms-blog', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Blog | The Initiative PH',
-                                blog_active: true,
-                                type: req.session.type,
-                                name: req.session.name,
-                                userid: req.session.userid,
-                                blog_info: blogArray,
-                            });
-                        }
-                        else {
-                            res.redirect('cms-login')
-                        }
-                        db.close();
+        if (req.session.user && req.cookies.user_sid) {
+            Blog.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(Blog, {}, {}, function (blogArray) {
+                        res.render('cms-blog', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Blog | The Initiative PH',
+                            blog_active: true,
+                            type: req.session.type,
+                            name: req.session.name,
+                            userid: req.session.userid,
+                            blog_info: blogArray,
+                        })
                     });
+                } else {
+                    database.findMany(Blog, {}, {}, function (blogArray) {
+                        res.render('cms-blog', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Blog | The Initiative PH',
+                            blog_active: true,
+                            type: req.session.type,
+                            name: req.session.name,
+                            userid: req.session.userid,
+                            blog_info: blogArray,
+                        })
+                    });
+                }
             });
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSBlogPage: function (req, res) {
@@ -1259,44 +1229,40 @@ const controller = {
     },
 
     getCMSProject: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        // var url = "mongodb://localhost:27017/tiph";
-        MongoClient.connect(url, { useUnifiedTopology: true },
-            function (err, db) {
-                if (err) throw err;
-                var projArray = [];
-                var dbo = db.db("tiph");
-                var cursor = dbo.collection("projects").find();
-                cursor.forEach(function (doc, err) {
-                    projArray.push(doc);
-                },
-                    function () {
-                        if (req.session.user && req.cookies.user_sid) {
-                            res.render('cms-project', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Project | The Initiative PH',
-                                project_active: true,
-                                name: req.session.name,
-                                type: req.session.type,
-                                userid: req.session.userid,
-                                proj_info: projArray,
-                            });
-                        }
-                        else {
-                            res.redirect('cms-login')
-                        }
-                        db.close();
+        if (req.session.user && req.cookies.user_sid) {
+            Project.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(Project, {}, {}, function (projArray) {
+                        res.render('cms-project', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Project | The Initiative PH',
+                            project_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            proj_info: projArray,
+                        })
                     });
+                } else {
+                    database.findMany(Project, {}, {}, function (projArray) {
+                        res.render('cms-project', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Project | The Initiative PH',
+                            project_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            proj_info: projArray,
+                        })
+                    });
+                }
             });
-        //        res.render('cms-project', {
-        //            layout: '/layouts/cms-layout',
-        //            title: 'CMS Project | The Initiative PH',
-        //            project_active: true,
-        //        })
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSProjectPage: function (req, res) {
-
         if (req.session.user && req.cookies.user_sid) {
             var query = req.query.id;
             database.findOne(Project, { _id: query }, {}, function (proj) {
@@ -1310,9 +1276,7 @@ const controller = {
                     userid: req.session.userid,
                 });
             });
-        }
-
-        else {
+        } else {
             res.redirect('cms-login')
         }
     },
@@ -1327,24 +1291,16 @@ const controller = {
                 type: req.session.type,
                 userid: req.session.userid,
             })
-        }
-        else {
+        } else {
             res.redirect('cms-login')
         }
     },
 
     getCMSDonate: function (req, res) {
-        var MongoClient = require('mongodb').MongoClient;
-        MongoClient.connect(url, { useUnifiedTopology: true }, function (err, db) {
-            if (err) throw err;
-            var resultArray = [];
-            var dbo = db.db("tiph");
-            var cursor = dbo.collection("donates").find();
-            cursor.forEach(function (doc, err) {
-                resultArray.push(doc);
-            },
-                function () {
-                    if (req.session.user && req.cookies.user_sid) {
+        if (req.session.user && req.cookies.user_sid) {
+            Donate.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(Donate, {}, {}, function (resultArray) {
                         res.render('cms-donate', {
                             layout: '/layouts/cms-layout',
                             title: 'CMS Donate | The Initiative PH',
@@ -1353,15 +1309,25 @@ const controller = {
                             type: req.session.type,
                             userid: req.session.userid,
                             donate_info: resultArray,
-                        });
-                    }
-                    else {
-                        res.redirect('cms-login')
-                    }
-                    db.close();
-                });
-
-        });
+                        })
+                    });
+                } else {
+                    database.findMany(Donate, {}, {}, function (resultArray) {
+                        res.render('cms-donate', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Donate | The Initiative PH',
+                            donate_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            donate_info: resultArray,
+                        })
+                    });
+                }
+            });
+        } else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSNewDonate: function (req, res) {
