@@ -107,22 +107,10 @@ const controller = {
     getApplication: function (req, res) {
         database.findOne(AppForm, {}, {}, function (appsform) {
             database.findMany(Department, {}, {}, function (departmentArray) {
-                database.findOne(Home, {}, {}, function (home) {
-                    if (home.home_preapp_button) {
-                        res.redirect('/unavailable');
-                    } else {
-                        res.render('application', {
-                        layout: '/layouts/main',
-                        title: 'Application | The Initiative PH',
-                        volunteer_active: true,
-                        department_info: departmentArray,
-                        appform_year: appsform.appform_year,
-                        appform_desc: appsform.appform_desc,
-                        home_content: home,
                 database.findMany(Position, {}, {}, function(positionArray){
                     database.findOne(Home, {}, {}, function (home) {
                         if (home.home_preapp_button) {
-                            res.redirect('/404');
+                            res.redirect('/unavailable');
                         } else {
                             res.render('application', {
                             layout: '/layouts/main',
