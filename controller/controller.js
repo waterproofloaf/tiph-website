@@ -92,7 +92,7 @@ const controller = {
                         home_content: home,
                     })
                 } else {
-                    res.redirect('/404');
+                    res.redirect('/unavailable');
                 }
             });
         });
@@ -110,7 +110,7 @@ const controller = {
                 database.findMany(Position, {}, {}, function (positionArray) {
                     database.findOne(Home, {}, {}, function (home) {
                         if (home.home_preapp_button) {
-                            res.redirect('/404');
+                            res.redirect('/unavailable');
                         } else {
                             res.render('application', {
                                 layout: '/layouts/main',
@@ -434,10 +434,74 @@ const controller = {
             res.render('404', {
                 layout: '/layouts/main',
                 title: '404 Not Found | The Initiative PH',
+                title404: '404 Not Found',
+                message: 'We couldn’t find the page you\'re looking for. It may have been moved or not exist entirely',
                 links: [
                     { path: '/home', name: 'Home' },
                     { path: '/projects', name: 'Projects' },
-                    { path: '/blog', name: 'Blog' },
+                    { path: '/blog', name: 'Blogs' },
+                ],
+                home_content: home,
+            })
+        });
+    },
+
+    getProjectNotFound(req, res) {
+        database.findOne(Home, {}, {}, function (home) {
+            res.render('404', {
+                layout: '/layouts/main',
+                title: 'Project Not Found | The Initiative PH',
+                title404: 'Project not Found',
+                message: 'We couldn’t find the project you\'re looking for. It may have been been unpublished, deleted, or not exist entirely',
+                links: [
+                    { path: '/projects', name: 'Projects' },
+                    { path: '/home', name: 'Home' },
+                ],
+                home_content: home,
+            })
+        });
+    },
+
+    getBlogNotFound(req, res) {
+        database.findOne(Home, {}, {}, function (home) {
+            res.render('404', {
+                layout: '/layouts/main',
+                title: 'Blog Not Found | The Initiative PH',
+                title404: 'Blog not Found',
+                message: 'We couldn’t find the blog you\'re looking for. It may have been unpublished, deleted, or not exist entirely',
+                links: [
+                    { path: '/blog', name: 'Blogs' },
+                    { path: '/home', name: 'Home' },
+                ],
+                home_content: home,
+            })
+        });
+    },
+
+    getUnavailable(req, res) {
+        database.findOne(Home, {}, {}, function (home) {
+            var type, link, retype, relink;
+            if (home.home_preapp_button) {
+                type = "Applications";
+                link = "/application";
+                retype = "Pre Applications";
+                relink = "/pre-application";
+            }
+            else {
+                type = "Pre Applications";
+                link = "/pre-application";
+                retype = "Applications";
+                relink = "/application";
+            }
+
+            res.render('404', {
+                layout: '/layouts/main',
+                title: 'Unavailable | The Initiative PH',
+                title404: 'Unavailable',
+                message: type + ' are unavailable at the moment.',
+                links: [
+                    { path: relink, name: retype },
+                    { path: '/home', name: 'Home' },
                 ],
                 home_content: home,
             })

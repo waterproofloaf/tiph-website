@@ -70,7 +70,7 @@ const blogController = {
                 });
             }
             else {
-                res.redirect('/404');
+                res.redirect('/blog-not-found');
             }
         });
     },
