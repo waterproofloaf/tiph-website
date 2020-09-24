@@ -1,4 +1,5 @@
 const Department = require('../models/DepartmentModel.js');
+const Position = require('../models/PositionModel.js');
 const database = require('../models/db.js');
 const { ObjectID } = require('mongodb');
 const { validationResult } = require('express-validator');
@@ -109,7 +110,23 @@ const departmentController = {
         }
 
         database.updateOne(Department, filter, department_details);
-        res.redirect('/cms-donate');
+        // res.redirect('/cms-donate');
+    },
+
+    positionToggle: function (req, res) {
+        var position_id = req.query.id;
+        var position_available = req.query.available;
+
+        var filter = {
+            _id: ObjectID(position_id)
+        }
+
+        var position_details = {
+            position_available: position_available
+        }
+
+        database.updateOne(Position, filter, position_details);
+        // res.redirect('/cms-donate');
     },
 }
 

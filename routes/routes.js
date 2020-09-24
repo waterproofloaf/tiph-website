@@ -170,6 +170,7 @@ app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
 app.post('/cms-edit-application', appformController.editAppForm);
 app.get('/cms-edit-application/toggle/', departmentController.departmentToggle);
+app.get('/cms-edit-application/pos-toggle/', departmentController.positionToggle);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
 app.post('/cms-edit-pre-application', preappformController.editPreAppForm);
 
