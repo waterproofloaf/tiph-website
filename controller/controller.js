@@ -655,8 +655,9 @@ const controller = {
                 database.findOne(AppForm, {}, {}, function (appsform) {
                     res.render('cms-application', {
                         layout: '/layouts/cms-layout',
-                        title: 'Volunteer Forms | The Initiative PH',
+                        title: 'Manage Forms | The Initiative PH',
                         application_active: true,
+                        forms_active: true,
                         name: req.session.name,
                         type: req.session.type,
                         userid: req.session.userid,
@@ -670,20 +671,58 @@ const controller = {
         else {
             res.redirect('cms-login')
         }
+    },
 
-        // if (req.session.user && req.cookies.user_sid) {
-        //     res.render('cms-application', {
-        //         layout: '/layouts/cms-layout',
-        //         title: 'CMS Application | The Initiative PH',
-        //         application_active: true,
-        //         name: req.session.name,
-        //         type: req.session.type,
-        //         userid: req.session.userid,
-        //     })
-        // }
-        // else {
-        //     res.redirect('cms-login')
-        // }
+    //Replace department with Positions
+    getCMSPositions: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            Department.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    res.render('cms-positions', {
+                        layout: '/layouts/cms-layout',
+                        title: 'Manage Positions | The Initiative PH',
+                        application_active: true,
+                        positions_active: true,
+                        name: req.session.name,
+                        type: req.session.type,
+                        userid: req.session.userid,
+                    })
+                } else {
+                    database.findMany(Department, {}, {}, function (departmentArray) {
+                        res.render('cms-positions', {
+                            layout: '/layouts/cms-layout',
+                            title: 'Manage Positions | The Initiative PH',
+                            application_active: true,
+                            positions_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            department_info: departmentArray,
+                        })
+                    });
+                }
+            });
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+
+    getCMSPositionNew: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            res.render('cms-position-new', {
+                layout: '/layouts/cms-layout',
+                title: 'Add New Position | The Initiative PH',
+                application_active: true,
+                positions_active: true,
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
+            })
+        }
+        else {
+            res.redirect('cms-login')
+        }
     },
 
     getCMSEditApplication: function (req, res) {

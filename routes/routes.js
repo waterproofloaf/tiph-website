@@ -159,14 +159,17 @@ app.get('/cms-logout', controller.getCMSLogout);
 // CMS Home and Application
 app.get('/cms-home', controller.getCMSHome);
 app.post('/cms-home', upload.any('home_cover_upload', 'home_one_pic', 'home_two_pic', 'home_three_pic', 'home_four_pic'), homeController.editHome);
+
 app.get('/cms-about', controller.getCMSAbout);
 app.post('/cms-about', upload.any(), cmsValidator.AboutValidation(), aboutController.editAbout);
+
 app.get('/cms-department', controller.getCMSDepartment);
 app.get('/cms-department-new', controller.getCMSDepartmentNew);
 app.post('/cms-department-new', cmsValidator.DepartmentValidation(), departmentController.newDepartment);
 app.get('/cms-department-edit', controller.getCMSDepartmentEdit);
 app.post('/cms-department-edit', cmsValidator.DepartmentValidation(), departmentController.editDepartment);
 app.get('/cms-department/delete/', departmentController.deleteDepartment);
+
 app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
 app.post('/cms-edit-application', appformController.editAppForm);
@@ -174,6 +177,9 @@ app.get('/cms-edit-application/toggle/', departmentController.departmentToggle);
 app.get('/cms-edit-application/pos-toggle/', departmentController.positionToggle);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
 app.post('/cms-edit-pre-application', preappformController.editPreAppForm);
+
+app.get('/cms-positions', controller.getCMSPositions);
+app.get("/cms-position-new", controller.getCMSPositionNew);
 
 // CMS Applicant
 app.get('/cms-applicant-pre-overview', controller.getCMSApplicantPreOverview);

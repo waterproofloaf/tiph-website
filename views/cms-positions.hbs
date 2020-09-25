@@ -1,0 +1,76 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="card">
+          <div class="card-header">
+            <div class="row d-flex align-items-center">
+              <div class="col">
+                <h4 class="card-title">
+                  Manage Positions
+                </h4>
+              </div>
+              <div class="col text-right">
+                <a href="cms-position-new">
+                  <button id="blogeditbtn" type="button" class="btn btn-success">
+                    <i class="fas fa-plus-circle"></i> Add a new position
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive text-center">
+              <table class="table text-left blog-project-table" id="positions-table">
+                <thead class=" text-primary">
+                  <th style="width:80%">
+                    Name
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Edit
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Delete
+                  </th>
+                </thead>
+                <tbody>
+                  {{#each department_info}}
+                  <tr>
+                    <td>
+                      {{this.department_title}}
+                    </td>
+                    <td class="text-center">
+                      <a href="/cms-position-edit?id={{this._id}}"><button id="blogeditbtn" type="button"
+                          class="btn btn-outline-success">Edit</button></a>
+                    </td>
+                    <td class="text-center">
+                      <button id="{{this._id}}" type="button" class="btn btn-outline-danger"
+                        onclick="deleteConfirm(this)">Delete</button>
+                    </td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function deleteConfirm(button) {
+    var self = $(button).attr('id');
+    if (confirm("Are you sure of deleting this position?")) {
+      $.ajax({
+        url: "/cms-positions/delete",
+        data: { id: self },
+        success: function (response) {
+          window.location.href = 'cms-positions';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+</script>
