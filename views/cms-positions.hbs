@@ -27,24 +27,17 @@
                     Name
                   </th>
                   <th class="text-center" style="width:10%">
-                    Edit
-                  </th>
-                  <th class="text-center" style="width:10%">
                     Delete
                   </th>
                 </thead>
                 <tbody>
-                  {{#each department_info}}
+                  {{#each position_info}}
                   <tr>
                     <td>
-                      {{this.department_title}}
+                      {{this.pos_name}}
                     </td>
                     <td class="text-center">
-                      <a href="/cms-position-edit?id={{this._id}}"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-center">
-                      <button id="{{this._id}}" type="button" class="btn btn-outline-danger"
+                      <button id="{{this.pos_name}}" type="button" class="btn btn-outline-danger"
                         onclick="deleteConfirm(this)">Delete</button>
                     </td>
                   </tr>
@@ -65,7 +58,7 @@
     if (confirm("Are you sure of deleting this position?")) {
       $.ajax({
         url: "/cms-positions/delete",
-        data: { id: self },
+        data: { name: self },
         success: function (response) {
           window.location.href = 'cms-positions';
         },

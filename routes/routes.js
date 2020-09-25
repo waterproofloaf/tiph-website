@@ -22,6 +22,7 @@ const homeController = require('../controller/homeController.js');
 const aboutController = require('../controller/aboutController.js');
 const departmentController = require('../controller/departmentController.js');
 const appformController = require('../controller/appformController.js');
+const positionController = require('../controller/positionController.js');
 // const uploadController = require("../controller/uploadImgController.js");
 
 // import module 'Validators' from '../validators/...'
@@ -174,12 +175,14 @@ app.get('/cms-application', controller.getCMSApplication);
 app.get('/cms-edit-application', controller.getCMSEditApplication);
 app.post('/cms-edit-application', appformController.editAppForm);
 app.get('/cms-edit-application/toggle/', departmentController.departmentToggle);
-app.get('/cms-edit-application/pos-toggle/', departmentController.positionToggle);
+app.get('/cms-edit-application/pos-toggle/', positionController.positionToggle);
 app.get('/cms-edit-pre-application', controller.getCMSEditPreApplication);
 app.post('/cms-edit-pre-application', preappformController.editPreAppForm);
 
 app.get('/cms-positions', controller.getCMSPositions);
-app.get("/cms-position-new", controller.getCMSPositionNew);
+app.get('/cms-position-new', controller.getCMSPositionNew);
+app.post('/cms-position-new', cmsValidator.PositionValidation(), positionController.newPosition);
+app.get('/cms-positions/delete/', positionController.deletePosition);
 
 // CMS Applicant
 app.get('/cms-applicant-pre-overview', controller.getCMSApplicantPreOverview);

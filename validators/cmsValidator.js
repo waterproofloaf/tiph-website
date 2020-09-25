@@ -1,4 +1,5 @@
 const { check } = require('express-validator');
+const Position = require('../models/PositionModel.js');
 
 const cmsValidator = {
     editAdminValidation: function() {
@@ -102,6 +103,21 @@ const cmsValidator = {
             check('department_title').notEmpty().withMessage('Department Title is required!'),
             check('department_description').notEmpty().withMessage('Department Description is required!'),
             check('department_contact').notEmpty().withMessage('Department Contact is required!'),
+        ];
+
+        return validation
+    },
+
+    PositionValidation: function() {
+        var validation = [
+            check('position_name').notEmpty().withMessage('Position Name is required!')
+            .custom(value => {
+                return Position.findOne({position_name: value}).then(pos => {
+                    if(pos){
+                        return Promise.reject('Position Name is already taken!');
+                    }
+                })
+            })
         ];
 
         return validation

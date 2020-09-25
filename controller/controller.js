@@ -676,7 +676,7 @@ const controller = {
     //Replace department with Positions
     getCMSPositions: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
-            Department.countDocuments({}, function (err, count) {
+            Position.countDocuments({}, function (err, count) {
                 if (count == 0) {
                     res.render('cms-positions', {
                         layout: '/layouts/cms-layout',
@@ -687,8 +687,14 @@ const controller = {
                         type: req.session.type,
                         userid: req.session.userid,
                     })
-                } else {
-                    database.findMany(Department, {}, {}, function (departmentArray) {
+                } 
+                else {
+                    var positionArray = [];
+                    Position.distinct('position_name')
+                    .then(docs => {
+                        docs.forEach(
+                            pos_name => positionArray.push({pos_name})
+                        )
                         res.render('cms-positions', {
                             layout: '/layouts/cms-layout',
                             title: 'Manage Positions | The Initiative PH',
@@ -697,9 +703,9 @@ const controller = {
                             name: req.session.name,
                             type: req.session.type,
                             userid: req.session.userid,
-                            department_info: departmentArray,
+                            position_info: positionArray,
                         })
-                    });
+                    })
                 }
             });
         }
