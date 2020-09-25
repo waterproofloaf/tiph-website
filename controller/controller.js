@@ -152,7 +152,7 @@ const controller = {
                                 projects_active: true,
                                 no_proj: true,
                                 home_content: home,
-                                projectMessage: 'There is currently no project published.'
+                                projectMessage: 'There are currently no project entries published.'
                             })
                         });
                     }
@@ -354,7 +354,7 @@ const controller = {
                                 title: 'Blogs | The Initiative PH',
                                 blog_active: true,
                                 home_content: home,
-                                blogMessage: 'There is currently no Blogs published.'
+                                blogMessage: 'There is currently no blog entries published.'
                             })
                         });
                     }
