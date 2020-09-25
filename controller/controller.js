@@ -141,57 +141,76 @@ const controller = {
                         home_content: home,
                     })
                 });
-            } else {
-                var perPage = 5;
-                var page = req.params.page || 1;
-                var sort_by = { proj_date: 1 };
+            }
+            else {
+                Project.countDocuments({ project_published: true }, function (err, count) {
+                    if (count == 0) {
+                        database.findOne(Home, {}, {}, function (home) {
+                            res.render('projects', {
+                                layout: '/layouts/main',
+                                title: 'Projects | The Initiative PH',
+                                projects_active: true,
+                                no_proj: true,
+                                home_content: home,
+                                projectMessage: 'There is currently no project published.'
+                            })
+                        });
+                    }
+                    else {
+                        var perPage = 5;
+                        var page = req.params.page || 1;
 
-                proj_sort = req.body.proj_sort_by;
+                        var sort_by = { proj_date: 1 };
 
-                switch (proj_sort) {
-                    case 'adate':
-                        sort_by = { proj_date: 1 };
-                        break;
-                    case 'ddate':
-                        sort_by = { proj_date: -1 };
-                        break;
-                    case 'atitle':
-                        sort_by = { proj_title: 1 };
-                        break;
-                    case 'dtitle':
-                        sort_by = { proj_title: -1 };
-                        break;
-                }
+                        proj_sort = req.body.proj_sort_by;
 
-                Project
-                    .find({})
-                    .sort(sort_by)
-                    .skip((perPage * page) - perPage)
-                    .limit(perPage)
-                    .exec(function (err, projArray) {
-                        Project.countDocuments().exec(function (err, count) {
-                            if (err) return next(err)
-                            database.findOne(Home, {}, {}, function (home) {
-                                res.render('projects', {
-                                    layout: '/layouts/main',
-                                    title: 'Projects | The Initiative PH',
-                                    projects_active: true,
-                                    proj_info: projArray,
-                                    current: page,
-                                    pages: Math.ceil(count / perPage),
-                                    home_content: home,
+                        switch (proj_sort) {
+                            case 'adate':
+                                sort_by = { proj_date: 1 };
+                                break;
+                            case 'ddate':
+                                sort_by = { proj_date: -1 };
+                                break;
+                            case 'atitle':
+                                sort_by = { proj_title: 1 };
+                                break;
+                            case 'dtitle':
+                                sort_by = { proj_title: -1 };
+                                break;
+                        }
+
+                        Project
+                            .find({})
+                            .sort(sort_by)
+                            .skip((perPage * page) - perPage)
+                            .limit(perPage)
+                            .exec(function (err, projArray) {
+                                Project.countDocuments().exec(function (err, count) {
+                                    if (err) return next(err)
+                                    database.findOne(Home, {}, {}, function (home) {
+                                        res.render('projects', {
+                                            layout: '/layouts/main',
+                                            title: 'Projects | The Initiative PH',
+                                            projects_active: true,
+                                            proj_info: projArray,
+                                            current: page,
+                                            pages: Math.ceil(count / perPage),
+                                            home_content: home,
+                                        });
+                                    });
                                 });
                             });
-                        });
-                    });
-                //                database.findMany(Project, {}, {}, function (projArray) {
-                //                    res.render('projects', {
-                //                        layout: '/layouts/main',
-                //                        title: 'Projects | The Initiative PH',
-                //                        projects_active: true,
-                //                        proj_info: projArray,
-                //                    })
-                //                });
+                    }
+
+                    //                database.findMany(Project, {}, {}, function (projArray) {
+                    //                    res.render('projects', {
+                    //                        layout: '/layouts/main',
+                    //                        title: 'Projects | The Initiative PH',
+                    //                        projects_active: true,
+                    //                        proj_info: projArray,
+                    //                    })
+                    //                });
+                })
             }
         });
     },
@@ -325,52 +344,70 @@ const controller = {
                         home_content: home,
                     })
                 });
-            } else {
-                var perPage = 5;
-                var page = req.params.page || 1;
-                var sort_by = { blog_date: 1 };
-
-                blog_sort = req.body.blog_sort_by;
-
-                switch (blog_sort) {
-                    case 'adate':
-                        sort_by = { blog_date: 1 };
-                        break;
-                    case 'ddate':
-                        sort_by = { blog_date: -1 };
-                        break;
-                    case 'atitle':
-                        sort_by = { blog_title: 1 };
-                        break;
-                    case 'dtitle':
-                        sort_by = { blog_title: -1 };
-                        break;
-                }
-
-                Blog
-                    .find({})
-                    .sort(sort_by)
-                    .skip((perPage * page) - perPage)
-                    .limit(perPage)
-                    .exec(function (err, blogArray) {
-                        Blog.countDocuments({ blog_published: true }).exec(function (err, count) {
-                            if (err) return next(err)
-                            database.findOne(Home, {}, {}, function (home) {
-                                res.render('blog', {
-                                    layout: '/layouts/main',
-                                    title: 'Blogs | The Initiative PH',
-                                    blog_active: true,
-                                    blog_info: blogArray,
-                                    current: page,
-                                    pages: Math.ceil(count / perPage),
-                                    home_content: home,
-                                });
-                            });
-                        });
-                    });
             }
-        });
+            else {
+                Blog.countDocuments({ blog_published: true }, function (err, count) {
+                    if (count == 0) {
+                        database.findOne(Home, {}, {}, function (home) {
+                            res.render('blog', {
+                                layout: '/layouts/main',
+                                title: 'Blogs | The Initiative PH',
+                                blog_active: true,
+                                home_content: home,
+                                blogMessage: 'There is currently no Blogs published.'
+                            })
+                        });
+                    }
+                    else {
+                        var perPage = 5;
+                        var page = req.params.page || 1;
+                        var sort_by = { blog_date: 1 };
+
+                        blog_sort = req.body.blog_sort_by;
+
+                        switch (blog_sort) {
+                            case 'adate':
+                                sort_by = { blog_date: 1 };
+                                break;
+                            case 'ddate':
+                                sort_by = { blog_date: -1 };
+                                break;
+                            case 'atitle':
+                                sort_by = { blog_title: 1 };
+                                break;
+                            case 'dtitle':
+                                sort_by = { blog_title: -1 };
+                                break;
+                        }
+
+                        Blog
+                            .find({})
+                            .sort(sort_by)
+                            .skip((perPage * page) - perPage)
+                            .limit(perPage)
+                            .exec(function (err, blogArray) {
+                                Blog.countDocuments({ blog_published: true }).exec(function (err, count) {
+                                    if (err) return next(err)
+                                    database.findOne(Home, {}, {}, function (home) {
+                                        res.render('blog', {
+                                            layout: '/layouts/main',
+                                            title: 'Blogs | The Initiative PH',
+                                            blog_active: true,
+                                            blog_info: blogArray,
+                                            current: page,
+                                            pages: Math.ceil(count / perPage),
+                                            home_content: home,
+                                        });
+                                    });
+                                });
+
+                            });
+                    }
+                });
+            }
+        }
     },
+
 
     getABlog: function (req, res) {
         res.render('a-blog', {

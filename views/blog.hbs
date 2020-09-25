@@ -41,6 +41,9 @@
 <!-- BODY -->
 <div id="light-pagination" class="pagination">
   <div class="container-fluid px-5 py-3 pb-5" id="blog-container">
+    <div class="row justify-content-center">
+      <h5 class="sub-caption">{{blogMessage}}</h5>
+    </div>
     {{#each blog_info}}
     {{#if this.blog_published}}
     <div class="blog-item">
