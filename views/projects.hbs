@@ -66,6 +66,9 @@
 
 <!-- CARD -->
 <div class="container-fluid py-3 px-5 pb-5" id="project-container">
+  <div class="row justify-content-center">
+    <h5 class="sub-caption">{{projectMessage}}</h5>
+  </div>
   {{#each proj_info}}
   {{#if this.proj_published}}
   <div class="project-item" id="proj-all">
@@ -111,7 +114,7 @@
             href="/projects/{{@index}}">{{@index}}{{#equals current @index}}<span
               class="sr-only">(current)</span>{{/equals}}</a></li>
         {{else}}
-        Nothing :(
+        {{!-- Nothing :( --}}
         {{/repeat}}
         <li class="page-item {{#equals current pages}}disabled{{/equals}}">
           <a class="page-link" href="/projects/{{add current 1}}">Next</a>
