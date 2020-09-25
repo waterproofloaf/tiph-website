@@ -42,6 +42,14 @@ const departmentController = {
                 res.redirect('/cms-department');
             }
         });
+
+        Position.distinct('position_name')
+        .then(docs => {
+            docs.forEach(
+                element => 
+                    database.insertOne(Position, {position_name: element, dept_name: department_title, position_available: true}, function (f) {})
+            )
+        })
     },
 
     deleteDepartment: function (req, res) {
@@ -49,6 +57,10 @@ const departmentController = {
         var department_details = {
             _id: ObjectID(department_id)
         }
+
+        database.findOne(Department, department_details, {}, function (dept) {
+            database.deleteMany(Position, {dept_name: dept.department_title}, function(){});
+        })
 
         database.deleteOne(Department, department_details);
         res.redirect('/cms-department');

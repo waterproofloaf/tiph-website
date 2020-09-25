@@ -20,10 +20,6 @@ var DepartmentModel = new mongoose.Schema({
     department_available: {
         type: Boolean,
     },
-    department_positions: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Position'
-    }],
 });
 
 module.exports = mongoose.model('Department', DepartmentModel);
