@@ -122,8 +122,8 @@ input:checked + .slider:before {
 .div-choices{
     font-weight: 520;
     margin-left: 50px;
-    overflow-y: scroll;
-    height: 300px;
+    /* overflow-y: scroll; */
+    height: auto;
 }
 
 /* Blog */
