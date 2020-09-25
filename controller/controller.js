@@ -141,9 +141,9 @@ const controller = {
                         home_content: home,
                     })
                 });
-            } 
+            }
             else {
-                Project.countDocuments({project_published: true}, function (err, count) {
+                Project.countDocuments({ project_published: true }, function (err, count) {
                     if (count == 0) {
                         database.findOne(Home, {}, {}, function (home) {
                             res.render('projects', {
@@ -156,7 +156,7 @@ const controller = {
                             })
                         });
                     }
-                    else{
+                    else {
                         var perPage = 5;
                         var page = req.params.page || 1;
 
@@ -201,15 +201,15 @@ const controller = {
                                 });
                             });
                     }
-                
-                //                database.findMany(Project, {}, {}, function (projArray) {
-                //                    res.render('projects', {
-                //                        layout: '/layouts/main',
-                //                        title: 'Projects | The Initiative PH',
-                //                        projects_active: true,
-                //                        proj_info: projArray,
-                //                    })
-                //                });
+
+                    //                database.findMany(Project, {}, {}, function (projArray) {
+                    //                    res.render('projects', {
+                    //                        layout: '/layouts/main',
+                    //                        title: 'Projects | The Initiative PH',
+                    //                        projects_active: true,
+                    //                        proj_info: projArray,
+                    //                    })
+                    //                });
                 })
             }
         });
@@ -344,9 +344,9 @@ const controller = {
                         home_content: home,
                     })
                 });
-            } 
+            }
             else {
-                Blog.countDocuments({blog_published: true}, function (err, count) {
+                Blog.countDocuments({ blog_published: true }, function (err, count) {
                     if (count == 0) {
                         database.findOne(Home, {}, {}, function (home) {
                             res.render('blog', {
@@ -358,7 +358,7 @@ const controller = {
                             })
                         });
                     }
-                    else{
+                    else {
                         var perPage = 5;
                         var page = req.params.page || 1;
                         var sort_by = { blog_date: 1 };
@@ -386,7 +386,7 @@ const controller = {
                             .skip((perPage * page) - perPage)
                             .limit(perPage)
                             .exec(function (err, blogArray) {
-                                Blog.countDocuments().exec(function (err, count) {
+                                Blog.countDocuments({ blog_published: true }).exec(function (err, count) {
                                     if (err) return next(err)
                                     database.findOne(Home, {}, {}, function (home) {
                                         res.render('blog', {
@@ -400,12 +400,14 @@ const controller = {
                                         });
                                     });
                                 });
+
                             });
                     }
-                })
+                });
             }
         });
     },
+
 
     getABlog: function (req, res) {
         res.render('a-blog', {
@@ -721,25 +723,25 @@ const controller = {
                         type: req.session.type,
                         userid: req.session.userid,
                     })
-                } 
+                }
                 else {
                     var positionArray = [];
                     Position.distinct('position_name')
-                    .then(docs => {
-                        docs.forEach(
-                            pos_name => positionArray.push({pos_name})
-                        )
-                        res.render('cms-positions', {
-                            layout: '/layouts/cms-layout',
-                            title: 'Manage Positions | The Initiative PH',
-                            application_active: true,
-                            positions_active: true,
-                            name: req.session.name,
-                            type: req.session.type,
-                            userid: req.session.userid,
-                            position_info: positionArray,
+                        .then(docs => {
+                            docs.forEach(
+                                pos_name => positionArray.push({ pos_name })
+                            )
+                            res.render('cms-positions', {
+                                layout: '/layouts/cms-layout',
+                                title: 'Manage Positions | The Initiative PH',
+                                application_active: true,
+                                positions_active: true,
+                                name: req.session.name,
+                                type: req.session.type,
+                                userid: req.session.userid,
+                                position_info: positionArray,
+                            })
                         })
-                    })
                 }
             });
         }

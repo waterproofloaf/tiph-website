@@ -67,6 +67,7 @@ const blogController = {
                     blog_content: blog.blog_content,
                     blog_preview: blog.blog_preview,
                     blog_active: true,
+                    blog_id: query,
                 });
             }
             else {

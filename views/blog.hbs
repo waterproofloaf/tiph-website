@@ -71,6 +71,14 @@
   </div>
 </div>
 
+{{#equals count 0}}
+<div class="text-center pb-5">
+  <h4>No blog entries to display.</h4>
+</div>
+{{/equals}}
+
+
+
 <!-- PAGINATION -->
 
 <div class="pb-5">
@@ -85,9 +93,9 @@
           href="/blog/{{@index}}">{{@index}}{{#equals current @index}}<span
             class="sr-only">(current)</span>{{/equals}}</a></li>
       {{else}}
-      {{!-- Nothing :( --}}
+      <li class="page-item active"><a class="page-link" href="/blog/1">1<span class="sr-only">(current)</span></a></li>
       {{/repeat}}
-      <li class="page-item {{#equals current pages}}disabled{{/equals}}">
+      <li class="page-item {{#equals current pages}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
         <a class="page-link" href="/blog/{{add current 1}}">Next</a>
       </li>
     </ul>
