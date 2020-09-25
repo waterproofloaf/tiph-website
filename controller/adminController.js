@@ -1,4 +1,5 @@
 const User = require('../models/UserModel.js');
+const Department = require('../models/DepartmentModel.js');
 const session = require('express-session');
 const database = require('../models/db.js');
 const bcrypt = require('bcrypt');
@@ -12,17 +13,19 @@ const adminController = {
 
         if (!errors.isEmpty()) {
             errors = errors.errors;
-
-            res.render('cms-admin-new', {
-            layout: '/layouts/cms-layout',
-                title: 'CMS Add Admin | The Initiative PH',
-                admin_active: true,
-                type: req.session.type,
-                name: req.session.name,
-                userid: req.session.userid,
-                adminErrorMessage: errors[0].msg
-            });
-
+            database.findMany(Department, {}, {}, function (departmentArray) {
+                res.render('cms-admin-new', {
+                layout: '/layouts/cms-layout',
+                    title: 'CMS Add Admin | The Initiative PH',
+                    admin_active: true,
+                    type: req.session.type,
+                    name: req.session.name,
+                    userid: req.session.userid,
+                    department_info: departmentArray,
+                    adminErrorMessage: errors[0].msg
+                });
+            })
+            
             return;
         }
 
@@ -38,8 +41,6 @@ const adminController = {
         else{
             admin_userTypeMain = true;
         }
-        database.findOne(User, {username: admin_username}, {}, function(all){
-            if(all == null || all.username != admin_username){
                 bcrypt.hash(admin_password, 10, function(err, hash){
                     let admin_details = {
                         name: admin_name,
@@ -54,19 +55,6 @@ const adminController = {
                         res.redirect('/cms-admin');
                     });
                 });
-            }
-            else if(all.username == admin_username){
-                res.render('cms-admin-new', {
-                    layout: '/layouts/cms-layout',
-                    title: 'CMS Add Admin | The Initiative PH',
-                    admin_active: true,
-                    type: req.session.type,
-                    name: req.session.name,
-                    userid: req.session.userid,
-                    adminErrorMessage: 'Username already exists!'
-                });
-            }
-        });
     },
 
     deleteAdmin: function (req, res) {
@@ -86,17 +74,20 @@ const adminController = {
             errors = errors.errors;
             var query = req.session.userid;
             database.findOne(User, { _id: query }, {}, function (admin) {
-                res.render('cms-admin-edit', {
-                    layout: '/layouts/cms-layout',
-                    title: 'CMS Edit Admin | The Initiative PH',
-                    admin_name: admin.name,
-                    admin_username: admin.username,
-                    admin_dept: admin.userDepartment,
-                    type: req.session.type,
-                    name: req.session.name,
-                    userid: req.session.userid,
-                    adminErrorMessage: errors[0].msg
-                });
+                database.findMany(Department, {}, {}, function (departmentArray) {
+                    res.render('cms-admin-edit', {
+                        layout: '/layouts/cms-layout',
+                        title: 'CMS Edit Admin | The Initiative PH',
+                        admin_name: admin.name,
+                        admin_username: admin.username,
+                        admin_dept: admin.userDepartment,
+                        type: req.session.type,
+                        name: req.session.name,
+                        userid: req.session.userid,
+                        department_info: departmentArray,
+                        adminErrorMessage: errors[0].msg,
+                    });
+                })
             });
 
             return;
@@ -106,7 +97,6 @@ const adminController = {
         var admin_username = helper.sanitize(req.body.admin_username);
         var admin_password = helper.sanitize(req.body.admin_password);
         var admin_new_password = `${req.body.admin_new_password}`;
-        var admin_confirm_password = `${req.body.admin_confirm_password}`;
         var admin_dept = `${req.body.admin_dept}`;
 
         var filter = {
@@ -117,9 +107,22 @@ const adminController = {
             if (user){
                 bcrypt.compare(admin_password, user.password, function(err, equal){
                     if(equal){
-                        if(admin_new_password != admin_confirm_password){
-                            var query = req.session.userid;
-                            database.findOne(User, { _id: query }, {}, function (admin) {
+                        bcrypt.hash(admin_new_password, 10, function(err, hash){
+                            let admin_details = {
+                                name: admin_name,
+                                username: admin_username,
+                                password: hash,
+                                userDepartment: admin_dept,
+                            }
+                
+                            database.updateOne(User, filter, admin_details);
+                            res.redirect('/cms-logout');
+                        })
+                    }
+                    else{
+                        var query = req.session.userid;
+                        database.findOne(User, { _id: query }, {}, function (admin) {
+                            database.findMany(Department, {}, {}, function (departmentArray) {
                                 res.render('cms-admin-edit', {
                                     layout: '/layouts/cms-layout',
                                     title: 'CMS Edit Admin | The Initiative PH',
@@ -129,71 +132,10 @@ const adminController = {
                                     type: req.session.type,
                                     name: req.session.name,
                                     userid: req.session.userid,
-                                    adminErrorMessage: 'New Password and Confirm Password do not match!'
+                                    department_info: departmentArray,
+                                    adminErrorMessage: 'Old password is incorrect!'
                                 });
-                            });
-                        }
-                        else{
-                            database.findOne(User, {username: admin_username}, {}, function(all){
-                                if(all == null){
-                                    bcrypt.hash(admin_new_password, 10, function(err, hash){
-                                        let admin_details = {
-                                            name: admin_name,
-                                            username: admin_username,
-                                            password: hash,
-                                            userDepartment: admin_dept,
-                                        }
-                            
-                                        database.updateOne(User, filter, admin_details);
-                                        res.redirect('/cms-logout');
-                                    })
-                                }
-                                else if(all.username == admin_username && req.session.userid != all._id){
-                                    var query = req.session.userid;
-                                    database.findOne(User, { _id: query }, {}, function (admin) {
-                                        res.render('cms-admin-edit', {
-                                            layout: '/layouts/cms-layout',
-                                            title: 'CMS Edit Admin | The Initiative PH',
-                                            admin_name: admin.name,
-                                            admin_username: admin.username,
-                                            admin_dept: admin.userDepartment,
-                                            type: req.session.type,
-                                            name: req.session.name,
-                                            userid: req.session.userid,
-                                            adminErrorMessage: 'Username already exists!'
-                                        });
-                                    });
-                                }
-                                else{
-                                    bcrypt.hash(admin_new_password, 10, function(err, hash){
-                                        let admin_details = {
-                                            name: admin_name,
-                                            username: admin_username,
-                                            password: hash,
-                                            userDepartment: admin_dept,
-                                        }
-                            
-                                        database.updateOne(User, filter, admin_details);
-                                        res.redirect('/cms-logout');
-                                    })
-                                }
-                            });
-                        }
-                    }
-                    else{
-                        var query = req.session.userid;
-                        database.findOne(User, { _id: query }, {}, function (admin) {
-                            res.render('cms-admin-edit', {
-                                layout: '/layouts/cms-layout',
-                                title: 'CMS Edit Admin | The Initiative PH',
-                                admin_name: admin.name,
-                                admin_username: admin.username,
-                                admin_dept: admin.userDepartment,
-                                type: req.session.type,
-                                name: req.session.name,
-                                userid: req.session.userid,
-                                adminErrorMessage: 'Old password is incorrect!'
-                            });
+                            })
                         });
                     }
                 });

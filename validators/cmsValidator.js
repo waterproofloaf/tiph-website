@@ -1,13 +1,32 @@
 const { check } = require('express-validator');
+const User = require('../models/UserModel.js');
 const Position = require('../models/PositionModel.js');
+const bcrypt = require('bcrypt');
+const helper = require('../controller/helper.js')
 
 const cmsValidator = {
     editAdminValidation: function() {
         var validation = [
             check('admin_name').notEmpty().withMessage('Full Name is required!'),
-            check('admin_username').notEmpty().withMessage('Username is required!'),
+            check('admin_username').notEmpty().withMessage('Username is required!')
+            .custom((value, {req}) => {
+                return User.findOne({username: value}).then(user => {
+                    if(user){
+                        if(req.session.userid == user._id){
+                            return true;
+                        }
+                        throw new Error('Username is already taken!');
+                    }
+                })
+            }),
             check('admin_password').notEmpty().withMessage('Old Password is required!'),
-            check('admin_new_password').notEmpty().withMessage('New Password is required!'),
+            check('admin_new_password').notEmpty().withMessage('New Password is required!')
+            .custom((value, {req}) => {
+                if(value !== req.body.admin_confirm_password){
+                    throw new Error('New Password and Confirm Password do not match!');
+                }
+                return true;
+            }),
             check('admin_confirm_password').notEmpty().withMessage('Confirm Password is required!'),
         ];
 
@@ -17,7 +36,14 @@ const cmsValidator = {
     addAdminValidation: function() {
         var validation = [
             check('admin_name').notEmpty().withMessage('Full Name is required!'),
-            check('admin_username').notEmpty().withMessage('Username is required!'),
+            check('admin_username').notEmpty().withMessage('Username is required!')
+            .custom(value => {
+                return User.findOne({username: value}).then(user => {
+                    if(user){
+                        return Promise.reject('Username is already taken!');
+                    }
+                })
+            }),
             check('admin_password').notEmpty().withMessage('Password is required!'),
         ];
 

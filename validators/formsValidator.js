@@ -39,7 +39,15 @@ const formsValidator = {
             check('app_schoolcompany').notEmpty().withMessage('School/Company is required!'),
             check('app_number').notEmpty().withMessage('Number is required!').isNumeric().withMessage('Invalid Number!').isLength({min: 11, max:11}).withMessage('Invalid Number!'),
             check('app_facebook').notEmpty().withMessage('Facebook URL is required!'),
-            check('app_findout').notEmpty().withMessage('Where you found out TIPH is required!'),
+            check('app_findout').notEmpty().withMessage('Where you found out TIPH is required!')
+            .custom((value, {req}) => {
+                if (value == "other"){
+                    if(req.body.app_others == ''){
+                        return Promise.reject('Where you found out TIPH is required!');
+                    }
+                }
+                return true;
+            }),
             check('app_expertise').isIn(['Legal Matters','File Organization','Minute-Taking','Human Resource Management','Project Management',
             'Data-driven Marketing and Analysis (Social Media Engagement)', 'Content Curation (Social Media Management)', 'Website Design and Development',
             'Content Creation (Text)', 'Content Creation (Multimedia)', 'Photography and Videography', 'Accounting', 'External Relations', 'Logistics']).

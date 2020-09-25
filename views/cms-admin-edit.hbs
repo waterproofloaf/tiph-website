@@ -37,7 +37,7 @@
                                 
                                 <select class="form-control" id="admin_dept" name="admin_dept">
                                     {{#each department_info}}
-                                        <option value="{{this.department_title}}" {{#equals this.admin_dept "{{this.department_title}}"}}selected{{/equals}}>{{this.department_title}}</option>
+                                        <option value="{{this.department_title}}" {{#equals ../admin_dept this.department_title}}selected{{/equals}}>{{this.department_title}}</option>
                                     {{/each}}
                                 </select>
                             </div>
