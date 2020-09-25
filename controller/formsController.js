@@ -5,6 +5,9 @@ const nodemailer = require('nodemailer');
 const PreApp = require('../models/PreAppModel.js');
 const App = require('../models/AppModel.js');
 const PreAppForm = require('../models/PreAppFormModel.js');
+const AppForm = require('../models/AppFormModel.js')
+const Department = require('../models/DepartmentModel.js')
+const Position = require('../models/PositionModel.js');
 const database = require('../models/db.js');
 
 const { validationResult } = require('express-validator');
@@ -95,14 +98,17 @@ const formsController = {
 
       if (!errors.isEmpty()) {
         errors = errors.errors;
-
-        res.render('pre-application', {
-          layout: '/layouts/main',
-            title: 'Pre-Application | The Initiative PH',
-            volunteer_active: true,
-            preappErrorMessage: errors[0].msg
-        });
-
+        database.findOne(PreAppForm, {}, {}, function (preapp) {
+          res.render('pre-application', {
+            layout: '/layouts/main',
+              title: 'Pre-Application | The Initiative PH',
+              volunteer_active: true,
+              preform_year: preapp.preform_year,
+              preform_desc: preapp.preform_desc,
+              preappErrorMessage: errors[0].msg
+          });
+        })
+        
         return;
       }
 
@@ -156,12 +162,22 @@ const formsController = {
       if (!errors.isEmpty()) {
         errors = errors.errors;
 
-        res.render('application', {
-          layout: '/layouts/main',
-            title: 'Application | The Initiative PH',
-            volunteer_active: true,
-            appErrorMessage: errors[0].msg
-        });
+        database.findOne(AppForm, {}, {}, function (appsform) {
+          database.findMany(Department, {}, {}, function (departmentArray) {
+            database.findMany(Position, {}, {}, function (positionArray) {
+              res.render('application', {
+                layout: '/layouts/main',
+                  title: 'Application | The Initiative PH',
+                  volunteer_active: true,
+                  department_info: departmentArray,
+                  position_info: positionArray,
+                  appform_year: appsform.appform_year,
+                  appform_desc: appsform.appform_desc,
+                  appErrorMessage: errors[0].msg
+              });
+            })
+          })
+        })
 
         return;
       }
@@ -215,12 +231,22 @@ const formsController = {
       database.insertOne(App, newApp, function (f) {
         if (f) {
           console.log('Application Added: ' + app_firstname + " " + app_lastname);
-          res.render('application', {
-            layout: '/layouts/main',
-            title: 'Application | The Initiative PH',
-            volunteer_active: true,
-            msg: '<mark>Your Application form has been submitted!<br><a href="https://tinyurl.com/tiphinterviews2020">Interview Schedule Link</a></mark>',
-            confirmed: true,
+          database.findOne(AppForm, {}, {}, function (appsform) {
+            database.findMany(Department, {}, {}, function (departmentArray) {
+              database.findMany(Position, {}, {}, function (positionArray) {
+                res.render('application', {
+                  layout: '/layouts/main',
+                    title: 'Application | The Initiative PH',
+                    volunteer_active: true,
+                    department_info: departmentArray,
+                    position_info: positionArray,
+                    appform_year: appsform.appform_year,
+                    appform_desc: appsform.appform_desc,
+                    msg: '<mark>Your Application form has been submitted!<br><a href="https://tinyurl.com/tiphinterviews2020">Interview Schedule Link</a></mark>',
+                    confirmed: true,
+                });
+              })
+            })
           })
         }
       });
