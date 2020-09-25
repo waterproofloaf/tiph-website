@@ -319,7 +319,7 @@
         <div class="div-position">
             <p class="sub-caption" style="font-size: 20px;">What's your desired position? <star>*</star> </p>
             <select name="app_position1" id="app_position1" style="min-width: 50%; margin-bottom: 15px;" required>
-                <option value="Secretary">Secretary</option>
+                {{!-- <option value="Secretary">Secretary</option>
                 <option value="Multimedia Artist">Multimedia Artist</option>
                 <option value="Content Writer">Content Writer</option>
                 <option value="Photographer">Photographer</option>
@@ -327,7 +327,7 @@
                 <option value="External Relations Officer">External Relations Officer</option>
                 <option value="Finance Officer">Finance Officer</option>
                 <option value="Logistics Officer">Logistics Officer</option>
-                <option value="Research Officer">Research Officer</option>
+                <option value="Research Officer">Research Officer</option> --}}
             </select>
         </div>
 
@@ -364,7 +364,7 @@
         <div class="div-position-2">
             <p class="sub-caption" style="font-size: 20px; margin-top: 15px;">What's your desired position? <star>*</star> </p>
             <select name="app_position2" id="app_position2" style="width: 50%; margin-bottom: 15px;">
-                <option value="HR Officer">HR Officer</option>
+                {{!-- <option value="HR Officer">HR Officer</option>
                 <option value="Secretary">Secretary</option>
                 <option value="Multimedia Artist">Multimedia Artist</option>
                 <option value="Content Writer">Content Writer</option>
@@ -375,7 +375,7 @@
                 <option value="External Relations Officer">External Relations Officer</option>
                 <option value="Finance Officer">Finance Officer</option>
                 <option value="Logistics Officer">Logistics Officer</option>
-                <option value="Research Officer">Research Officer</option>
+                <option value="Research Officer">Research Officer</option> --}}
             </select>
         </div>
 
@@ -491,56 +491,31 @@
 </script>
 
 <script>
-    var listA = [{name:'pos_for_daa', value:'pos for daa'}, {name:'2am', value:'2am'}, {name:'3am', value:'3am'}];
-
-    var listB = [{name:'pos_for_dpc', value:'pos for dpc'}, {name:'13', value:'13'}, {name:'14', value:'14'}];
-
     $(document).ready( function() {
         $("input[name='app_dept1']").on('change',function() {
             selected_value = $("input[name='app_dept1']:checked").val();
-            console.log(selected_value)
 
-            $.get('/application/positions',{dept_name: selected_value}, function(data,status) {
-                alert(data)
-                console.log(data)
+            $.get('/application/positions',{dept_name: selected_value}, (data) => {
+                $('#app_position1').empty()
+                $.each(data, function(index, value) {
+                    if(value.position_available){
+                        $('#app_position1').append('<option value="'+value.position_name+'">'+value.position_name+'</option>')
+                    }
+                })
             })
-            
-
-            if($(this).is(':checked') && $(this).val() == 'Department of Administrative Affairs')
-            {
-                
-                $('#app_position1').empty()
-                $.each(listA, function(index, value) {
-                    $('#app_position1').append('<option value="'+value.value+'" name="'+value.name+'">'+value.value+'</option>');
-                });
-            }
-            else if($(this).is(':checked') && $(this).val() == 'Department of Publications and Communications')
-            {
-                $('#app_position1').empty()
-                $.each(listB, function(index, value) {
-                    $('#app_position1').append('<option value="'+value.value+'" name="'+value.name+'">'+value.name+'</option>');
-                }); 
-            }
         });
 
         $("input[name='app_dept2']").on('change',function() {
             selected_value = $("input[name='app_dept2']:checked").val();
-            console.log(selected_value)
 
-            if($(this).is(':checked') && $(this).val() == 'Department of Administrative Affairs')
-            {
+            $.get('/application/positions',{dept_name: selected_value}, (data) => {
                 $('#app_position2').empty()
-                $.each(listA, function(index, value) {
-                    $('#app_position2').append('<option value="'+value.value+'">'+value.name+'</option>');
-                });
-            }
-            else if($(this).is(':checked') && $(this).val() == 'Department of Publications and Communications')
-            {
-                $('#app_position2').empty()
-                $.each(listB, function(index, value) {
-                    $('#app_position2').append('<option value="'+value.value+'">'+value.name+'</option>');
-                }); 
-            }
+                $.each(data, function(index, value) {
+                    if(value.position_available){
+                        $('#app_position2').append('<option value="'+value.position_name+'">'+value.position_name+'</option>')
+                    }
+                })
+            })
         });
     });  
 </script>
