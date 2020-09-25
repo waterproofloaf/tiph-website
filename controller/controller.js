@@ -405,7 +405,7 @@ const controller = {
                     }
                 });
             }
-        }
+        });
     },
 
 
