@@ -60,6 +60,14 @@ star{
   font-size: 14px;
 }
 
+.navbar a {
+  transition-duration: 0.4s;
+}
+
+.navbar a:hover {
+  transition-duration: 0.4s;
+}
+
 .dropdown-menu {
   background-color: #a67f46 !important; 
   font-family: "Montserrat" !important;
@@ -326,10 +334,12 @@ footer {
 
 .soc-button {
   color: white;
+  transition-duration: 0.4s;
 }
 
 .soc-button:hover {
   color: #0c5865;
+  transition-duration: 0.4s;
 }
 
 /* About */
