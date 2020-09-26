@@ -24,12 +24,20 @@
 </div> --}}
 
 <!-- HEADER -->
-<div class="container-fluid center p-5"
+{{!-- <div class="container-fluid center p-5"
   style="background: #eeede0 url(proj_cover{{this.proj_id}}) no-repeat center; background-size:cover; height=500px;">
   <div class="header-title text-center">
     <h5 class="font-weight-bold text-uppercase sub-title">{{this.proj_title}}</h5>
-    <p class="sub-caption text-center" id="">{{this.proj_status}} • {{dateFormat this.proj_date "MMMM Do, YYYY"}}</p>
+    <p class="sub-caption text-center" style="text-shadow: 0 0 10px white;">{{this.proj_status}} •
+      {{dateFormat this.proj_date "MMMM Do, YYYY"}}</p>
   </div>
+</div> --}}
+
+<div class="bg-image"></div>
+<div class="bg-text">
+  <h5 class="font-weight-bold text-uppercase sub-title" style="color:white">{{this.proj_title}}</h5>
+  <p class="sub-caption text-center" style="color:white">{{this.proj_status}} •
+    {{dateFormat this.proj_date "MMMM Do, YYYY"}}</p>
 </div>
 
 <!-- BODY -->
@@ -38,3 +46,34 @@
   {{{this.proj_content}}}
 </div>
 <br>
+
+<style>
+  .bg-image {
+    /* The image used */
+    background-image: url(proj_cover{{this.proj_id}});
+
+    /* Add the blur effect */
+    -webkit-filter: blur(2px);
+
+    /* Full height */
+    height: 50%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* Position text in the middle of the page/image */
+  .bg-text {
+    color: white;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+</style>
