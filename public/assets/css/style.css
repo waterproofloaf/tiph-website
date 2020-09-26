@@ -180,6 +180,21 @@ star{
     margin-right: 47px;
 }
 
+.viewer-back {
+  font-weight: 500;
+  color: #043841 !important;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  opacity: 0.8;
+}
+
+.viewer-back:hover {
+  color: #043841 !important;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  opacity: 1;
+}
+
 .hr-line {
   display: block;
   height: 1px;
