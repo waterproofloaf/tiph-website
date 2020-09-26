@@ -178,7 +178,7 @@ const controller = {
                         }
 
                         Project
-                            .find({})
+                            .find({ proj_published: true })
                             .sort(sort_by)
                             .skip((perPage * page) - perPage)
                             .limit(perPage)
@@ -202,16 +202,7 @@ const controller = {
                                 });
                             });
                     }
-
-                    //                database.findMany(Project, {}, {}, function (projArray) {
-                    //                    res.render('projects', {
-                    //                        layout: '/layouts/main',
-                    //                        title: 'Projects | The Initiative PH',
-                    //                        projects_active: true,
-                    //                        proj_info: projArray,
-                    //                    })
-                    //                });
-                })
+                });
             }
         });
     },
@@ -383,7 +374,7 @@ const controller = {
                         }
 
                         Blog
-                            .find({})
+                            .find({ blog_published: true })
                             .sort(sort_by)
                             .skip((perPage * page) - perPage)
                             .limit(perPage)
