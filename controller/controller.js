@@ -158,7 +158,7 @@ const controller = {
                     else {
                         var perPage = 5;
                         var page = req.params.page || 1;
-                        var sort_by = { proj_date: 1 };
+                        var sort_by = { proj_date: -1 };
 
                         proj_sort = req.body.proj_sort_by;
 
@@ -354,7 +354,7 @@ const controller = {
                     else {
                         var perPage = 5;
                         var page = req.params.page || 1;
-                        var sort_by = { blog_date: 1 };
+                        var sort_by = { blog_date: -1 };
 
                         blog_sort = req.body.blog_sort_by;
 
