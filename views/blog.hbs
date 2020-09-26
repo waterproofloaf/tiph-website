@@ -12,13 +12,13 @@
           onkeyup="blog_search()" aria-label="Search">
       </div>
     </div>
-  </div>
-  <div class="row px-5 pt-4 d-flex align-self-center">
-    <p class="sub-caption p-3">
-      We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
-      Our projects seek to address issues that arised within our country and at the same time, encourage the youth
-      to become more aware on their role as a citizen with social responsibilities.
-    </p>
+    <div class="row px-5 pt-4 d-flex align-self-center">
+      <p class="sub-caption p-3">
+        We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
+        Our projects seek to address issues that arised within our country and at the same time, encourage the youth
+        to become more aware on their role as a citizen with social responsibilities.
+      </p>
+    </div>
   </div>
   <br>
   <div class="container-fluid sort-view d-flex sub-caption">
@@ -60,7 +60,6 @@
           <h6 class="card-subtitle mb-2 text-muted blog-author">By {{this.blog_author}} |
             {{dateFormat this.blog_date "MMMM Do, YYYY"}}</h6>
           <p class="sub-caption blog-caption">{{this.blog_preview}}</p>
-          {{!-- <a href="/a-blog/view?id={{this._id}}&title={{this.blog_title}}&author={{this.blog_author}}&date={{this.blog_date}}" class="card-link" id="{{this._id}}">Read more</a> --}}
           <a href="/a-blog?id={{this._id}}" class="btn btn-secondary" id="{{this._id}}">Continue Reading</a>
         </div>
       </div>
