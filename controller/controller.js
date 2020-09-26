@@ -228,10 +228,34 @@ const controller = {
             } else {
                 var perPage = 5
                 var page = req.params.page || 1
+                var sort_by = { proj_date: -1 }
+                var sort_string = 'ddate'
                 var status = 'Approved'
+
+                proj_sort = req.body.proj_sort_by;
+
+                switch (proj_sort) {
+                    case 'adate':
+                        sort_by = { proj_date: 1 };
+                        sort_string = 'adate';
+                        break;
+                    case 'ddate':
+                        sort_by = { proj_date: -1 };
+                        sort_string = 'ddate';
+                        break;
+                    case 'atitle':
+                        sort_by = { proj_title: 1 };
+                        sort_string = 'atitle';
+                        break;
+                    case 'dtitle':
+                        sort_by = { proj_title: -1 };
+                        sort_string = 'dtitle';
+                        break;
+                }
 
                 Project
                     .find({ proj_status: 'Approved' })
+                    .sort(sort_by)
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
@@ -246,6 +270,7 @@ const controller = {
                                     current: page,
                                     pages: Math.ceil(count / perPage),
                                     home_content: home,
+                                    sort_string: sort_string,
                                     status: status,
                                 });
                             });
@@ -269,10 +294,34 @@ const controller = {
             } else {
                 var perPage = 5
                 var page = req.params.page || 1
+                var sort_by = { proj_date: -1 }
+                var sort_string = 'ddate'
                 var status = 'Ongoing'
+
+                proj_sort = req.body.proj_sort_by;
+
+                switch (proj_sort) {
+                    case 'adate':
+                        sort_by = { proj_date: 1 };
+                        sort_string = 'adate';
+                        break;
+                    case 'ddate':
+                        sort_by = { proj_date: -1 };
+                        sort_string = 'ddate';
+                        break;
+                    case 'atitle':
+                        sort_by = { proj_title: 1 };
+                        sort_string = 'atitle';
+                        break;
+                    case 'dtitle':
+                        sort_by = { proj_title: -1 };
+                        sort_string = 'dtitle';
+                        break;
+                }
 
                 Project
                     .find({ proj_status: 'Ongoing' })
+                    .sort(sort_by)
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
@@ -287,6 +336,7 @@ const controller = {
                                     current: page,
                                     pages: Math.ceil(count / perPage),
                                     home_content: home,
+                                    sort_string: sort_string,
                                     status: status,
                                 });
                             });
@@ -310,10 +360,34 @@ const controller = {
             } else {
                 var perPage = 5
                 var page = req.params.page || 1
+                var sort_by = { proj_date: -1 }
+                var sort_string = 'ddate'
                 var status = 'Proposed'
+
+                proj_sort = req.body.proj_sort_by;
+
+                switch (proj_sort) {
+                    case 'adate':
+                        sort_by = { proj_date: 1 };
+                        sort_string = 'adate';
+                        break;
+                    case 'ddate':
+                        sort_by = { proj_date: -1 };
+                        sort_string = 'ddate';
+                        break;
+                    case 'atitle':
+                        sort_by = { proj_title: 1 };
+                        sort_string = 'atitle';
+                        break;
+                    case 'dtitle':
+                        sort_by = { proj_title: -1 };
+                        sort_string = 'dtitle';
+                        break;
+                }
 
                 Project
                     .find({ proj_status: 'Proposed' })
+                    .sort(sort_by)
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
@@ -328,6 +402,7 @@ const controller = {
                                     current: page,
                                     pages: Math.ceil(count / perPage),
                                     home_content: home,
+                                    sort_string: sort_string,
                                     status: status,
                                 });
                             });

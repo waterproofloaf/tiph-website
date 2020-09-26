@@ -133,10 +133,16 @@ app.post('/projects/:page', controller.getProjects);
 app.get('/a-project/', projectController.findProject);
 app.get('/projects-approved', controller.getProjectsApproved);
 app.get('/projects-approved/:page', controller.getProjectsApproved);
+app.post('/projects-approved', controller.getProjectsApproved);
+app.post('/projects-approved/:page', controller.getProjectsApproved);
 app.get('/projects-ongoing', controller.getProjectsOngoing);
 app.get('/projects-ongoing/:page', controller.getProjectsOngoing);
+app.post('/projects-ongoing', controller.getProjectsOngoing);
+app.post('/projects-ongoing/:page', controller.getProjectsOngoing);
 app.get('/projects-proposed', controller.getProjectsProposed);
 app.get('/projects-proposed/:page', controller.getProjectsProposed);
+app.post('/projects-proposed', controller.getProjectsProposed);
+app.post('/projects-proposed/:page', controller.getProjectsProposed);
 
 app.get('/blog', controller.getBlogs);
 app.post('/blog', controller.getBlogs);
