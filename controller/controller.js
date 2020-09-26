@@ -159,21 +159,27 @@ const controller = {
                         var perPage = 5;
                         var page = req.params.page || 1;
                         var sort_by = { proj_date: -1 };
+                        var sort_string = 'ddate';
+                        var status = 'All';
 
                         proj_sort = req.body.proj_sort_by;
 
                         switch (proj_sort) {
                             case 'adate':
                                 sort_by = { proj_date: 1 };
+                                sort_string = 'adate';
                                 break;
                             case 'ddate':
                                 sort_by = { proj_date: -1 };
+                                sort_string = 'ddate';
                                 break;
                             case 'atitle':
                                 sort_by = { proj_title: 1 };
+                                sort_string = 'atitle';
                                 break;
                             case 'dtitle':
                                 sort_by = { proj_title: -1 };
+                                sort_string = 'dtitle';
                                 break;
                         }
 
@@ -195,6 +201,8 @@ const controller = {
                                             pages: Math.ceil(count / perPage),
                                             home_content: home,
                                             count: count,
+                                            sort_string: sort_string,
+                                            status: status,
                                         });
                                     });
                                 });
@@ -220,6 +228,7 @@ const controller = {
             } else {
                 var perPage = 5
                 var page = req.params.page || 1
+                var status = 'Approved'
 
                 Project
                     .find({ proj_status: 'Approved' })
@@ -237,6 +246,7 @@ const controller = {
                                     current: page,
                                     pages: Math.ceil(count / perPage),
                                     home_content: home,
+                                    status: status,
                                 });
                             });
                         });
@@ -259,6 +269,7 @@ const controller = {
             } else {
                 var perPage = 5
                 var page = req.params.page || 1
+                var status = 'Ongoing'
 
                 Project
                     .find({ proj_status: 'Ongoing' })
@@ -276,6 +287,7 @@ const controller = {
                                     current: page,
                                     pages: Math.ceil(count / perPage),
                                     home_content: home,
+                                    status: status,
                                 });
                             });
                         });
@@ -298,6 +310,7 @@ const controller = {
             } else {
                 var perPage = 5
                 var page = req.params.page || 1
+                var status = 'Proposed'
 
                 Project
                     .find({ proj_status: 'Proposed' })
@@ -315,6 +328,7 @@ const controller = {
                                     current: page,
                                     pages: Math.ceil(count / perPage),
                                     home_content: home,
+                                    status: status,
                                 });
                             });
                         });
@@ -353,21 +367,26 @@ const controller = {
                         var perPage = 5;
                         var page = req.params.page || 1;
                         var sort_by = { blog_date: -1 };
+                        var sort_string = 'ddate';
 
                         blog_sort = req.body.blog_sort_by;
 
                         switch (blog_sort) {
                             case 'adate':
                                 sort_by = { blog_date: 1 };
+                                sort_string = 'adate';
                                 break;
                             case 'ddate':
                                 sort_by = { blog_date: -1 };
+                                sort_string = 'ddate';
                                 break;
                             case 'atitle':
                                 sort_by = { blog_title: 1 };
+                                sort_string = 'atitle';
                                 break;
                             case 'dtitle':
                                 sort_by = { blog_title: -1 };
+                                sort_string = 'dtitle';
                                 break;
                         }
 
@@ -389,6 +408,7 @@ const controller = {
                                             pages: Math.ceil(count / perPage),
                                             home_content: home,
                                             count: count,
+                                            sort_string: sort_string,
                                         });
                                     });
                                 });

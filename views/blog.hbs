@@ -27,10 +27,10 @@
         <select class="form-control form-control-sm" id="blog-sort-by" name="blog_sort_by"
           onchange="this.form.submit()">
           <option value="" selected disabled hidden>Sort by:</option>
-          <option value="adate">Date (Oldest)</option>
-          <option value="ddate">Date (Latest)</option>
-          <option value="atitle">Title (A-Z)</option>
-          <option value="dtitle">Title (Z-A)</option>
+          <option value="adate" {{#equals sort_string 'adate'}}selected{{/equals}}>Date (Oldest)</option>
+          <option value="ddate" {{#equals sort_string 'ddate'}}selected{{/equals}}>Date (Latest)</option>
+          <option value="atitle" {{#equals sort_string 'atitle'}}selected{{/equals}}>Title (A-Z)</option>
+          <option value="dtitle" {{#equals sort_string 'dtitle'}}selected{{/equals}}>Title (Z-A)</option>
         </select>
       </form>
     </div>

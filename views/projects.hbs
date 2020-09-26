@@ -26,15 +26,15 @@
       <form method="post">
         <select class="form-control form-control-sm sub-caption" id="proj-sort-by" name="proj_sort_by"
           onchange="this.form.submit()">
-          <option value="" selected disabled hidden>Sort by:</option>
-          <option value="adate">Date (Oldest)</option>
-          <option value="ddate">Date (Latest)</option>
-          <option value="atitle">Title (A-Z)</option>
-          <option value="dtitle">Title (Z-A)</option>
+          <option value="" disabled hidden>Sort by:</option>
+          <option value="adate" {{#equals sort_string 'adate'}}selected{{/equals}}>Date (Oldest)</option>
+          <option value="ddate" {{#equals sort_string 'ddate'}}selected{{/equals}}>Date (Latest)</option>
+          <option value="atitle" {{#equals sort_string 'atitle'}}selected{{/equals}}>Title (A-Z)</option>
+          <option value="dtitle" {{#equals sort_string 'dtitle'}}selected{{/equals}}>Title (Z-A)</option>
         </select>
       </form>
     </div>
-    <div class="view-by d-flex">
+    {{!-- <div class="view-by d-flex">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle btn-sm view-b" type="button" id="blog-sort-by"
           name="blog_sort_by" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,6 +46,18 @@
           <a class="dropdown-item proj-view-by" href="/projects-ongoing">Ongoing</a>
           <a class="dropdown-item proj-view-by" href="/projects-proposed">Proposed</a>
         </div>
+      </div>
+    </div> --}}
+    <div class="view-by d-flex">
+      <div class="dropdown">
+        <select class="form-control form-control-sm sub-caption" id="proj-view-by" name="proj_view_by"
+          onchange="location = this.value;">
+          <option value="" disabled hidden>View by:</option>
+          <option value="/projects" {{#equals status 'All'}}selected{{/equals}}>All Projects</option>
+          <option value="/projects-approved" {{#equals status 'Approved'}}selected{{/equals}}>Approved</option>
+          <option value="/projects-ongoing" {{#equals status 'Ongoing'}}selected{{/equals}}>Ongoing</option>
+          <option value="/projects-proposed" {{#equals status 'Proposed'}}selected{{/equals}}>Proposed</option>
+        </select>
       </div>
     </div>
   </div>
