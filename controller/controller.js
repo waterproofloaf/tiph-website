@@ -226,7 +226,7 @@ const controller = {
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.find({ proj_status: 'Approved' }).count().exec(function (err, count) {
+                        Project.find({ proj_status: 'Approved' }).countDocuments().exec(function (err, count) {
                             if (err) return next(err)
                             database.findOne(Home, {}, {}, function (home) {
                                 res.render('projects', {
@@ -265,7 +265,7 @@ const controller = {
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.find({ proj_status: 'Ongoing' }).count().exec(function (err, count) {
+                        Project.find({ proj_status: 'Ongoing' }).countDocuments().exec(function (err, count) {
                             if (err) return next(err)
                             database.findOne(Home, {}, {}, function (home) {
                                 res.render('projects', {
@@ -304,7 +304,7 @@ const controller = {
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.find({ proj_status: 'Proposed' }).count().exec(function (err, count) {
+                        Project.find({ proj_status: 'Proposed' }).countDocuments().exec(function (err, count) {
                             if (err) return next(err)
                             database.findOne(Home, {}, {}, function (home) {
                                 res.render('projects', {
