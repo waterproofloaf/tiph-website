@@ -67,6 +67,7 @@ const projectController = {
                     proj_content: proj.proj_content,
                     proj_keywords: proj.proj_keywords,
                     proj_active: true,
+                    proj_id: query,
                 });
             }
             else {

@@ -1,5 +1,5 @@
 <!-- CAROUSEL -->
-<div class="container-fluid px-5 pt-5 pb-3 center proj-caro">
+{{!-- <div class="container-fluid px-5 pt-5 pb-3 center proj-caro">
   <div id="projCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active center">
@@ -21,20 +21,19 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div> --}}
 
 <!-- HEADER -->
-<section>
-  <div class="container-fluid center">
-    <div class="header-title text-center">
-      <h5 class="font-weight-bold text-uppercase sub-title">{{this.proj_title}}</h5>
-      <p class="sub-caption text-center" id="">{{this.proj_status}} • {{dateFormat this.proj_date "MMMM Do, YYYY"}}</p>
-    </div>
+<div class="container-fluid center p-5"
+  style="background: #eeede0 url(proj_cover{{this.proj_id}}) no-repeat center; background-size:cover; height=500px;">
+  <div class="header-title text-center">
+    <h5 class="font-weight-bold text-uppercase sub-title">{{this.proj_title}}</h5>
+    <p class="sub-caption text-center" id="">{{this.proj_status}} • {{dateFormat this.proj_date "MMMM Do, YYYY"}}</p>
   </div>
-</section>
+</div>
 
 <!-- BODY -->
-<div class="the-content sub-caption">
+<div class="the-content sub-caption p-5">
   <!-- CONTENT -->
   {{{this.proj_content}}}
 </div>
