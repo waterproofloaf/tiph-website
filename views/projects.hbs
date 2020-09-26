@@ -1,16 +1,4 @@
-<!-- TITLE -->
-{{!-- <section>
-  <div class="container-fluid center">
-    <div class="row p-5 mt-5 justify-content-center">
-      <h5 class="font-weight-bold text-uppercase sub-title">Our Projects</h5>
-      <p class="sub-caption p-3">
-        We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
-        Our projects seek to address issues that arised within our country and at the same time, encourage the youth
-        to become more aware on their role as a citizen with social responsibilities.
-      </p>
-    </div>
-  </div>
-</section> --}}
+<!-- HEADER -->
 <section>
   <div class="container-fluid">
     <div class="row px-5 pt-5 mt-5 d-flex align-items-center">
@@ -96,32 +84,37 @@
   </div>
   {{/if}}
   {{/each}}
+</div>
 
-  {{!-- <div class="container-fluid">
-    {{current}} {{pages}} {{add current 1}}
-  </div> --}}
+{{!-- <div>
+  <p>current: {{current}}</p>
+  <p>pages: {{pages}}</p>
+  <p>perPage: {{perPage}}</p>
+  <p>count: {{count}}</p>
+</div> --}}
 
-  <!-- PAGINATION -->
-  <div class="pt-5">
-    <nav aria-label="...">
-      <ul class="pagination justify-content-center">
-        <li class="page-item {{#equals current 1}}disabled{{/equals}}">
-          <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
-            href="/projects/{{minus current 1}}" {{/equals}}>Previous</a>
-        </li>
-        {{#repeat count=pages start=1}}
-        <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
-            href="/projects/{{@index}}">{{@index}}{{#equals current @index}}<span
-              class="sr-only">(current)</span>{{/equals}}</a></li>
-        {{else}}
-        {{!-- Nothing :( --}}
-        {{/repeat}}
-        <li class="page-item {{#equals current pages}}disabled{{/equals}}">
-          <a class="page-link" href="/projects/{{add current 1}}">Next</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+
+<!-- PAGINATION -->
+<div class="pb-5">
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item {{#equals current 1}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
+        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}} href="/projects/{{minus current 1}}"
+          {{/equals}}>Previous</a>
+      </li>
+      {{#repeat count=pages start=1}}
+      <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
+          href="/projects/{{@index}}">{{@index}}{{#equals current @index}}<span
+            class="sr-only">(current)</span>{{/equals}}</a></li>
+      {{else}}
+      <li class="page-item active"><a class="page-link" href="/projects/1">1<span class="sr-only">(current)</span></a>
+      </li>
+      {{/repeat}}
+      <li class="page-item {{#equals current pages}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
+        <a class="page-link" href="/projects/{{add current 1}}">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>
 
 {{!-- <div class="row m-auto py-3 px-5">

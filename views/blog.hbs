@@ -71,20 +71,18 @@
   </div>
 </div>
 
-{{#equals count 0}}
+{{!-- {{#equals count 0}}
 <div class="text-center pb-5">
   <h4>No blog entries to display.</h4>
 </div>
-{{/equals}}
-
-
+{{/equals}} --}}
 
 <!-- PAGINATION -->
 
 <div class="pb-5">
   <nav aria-label="...">
     <ul class="pagination justify-content-center">
-      <li class="page-item {{#equals current 1}}disabled{{/equals}}">
+      <li class="page-item {{#equals current 1}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
         <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}} href="/blog/{{minus current 1}}"
           {{/equals}}>Previous</a>
       </li>

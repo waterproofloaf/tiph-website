@@ -137,29 +137,27 @@ const controller = {
                         layout: '/layouts/main',
                         title: 'Projects | The Initiative PH',
                         projects_active: true,
-                        no_proj: true,
                         home_content: home,
                     })
                 });
             }
             else {
-                Project.countDocuments({ project_published: true }, function (err, count) {
+                Project.countDocuments({ proj_published: true }, function (err, count) {
                     if (count == 0) {
                         database.findOne(Home, {}, {}, function (home) {
                             res.render('projects', {
                                 layout: '/layouts/main',
                                 title: 'Projects | The Initiative PH',
                                 projects_active: true,
-                                no_proj: true,
                                 home_content: home,
-                                projectMessage: 'There are currently no project entries published.'
+                                projectMessage: 'There are currently no project entries published.',
+                                count: count,
                             })
                         });
                     }
                     else {
                         var perPage = 5;
                         var page = req.params.page || 1;
-
                         var sort_by = { proj_date: 1 };
 
                         proj_sort = req.body.proj_sort_by;
@@ -185,7 +183,7 @@ const controller = {
                             .skip((perPage * page) - perPage)
                             .limit(perPage)
                             .exec(function (err, projArray) {
-                                Project.countDocuments().exec(function (err, count) {
+                                Project.countDocuments({ proj_published: true }).exec(function (err, count) {
                                     if (err) return next(err)
                                     database.findOne(Home, {}, {}, function (home) {
                                         res.render('projects', {
@@ -196,6 +194,9 @@ const controller = {
                                             current: page,
                                             pages: Math.ceil(count / perPage),
                                             home_content: home,
+
+                                            perPage: perPage,
+                                            count: count,
                                         });
                                     });
                                 });
@@ -354,7 +355,8 @@ const controller = {
                                 title: 'Blogs | The Initiative PH',
                                 blog_active: true,
                                 home_content: home,
-                                blogMessage: 'There is currently no blog entries published.'
+                                blogMessage: 'There are currently no blog entries published.',
+                                count: count,
                             })
                         });
                     }
@@ -397,6 +399,7 @@ const controller = {
                                             current: page,
                                             pages: Math.ceil(count / perPage),
                                             home_content: home,
+                                            count: count,
                                         });
                                     });
                                 });

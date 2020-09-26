@@ -131,7 +131,7 @@ app.post('/projects', controller.getProjects);
 app.get('/projects/:page', controller.getProjects);
 app.get('/a-project/', projectController.findProject);
 app.get('/projects-approved', controller.getProjectsApproved);
-app.get('/projects0-approved/:page', controller.getProjectsApproved);
+app.get('/projects-approved/:page', controller.getProjectsApproved);
 app.get('/projects-ongoing', controller.getProjectsOngoing);
 app.get('/projects-ongoing/:page', controller.getProjectsOngoing);
 app.get('/projects-proposed', controller.getProjectsProposed);
