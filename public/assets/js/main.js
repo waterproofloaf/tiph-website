@@ -158,6 +158,13 @@ function proj_change(checkbox) {
       data: { id: self, publish: "false" },
       success: function (response) {
         $(this).removeAttr("checked");
+        $.ajax({
+          url: "/cms-project/showcase/",
+          data: {id: self, showcase: "false"},
+          succ: function (res) {
+            $(this).removeAttr("checked");
+          } 
+        })
       },
       error: function (xhr) { }
     });
@@ -175,6 +182,13 @@ function proj_showcase(checkbox) {
       data: { id: self, showcase: "true" },
       success: function (response) {
         $(this).attr("checked", "checked");
+        $.ajax({
+          url: "/cms-project/toggle/",
+          data: {id: self, publish: "true"},
+          succ: function (res) {
+            $(this).attr("checked", "checked");
+          } 
+        })
       },
       error: function (xhr) { }
     });

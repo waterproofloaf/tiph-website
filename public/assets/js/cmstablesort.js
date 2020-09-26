@@ -47,4 +47,20 @@ $(document).ready(function () {
       targets: [4]
     }]
   });
+
+  $('#positions-table').DataTable({
+    "aaSorting": [],
+    columnDefs: [{
+      orderable: false,
+      targets: [1]
+    }]
+  });
+
+  $('#donate-table').DataTable({
+    "aaSorting": [],
+    columnDefs: [{
+      orderable: false,
+      targets: [3, 4, 5]
+    }]
+  });
 });
