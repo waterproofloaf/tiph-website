@@ -194,8 +194,6 @@ const controller = {
                                             current: page,
                                             pages: Math.ceil(count / perPage),
                                             home_content: home,
-
-                                            perPage: perPage,
                                             count: count,
                                         });
                                     });
