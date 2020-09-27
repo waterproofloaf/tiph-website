@@ -71,14 +71,14 @@
                     </td>
                     <td class="text-center">
                       <label class="switch">
-                        <input type="checkbox" id="{{this._id}}" onclick="proj_change(this)"
+                        <input type="checkbox" class="proj_publish" id="{{this._id}}" onclick="proj_change(this)"
                           {{#if proj_published}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>
                     </td>
                     <td class="text-center">
                       <label class="switch">
-                        <input type="checkbox" id="{{this._id}}" onclick="proj_showcase(this)"
+                        <input type="checkbox" class="proj_showcase" id="{{this._id}}" onclick="proj_showcase(this)"
                           {{#if proj_showcase}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>
@@ -96,6 +96,82 @@
 </div>
 
 <script>
+  // CMS Project Switch Toggle
+  function proj_change(checkbox) {
+
+    //If it is checked.
+    var self = $(checkbox).attr('id');
+    if (checkbox.checked) {
+      $.ajax({
+        url: "/cms-project/toggle/",
+        data: { id: self, publish: "true" },
+        success: function (response) {
+          $(this).attr("checked", "checked");
+        },
+        error: function (xhr) { }
+      });
+    }
+
+    //If it has been unchecked.
+    else {
+      $.ajax({
+        url: "/cms-project/toggle/",
+        data: { id: self, publish: "false" },
+        success: function (response) {
+          $(this).removeAttr("checked");
+          $.ajax({
+            url: "/cms-project/showcase/",
+            data: { id: self, showcase: "false" },
+            succ: function (res) {
+              $(this).removeAttr("checked");
+
+            }
+          })
+        },
+        error: function (xhr) { }
+      });
+
+      $("#" + self + ".proj_showcase").prop("checked", false);
+    }
+  }
+
+  // CMS Project Showcase Toggle
+  function proj_showcase(checkbox) {
+
+    //If it is checked.
+    var self = $(checkbox).attr('id');
+    if (checkbox.checked) {
+      $.ajax({
+        url: "/cms-project/showcase/",
+        data: { id: self, showcase: "true" },
+        success: function (response) {
+          $(this).attr("checked", "checked");
+          $.ajax({
+            url: "/cms-project/toggle/",
+            data: { id: self, publish: "true" },
+            succ: function (res) {
+              $(this).attr("checked", "checked");
+            }
+          })
+        },
+        error: function (xhr) { }
+      });
+      $("#" + self + ".proj_publish").prop("checked", true);
+    }
+
+    //If it has been unchecked.
+    else {
+      $.ajax({
+        url: "/cms-project/showcase/",
+        data: { id: self, showcase: "false" },
+        success: function (response) {
+          $(this).removeAttr("checked");
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+
   function deleteConfirm(button) {
     var self = $(button).attr('id');
     if (confirm("Are you sure of deleting this project entry?")) {
