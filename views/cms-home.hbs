@@ -131,7 +131,7 @@
                                             value={{#if home_content.home_preapp_button}}"true"{{else}}"false"{{/if}}>
                                         <input name="home_app_button_val" type="hidden" id="home_app_button_val"
                                             value={{#if home_content.home_app_button}}"true"{{else}}"false"{{/if}}>
-                                        <input type="checkbox" id="home_app_button" onclick="home_app(this)"
+                                        <input type="checkbox" id="{{home_content._id}}" onclick="home_app(this)"
                                             {{#if home_content.home_app_button}}checked{{/if}}>
                                         <span class="slider round"></span>
                                     </label>
@@ -205,12 +205,21 @@
     function home_app(checkbox) {
         var home_app_button = document.querySelector('input[id=home_app_button_val]');
         var home_preapp_button = document.querySelector('input[id=home_preapp_button_val]');
+        var self = $(checkbox).attr('id');
 
         //If it is checked.
         if (checkbox.checked) {
             home_app_button.value = "true";
             home_preapp_button.value = "false";
             console.log(home_app_button);
+            $.ajax({
+                url: "/cms-home/toggle/",
+                data: { id: self, preapp: "false", app: "true" },
+                success: function (response) {
+                    $(this).attr("checked", "checked");
+                },
+                error: function (xhr) { }
+            });
         }
 
         //If it has been unchecked.
@@ -218,6 +227,14 @@
             home_app_button.value = "false";
             home_preapp_button.value = "true";
             console.log(home_app_button);
+            $.ajax({
+                url: "/cms-home/toggle/",
+                data: { id: self, preapp: "true", app:"false" },
+                success: function (response) {
+                    $(this).removeAttr("checked");
+                },
+                error: function (xhr) { }
+            });
         }
     }
 

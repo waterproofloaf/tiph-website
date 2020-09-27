@@ -168,6 +168,7 @@ app.get('/cms-logout', controller.getCMSLogout);
 // CMS Home and Application
 app.get('/cms-home', controller.getCMSHome);
 app.post('/cms-home', upload.any('home_cover_upload', 'home_one_pic', 'home_two_pic', 'home_three_pic', 'home_four_pic'), homeController.editHome);
+app.get('/cms-home/toggle/', homeController.homeToggle);
 
 app.get('/cms-about', controller.getCMSAbout);
 app.post('/cms-about', upload.any(), cmsValidator.AboutValidation(), aboutController.editAbout);
