@@ -8,8 +8,9 @@
         </h5>
       </div>
       <div class="col-lg text-right">
-        <input class="form-control sub-caption" type="text" placeholder="Search..." id="project-search"
-          onkeyup="project_search()" aria-label="Search">
+        <input class="form-control sub-caption" type="text"
+          placeholder="&#xF002; {{#if if_search}}{{search}}{{else}}Search...{{/if}}" id="projectsearch"
+          aria-label="Search" style="font-family:Montserrat, FontAwesome">
       </div>
     </div>
     <div class="row px-5 pt-4 d-flex align-self-center">
@@ -104,40 +105,37 @@
   <nav aria-label="...">
     <ul class="pagination justify-content-center">
       <li class="page-item {{#equals current 1}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
-        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}} href="/projects/{{minus current 1}}"
-          {{/equals}}>Previous</a>
+        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
+          href="/projects/{{#if if_search}}search/{{search}}/{{/if}}{{minus current 1}}" {{/equals}}>Previous</a>
       </li>
       {{#repeat count=pages start=1}}
       <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
-          href="/projects/{{@index}}">{{@index}}{{#equals current @index}}<span
+          href="/projects/{{#if if_search}}search/{{search}}/{{/if}}{{@index}}">{{@index}}{{#equals current @index}}<span
             class="sr-only">(current)</span>{{/equals}}</a></li>
       {{else}}
-      <li class="page-item active"><a class="page-link" href="/projects/1">1<span class="sr-only">(current)</span></a>
+      <li class="page-item active"><a class="page-link"
+          href="/projects/{{#if if_search}}search/{{search}}/{{/if}}1">1<span class="sr-only">(current)</span></a>
       </li>
       {{/repeat}}
       <li class="page-item {{#equals current pages}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
-        <a class="page-link" href="/projects/{{add current 1}}">Next</a>
+        <a class="page-link" href="/projects/{{#if if_search}}search/{{search}}/{{/if}}{{add current 1}}">Next</a>
       </li>
     </ul>
   </nav>
 </div>
 
-{{!-- <div class="row m-auto py-3 px-5">
-  <div class="row m-auto">
-    <div class="row m-auto">
-      <div class="row p-5 border rounded bg-light">
-        <div class="col-lg-7">
-          <h5 class="font-weight-bold sub-title">{{this.proj_title}}</h5>
-          <p class="project-subtitle">{{this.proj_date}}</p>
-          <p class="sub-caption">
-            {{this.proj_preview}}
-          </p>
-          <a href="a-project"><button type="button" class="btn btn-outline-secondary">Continue Reading</button></a>
-        </div>
-        <div class="col-5 d-none d-lg-block">
-          <img src="assets/img/1.png" width="100%">
-        </div>
-      </div>
-    </div>
-  </div>
-</div> --}}
+<script>
+  // For blog search
+  var input = document.getElementById("projectsearch");
+  // Execute a function when the user releases a key on the keyboard
+  input.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    var search = document.getElementById("projectsearch").value;
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      window.location = "/projects/search/" + search;
+    }
+  });
+</script>

@@ -11,7 +11,6 @@
         <input class="form-control sub-caption" type="text"
           placeholder="&#xF002; {{#if if_search}}{{search}}{{else}}Search...{{/if}}" id="blogsearch" aria-label="Search"
           style="font-family:Montserrat, FontAwesome">
-        {{!-- <button><i class="fas fa-search"></i></button> --}}
       </div>
     </div>
     <div class="row px-5 pt-4 d-flex align-self-center">
@@ -84,7 +83,8 @@
           href="/blog/{{#if if_search}}search/{{search}}/{{/if}}{{@index}}">{{@index}}{{#equals current @index}}<span
             class="sr-only">(current)</span>{{/equals}}</a></li>
       {{else}}
-      <li class="page-item active"><a class="page-link" href="/blog/1">1<span class="sr-only">(current)</span></a></li>
+      <li class="page-item active"><a class="page-link" href="/blog/{{#if if_search}}search/{{search}}/{{/if}}1">1<span
+            class="sr-only">(current)</span></a></li>
       {{/repeat}}
       <li class="page-item {{#equals current pages}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
         <a class="page-link" href="/blog/{{#if if_search}}search/{{search}}/{{/if}}{{add current 1}}">Next</a>

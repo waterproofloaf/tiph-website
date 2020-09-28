@@ -161,6 +161,7 @@ const controller = {
                         var sort_by = { proj_date: -1 };
                         var sort_string = 'ddate';
                         var status = 'All';
+                        var if_search = false;
 
                         proj_sort = req.body.proj_sort_by;
 
@@ -203,6 +204,95 @@ const controller = {
                                             count: count,
                                             sort_string: sort_string,
                                             status: status,
+                                            if_search: if_search,
+                                        });
+                                    });
+                                });
+                            });
+                    }
+                });
+            }
+        });
+    },
+
+    getProjectsSearch: function (req, res, next) {
+        Project.countDocuments({}, function (err, count) {
+            if (count == 0) {
+                database.findOne(Home, {}, {}, function (home) {
+                    res.render('projects', {
+                        layout: '/layouts/main',
+                        title: 'Projects | The Initiative PH',
+                        projects_active: true,
+                        home_content: home,
+                    })
+                });
+            }
+            else {
+                var search = req.params.string;
+                Project.countDocuments({ proj_published: true, proj_title: { $regex: new RegExp(".*" + search + ".*", "i") } }, function (err, count) {
+                    if (count == 0) {
+                        database.findOne(Home, {}, {}, function (home) {
+                            res.render('projects', {
+                                layout: '/layouts/main',
+                                title: 'Projects | The Initiative PH',
+                                projects_active: true,
+                                home_content: home,
+                                projectMessage: 'There are currently no project entries published.',
+                                count: count,
+                            })
+                        });
+                    }
+                    else {
+                        var perPage = 5;
+                        var page = req.params.page || 1;
+                        var sort_by = { proj_date: -1 };
+                        var sort_string = 'ddate';
+                        var status = 'All';
+                        var if_search = true;
+
+                        proj_sort = req.body.proj_sort_by;
+
+                        switch (proj_sort) {
+                            case 'adate':
+                                sort_by = { proj_date: 1 };
+                                sort_string = 'adate';
+                                break;
+                            case 'ddate':
+                                sort_by = { proj_date: -1 };
+                                sort_string = 'ddate';
+                                break;
+                            case 'atitle':
+                                sort_by = { proj_title: 1 };
+                                sort_string = 'atitle';
+                                break;
+                            case 'dtitle':
+                                sort_by = { proj_title: -1 };
+                                sort_string = 'dtitle';
+                                break;
+                        }
+
+                        Project
+                            .find({ proj_published: true, proj_title: { $regex: new RegExp(".*" + search + ".*", "i") } })
+                            .sort(sort_by)
+                            .skip((perPage * page) - perPage)
+                            .limit(perPage)
+                            .exec(function (err, projArray) {
+                                Project.countDocuments({ proj_published: true, proj_title: { $regex: new RegExp(".*" + search + ".*", "i") } }).exec(function (err, count) {
+                                    if (err) return next(err)
+                                    database.findOne(Home, {}, {}, function (home) {
+                                        res.render('projects', {
+                                            layout: '/layouts/main',
+                                            title: 'Projects | The Initiative PH',
+                                            projects_active: true,
+                                            proj_info: projArray,
+                                            current: page,
+                                            pages: Math.ceil(count / perPage),
+                                            home_content: home,
+                                            count: count,
+                                            sort_string: sort_string,
+                                            status: status,
+                                            search: search,
+                                            if_search: if_search,
                                         });
                                     });
                                 });
@@ -511,7 +601,6 @@ const controller = {
             }
             else {
                 var search = req.params.string;
-
                 Blog.countDocuments({ blog_published: true, blog_title: { $regex: new RegExp(".*" + search + ".*", "i") } }, function (err, count) {
                     if (count == 0) {
                         database.findOne(Home, {}, {}, function (home) {
@@ -527,7 +616,6 @@ const controller = {
                     }
                     else {
                         var perPage = 5;
-                        var search = req.params.string;
                         var page = req.params.page || 1;
                         var sort_by = { blog_date: -1 };
                         var sort_string = 'ddate';
