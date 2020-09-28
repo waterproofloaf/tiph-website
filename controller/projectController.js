@@ -1,4 +1,5 @@
 const Project = require('../models/ProjectModel.js');
+const fs = require('fs');
 const database = require('../models/db.js');
 const { ObjectID } = require('mongodb');
 const { validationResult } = require('express-validator');
@@ -78,9 +79,17 @@ const projectController = {
 
     deleteProject: function (req, res) {
         var proj_id = req.query.id;
+        var proj_path = './uploads/proj_cover' + ObjectID(proj_id);
         var proj_details = {
             _id: ObjectID(proj_id)
         }
+
+        fs.unlink(proj_path, (err) => {
+            if (err) {
+                console.error(err)
+                return
+            }
+        })
 
         database.deleteOne(Project, proj_details);
         res.redirect('/cms-project');

@@ -1,4 +1,5 @@
 const Blog = require('../models/BlogModel.js');
+const fs = require('fs');
 const database = require('../models/db.js');
 const { ObjectID } = require('mongodb');
 const { validationResult } = require('express-validator');
@@ -78,9 +79,17 @@ const blogController = {
 
     deleteBlog: function (req, res) {
         var blog_id = req.query.id;
+        var blog_path = './uploads/blog_cover' + ObjectID(blog_id);
         var blog_details = {
             _id: ObjectID(blog_id)
         }
+
+        fs.unlink(blog_path, (err) => {
+            if (err) {
+                console.error(err)
+                return
+            }
+        })
 
         database.deleteOne(Blog, blog_details);
         res.redirect('/cms-blog');
