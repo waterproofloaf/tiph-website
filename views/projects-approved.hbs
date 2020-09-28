@@ -43,7 +43,7 @@
         <option value="dtitle">Title (Z-A)</option>
       </select>
     </div>
-    <div class="view-by d-flex">
+    {{!-- <div class="view-by d-flex">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle btn-sm view-b" type="button" id="blog-sort-by"
           name="blog_sort_by" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,6 +55,18 @@
           <a class="dropdown-item proj-view-by" href="/projects-ongoing">Ongoing</a>
           <a class="dropdown-item proj-view-by" href="/projects-proposed">Proposed</a>
         </div>
+      </div>
+    </div> --}}
+    <div class="view-by d-flex">
+      <div class="dropdown">
+        <select class="form-control form-control-sm sub-caption" id="proj-view-by" name="proj_view_by"
+          onchange="location = this.value;">
+          <option value="" disabled hidden>View by:</option>
+          <option value="/projects">All Projects</option>
+          <option value="/projects-approved" selected>Approved</option>
+          <option value="/projects-ongoing">Ongoing</option>
+          <option value="/projects-proposed">Proposed</option>
+        </select>
       </div>
     </div>
   </div>

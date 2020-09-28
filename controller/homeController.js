@@ -35,6 +35,24 @@ const homeController = {
         database.updateOne(Home, {}, home_details);
         res.redirect('/cms-home');
     },
+
+    homeToggle: function (req, res) {
+        var home_id = req.query.id;
+        var preapp_visible = req.query.preapp;
+        var app_visible = req.query.app;
+
+        var filter = {
+            _id: ObjectID(home_id)
+        }
+
+        var home_details = {
+            home_preapp_button: preapp_visible,
+            home_app_button: app_visible,
+        }
+
+        database.updateOne(Home, filter, home_details);
+        res.redirect('/cms-home');
+    }
 }
 
 module.exports = homeController;

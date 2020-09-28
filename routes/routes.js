@@ -130,18 +130,28 @@ app.get('/projects', controller.getProjects);
 app.post('/projects', controller.getProjects);
 app.get('/projects/:page', controller.getProjects);
 app.post('/projects/:page', controller.getProjects);
+app.get('/projects/search/:string', controller.getProjectsSearch);
+app.get('/projects/search/:string/:page', controller.getProjectsSearch);
 app.get('/a-project/', projectController.findProject);
 app.get('/projects-approved', controller.getProjectsApproved);
 app.get('/projects-approved/:page', controller.getProjectsApproved);
+app.post('/projects-approved', controller.getProjectsApproved);
+app.post('/projects-approved/:page', controller.getProjectsApproved);
 app.get('/projects-ongoing', controller.getProjectsOngoing);
 app.get('/projects-ongoing/:page', controller.getProjectsOngoing);
+app.post('/projects-ongoing', controller.getProjectsOngoing);
+app.post('/projects-ongoing/:page', controller.getProjectsOngoing);
 app.get('/projects-proposed', controller.getProjectsProposed);
 app.get('/projects-proposed/:page', controller.getProjectsProposed);
+app.post('/projects-proposed', controller.getProjectsProposed);
+app.post('/projects-proposed/:page', controller.getProjectsProposed);
 
 app.get('/blog', controller.getBlogs);
 app.post('/blog', controller.getBlogs);
 app.get('/blog/:page', controller.getBlogs);
 app.post('/blog/:page', controller.getBlogs);
+app.get('/blog/search/:string', controller.getBlogsSearch);
+app.get('/blog/search/:string/:page', controller.getBlogsSearch);
 app.post('/blog', blogController.postBlog);
 app.get('/a-blog', blogController.findBlog);
 
@@ -162,6 +172,7 @@ app.get('/cms-logout', controller.getCMSLogout);
 // CMS Home and Application
 app.get('/cms-home', controller.getCMSHome);
 app.post('/cms-home', upload.any('home_cover_upload', 'home_one_pic', 'home_two_pic', 'home_three_pic', 'home_four_pic'), homeController.editHome);
+app.get('/cms-home/toggle/', homeController.homeToggle);
 
 app.get('/cms-about', controller.getCMSAbout);
 app.post('/cms-about', upload.any(), cmsValidator.AboutValidation(), aboutController.editAbout);
