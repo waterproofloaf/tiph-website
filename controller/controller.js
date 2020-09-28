@@ -443,6 +443,7 @@ const controller = {
                         var page = req.params.page || 1;
                         var sort_by = { blog_date: -1 };
                         var sort_string = 'ddate';
+                        var if_search = false;
 
                         blog_sort = req.body.blog_sort_by;
 
@@ -484,6 +485,96 @@ const controller = {
                                             home_content: home,
                                             count: count,
                                             sort_string: sort_string,
+                                            if_search: if_search,
+                                        });
+                                    });
+                                });
+
+                            });
+                    }
+                });
+            }
+        });
+    },
+
+    getBlogsSearch: function (req, res) {
+        Blog.countDocuments({}, function (err, count) {
+            if (count == 0) {
+                database.findOne(Home, {}, {}, function (home) {
+                    res.render('blog', {
+                        layout: '/layouts/main',
+                        title: 'Blogs | The Initiative PH',
+                        blog_active: true,
+                        home_content: home,
+                    })
+                });
+            }
+            else {
+                var search = req.params.string;
+
+                Blog.countDocuments({ blog_published: true, blog_title: { $regex: new RegExp(".*" + search + ".*", "i") } }, function (err, count) {
+                    if (count == 0) {
+                        database.findOne(Home, {}, {}, function (home) {
+                            res.render('blog', {
+                                layout: '/layouts/main',
+                                title: 'Blogs | The Initiative PH',
+                                blog_active: true,
+                                home_content: home,
+                                blogMessage: 'There are currently no blog entries published.',
+                                count: count,
+                            })
+                        });
+                    }
+                    else {
+                        var perPage = 5;
+                        var search = req.params.string;
+                        var page = req.params.page || 1;
+                        var sort_by = { blog_date: -1 };
+                        var sort_string = 'ddate';
+                        var if_search = true;
+
+                        blog_sort = req.body.blog_sort_by;
+
+                        switch (blog_sort) {
+                            case 'adate':
+                                sort_by = { blog_date: 1 };
+                                sort_string = 'adate';
+                                break;
+                            case 'ddate':
+                                sort_by = { blog_date: -1 };
+                                sort_string = 'ddate';
+                                break;
+                            case 'atitle':
+                                sort_by = { blog_title: 1 };
+                                sort_string = 'atitle';
+                                break;
+                            case 'dtitle':
+                                sort_by = { blog_title: -1 };
+                                sort_string = 'dtitle';
+                                break;
+                        }
+
+                        Blog
+                            .find({ blog_published: true, blog_title: { $regex: new RegExp(".*" + search + ".*", "i") } })
+                            .sort(sort_by)
+                            .skip((perPage * page) - perPage)
+                            .limit(perPage)
+                            .exec(function (err, blogArray) {
+                                Blog.countDocuments({ blog_published: true, blog_title: { $regex: new RegExp(".*" + search + ".*", "i") } }).exec(function (err, count) {
+                                    if (err) return next(err)
+                                    database.findOne(Home, {}, {}, function (home) {
+                                        res.render('blog', {
+                                            layout: '/layouts/main',
+                                            title: 'Blogs | The Initiative PH',
+                                            blog_active: true,
+                                            blog_info: blogArray,
+                                            current: page,
+                                            pages: Math.ceil(count / perPage),
+                                            home_content: home,
+                                            count: count,
+                                            sort_string: sort_string,
+                                            search: search,
+                                            if_search: if_search,
                                         });
                                     });
                                 });

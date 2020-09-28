@@ -8,8 +8,10 @@
         </h5>
       </div>
       <div class="col-lg text-right d-flex flex-row">
-        <input class="form-control sub-caption" type="text" placeholder="Search..." id="blog-search"
-          onkeyup="blog_search()" aria-label="Search">
+        <input class="form-control sub-caption" type="text"
+          placeholder="&#xF002; {{#if if_search}}{{search}}{{else}}Search...{{/if}}" id="blogsearch" aria-label="Search"
+          style="font-family:Montserrat, FontAwesome">
+        {{!-- <button><i class="fas fa-search"></i></button> --}}
       </div>
     </div>
     <div class="row px-5 pt-4 d-flex align-self-center">
@@ -70,31 +72,39 @@
   </div>
 </div>
 
-{{!-- {{#equals count 0}}
-<div class="text-center pb-5">
-  <h4>No blog entries to display.</h4>
-</div>
-{{/equals}} --}}
-
-<!-- PAGINATION -->
-
 <div class="pb-5">
   <nav aria-label="...">
     <ul class="pagination justify-content-center">
       <li class="page-item {{#equals current 1}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
-        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}} href="/blog/{{minus current 1}}"
-          {{/equals}}>Previous</a>
+        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
+          href="/blog/{{#if if_search}}search/{{search}}/{{/if}}{{minus current 1}}" {{/equals}}>Previous</a>
       </li>
       {{#repeat count=pages start=1}}
       <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
-          href="/blog/{{@index}}">{{@index}}{{#equals current @index}}<span
+          href="/blog/{{#if if_search}}search/{{search}}/{{/if}}{{@index}}">{{@index}}{{#equals current @index}}<span
             class="sr-only">(current)</span>{{/equals}}</a></li>
       {{else}}
       <li class="page-item active"><a class="page-link" href="/blog/1">1<span class="sr-only">(current)</span></a></li>
       {{/repeat}}
       <li class="page-item {{#equals current pages}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
-        <a class="page-link" href="/blog/{{add current 1}}">Next</a>
+        <a class="page-link" href="/blog/{{#if if_search}}search/{{search}}/{{/if}}{{add current 1}}">Next</a>
       </li>
     </ul>
   </nav>
 </div>
+
+<script>
+  // For blog search
+  var input = document.getElementById("blogsearch");
+  // Execute a function when the user releases a key on the keyboard
+  input.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    var search = document.getElementById("blogsearch").value;
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      window.location = "/blog/search/" + search;
+    }
+  });
+</script>

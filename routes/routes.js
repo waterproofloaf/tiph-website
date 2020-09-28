@@ -148,6 +148,8 @@ app.get('/blog', controller.getBlogs);
 app.post('/blog', controller.getBlogs);
 app.get('/blog/:page', controller.getBlogs);
 app.post('/blog/:page', controller.getBlogs);
+app.get('/blog/search/:string', controller.getBlogsSearch);
+app.get('/blog/search/:string/:page', controller.getBlogsSearch);
 app.post('/blog', blogController.postBlog);
 app.get('/a-blog', blogController.findBlog);
 
