@@ -48,7 +48,7 @@
                             <div class="pb-2">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="preview-images about-pic-preview">
+                                        <div class="preview-images blog-cover-preview">
                                             <img src="/blog_cover{{blog_content._id}}">
                                         </div>
                                     </div>
@@ -101,9 +101,8 @@
     var blogQuill = new Quill('#blog-quill', {
         modules: {
             toolbar: [
-                ['bold', 'italic'],
-                ['link', 'blockquote', 'code-block', 'image'],
-                [{ list: 'ordered' }, { list: 'bullet' }]
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
             ]
         },
         placeholder: 'Insert body here.',
