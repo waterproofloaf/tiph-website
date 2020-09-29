@@ -159,6 +159,7 @@ app.post('/contact-us', email_upload.single('contact_upload'), formsValidator.co
 app.get('/donate', controller.getDonate);
 
 app.get('/404', controller.get404);
+app.get('/cms-404', controller.getcms404);
 app.get('/project-not-found', controller.getProjectNotFound);
 app.get('/blog-not-found', controller.getBlogNotFound);
 app.get('/unavailable', controller.getUnavailable);
@@ -254,10 +255,10 @@ app.post('/cms-edit-donation', cmsValidator.DonateValidation(), donateController
 
 app.use((req, res, next) => {
   if (req.session.user) {
-    res.status(404).redirect('/cms-404');
+    res.status(404).redirect('cms-404');
   }
   else {
-    res.status(404).redirect('/404');
+    res.status(404).redirect('404');
   }
 });
 
