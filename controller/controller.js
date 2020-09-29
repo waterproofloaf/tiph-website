@@ -759,6 +759,21 @@ const controller = {
         });
     },
 
+    getcms404: function (req, res) {
+        if (req.session.user && req.cookies.user_sid){
+            res.render('cms-404', {
+                layout: '/layouts/cms-layout',
+                title: 'CMS 404 Not Found | The Initiative PH',
+                name: req.session.name,
+                type: req.session.type,
+                userid: req.session.userid,
+            })
+        }
+        else{
+            res.redirect('cms-login')
+        }
+    },
+
     getProjectNotFound(req, res) {
         database.findOne(Home, {}, {}, function (home) {
             res.render('404', {
@@ -840,7 +855,6 @@ const controller = {
     getCMSHome: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
             database.findOne(Home, {}, {}, function (home) {
-                //Change cms-home to cms-404 for 404 testing
                 res.render('cms-home', {
                     layout: '/layouts/cms-layout',
                     title: 'CMS Home | The Initiative PH',
