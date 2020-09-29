@@ -829,6 +829,7 @@ const controller = {
     getCMSHome: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
             database.findOne(Home, {}, {}, function (home) {
+                //Change cms-home to cms-404 for 404 testing
                 res.render('cms-home', {
                     layout: '/layouts/cms-layout',
                     title: 'CMS Home | The Initiative PH',
