@@ -128,10 +128,10 @@ app.post('/application', upload.array('app_portfolio', 5), formsValidator.appVal
 
 app.get('/projects', controller.getProjects);
 app.post('/projects', controller.getProjects);
-app.get('/projects/:sort', controller.getProjects);
+// app.get('/projects/:sort', controller.getProjects);
 app.get('/projects/:page', controller.getProjects);
-app.post('/projects/:sort/:page', controller.getProjects);
-app.get('/projects/:page', controller.getProjects);
+// app.post('/projects/:sort/:page', controller.getProjects);
+app.post('/projects/:page', controller.getProjects);
 app.get('/projects/search/:string', controller.getProjectsSearch);
 app.get('/projects/search/:string/:page', controller.getProjectsSearch);
 app.get('/a-project/', projectController.findProject);
