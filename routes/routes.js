@@ -160,6 +160,7 @@ app.post('/contact-us', email_upload.single('contact_upload'), formsValidator.co
 app.get('/donate', controller.getDonate);
 
 app.get('/404', controller.get404);
+app.get('/cms-404', controller.getcms404);
 app.get('/project-not-found', controller.getProjectNotFound);
 app.get('/blog-not-found', controller.getBlogNotFound);
 app.get('/unavailable', controller.getUnavailable);
@@ -254,7 +255,12 @@ app.get('/cms-edit-donation', controller.getCMSEditDonate);
 app.post('/cms-edit-donation', cmsValidator.DonateValidation(), donateController.editDonate);
 
 app.use((req, res, next) => {
-  res.status(404).redirect('/404');
+  if(req.session.user){
+    res.status(404).redirect('/cms-404');
+  }
+  else{
+    res.status(404).redirect('/404');
+  }
 });
 
 // enables to export app object when called in another .js file
