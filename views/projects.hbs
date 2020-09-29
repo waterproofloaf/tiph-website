@@ -24,31 +24,23 @@
   <br>
   <div class="container-fluid sort-view d-flex">
     <div class="proj-sort d-flex">
-      <form method="post">
-        <select class="form-control form-control-sm sub-caption" id="proj-sort-by" name="proj_sort_by"
-          onchange="this.form.submit()">
-          <option value="" disabled hidden>Sort by:</option>
-          <option value="ddate" {{#equals sort_string 'ddate'}}selected{{/equals}}>Date (Latest)</option>
-          <option value="adate" {{#equals sort_string 'adate'}}selected{{/equals}}>Date (Oldest)</option>
-          <option value="atitle" {{#equals sort_string 'atitle'}}selected{{/equals}}>Title (A-Z)</option>
-          <option value="dtitle" {{#equals sort_string 'dtitle'}}selected{{/equals}}>Title (Z-A)</option>
-        </select>
-      </form>
+      <select class="form-control form-control-sm sub-caption" id="proj-sort-by" name="proj_sort_by"
+        onchange="location = this.value;">
+        <option value="" disabled hidden>Sort by:</option>
+        <option
+          value="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}?sort=ddate"
+          {{#equals sort_string 'ddate'}}selected{{/equals}}>Date (Latest)</option>
+        <option
+          value="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}?sort=adate"
+          {{#equals sort_string 'adate'}}selected{{/equals}}>Date (Oldest)</option>
+        <option
+          value="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}?sort=atitle"
+          {{#equals sort_string 'atitle'}}selected{{/equals}}>Title (A-Z)</option>
+        <option
+          value="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}?sort=dtitle"
+          {{#equals sort_string 'dtitle'}}selected{{/equals}}>Title (Z-A)</option>
+      </select>
     </div>
-    {{!-- <div class="view-by d-flex">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle btn-sm view-b" type="button" id="blog-sort-by"
-          name="blog_sort_by" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          View (by status):
-        </button>
-        <div class="dropdown-menu view-b" aria-labelledby="dropdownMenuButton" id="proj-view">
-          <a class="dropdown-item proj-view-by" href="/projects">All</a>
-          <a class="dropdown-item proj-view-by" href="/projects-approved">Approved</a>
-          <a class="dropdown-item proj-view-by" href="/projects-ongoing">Ongoing</a>
-          <a class="dropdown-item proj-view-by" href="/projects-proposed">Proposed</a>
-        </div>
-      </div>
-    </div> --}}
     <div class="view-by d-flex">
       <div class="dropdown">
         <select class="form-control form-control-sm sub-caption" id="proj-view-by" name="proj_view_by"
@@ -101,7 +93,7 @@
 
 
 <!-- PAGINATION -->
-<div class="pb-5">
+{{!-- <div class="pb-5">
   <nav aria-label="...">
     <ul class="pagination justify-content-center">
       <li class="page-item {{#equals current 1}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
@@ -122,6 +114,31 @@
       </li>
     </ul>
   </nav>
+</div> --}}
+
+<div class="pb-5">
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item {{#equals current 1}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
+        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
+          href="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?page={{minus current 1}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}"
+          {{/equals}}>Previous</a>
+      </li>
+      {{#repeat count=pages start=1}}
+      <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
+          href="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?page={{@index}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">{{@index}}{{#equals current @index}}<span
+            class="sr-only">(current)</span>{{/equals}}</a></li>
+      {{else}}
+      <li class="page-item active"><a class="page-link"
+          href="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?page=1{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">1<span
+            class="sr-only">(current)</span></a></li>
+      {{/repeat}}
+      <li class="page-item {{#equals current pages}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
+        <a class="page-link"
+          href="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?page={{add current 1}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>
 
 <script>
@@ -135,7 +152,7 @@
       // Cancel the default action, if needed
       event.preventDefault();
       // Trigger the button element with a click
-      window.location = "/projects/search/" + search;
+      window.location = "/projects/search?msg=" + search;
     }
   });
 </script>

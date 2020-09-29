@@ -156,31 +156,35 @@ const controller = {
                         });
                     }
                     else {
+                        var proj_sort = req.query.sort;
                         var perPage = 5;
-                        var page = req.params.page || 1;
+                        var page = req.query.page || 1;
                         var sort_by = { proj_date: -1 };
                         var sort_string = 'ddate';
                         var status = 'All';
                         var if_search = false;
-
-                        proj_sort = req.body.proj_sort_by;
+                        var if_sort;
 
                         switch (proj_sort) {
                             case 'adate':
                                 sort_by = { proj_date: 1 };
                                 sort_string = 'adate';
+                                if_sort = true;
                                 break;
                             case 'ddate':
                                 sort_by = { proj_date: -1 };
                                 sort_string = 'ddate';
+                                if_sort = true;
                                 break;
                             case 'atitle':
                                 sort_by = { proj_title: 1 };
                                 sort_string = 'atitle';
+                                if_sort = true;
                                 break;
                             case 'dtitle':
                                 sort_by = { proj_title: -1 };
                                 sort_string = 'dtitle';
+                                if_sort = true;
                                 break;
                         }
 
@@ -205,6 +209,7 @@ const controller = {
                                             sort_string: sort_string,
                                             status: status,
                                             if_search: if_search,
+                                            if_sort: if_sort,
                                         });
                                     });
                                 });
@@ -228,7 +233,7 @@ const controller = {
                 });
             }
             else {
-                var search = req.params.string;
+                var search = req.query.msg;
                 Project.countDocuments({ proj_published: true, proj_title: { $regex: new RegExp(".*" + search + ".*", "i") } }, function (err, count) {
                     if (count == 0) {
                         database.findOne(Home, {}, {}, function (home) {
@@ -243,31 +248,35 @@ const controller = {
                         });
                     }
                     else {
+                        var proj_sort = req.query.sort;
                         var perPage = 5;
-                        var page = req.params.page || 1;
+                        var page = req.query.page || 1;
                         var sort_by = { proj_date: -1 };
                         var sort_string = 'ddate';
                         var status = 'All';
                         var if_search = true;
-
-                        proj_sort = req.body.proj_sort_by;
+                        var if_sort;
 
                         switch (proj_sort) {
                             case 'adate':
                                 sort_by = { proj_date: 1 };
                                 sort_string = 'adate';
+                                if_sort = true;
                                 break;
                             case 'ddate':
                                 sort_by = { proj_date: -1 };
                                 sort_string = 'ddate';
+                                if_sort = true;
                                 break;
                             case 'atitle':
                                 sort_by = { proj_title: 1 };
                                 sort_string = 'atitle';
+                                if_sort = true;
                                 break;
                             case 'dtitle':
                                 sort_by = { proj_title: -1 };
                                 sort_string = 'dtitle';
+                                if_sort = true;
                                 break;
                         }
 
@@ -293,6 +302,7 @@ const controller = {
                                             status: status,
                                             search: search,
                                             if_search: if_search,
+                                            if_sort: if_sort,
                                         });
                                     });
                                 });
@@ -316,40 +326,45 @@ const controller = {
                     })
                 });
             } else {
+                var proj_sort = req.query.sort;
                 var perPage = 5
-                var page = req.params.page || 1
+                var page = req.query.page || 1
                 var sort_by = { proj_date: -1 }
                 var sort_string = 'ddate'
                 var status = 'Approved'
-
-                proj_sort = req.body.proj_sort_by;
+                var if_search = false;
+                var if_sort;
 
                 switch (proj_sort) {
                     case 'adate':
                         sort_by = { proj_date: 1 };
                         sort_string = 'adate';
+                        if_sort = true;
                         break;
                     case 'ddate':
                         sort_by = { proj_date: -1 };
                         sort_string = 'ddate';
+                        if_sort = true;
                         break;
                     case 'atitle':
                         sort_by = { proj_title: 1 };
                         sort_string = 'atitle';
+                        if_sort = true;
                         break;
                     case 'dtitle':
                         sort_by = { proj_title: -1 };
                         sort_string = 'dtitle';
+                        if_sort = true;
                         break;
                 }
 
                 Project
-                    .find({ proj_status: 'Approved' })
+                    .find({ proj_published: true, proj_status: 'Approved' })
                     .sort(sort_by)
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.find({ proj_status: 'Approved' }).countDocuments().exec(function (err, count) {
+                        Project.find({ proj_published: true, proj_status: 'Approved' }).countDocuments().exec(function (err, count) {
                             if (err) return next(err)
                             database.findOne(Home, {}, {}, function (home) {
                                 res.render('projects', {
@@ -362,6 +377,8 @@ const controller = {
                                     home_content: home,
                                     sort_string: sort_string,
                                     status: status,
+                                    if_search: if_search,
+                                    if_sort: if_sort,
                                 });
                             });
                         });
@@ -371,7 +388,7 @@ const controller = {
     },
 
     getProjectsOngoing: function (req, res) {
-        Project.find({ proj_status: 'Ongoing' }).countDocuments({}, function (err, count) {
+        Project.find({ proj_published: true, proj_status: 'Ongoing' }).countDocuments({}, function (err, count) {
             if (count == 0) {
                 database.findOne(Home, {}, {}, function (home) {
                     res.render('projects', {
@@ -382,40 +399,45 @@ const controller = {
                     })
                 });
             } else {
+                var proj_sort = req.query.sort;
                 var perPage = 5
-                var page = req.params.page || 1
+                var page = req.query.page || 1
                 var sort_by = { proj_date: -1 }
                 var sort_string = 'ddate'
                 var status = 'Ongoing'
-
-                proj_sort = req.body.proj_sort_by;
+                var if_search = false;
+                var if_sort;
 
                 switch (proj_sort) {
                     case 'adate':
                         sort_by = { proj_date: 1 };
                         sort_string = 'adate';
+                        if_sort = true;
                         break;
                     case 'ddate':
                         sort_by = { proj_date: -1 };
                         sort_string = 'ddate';
+                        if_sort = true;
                         break;
                     case 'atitle':
                         sort_by = { proj_title: 1 };
                         sort_string = 'atitle';
+                        if_sort = true;
                         break;
                     case 'dtitle':
                         sort_by = { proj_title: -1 };
                         sort_string = 'dtitle';
+                        if_sort = true;
                         break;
                 }
 
                 Project
-                    .find({ proj_status: 'Ongoing' })
+                    .find({ proj_published: true, proj_status: 'Ongoing' })
                     .sort(sort_by)
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.find({ proj_status: 'Ongoing' }).countDocuments().exec(function (err, count) {
+                        Project.find({ proj_published: true, proj_status: 'Ongoing' }).countDocuments().exec(function (err, count) {
                             if (err) return next(err)
                             database.findOne(Home, {}, {}, function (home) {
                                 res.render('projects', {
@@ -428,6 +450,8 @@ const controller = {
                                     home_content: home,
                                     sort_string: sort_string,
                                     status: status,
+                                    if_search: if_search,
+                                    if_sort: if_sort,
                                 });
                             });
                         });
@@ -437,7 +461,7 @@ const controller = {
     },
 
     getProjectsProposed: function (req, res) {
-        Project.find({ proj_status: 'Proposed' }).countDocuments({}, function (err, count) {
+        Project.find({ proj_published: true, proj_status: 'Proposed' }).countDocuments({}, function (err, count) {
             if (count == 0) {
                 database.findOne(Home, {}, {}, function (home) {
                     res.render('projects', {
@@ -448,40 +472,45 @@ const controller = {
                     })
                 });
             } else {
+                var proj_sort = req.query.sort;
                 var perPage = 5
-                var page = req.params.page || 1
+                var page = req.query.page || 1
                 var sort_by = { proj_date: -1 }
                 var sort_string = 'ddate'
                 var status = 'Proposed'
-
-                proj_sort = req.body.proj_sort_by;
+                var if_search = false;
+                var if_sort;
 
                 switch (proj_sort) {
                     case 'adate':
                         sort_by = { proj_date: 1 };
                         sort_string = 'adate';
+                        if_sort = true;
                         break;
                     case 'ddate':
                         sort_by = { proj_date: -1 };
                         sort_string = 'ddate';
+                        if_sort = true;
                         break;
                     case 'atitle':
                         sort_by = { proj_title: 1 };
                         sort_string = 'atitle';
+                        if_sort = true;
                         break;
                     case 'dtitle':
                         sort_by = { proj_title: -1 };
                         sort_string = 'dtitle';
+                        if_sort = true;
                         break;
                 }
 
                 Project
-                    .find({ proj_status: 'Proposed' })
+                    .find({ proj_published: true, proj_status: 'Proposed' })
                     .sort(sort_by)
                     .skip((perPage * page) - perPage)
                     .limit(perPage)
                     .exec(function (err, projArray) {
-                        Project.find({ proj_status: 'Proposed' }).countDocuments().exec(function (err, count) {
+                        Project.find({ proj_published: true, proj_status: 'Proposed' }).countDocuments().exec(function (err, count) {
                             if (err) return next(err)
                             database.findOne(Home, {}, {}, function (home) {
                                 res.render('projects', {
@@ -494,6 +523,8 @@ const controller = {
                                     home_content: home,
                                     sort_string: sort_string,
                                     status: status,
+                                    if_search: if_search,
+                                    if_sort: if_sort,
                                 });
                             });
                         });
@@ -535,25 +566,28 @@ const controller = {
                         var sort_by = { blog_date: -1 };
                         var sort_string = 'ddate';
                         var if_search = false;
-
-                        blog_sort = req.body.blog_sort_by;
+                        var if_sort;
 
                         switch (blog_sort) {
                             case 'adate':
                                 sort_by = { blog_date: 1 };
                                 sort_string = 'adate';
+                                if_sort = true;
                                 break;
                             case 'ddate':
                                 sort_by = { blog_date: -1 };
                                 sort_string = 'ddate';
+                                if_sort = true;
                                 break;
                             case 'atitle':
                                 sort_by = { blog_title: 1 };
                                 sort_string = 'atitle';
+                                if_sort = true;
                                 break;
                             case 'dtitle':
                                 sort_by = { blog_title: -1 };
                                 sort_string = 'dtitle';
+                                if_sort = true;
                                 break;
                         }
 
@@ -577,6 +611,7 @@ const controller = {
                                             count: count,
                                             sort_string: sort_string,
                                             if_search: if_search,
+                                            if_sort: if_sort,
                                         });
                                     });
                                 });
