@@ -128,8 +128,10 @@ app.post('/application', upload.array('app_portfolio', 5), formsValidator.appVal
 
 app.get('/projects', controller.getProjects);
 app.post('/projects', controller.getProjects);
+app.get('/projects/:sort', controller.getProjects);
 app.get('/projects/:page', controller.getProjects);
-app.post('/projects/:page', controller.getProjects);
+app.post('/projects/:sort/:page', controller.getProjects);
+app.get('/projects/:page', controller.getProjects);
 app.get('/projects/search/:string', controller.getProjectsSearch);
 app.get('/projects/search/:string/:page', controller.getProjectsSearch);
 app.get('/a-project/', projectController.findProject);
@@ -147,11 +149,7 @@ app.post('/projects-proposed', controller.getProjectsProposed);
 app.post('/projects-proposed/:page', controller.getProjectsProposed);
 
 app.get('/blog', controller.getBlogs);
-app.post('/blog', controller.getBlogs);
-app.get('/blog/:page', controller.getBlogs);
-app.post('/blog/:page', controller.getBlogs);
-app.get('/blog/search/:string', controller.getBlogsSearch);
-app.get('/blog/search/:string/:page', controller.getBlogsSearch);
+app.get('/blog/search', controller.getBlogsSearch);
 app.post('/blog', blogController.postBlog);
 app.get('/a-blog', blogController.findBlog);
 
@@ -160,7 +158,6 @@ app.post('/contact-us', email_upload.single('contact_upload'), formsValidator.co
 app.get('/donate', controller.getDonate);
 
 app.get('/404', controller.get404);
-app.get('/cms-404', controller.getcms404);
 app.get('/project-not-found', controller.getProjectNotFound);
 app.get('/blog-not-found', controller.getBlogNotFound);
 app.get('/unavailable', controller.getUnavailable);
@@ -255,10 +252,10 @@ app.get('/cms-edit-donation', controller.getCMSEditDonate);
 app.post('/cms-edit-donation', cmsValidator.DonateValidation(), donateController.editDonate);
 
 app.use((req, res, next) => {
-  if(req.session.user){
+  if (req.session.user) {
     res.status(404).redirect('/cms-404');
   }
-  else{
+  else {
     res.status(404).redirect('/404');
   }
 });

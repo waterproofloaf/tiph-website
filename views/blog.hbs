@@ -24,16 +24,14 @@
   <br>
   <div class="container-fluid sort-view d-flex sub-caption">
     <div class="blog-sort d-flex">
-      <form method="post">
-        <select class="form-control form-control-sm" id="blog-sort-by" name="blog_sort_by"
-          onchange="this.form.submit()">
-          <option value="" selected disabled hidden>Sort by:</option>
-          <option value="ddate" {{#equals sort_string 'ddate'}}selected{{/equals}}>Date (Latest)</option>
-          <option value="adate" {{#equals sort_string 'adate'}}selected{{/equals}}>Date (Oldest)</option>
-          <option value="atitle" {{#equals sort_string 'atitle'}}selected{{/equals}}>Title (A-Z)</option>
-          <option value="dtitle" {{#equals sort_string 'dtitle'}}selected{{/equals}}>Title (Z-A)</option>
-        </select>
-      </form>
+      <select class="form-control form-control-sm sub-caption" id="blog-sort-by" name="blog_sort_by"
+        onchange="location = this.value;">
+        <option value="" selected disabled hidden>View by:</option>
+        <option value="/blog?sort=ddate" {{#equals sort_string 'ddate'}}selected{{/equals}}>Date (Latest)</option>
+        <option value="/blog?sort=adate" {{#equals sort_string 'adate'}}selected{{/equals}}>Date (Oldest)</option>
+        <option value="/blog?sort=atitle" {{#equals sort_string 'atitle'}}selected{{/equals}}>Title (A-Z)</option>
+        <option value="/blog?sort=dtitle" {{#equals sort_string 'dtitle'}}selected{{/equals}}>Title (Z-A)</option>
+      </select>
     </div>
   </div>
   <hr>
@@ -76,18 +74,21 @@
     <ul class="pagination justify-content-center">
       <li class="page-item {{#equals current 1}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
         <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
-          href="/blog/{{#if if_search}}search/{{search}}/{{/if}}{{minus current 1}}" {{/equals}}>Previous</a>
+          href="/blog{{#if if_search}}/search{{/if}}?page={{minus current 1}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}"
+          {{/equals}}>Previous</a>
       </li>
       {{#repeat count=pages start=1}}
       <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
-          href="/blog/{{#if if_search}}search/{{search}}/{{/if}}{{@index}}">{{@index}}{{#equals current @index}}<span
+          href="/blog{{#if if_search}}/search{{/if}}?page={{@index}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">{{@index}}{{#equals current @index}}<span
             class="sr-only">(current)</span>{{/equals}}</a></li>
       {{else}}
-      <li class="page-item active"><a class="page-link" href="/blog/{{#if if_search}}search/{{search}}/{{/if}}1">1<span
+      <li class="page-item active"><a class="page-link"
+          href="/blog{{#if if_search}}/search{{/if}}?page=1{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">1<span
             class="sr-only">(current)</span></a></li>
       {{/repeat}}
       <li class="page-item {{#equals current pages}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
-        <a class="page-link" href="/blog/{{#if if_search}}search/{{search}}/{{/if}}{{add current 1}}">Next</a>
+        <a class="page-link"
+          href="/blog{{#if if_search}}/search{{/if}}?page={{add current 1}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">Next</a>
       </li>
     </ul>
   </nav>
@@ -104,7 +105,7 @@
       // Cancel the default action, if needed
       event.preventDefault();
       // Trigger the button element with a click
-      window.location = "/blog/search/" + search;
+      window.location = "/blog/search?msg=" + search;
     }
   });
 </script>
