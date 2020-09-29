@@ -149,13 +149,7 @@ app.post('/projects-proposed', controller.getProjectsProposed);
 app.post('/projects-proposed/:page', controller.getProjectsProposed);
 
 app.get('/blog', controller.getBlogs);
-app.get('/blog/:sort', controller.getBlogs);
-// app.post('/blog', controller.getBlogs);
-app.get('/blog/:page', controller.getBlogs);
-app.get('/blog/:sort/:page', controller.getBlogs);
-// app.post('/blog/:page', controller.getBlogs);
-app.get('/blog/search/:string', controller.getBlogsSearch);
-app.get('/blog/search/:string/:page', controller.getBlogsSearch);
+app.get('/blog/search', controller.getBlogsSearch);
 app.post('/blog', blogController.postBlog);
 app.get('/a-blog', blogController.findBlog);
 
@@ -258,16 +252,12 @@ app.get('/cms-edit-donation', controller.getCMSEditDonate);
 app.post('/cms-edit-donation', cmsValidator.DonateValidation(), donateController.editDonate);
 
 app.use((req, res, next) => {
-<<<<<<< Updated upstream
-  res.status(404).redirect('/404');
-=======
   if (req.session.user) {
     res.status(404).redirect('/cms-404');
   }
   else {
     res.status(404).redirect('/404');
   }
->>>>>>> Stashed changes
 });
 
 // enables to export app object when called in another .js file

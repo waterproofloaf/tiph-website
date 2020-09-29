@@ -529,12 +529,10 @@ const controller = {
                         });
                     }
                     else {
-                        var blog_sort = req.params.sort;
+                        var blog_sort = req.query.sort;
                         var perPage = 5;
-                        var page = req.params.page || 1;
-                        // var sort_by = { blog_date: -1 };
+                        var page = req.query.page || 1;
                         var sort_by = { blog_date: -1 };
-                        // var sort_string = blog_sort;
                         var sort_string = 'ddate';
                         var if_search = false;
                         var if_sort;
@@ -611,7 +609,7 @@ const controller = {
                 });
             }
             else {
-                var search = req.params.string;
+                var search = req.query.msg;
                 Blog.countDocuments({ blog_published: true, blog_title: { $regex: new RegExp(".*" + search + ".*", "i") } }, function (err, count) {
                     if (count == 0) {
                         database.findOne(Home, {}, {}, function (home) {
@@ -626,30 +624,34 @@ const controller = {
                         });
                     }
                     else {
+                        var blog_sort = req.query.sort;
                         var perPage = 5;
-                        var page = req.params.page || 1;
+                        var page = req.query.page || 1;
                         var sort_by = { blog_date: -1 };
                         var sort_string = 'ddate';
                         var if_search = true;
-
-                        blog_sort = req.body.blog_sort_by;
+                        var if_sort;
 
                         switch (blog_sort) {
                             case 'adate':
                                 sort_by = { blog_date: 1 };
                                 sort_string = 'adate';
+                                if_sort = true;
                                 break;
                             case 'ddate':
                                 sort_by = { blog_date: -1 };
                                 sort_string = 'ddate';
+                                if_sort = true;
                                 break;
                             case 'atitle':
                                 sort_by = { blog_title: 1 };
                                 sort_string = 'atitle';
+                                if_sort = true;
                                 break;
                             case 'dtitle':
                                 sort_by = { blog_title: -1 };
                                 sort_string = 'dtitle';
+                                if_sort = true;
                                 break;
                         }
 
@@ -674,6 +676,7 @@ const controller = {
                                             sort_string: sort_string,
                                             search: search,
                                             if_search: if_search,
+                                            if_sort: if_sort,
                                         });
                                     });
                                 });
