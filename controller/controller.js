@@ -529,40 +529,30 @@ const controller = {
                         });
                     }
                     else {
-                        var blog_sort = req.params.sort;
                         var perPage = 5;
                         var page = req.params.page || 1;
-                        // var sort_by = { blog_date: -1 };
                         var sort_by = { blog_date: -1 };
-                        // var sort_string = blog_sort;
                         var sort_string = 'ddate';
                         var if_search = false;
-                        var if_sort;
 
-                        console.log(blog_sort);
-
-                        // blog_sort = req.body.blog_sort_by;
+                        blog_sort = req.body.blog_sort_by;
 
                         switch (blog_sort) {
                             case 'adate':
                                 sort_by = { blog_date: 1 };
                                 sort_string = 'adate';
-                                if_sort = true;
                                 break;
                             case 'ddate':
                                 sort_by = { blog_date: -1 };
                                 sort_string = 'ddate';
-                                if_sort = true;
                                 break;
                             case 'atitle':
                                 sort_by = { blog_title: 1 };
                                 sort_string = 'atitle';
-                                if_sort = true;
                                 break;
                             case 'dtitle':
                                 sort_by = { blog_title: -1 };
                                 sort_string = 'dtitle';
-                                if_sort = true;
                                 break;
                         }
 
@@ -586,7 +576,6 @@ const controller = {
                                             count: count,
                                             sort_string: sort_string,
                                             if_search: if_search,
-                                            if_sort: if_sort,
                                         });
                                     });
                                 });

@@ -147,11 +147,9 @@ app.post('/projects-proposed', controller.getProjectsProposed);
 app.post('/projects-proposed/:page', controller.getProjectsProposed);
 
 app.get('/blog', controller.getBlogs);
-app.get('/blog/:sort', controller.getBlogs);
-// app.post('/blog', controller.getBlogs);
+app.post('/blog', controller.getBlogs);
 app.get('/blog/:page', controller.getBlogs);
-app.get('/blog/:sort/:page', controller.getBlogs);
-// app.post('/blog/:page', controller.getBlogs);
+app.post('/blog/:page', controller.getBlogs);
 app.get('/blog/search/:string', controller.getBlogsSearch);
 app.get('/blog/search/:string/:page', controller.getBlogsSearch);
 app.post('/blog', blogController.postBlog);
