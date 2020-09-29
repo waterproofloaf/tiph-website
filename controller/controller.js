@@ -530,12 +530,12 @@ const controller = {
                     }
                     else {
                         var blog_sort = req.params.sort;
-                        var sort_string = blog_sort;
-
                         var perPage = 5;
                         var page = req.params.page || 1;
                         // var sort_by = { blog_date: -1 };
-                        var sort_by;
+                        var sort_by = { blog_date: -1 };
+                        // var sort_string = blog_sort;
+                        var sort_string = 'ddate';
                         var if_search = false;
                         var if_sort;
 
@@ -760,7 +760,7 @@ const controller = {
     },
 
     getcms404: function (req, res) {
-        if (req.session.user && req.cookies.user_sid){
+        if (req.session.user && req.cookies.user_sid) {
             res.render('cms-404', {
                 layout: '/layouts/cms-layout',
                 title: 'CMS 404 Not Found | The Initiative PH',
@@ -769,7 +769,7 @@ const controller = {
                 userid: req.session.userid,
             })
         }
-        else{
+        else {
             res.redirect('cms-login')
         }
     },
