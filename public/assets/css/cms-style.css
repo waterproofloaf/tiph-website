@@ -19,6 +19,11 @@
     color: red;
 }
 
+.center-wrapper{
+    text-align: center;
+    color: #66615B;
+    margin-top: 200px;
+}
 
 /* Switch Slider Toggle */
 .switch {
@@ -231,6 +236,7 @@ input:checked + .slider:before {
 .admin-username {
     font-style: italic;
 }
+
 
 /* Tables */
 table.dataTable thead .sorting:after,
