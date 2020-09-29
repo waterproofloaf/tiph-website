@@ -27,10 +27,14 @@
       <select class="form-control form-control-sm sub-caption" id="blog-sort-by" name="blog_sort_by"
         onchange="location = this.value;">
         <option value="" selected disabled hidden>Sort by:</option>
-        <option value="/blog?sort=ddate" {{#equals sort_string 'ddate'}}selected{{/equals}}>Date (Latest)</option>
-        <option value="/blog?sort=adate" {{#equals sort_string 'adate'}}selected{{/equals}}>Date (Oldest)</option>
-        <option value="/blog?sort=atitle" {{#equals sort_string 'atitle'}}selected{{/equals}}>Title (A-Z)</option>
-        <option value="/blog?sort=dtitle" {{#equals sort_string 'dtitle'}}selected{{/equals}}>Title (Z-A)</option>
+        <option value="/blog{{#if if_search}}/search{{/if}}?sort=ddate{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'ddate'}}selected{{/equals}}>Date (Latest)</option>
+        <option value="/blog{{#if if_search}}/search{{/if}}?sort=adate{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'adate'}}selected{{/equals}}>Date (Oldest)</option>
+        <option value="/blog{{#if if_search}}/search{{/if}}?sort=atitle{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'atitle'}}selected{{/equals}}>Title (A-Z)</option>
+        <option value="/blog{{#if if_search}}/search{{/if}}?sort=dtitle{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'dtitle'}}selected{{/equals}}>Title (Z-A)</option>
       </select>
     </div>
   </div>
