@@ -128,8 +128,10 @@ app.post('/application', upload.array('app_portfolio', 5), formsValidator.appVal
 
 app.get('/projects', controller.getProjects);
 app.post('/projects', controller.getProjects);
+app.get('/projects/:sort', controller.getProjects);
 app.get('/projects/:page', controller.getProjects);
-app.post('/projects/:page', controller.getProjects);
+app.post('/projects/:sort/:page', controller.getProjects);
+app.get('/projects/:page', controller.getProjects);
 app.get('/projects/search/:string', controller.getProjectsSearch);
 app.get('/projects/search/:string/:page', controller.getProjectsSearch);
 app.get('/a-project/', projectController.findProject);
@@ -256,7 +258,16 @@ app.get('/cms-edit-donation', controller.getCMSEditDonate);
 app.post('/cms-edit-donation', cmsValidator.DonateValidation(), donateController.editDonate);
 
 app.use((req, res, next) => {
+<<<<<<< Updated upstream
   res.status(404).redirect('/404');
+=======
+  if (req.session.user) {
+    res.status(404).redirect('/cms-404');
+  }
+  else {
+    res.status(404).redirect('/404');
+  }
+>>>>>>> Stashed changes
 });
 
 // enables to export app object when called in another .js file
