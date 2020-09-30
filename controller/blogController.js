@@ -67,6 +67,7 @@ const blogController = {
                     blog_date: blog.blog_date,
                     blog_content: blog.blog_content,
                     blog_preview: blog.blog_preview,
+                    blog_keyword: blog.blog_keywords,
                     blog_active: true,
                     blog_id: query,
                 });

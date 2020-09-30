@@ -66,7 +66,7 @@ const projectController = {
                     proj_status: proj.proj_status,
                     proj_date: proj.proj_date,
                     proj_content: proj.proj_content,
-                    proj_keywords: proj.proj_keywords,
+                    proj_keyword: proj.proj_keywords,
                     projects_active: true,
                     proj_id: query,
                 });
