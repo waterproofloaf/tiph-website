@@ -96,12 +96,6 @@ const controller = {
                 }
             });
         });
-
-        // res.render('pre-application', {
-        //     layout: '/layouts/main',
-        //     title: 'Pre-Application | The Initiative PH',
-        //     volunteer_active: true,
-        // })
     },
 
     getApplication: function (req, res) {
@@ -1007,31 +1001,6 @@ const controller = {
         }
     },
 
-    getCMSApplication: function (req, res) {
-        if (req.session.user && req.cookies.user_sid) {
-            database.findOne(PreAppForm, {}, {}, function (preappsform) {
-                database.findOne(AppForm, {}, {}, function (appsform) {
-                    res.render('cms-application', {
-                        layout: '/layouts/cms-layout',
-                        title: 'Manage Forms | The Initiative PH',
-                        application_active: true,
-                        forms_active: true,
-                        name: req.session.name,
-                        type: req.session.type,
-                        userid: req.session.userid,
-                        preappsform_id: preappsform._id,
-                        appsform_id: appsform._id,
-                    })
-                })
-
-            });
-        }
-        else {
-            res.redirect('cms-login')
-        }
-    },
-
-    //Replace department with Positions
     getCMSPositions: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
             Position.countDocuments({}, function (err, count) {
@@ -1083,6 +1052,30 @@ const controller = {
                 type: req.session.type,
                 userid: req.session.userid,
             })
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+    
+    getCMSApplication: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            database.findOne(PreAppForm, {}, {}, function (preappsform) {
+                database.findOne(AppForm, {}, {}, function (appsform) {
+                    res.render('cms-application', {
+                        layout: '/layouts/cms-layout',
+                        title: 'Manage Forms | The Initiative PH',
+                        application_active: true,
+                        forms_active: true,
+                        name: req.session.name,
+                        type: req.session.type,
+                        userid: req.session.userid,
+                        preappsform_id: preappsform._id,
+                        appsform_id: appsform._id,
+                    })
+                })
+
+            });
         }
         else {
             res.redirect('cms-login')
