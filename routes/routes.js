@@ -128,26 +128,14 @@ app.post('/application', upload.array('app_portfolio', 5), formsValidator.appVal
 
 app.get('/projects', controller.getProjects);
 app.post('/projects', controller.getProjects);
-// app.get('/projects/:sort', controller.getProjects);
-// app.get('/projects/:page', controller.getProjects);
-// app.post('/projects/:sort/:page', controller.getProjects);
-// app.post('/projects/:page', controller.getProjects);
-// app.get('/projects/search/:string', controller.getProjectsSearch);
-// app.get('/projects/search/:string/:page', controller.getProjectsSearch);
 app.get('/projects/search/', controller.getProjectsSearch);
 app.get('/a-project/', projectController.findProject);
 app.get('/projects-approved', controller.getProjectsApproved);
-// app.get('/projects-approved/:page', controller.getProjectsApproved);
 app.post('/projects-approved', controller.getProjectsApproved);
-// app.post('/projects-approved/:page', controller.getProjectsApproved);
 app.get('/projects-ongoing', controller.getProjectsOngoing);
-// app.get('/projects-ongoing/:page', controller.getProjectsOngoing);
 app.post('/projects-ongoing', controller.getProjectsOngoing);
-// app.post('/projects-ongoing/:page', controller.getProjectsOngoing);
 app.get('/projects-proposed', controller.getProjectsProposed);
-// app.get('/projects-proposed/:page', controller.getProjectsProposed);
 app.post('/projects-proposed', controller.getProjectsProposed);
-// app.post('/projects-proposed/:page', controller.getProjectsProposed);
 
 app.get('/blog', controller.getBlogs);
 app.get('/blog/search', controller.getBlogsSearch);
