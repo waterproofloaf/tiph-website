@@ -51,18 +51,11 @@
     </div>
   </div>
 
-  <div>
-    {{#each donate_mode}}
-    {{donatemode_name}}
-    {{/each}}
-  </div>
-
   <section style="overflow-x: hidden;">
     <div class="container-fluid pt-5">
       <h1 class="font-weight-bold text-uppercase sub-title mar-top-40 pb-3"><strong>Donate to Us</i></strong></h1>
       <div class="row justify-content-center">
         <h5 class="sub-caption">{{donateMessage}}</h5>
-
         {{#each donate_info as |donate_info|}}
         <div class="donation-card mb-3 justify-content-center " style={{#if donate_visible}}"display:
           flex;"{{else}}"display: none;"{{/if}}>
@@ -79,41 +72,6 @@
           {{/each}}
         </div>
         {{/each}}
-
-
-
-        {{!-- <div class="col-sm d-flex mb-3">
-          <div class="card-body card-gcash">
-            <img src="assets/img/gcash.png" width="80px">
-            <h5 class="card-title white-font">GCash</h5>
-            <p><strong>Account Name: </strong><br>John Doe</p>
-            <p><strong>Contact Number:</strong><br>09## - ### - ####</p>
-          </div>
-        </div>
-        <div class="col-sm d-flex mb-3">
-          <div class="card-body card-paymaya">
-            <img src="assets/img/paymaya.png" width="70px">
-            <h5 class="card-title white-font">PayMaya</h5>
-            <p><strong>Account Name: </strong><br>John Doe</p>
-            <p><strong>Contact Number:</strong><br>09## - ### - ####</p>
-          </div>
-        </div>
-        <div class="col-sm d-flex mb-3">
-          <div class="card-body card-bdo">
-            <img src="assets/img/bdo.png" width="100px">
-            <h5 class="card-title white-font">BDO</h5>
-            <p><strong>Account Name: </strong><br>John Doe</p>
-            <p><strong>Account No.:</strong><br>######</p>
-          </div>
-        </div>
-        <div class="col-sm d-flex mb-3">
-          <div class="card-body card-bpi">
-            <img src="assets/img/bpi.png" width="85px">
-            <h5 class="card-title white-font">BPI</h5>
-            <p><strong>Account Name: </strong><br>John Doe</p>
-            <p><strong>Account No.:</strong><br>######</p>
-          </div>
-        </div> --}}
       </div>
     </div>
   </section>
