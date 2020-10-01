@@ -852,7 +852,7 @@ const controller = {
             res.render('404', {
                 layout: '/layouts/main',
                 title: 'Unavailable | The Initiative PH',
-                title404: 'Unavailable',
+                title404: 'Page Unavailable',
                 message: type + ' are unavailable at the moment.',
                 links: [
                     { path: relink, name: retype },
