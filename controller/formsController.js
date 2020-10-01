@@ -242,7 +242,7 @@ const formsController = {
                     position_info: positionArray,
                     appform_year: appsform.appform_year,
                     appform_desc: appsform.appform_desc,
-                    msg: '<mark>Your Application form has been submitted!<br><a href="https://tinyurl.com/tiphinterviews2020">Interview Schedule Link</a></mark>',
+                    msg: '<mark>Your Application form has been submitted!<br>Click here for the <a href="https://tinyurl.com/tiphinterviews2020">Interview Schedule Link</a></mark>',
                     confirmed: true,
                 });
               })
