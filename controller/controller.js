@@ -317,6 +317,7 @@ const controller = {
                         projects_active: true,
                         no_proj: true,
                         home_content: home,
+                        projectMessage: 'There are currently no approved project entries.',
                     })
                 });
             } else {
@@ -390,6 +391,7 @@ const controller = {
                         title: 'Projects | The Initiative PH',
                         projects_active: true,
                         home_content: home,
+                        projectMessage: 'There are currently no ongoing project entries.',
                     })
                 });
             } else {
@@ -462,7 +464,8 @@ const controller = {
                         layout: '/layouts/main',
                         title: 'Projects | The Initiative PH',
                         projects_active: true,
-                        home_content: home
+                        home_content: home,
+                        projectMessage: 'There are currently no proposed project entries.',
                     })
                 });
             } else {
