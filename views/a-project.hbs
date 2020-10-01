@@ -1,10 +1,18 @@
 <!-- HEADER -->
-<div class="bg-image"></div>
+<div class="container-fluid center p-5"
+    style="background: #eeede0 url(proj_cover{{this.proj_id}}) no-repeat center; background-size:cover; height=500px;">
+    <div class="header-title text-center">
+        <h5 class="font-weight-bold text-uppercase sub-title" style="color:white;">{{this.proj_title}}</h5>
+        <p class="sub-caption text-center" id="blog-datetime" style="color:white">{{this.proj_status}} •
+            {{dateFormat this.proj_date "MMMM Do, YYYY"}}</p>
+    </div>
+</div>
+{{!-- <div class="bg-image"></div>
 <div class="bg-text">
   <h5 class="font-weight-bold text-uppercase sub-title" style="color:white">{{this.proj_title}}</h5>
   <p class="sub-caption text-center" style="color:white">{{this.proj_status}} •
     {{dateFormat this.proj_date "MMMM Do, YYYY"}}</p>
-</div>
+</div> --}}
 
 <!-- BODY -->
 <div class="the-content sub-caption px-1 pt-5 pb-3">
