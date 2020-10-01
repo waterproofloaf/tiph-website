@@ -51,40 +51,36 @@
     </div>
   </div>
 
+  <div>
+    {{#each donate_mode}}
+    {{donatemode_name}}
+    {{/each}}
+  </div>
+
   <section style="overflow-x: hidden;">
     <div class="container-fluid pt-5">
       <h1 class="font-weight-bold text-uppercase sub-title mar-top-40 pb-3"><strong>Donate to Us</i></strong></h1>
       <div class="row justify-content-center">
         <h5 class="sub-caption">{{donateMessage}}</h5>
-        {{!-- FOR MONGODB --}}
-        {{# each donate_info}}
-        {{!-- {{if donate_hide}}{{else}} --}}
-        <div class="donation-card mb-3 justify-content-center" style={{# if this.donate_visible}}"display:
+
+        {{#each donate_info as |donate_info|}}
+        <div class="donation-card mb-3 justify-content-center " style={{#if donate_visible}}"display:
           flex;"{{else}}"display: none;"{{/if}}>
-          <div
-            class="card-body {{#equals this.donate_type "GCash"}}card-gcash{{/equals}}{{#equals this.donate_type "PayMaya"}}card-paymaya{{/equals}}{{#equals this.donate_type "BDO"}}card-bdo{{/equals}}{{#equals this.donate_type "BPI"}}card-bpi{{/equals}}">
-            {{#equals this.donate_type "GCash"}}
-            <img src="assets/img/gcash.png" width="80px">
-            <h5 class="card-title white-font">GCash</h5>
-            {{/equals}}
-            {{#equals this.donate_type "PayMaya"}}
-            <img src="assets/img/paymaya.png" width="70px">
-            <h5 class="card-title white-font">PayMaya</h5>
-            {{/equals}}
-            {{#equals this.donate_type "BDO"}}
-            <img src="assets/img/bdo.png" width="100px">
-            <h5 class="card-title white-font">BDO</h5>
-            {{/equals}}
-            {{#equals this.donate_type "BPI"}}
-            <img src="assets/img/bpi.png" width="85px">
-            <h5 class="card-title white-font">BPI</h5>
-            {{/equals}}
-            <p><strong>Account Name: </strong><br>{{this.donate_name}}</p>
-            <p><strong>Contact Number:</strong><br>{{this.donate_number}}</p>
+          {{#each ../donate_mode as |donate_mode|}}
+          {{#equals ../donate_type donatemode_name}}
+          <div class="card-body card-size d-flex flex-column align-items-center align-content-center"
+            style="background-color: {{donatemode_color}};">
+            <img src="/donatemodepic{{_id}}" width="80px">
+            <h5 class="card-title white-font">{{../donatemode_name}}</h5>
+            <p><strong>Account Name: </strong><br>{{../donate_name}}</p>
+            <p><strong>Contact Number:</strong><br>{{../donate_number}}</p>
           </div>
+          {{/equals}}
+          {{/each}}
         </div>
-        {{!-- {{/if}} --}}
         {{/each}}
+
+
 
         {{!-- <div class="col-sm d-flex mb-3">
           <div class="card-body card-gcash">

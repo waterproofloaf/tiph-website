@@ -16,11 +16,9 @@
                             <div class="form-group">
                                 <label for="donate_type">Mode</label>
                                 <select class="form-control" name="donate_type" id="donate_type">
-                                    <option value="GCash">GCash</option>
-                                    <option value="PayMaya">PayMaya</option>
-                                    <option value="BPI">BPI
-                                    </option>
-                                    <option value="BDO">BDO</option>
+                                    {{#each donate}}
+                                    <option value="{{donatemode_name}}">{{donatemode_name}}</option>
+                                    {{/each}}
                                 </select>
                             </div>
                             <div class="form-group">

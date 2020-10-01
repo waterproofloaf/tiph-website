@@ -791,6 +791,12 @@ ul{
   max-width: 300px;
 }
 
+.card-size {
+  min-width: 250px;
+  max-width: 250px;
+  color: white;
+}
+
 .card-gcash{
   min-width: 250px;
   max-width: 250px;

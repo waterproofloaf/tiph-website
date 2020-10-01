@@ -16,10 +16,13 @@
                             <div class="form-group">
                                 <label for="donate_type">Mode</label>
                                 <select class="form-control" name="donate_type" id="donate_type">
-                                    <option value="GCash" {{#equals donate_type "GCash"}}selected{{/equals}}>GCash</option>
-                                    <option value="Paymaya"{{#equals donate_type "PayMaya"}}selected{{/equals}}>PayMaya</option>
-                                    <option value="BPI"{{#equals donate_type "BPI"}}selected{{/equals}}>BPI</option>
-                                    <option value="BDO"{{#equals donate_type "BDO"}}selected{{/equals}}>BDO</option>
+                                    {{#each donate}}
+                                    <option value="{{this.donatemode_name}}"
+                                        {{#equals ../donate_type this.donatemode_name}}selected{{/equals}}>
+                                        {{this.donatemode_name}}</option>
+                                    {{/each}}
+
+                                    {{!-- {{#equals donate_type donate.donatemode_name}}selected{{/equals}} --}}
                                 </select>
                             </div>
                             <div class="form-group">

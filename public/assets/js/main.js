@@ -85,6 +85,35 @@ function donate_change(checkbox) {
   }
 }
 
+// CMS Donate Mode Switch Toggle
+function donatemode_change(checkbox) {
+
+  //If it is checked.
+  var self = $(checkbox).attr('id');
+  if (checkbox.checked) {
+    $.ajax({
+      url: "/cms-donate-mode/toggle/",
+      data: { id: self, visible: "true" },
+      success: function (response) {
+        $(this).attr("checked", "checked");
+      },
+      error: function (xhr) { }
+    });
+  }
+
+  //If it has been unchecked.
+  else {
+    $.ajax({
+      url: "/cms-donate-mode/toggle/",
+      data: { id: self, visible: "false" },
+      success: function (response) {
+        $(this).removeAttr("checked");
+      },
+      error: function (xhr) { }
+    });
+  }
+}
+
 // CMS Blog Switch Toggle
 function blog_change(checkbox) {
 

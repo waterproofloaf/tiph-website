@@ -63,4 +63,12 @@ $(document).ready(function () {
       targets: [3, 4, 5]
     }]
   });
+
+  $('#donate-mode-table').DataTable({
+    "aaSorting": [],
+    columnDefs: [{
+      orderable: false,
+      targets: [2, 3, 4]
+    }]
+  });
 });

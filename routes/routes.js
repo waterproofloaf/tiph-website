@@ -12,6 +12,7 @@ const bodyParser = require('body-parser');
 const controller = require('../controller/controller.js');
 const logIncontroller = require('../controller/logIncontroller.js');
 const donateController = require('../controller/donateController.js');
+const donatemodeController = require('../controller/donatemodeController.js');
 const formsController = require('../controller/formsController.js');
 const blogController = require('../controller/blogController.js');
 const projectController = require('../controller/projectController.js');
@@ -240,6 +241,15 @@ app.get('/cms-donation-new-option', controller.getCMSNewDonate);
 app.post('/cms-donation-new-option', cmsValidator.DonateValidation(), donateController.postDonate);
 app.get('/cms-edit-donation', controller.getCMSEditDonate);
 app.post('/cms-edit-donation', cmsValidator.DonateValidation(), donateController.editDonate);
+
+app.get('/cms-donate-mode', controller.getCMSDonateMode);
+app.get('/cms-donate-mode/toggle/', donatemodeController.donateToggle);
+app.get('/cms-donate-mode/delete/', donatemodeController.deleteDonate);
+app.get('/cms-donate-mode-new-option', controller.getCMSDonateModeNew);
+app.post('/cms-donate-mode-new-option', upload.any(), donatemodeController.postDonate);
+app.get('/cms-donate-mode-edit-option', controller.getCMSDonateModeEdit);
+app.post('/cms-donate-mode-edit-option', upload.any(), donatemodeController.editDonate);
+
 
 app.use((req, res, next) => {
   if (req.session.user) {

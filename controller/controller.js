@@ -1,6 +1,7 @@
 // import module from db.js in models directory
 const database = require('../models/db.js');
 const Donate = require('../models/DonateModel.js');
+const DonateMode = require('../models/DonateModeModel.js');
 const Home = require('../models/HomeModel.js');
 const About = require('../models/AboutModel.js');
 const Department = require('../models/DepartmentModel.js');
@@ -748,6 +749,7 @@ const controller = {
                         layout: '/layouts/main',
                         title: 'Donate | The Initiative PH',
                         donate_active: true,
+                        donatelist_active: true,
                         donateMessage: 'There is currently no donation option available.',
                         home_content: home,
                     });
@@ -755,13 +757,18 @@ const controller = {
             }
             else {
                 database.findMany(Donate, {}, {}, function (donateArray) {
-                    database.findOne(Home, {}, {}, function (home) {
-                        res.render('donate', {
-                            layout: '/layouts/main',
-                            title: 'Donate | The Initiative PH',
-                            donate_active: true,
-                            donate_info: donateArray,
-                            home_content: home,
+                    database.findMany(DonateMode, {}, {}, function (donateMode) {
+                        database.findOne(Home, {}, {}, function (home) {
+                            // console.log(donateMode);
+                            res.render('donate', {
+                                layout: '/layouts/main',
+                                title: 'Donate | The Initiative PH',
+                                donate_active: true,
+                                donatelist_active: true,
+                                donate_info: donateArray,
+                                donate_mode: donateMode,
+                                home_content: home,
+                            });
                         });
                     });
                 });
@@ -1060,7 +1067,7 @@ const controller = {
             res.redirect('cms-login')
         }
     },
-    
+
     getCMSApplication: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
             database.findOne(PreAppForm, {}, {}, function (preappsform) {
@@ -1768,6 +1775,7 @@ const controller = {
                             layout: '/layouts/cms-layout',
                             title: 'CMS Donate | The Initiative PH',
                             donate_active: true,
+                            donatelist_active: true,
                             name: req.session.name,
                             type: req.session.type,
                             userid: req.session.userid,
@@ -1780,6 +1788,7 @@ const controller = {
                             layout: '/layouts/cms-layout',
                             title: 'CMS Donate | The Initiative PH',
                             donate_active: true,
+                            donatelist_active: true,
                             name: req.session.name,
                             type: req.session.type,
                             userid: req.session.userid,
@@ -1795,14 +1804,18 @@ const controller = {
 
     getCMSNewDonate: function (req, res) {
         if (req.session.user && req.cookies.user_sid) {
-            res.render('cms-donation-new-option', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Add Donation Option | The Initiative PH',
-                donate_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
-            })
+            database.findMany(DonateMode, {}, {}, function (donate) {
+                res.render('cms-donation-new-option', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Add Donation Option | The Initiative PH',
+                    donate_active: true,
+                    donatelist_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    donate: donate,
+                })
+            });
         }
         else {
             res.redirect('cms-login')
@@ -1816,18 +1829,97 @@ const controller = {
             var donate_number = req.query.num;
             var donate_id = req.query.id;
 
-            res.render('cms-edit-donation', {
+            database.findMany(DonateMode, {}, {}, function (donate) {
+                console.log(donate);
+                res.render('cms-edit-donation', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Edit Donation Option | The Initiative PH',
+                    donate_type: donate_type,
+                    donate_name: donate_name,
+                    donate_number: donate_number,
+                    donate_id: donate_id,
+                    donate_active: true,
+                    donatelist_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    donate: donate,
+                })
+            });
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+
+    getCMSDonateMode: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            DonateMode.countDocuments({}, function (err, count) {
+                if (count == 0) {
+                    database.findMany(DonateMode, {}, {}, function (resultArray) {
+                        res.render('cms-donate-mode', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Donate Modes | The Initiative PH',
+                            donate_active: true,
+                            donatemode_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            donate_info: resultArray,
+                        })
+                    });
+                } else {
+                    database.findMany(DonateMode, {}, {}, function (resultArray) {
+                        res.render('cms-donate-mode', {
+                            layout: '/layouts/cms-layout',
+                            title: 'CMS Donate Modes | The Initiative PH',
+                            donate_active: true,
+                            donatemode_active: true,
+                            name: req.session.name,
+                            type: req.session.type,
+                            userid: req.session.userid,
+                            donate_info: resultArray,
+                        })
+                    });
+                }
+            });
+        } else {
+            res.redirect('cms-login')
+        }
+    },
+
+    getCMSDonateModeNew: function (req, res) {
+        if (req.session.user && req.cookies.user_sid) {
+            res.render('cms-donate-mode-new-option', {
                 layout: '/layouts/cms-layout',
-                title: 'CMS Edit Donation Option | The Initiative PH',
-                donate_type: donate_type,
-                donate_name: donate_name,
-                donate_number: donate_number,
-                donate_id: donate_id,
+                title: 'CMS Add Donation Mode | The Initiative PH',
                 donate_active: true,
+                donatemode_active: true,
                 name: req.session.name,
                 type: req.session.type,
                 userid: req.session.userid,
             })
+        }
+        else {
+            res.redirect('cms-login')
+        }
+    },
+
+    getCMSDonateModeEdit: function (req, res) {
+        var donatemode_id = req.query.id;
+        if (req.session.user && req.cookies.user_sid) {
+            database.findOne(DonateMode, { _id: donatemode_id }, {}, function (donate) {
+                res.render('cms-donate-mode-edit-option', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Edit Donation Mode | The Initiative PH',
+                    donate_active: true,
+                    donatemode_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    donatemode: donate,
+                })
+            });
         }
         else {
             res.redirect('cms-login')
