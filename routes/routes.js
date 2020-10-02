@@ -246,9 +246,9 @@ app.get('/cms-donate-mode', controller.getCMSDonateMode);
 app.get('/cms-donate-mode/toggle/', donatemodeController.donateToggle);
 app.get('/cms-donate-mode/delete/', donatemodeController.deleteDonate);
 app.get('/cms-donate-mode-new-option', controller.getCMSDonateModeNew);
-app.post('/cms-donate-mode-new-option', upload.any(), donatemodeController.postDonate);
+app.post('/cms-donate-mode-new-option', upload.any(), cmsValidator.DonateModeValidation(), donatemodeController.postDonate);
 app.get('/cms-donate-mode-edit-option', controller.getCMSDonateModeEdit);
-app.post('/cms-donate-mode-edit-option', upload.any(), donatemodeController.editDonate);
+app.post('/cms-donate-mode-edit-option', upload.any(), cmsValidator.DonateModeValidation(), donatemodeController.editDonate);
 
 
 app.use((req, res, next) => {

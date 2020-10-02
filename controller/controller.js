@@ -1830,7 +1830,6 @@ const controller = {
             var donate_id = req.query.id;
 
             database.findMany(DonateMode, {}, {}, function (donate) {
-                console.log(donate);
                 res.render('cms-edit-donation', {
                     layout: '/layouts/cms-layout',
                     title: 'CMS Edit Donation Option | The Initiative PH',

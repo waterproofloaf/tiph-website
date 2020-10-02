@@ -1,4 +1,5 @@
 const Donate = require('../models/DonateModel.js');
+const DonateMode = require('../models/DonateModeModel.js');
 const database = require('../models/db.js');
 const { ObjectID } = require('mongodb');
 const { validationResult } = require('express-validator');
@@ -9,18 +10,21 @@ const url = "mongodb://localhost:27017/tiph";
 const donateController = {
     postDonate: function (req, res) {
         let errors = validationResult(req);
-
         if (!errors.isEmpty()) {
             errors = errors.errors;
-            res.render('cms-donation-new-option', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Add Donation Option | The Initiative PH',
-                donate_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
-                donateErrorMessage: errors[0].msg,
-            })
+            database.findMany(DonateMode, {}, {}, function (donate) {
+                res.render('cms-donation-new-option', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Add Donation Option | The Initiative PH',
+                    donate_active: true,
+                    donatelist_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    donateErrorMessage: errors[0].msg,
+                    donate: donate,
+                })
+            });
 
             return;
         }
@@ -64,20 +68,23 @@ const donateController = {
             var donate_name = req.query.name;
             var donate_number = req.query.num;
             var donate_id = req.query.id;
-
-            res.render('cms-edit-donation', {
-                layout: '/layouts/cms-layout',
-                title: 'CMS Edit Donation Option | The Initiative PH',
-                donate_type: donate_type,
-                donate_name: donate_name,
-                donate_number: donate_number,
-                donate_id: donate_id,
-                donate_active: true,
-                name: req.session.name,
-                type: req.session.type,
-                userid: req.session.userid,
-                donateErrorMessage: errors[0].msg,
-            })
+            database.findMany(DonateMode, {}, {}, function (donate) {
+                res.render('cms-edit-donation', {
+                    layout: '/layouts/cms-layout',
+                    title: 'CMS Edit Donation Option | The Initiative PH',
+                    donate_type: donate_type,
+                    donate_name: donate_name,
+                    donate_number: donate_number,
+                    donate_id: donate_id,
+                    donate_active: true,
+                    donatelist_active: true,
+                    name: req.session.name,
+                    type: req.session.type,
+                    userid: req.session.userid,
+                    donateErrorMessage: errors[0].msg,
+                    donate: donate,
+                })
+            });
 
             return;
         }
