@@ -319,7 +319,7 @@
         <div class="div-position">
             <p class="sub-caption" style="font-size: 20px;">What's your desired position? <star>*</star> </p>
             <select name="app_position1" id="app_position1" style="min-width: 50%; margin-bottom: 15px;" required>
-                {{!-- <option value="Secretary">Secretary</option>
+                <option value="Secretary">Secretary</option>
                 <option value="Multimedia Artist">Multimedia Artist</option>
                 <option value="Content Writer">Content Writer</option>
                 <option value="Photographer">Photographer</option>
@@ -327,7 +327,7 @@
                 <option value="External Relations Officer">External Relations Officer</option>
                 <option value="Finance Officer">Finance Officer</option>
                 <option value="Logistics Officer">Logistics Officer</option>
-                <option value="Research Officer">Research Officer</option> --}}
+                <option value="Research Officer">Research Officer</option>
             </select>
         </div>
 
@@ -364,7 +364,7 @@
         <div class="div-position-2">
             <p class="sub-caption" style="font-size: 20px; margin-top: 15px;">What's your desired position? <star>*</star> </p>
             <select name="app_position2" id="app_position2" style="width: 50%; margin-bottom: 15px;">
-                {{!-- <option value="HR Officer">HR Officer</option>
+                <option value="HR Officer">HR Officer</option>
                 <option value="Secretary">Secretary</option>
                 <option value="Multimedia Artist">Multimedia Artist</option>
                 <option value="Content Writer">Content Writer</option>
@@ -375,7 +375,7 @@
                 <option value="External Relations Officer">External Relations Officer</option>
                 <option value="Finance Officer">Finance Officer</option>
                 <option value="Logistics Officer">Logistics Officer</option>
-                <option value="Research Officer">Research Officer</option> --}}
+                <option value="Research Officer">Research Officer</option>
             </select>
         </div>
 
@@ -422,10 +422,12 @@
     <div class="row m-auto pt-5 pb-4">
         <div class="col text-center">
             {{!-- <button class="btn btn-success" type="submit"><strong>SUBMIT</strong></button> --}}
-            {{!-- <input type="checkbox" id="form_agree" name="form_agree" value="Agree" style="width: auto;" required>
-            <label for="form-agree" class="sub-caption"><strong>I Agree</strong></label><br> --}}
+            <input type="checkbox" id="form_agree" name="form_agree" value="Agree" style="width: auto;" required>
+            <label for="form-agree" class="sub-caption" style="font-size: 15px;"><strong>I Agree to the 
+                <a href="#" onclick="window.scroll({ top: 0,left: 0,behavior: 'smooth' });">Terms and Conditions </a>
+                of TIPH</strong></label><br>
             <button class="apps-button apps-font-texts" type="submit" id="app_submit_btn" name="app_submit_btn"
-            onclick="submitConfirm(this)"
+            {{!-- onclick="submitConfirm(this)" --}}
             ><strong>S U B M I T</strong></button>
         </div>
     </div>
@@ -477,6 +479,19 @@
 </script>
 
 <script>
+    const button = document.getElementById('app_submit_btn');
+
+    button.addEventListener('click', async _ => {
+    try {     
+        const response = await fetch('/application', {
+        method: 'post',
+        });
+        console.log('Completed!', response);
+    } catch(err) {
+        console.error(`Error: ${err}`);
+    }
+    });
+
   function submitConfirm(button) {
     if (confirm("Do you agree to the Terms and Conditions of TIPH?")) {
       $.ajax({
