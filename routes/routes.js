@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controller/controller.js');
-const logIncontroller = require('../controller/logIncontroller.js');
+const logIncontroller = require('../controller/logInController.js');
 const donateController = require('../controller/donateController.js');
 const donatemodeController = require('../controller/donatemodeController.js');
 const formsController = require('../controller/formsController.js');
@@ -155,7 +155,7 @@ app.get('/unavailable', controller.getUnavailable);
 
 // CMS Login
 app.get('/cms-login', controller.getCMSLogin);
-app.post('/cms-login', logIncontroller.postLogIn);
+app.post('/cms-login', logInController.postLogIn);
 app.get('/cms-logout', controller.getCMSLogout);
 
 // CMS Home and Application
