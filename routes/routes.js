@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 
 // import module `controller` from `../controllers/controller.js`
 const controller = require('../controller/controller.js');
-const logIncontroller = require('../controller/logInController.js');
+const logInController = require('../controller/logInController.js');
 const donateController = require('../controller/donateController.js');
 const donatemodeController = require('../controller/donatemodeController.js');
 const formsController = require('../controller/formsController.js');
