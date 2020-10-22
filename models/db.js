@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Donate = require('./DonateModel.js');
 const User = require('./UserModel.js');
 
-const url = "mongodb+srv://tiph_user:projectT1PH@tiph.t8gni.mongodb.net/tiph?retryWrites=true&w=majority";
+const url = "mongodb://localhost:27017/tiph";
 
 const options = {
     useUnifiedTopology: true,

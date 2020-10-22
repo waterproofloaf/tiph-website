@@ -10,10 +10,7 @@ const routes = require('./routes/routes.js');
 const db = require('./models/db.js');
 
 const app = express();
-let port = process.env.PORT;
-if (port == null || port == "") {
-    port = 9090;
-}
+const port = process.env.PORT || 9090;
 
 // support json encoded bodies
 app.use(bodyParser.json());
