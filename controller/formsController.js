@@ -29,68 +29,83 @@ const formsController = {
         return;
       }
 
-      const output = `
-      <p>You have a new message from the TIPH website<p>
-      <h3>Contact Details</h3>
-      <p>Name: ${req.body.contact_name}<p>
-      <p>Email: ${req.body.contact_email}<p>
-      <h3>Inquiry</h3>
-      <p>${req.body.contact_inquiry}</p>
-      `;
-      if(req.file != null){
-        var mailOptions = {
-          from: `${req.body.contact_email}`,
-          to: 'victor_tulabot@dlsu.edu.ph',
-          cc: 'tulabot18@gmail.com',
-          subject: `${req.body.contact_subject}`,
-          html: output,
-          attachments: [
-              {
-                filename: `${req.file.filename}`,
-                encoding: `${req.file.encoding}`,
-                path: `${req.file.path}`
-              }
-          ]
-        };
+      // remove if not necessary
+      var spammer_name = req.body.contact_name;
+      if (spammer_name == 'HenryReoft'){
+        res.render('contact-us', {
+          layout: '/layouts/main',
+          title: 'Contact Us | The Initiative PH',
+          contact_active: true,
+          msg: '<mark>Your message has been sent!</mark>',
+          confirmed: true,
+        });
       }
       else{
-        var mailOptions = {
-          from: `${req.body.contact_email}`,
-          to: 'victor_tulabot@dlsu.edu.ph',
-          cc: 'tulabot18@gmail.com',
-          subject: `${req.body.contact_subject}`,
-          html: output,
-        };
-      }
-      
-      var transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        // service: 'gmail',
-        auth: {
-          // user: process.env.EMAIL,
-          // pass: process.env.PASSWORD,
-          type: 'OAuth2',
-          user: process.env.EMAIL,
-          clientId: '832603771533-vfgm7kldqp7o8gmk96pvvro9q0lejg10.apps.googleusercontent.com',
-          clientSecret: '0HFvRJ8I4J9A7HhHpGJJFwgC',
-          refreshToken: '1//048kPu7WQDXAhCgYIARAAGAQSNwF-L9Irg7g3UJdUFj17tN_B-Rdr71vSiPXSI2YJgXne1-Qhr9yOj82LTxyC7guEI_p8a5wBztk',
+        const output = `
+        <p>You have a new message from the TIPH website<p>
+        <h3>Contact Details</h3>
+        <p>Name: ${req.body.contact_name}<p>
+        <p>Email: ${req.body.contact_email}<p>
+        <h3>Inquiry</h3>
+        <p>${req.body.contact_inquiry}</p>
+        `;
+        if(req.file != null){
+          var mailOptions = {
+            from: `${req.body.contact_email}`,
+            to: 'theinitiativeph@gmail.com',
+            cc: 'tulabot18@gmail.com', 
+            bcc: 'victor_tulabot@dlsu.edu.ph',
+            subject: `${req.body.contact_subject}`,
+            html: output,
+            attachments: [
+                {
+                  filename: `${req.file.filename}`,
+                  encoding: `${req.file.encoding}`,
+                  path: `${req.file.path}`
+                }
+            ]
+          };
         }
-      });
+        else{
+          var mailOptions = {
+            from: `${req.body.contact_email}`,
+            to: 'theinitiativeph@gmail.com',
+            cc: 'tulabot18@gmail.com', 
+            bcc: 'victor_tulabot@dlsu.edu.ph',
+            subject: `${req.body.contact_subject}`,
+            html: output,
+          };
+        }
         
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-          res.render('contact-us', {
-            layout: '/layouts/main',
-            title: 'Contact Us | The Initiative PH',
-            contact_active: true,
-            msg: '<mark>Your message has been sent!</mark>',
-            confirmed: true,
-        })
-        }
-      });
+        var transporter = nodemailer.createTransport({
+          host: 'smtp.gmail.com',
+          // service: 'gmail',
+          auth: {
+            // user: process.env.EMAIL,
+            // pass: process.env.PASSWORD,
+            type: 'OAuth2',
+            user: process.env.EMAIL,
+            clientId: '715120975215-gu4dnia1e7uhsdeu135i5etgjpbh23b3.apps.googleusercontent.com',
+            clientSecret: 'HTXsSZKpIkskj4UjJ0UnFjWs',
+            refreshToken: '1//04hxQ2KTxwLXrCgYIARAAGAQSNwF-L9Ir8q7iqvYd4k6W0VKgyvH6qnTY_9SzRdvdyx8aZ4IdU2cqt2MDagclEgq3RK-qZP16GoU',
+          }
+        });
+          
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+            res.render('contact-us', {
+              layout: '/layouts/main',
+              title: 'Contact Us | The Initiative PH',
+              contact_active: true,
+              msg: '<mark>Your message has been sent!</mark>',
+              confirmed: true,
+            })
+          }
+        });
+      }
     },
 
     postPreApp: function (req, res) {
