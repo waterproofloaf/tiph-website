@@ -1,0 +1,69 @@
+<div class="content">
+    <!-- Form -->
+    <div class="content">
+        <div id="form-container" class="row">
+            <div class="col-md-12">
+                <form method="POST" action="cms-admin-edit">
+                    <div class="card cms-blog">
+                        <div class="card-header">
+                            <h5>Edit Account:</h5>
+                        </div>
+                        <div class="card-body">
+                        <h5 class="cms-font-text-error" id="admin-error">{{adminErrorMessage}}</h5>
+                            <div class="form-group">
+                                <label for="admin_name">Full Name</label>
+                                <input type="text" class="form-control" id="admin_name" name="admin_name"
+                                    placeholder="{{this.admin_name}}" value="{{this.admin_name}}" requried>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin_username">Username</label>
+                                <input type="text" class="form-control" id="admin_username" name="admin_username"
+                                    placeholder={{this.admin_username}} value="{{this.admin_username}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin_password">Old Password</label>
+                                <input type="password" class="form-control" id="admin_password" name="admin_password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin_new_password">New Password</label>
+                                <input type="password" class="form-control" id="admin_new_password" name="admin_new_password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin_confirm_password">Confirm Password</label>
+                                <input type="password" class="form-control" id="admin_confirm_password" name="admin_confirm_password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin_dept">Department</label>
+                                
+                                <select class="form-control" id="admin_dept" name="admin_dept">
+                                    {{#each department_info}}
+                                        <option value="{{this.department_title}}" {{#equals ../admin_dept this.department_title}}selected{{/equals}}>{{this.department_title}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.quilljs.com/1.1.6/quill.js"></script>
+
+{{!-- <div class="cms-blog-form-container">
+    <!-- Form -->
+    <h6><strong> TITLE </strong></h6>
+    <input type="text" name="cms-blog-title" id="cms-blog-title" class="cms-blog-form-text" placeholder="News Title"
+        value required>
+    <h6><strong> CONTENT </strong></h6>
+    <textarea name="cms-blog-content" id="cms-blog-content" class="cms-blog-form-text" placeholder="Lorem ipsum" value
+        required></textarea>
+    <h6><strong> IMAGE </strong></h6>
+    <input type='file' name='upload' class="cms-blog-form-text">
+    <a href="cms-dashboard-b"><button name="cms-blog-submit" id="cms-blog-submit" class="button"><strong>S U B M I
+                T</strong></button></a>
+</div> --}}

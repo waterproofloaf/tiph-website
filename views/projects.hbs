@@ -1,20 +1,19 @@
-<!-- TITLE -->
-{{!-- <div class="container-fluid">
-  <div class="row p-5 border-bottom border-secondary">
-    <div class="col">
-      <h5 class="font-weight-bold text-uppercase sub-title text-center">Our Projects</h5>
-      <p class="sub-caption">
-        We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
-        Our projects seek to address issues that arised within our country and at the same time, encourage the youth
-        to become more aware on their role as a citizen with social responsibilities.
-      </p>
-    </div>
-  </div>
-</div> --}}
+<!-- HEADER -->
 <section>
-  <div class="container-fluid center">
-    <div class="row p-5 mt-5 justify-content-center">
-      <h5 class="font-weight-bold text-uppercase sub-title">Our Projects</i></h5>
+  <div class="container-fluid">
+    <div class="row px-5 pt-5 mt-5 d-flex align-items-center">
+      <div class="col text-lg-left text-center">
+        <h5 class="font-weight-bold text-uppercase sub-title">Projects
+          <i class="fas fa-leaf"></i>
+        </h5>
+      </div>
+      <div class="col-lg text-right">
+        <input class="form-control sub-caption" type="text"
+          placeholder="&#xF002; {{#if if_search}}{{search}}{{else}}Search...{{/if}}" id="projectsearch"
+          aria-label="Search" style="font-family:Montserrat, FontAwesome">
+      </div>
+    </div>
+    <div class="row px-5 pt-4 d-flex align-self-center">
       <p class="sub-caption p-3">
         We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
         Our projects seek to address issues that arised within our country and at the same time, encourage the youth
@@ -22,76 +21,138 @@
       </p>
     </div>
   </div>
+  <br>
+  <div class="container-fluid sort-view d-flex">
+    <div class="proj-sort d-flex">
+      <select class="form-control form-control-sm sub-caption" id="proj-sort-by" name="proj_sort_by"
+        onchange="location = this.value;">
+        <option value="" disabled hidden>Sort by:</option>
+        <option
+          value="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?sort=ddate{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'ddate'}}selected{{/equals}}>Date (Latest)</option>
+        <option
+          value="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?sort=adate{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'adate'}}selected{{/equals}}>Date (Oldest)</option>
+        <option
+          value="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?sort=atitle{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'atitle'}}selected{{/equals}}>Title (A-Z)</option>
+        <option
+          value="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?sort=dtitle{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'dtitle'}}selected{{/equals}}>Title (Z-A)</option>
+      </select>
+    </div>
+    <div class="view-by d-flex">
+      <div class="dropdown">
+        <select class="form-control form-control-sm sub-caption" id="proj-view-by" name="proj_view_by"
+          onchange="location = this.value;">
+          <option value="" disabled hidden>View by:</option>
+          <option value="/projects" {{#equals status 'All'}}selected{{/equals}}>All Projects</option>
+          <option value="/projects-approved" {{#equals status 'Approved'}}selected{{/equals}}>Approved</option>
+          <option value="/projects-ongoing" {{#equals status 'Ongoing'}}selected{{/equals}}>Ongoing</option>
+          <option value="/projects-proposed" {{#equals status 'Proposed'}}selected{{/equals}}>Proposed</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <hr>
 </section>
 
 <!-- CARD -->
-<div class="row p-auto py-3">
-  <div class="row mx-5">
-    <div class="row mx-5">
-      <div class="row p-5 border rounded bg-light">
-        <div class="col-lg-7">
-          <h5 class="font-weight-bold sub-title">Project Lumad</h5>
-          <p class="project-subtitle">Established on March 7, 2020</p>
-          <p class="sub-caption">
-            Project Lumad advocates for the Lumad students’ right to claim education by supporting their Bakwit school
-            through fundraising money to provide food packages and hygiene kits to the 111 student and teacher residents
-            safe inside the University of the Philippines Diliman.
-            With the pandemic depleting their already limited resources, threatening the students and teachers with
-            hunger
-            and disease, Project Lumad asks you to help save the school by sharing aid.
-          </p>
-          <a href="a-project"> <button class="btn btn-outline-secondary">Continue Reading</button></a>
-        </div>
-        <div class="col-5 d-none d-lg-block">
-          <img src="assets/img/1.png" width="100%">
-        </div>
+<div class="container-fluid py-3 px-5 pb-5" id="project-container">
+  <div class="row justify-content-center">
+    <h5 class="sub-caption">{{projectMessage}}</h5>
+  </div>
+  {{#each proj_info}}
+  {{#if this.proj_published}}
+  <div class="project-item" id="proj-all">
+    <div class="row py-2 align-items-center project-row" style="display:flex;">
+      <div class="col-lg-4 p-3">
+        <a href="/a-project?id={{this._id}}">
+          <img src="/proj_cover{{this._id}}" width="100%" style="border-radius: 5px;">
+        </a>
+      </div>
+      <div class="col-lg-8 project-post">
+        <a href="/a-project?id={{this._id}}" style="text-decoration: none">
+          <h5 class="card-title text-uppercase project-title" style="font-size: 25px;">{{this.proj_title}}</h5>
+        </a>
+        <p class="project-subtitle project-date">{{this.proj_status}} •
+          {{dateFormat this.proj_date "MMMM Do, YYYY"}}</p>
+        <p class="sub-caption project-caption">
+          {{this.proj_preview}}
+        </p>
+        {{!-- <a href="/a-project/view?id={{this._id}}&title={{this.proj_title}}&date={{this.proj_date}}"> <button class="btn btn-outline-secondary" id="{{this._id}}">Continue Reading</button></a> --}}
+        <a href="/a-project?id={{this._id}}"> <button class="btn btn-secondary" id="{{this._id}}">Continue
+            Reading</button></a>
       </div>
     </div>
+    <hr>
   </div>
+  {{/if}}
+  {{/each}}
 </div>
 
-<div class="row p-auto py-3">
-  <div class="row mx-5">
-    <div class="row mx-5">
-      <div class="row p-5 border rounded bg-light">
-        <div class="col-lg-7">
-          <h5 class="font-weight-bold sub-title">Project Pagsibol</h5>
-          <p class="project-subtitle"><br>Established April 8, 2020</p>
-          <p class="sub-caption">
-            Project Pagsibol is a donation drive by The Scarecrow PH, in partnership with The Initiative PH, to help
-            farmers who are affected by the COVID-19 crisis. Through donations, Project Pagsibol aims to procure relief
-            packages to upland farmers.
-          </p>
-          <a href="a-project"><button type="button" class="btn btn-outline-secondary">Continue Reading</button></a>
-        </div>
-        <div class="col-5 d-none d-lg-block">
-          <img src="assets/img/1.png" width="100%">
-        </div>
-      </div>
-    </div>
-  </div>
+
+<!-- PAGINATION -->
+{{!-- <div class="pb-5">
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item {{#equals current 1}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
+        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
+          href="/projects/{{#if if_search}}search/{{search}}/{{/if}}{{minus current 1}}" {{/equals}}>Previous</a>
+      </li>
+      {{#repeat count=pages start=1}}
+      <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
+          href="/projects/{{#if if_search}}search/{{search}}/{{/if}}{{@index}}">{{@index}}{{#equals current @index}}<span
+            class="sr-only">(current)</span>{{/equals}}</a></li>
+      {{else}}
+      <li class="page-item active"><a class="page-link"
+          href="/projects/{{#if if_search}}search/{{search}}/{{/if}}1">1<span class="sr-only">(current)</span></a>
+      </li>
+      {{/repeat}}
+      <li class="page-item {{#equals current pages}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
+        <a class="page-link" href="/projects/{{#if if_search}}search/{{search}}/{{/if}}{{add current 1}}">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div> --}}
+
+<div class="pb-5">
+  <nav aria-label="...">
+    <ul class="pagination justify-content-center">
+      <li class="page-item {{#equals current 1}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
+        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
+          href="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?page={{minus current 1}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}"
+          {{/equals}}>Previous</a>
+      </li>
+      {{#repeat count=pages start=1}}
+      <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
+          href="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?page={{@index}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">{{@index}}{{#equals current @index}}<span
+            class="sr-only">(current)</span>{{/equals}}</a></li>
+      {{else}}
+      <li class="page-item active"><a class="page-link"
+          href="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?page=1{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">1<span
+            class="sr-only">(current)</span></a></li>
+      {{/repeat}}
+      <li class="page-item {{#equals current pages}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
+        <a class="page-link"
+          href="/{{#equals status "All"}}projects{{/equals}}{{#equals status "Approved"}}projects-approved{{/equals}}{{#equals status "Ongoing"}}projects-ongoing{{/equals}}{{#equals status "Proposed"}}projects-proposed{{/equals}}{{#if if_search}}/search{{/if}}?page={{add current 1}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">Next</a>
+      </li>
+    </ul>
+  </nav>
 </div>
 
-<div class="row p-auto py-3">
-  <div class="row mx-5">
-    <div class="row mx-5">
-      <div class="row p-5 border rounded bg-light">
-        <div class="col-lg-7">
-          <h5 class="font-weight-bold sub-title">Hatid Kapatid</h5>
-          <p class="project-subtitle"><br>Established March 30, 2020</p>
-          <p class="sub-caption">
-            Hatid Kapatid is an independent youth volunteer effort organized to provide financial and information aid to
-            taxi and ride-hailing app drivers in Metro Manila affected by the COVID-19 pandemic.
-          </p>
-          <a href="a-project"><button type="button" class="btn btn-outline-secondary">Continue Reading</button></a>
-        </div>
-        <div class="col-5 d-none d-lg-block">
-          <img src="assets/img/1.png" width="100%">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SPACER -->
-<div class="py-4"></div>
+<script>
+  // For blog search
+  var input = document.getElementById("projectsearch");
+  // Execute a function when the user releases a key on the keyboard
+  input.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    var search = document.getElementById("projectsearch").value;
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      window.location = "/projects/search?msg=" + search;
+    }
+  });
+</script>

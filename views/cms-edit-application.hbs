@@ -1,115 +1,60 @@
 <div class="content">
-    <h5>Edit Application Form</h5>
+    <!-- Form -->
     <div class="content">
+        <div class="cms-breadcrumbs text-uppercase pb-3">
+            <a href="cms-application">Application</a> / Edit Application
+        </div>
         <div id="cms-app-form-container" class="row">
             <div class="col-md-12">
-                <form method="get">
+                <form method="post" id="apps_form">
                     <div class="card cms-app">
-<!--
                         <div class="card-header">
-                            <h4 class="card-title">Application Form Introduction</h4>
+                            <h5>Edit Application Form:</h5>
                         </div>
--->
                         <div class="card-body">
                             <div class="form-group">
-                                <p>Edit Introduction</p>
-                                <div id="editor-container">
-                                    <p>Application Form Introduction</p>
-                                </div>    
+                                <label for="cms_apps_date">Year</label>
+                                <input type="number" class="form-control" id="cms_apps_date" placeholder="Year"
+                                    name="cms_apps_date" value="{{appform_year}}">
                             </div>
                             <div class="form-group">
-                                <p>Departments Open for Application and Positions</p>
-                                <div class="div-choices sub-caption">
-                                    <input type="checkbox" name="department" id="admin-affairs" value="admin-affairs" data-toggle="collapse" data-target="#pos-admin-affairs"> Department of Administrative Affairs (DAA) <br>
-                                    <div class="dept-positions" id="pos-admin-affairs">
-                                        <input type="checkbox" name="dept-pos" id=""> SOME POSITON <br>
-                                    </div>
-
-                                    <input type="checkbox" name="department" id="pub-comm" value="pub-comm" data-toggle="collapse" data-target="#pos-pub-comm"> Department of Publications and Communications (DPC) <br>
-                                    <div class="dept-positions" id="pos-pub-comm">
-                                        <form method="get">
-                                            <input type="checkbox" name="dept-pos" id="pos-multimedia-artist" value="pos-multimedia-artist"> Multimedia Artist for DDMR, DMH, DSR, DI-PT, DI-PK, DI-PE <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-content-writer" value="pos-content-writer"> Content Writer for DDMR, DMH, DSR, DI-PT, DI-PK, DI-PE <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-photographer" value="pos-photographer"> Photographer for DDMR, DMCA, DAEW, DSR, DI-PT, DI-PK, DI-PE <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-videographer" value="pos-videographer"> Videographer for DDMR, DMCA, DAEW, DSR, DI-PT, DI-PK, DI-PE <br>
-                                        </form>
-                                    </div>
-
-                                    <input type="checkbox" name="department" id="market-finance" value="market-finance" data-toggle="collapse" data-target="#pos-market-finance"> Department of Marketing and Finance (DMF) <br>
-                                    <div class="dept-positions" id="pos-market-finance">
-                                        <form method="get">
-                                            <input type="checkbox" name="dept-pos" id=""> Some Position <br>
-                                            <input type="checkbox" name="dept-pos" id=""> Some Position <br>
-                                        </form>
-                                    </div>
-                                    
-                                    <input type="checkbox" name="department" id="disaster-mit" value="disaster-mit" data-toggle="collapse" data-target="#pos-disaster-mit"> Department of Disaster Mitigation and Recovery (DDMR) <br>
-                                    <div class="dept-positions" id="pos-disaster-mit">
-                                        <form method="get">
-                                            <input type="checkbox" name="dept-pos" id="pos-external-rel" value="pos-external-rel"> External Relations Officers <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-finance" value="pos-finance"> Finance Officers <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-multimedia-disaster" value="pos-multimedia-disaster"> Multimedia Artists <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-content-disaster" value="pos-content-disaster"> Content Writers <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-photog-disaster" value="pos-photog-disaster"> Photographers <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-videog-disaster"> Videographers <br>
-                                        </form>
-                                    </div>
-                                    
-                                    <input type="checkbox" name="department" id="marginalized" value="marginalized" data-toggle="collapse" data-target="#pos-marginalized"> Department of Marginalized Community Action (DMCA) <br>
-                                    <div class="dept-positions" id="pos-marginalized">
-                                        <form method="get">
-                                            <input type="checkbox" name="dept-pos" id=""> Some Position <br>
-                                            <input type="checkbox" name="dept-pos" id=""> Some Position <br>
-                                        </form>
-                                    </div>
-
-                                    <input type="checkbox" name="department" id="animal-environment" value="animal-environment" data-toggle="collapse" data-target="#pos-animal-environment"> Department of Animal and Environmental Welfare (DAEW) <br>
-                                    <div class="dept-positions" id="pos-animal-environment">
-                                        <form method="get">
-                                            <input type="checkbox" name="dept-pos" id=""> Some Position <br>
-                                            <input type="checkbox" name="dept-pos" id=""> Some Position <br>
-                                        </form>
-                                    </div>
-
-                                    <input type="checkbox" name="department" id="sogie" value="sogie" data-toggle="collapse" data-target="#pos-sogie"> Department of SOGIE Rights (DSR) <br>
-                                    <div class="dept-positions" id="pos-sogie">
-                                        <form method="get">
-                                            <input type="checkbox" name="dept-pos" id="pos-external-sogie" value="pos-external-sogie"> External Relations Officers (Partnerships Officers) <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-finance-sogie" value="pos-finance-sogie"> Finance Officers <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-logistics-sogie" value="pos-logistics-sogie"> Logistics Officers <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-marketing-sogie" value="pos-marketing-sogie"> Marketing Officers <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-research-sogie" value="pos-research-sogie"> Research Officers <br>
-                                        </form>
-                                    </div>
-
-                                    <input type="checkbox" name="department" id="proj-taft" value="proj-taft" data-toggle="collapse" data-target="#pos-proj-taft"> Department of Initiatives: Project Taft (DI-PT) <br>
-                                    <div class="dept-positions" id="pos-proj-taft">
-                                        <form method="get">
-                                            <input type="checkbox" name="dept-pos" id=""> Some Position <br>
-                                            <input type="checkbox" name="dept-pos" id=""> Some Position <br>
-                                        </form>
-                                    </div>
-
-                                    <input type="checkbox" name="department" id="proj-espana" value="proj-espana" data-toggle="collapse" data-target="#pos-proj-espana"> Department of Initiatives: Project España (DI-PE) <br>
-                                    <div class="dept-positions" id="pos-proj-espana">
-                                        <form method="get">
-                                            <input type="checkbox" name="dept-pos" id="pos-external-espana" value="pos-external-espana"> External Relations Officers <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-finance-espana" value="pos-finance-espana"> Finance Officers <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-logistics-espana" value="pos-logistics-espana"> Logistics Officers <br>
-                                            <input type="checkbox" name="dept-pos" id="pos-research-espana" value="pos-research-espana"> Research Officers <br>
-                                        </form>
-                                    </div>
-
-                                    <input type="checkbox" name="department" id="proj-katipunan" value="proj-katipunan" data-toggle="collapse" data-target="#pos-proj-katipunan"> Department of Initiatives: Project Katipunan (DI-PK) <br>
-                                    <div class="dept-positions" id="pos-proj-katipunan">
-                                        <form method="get">
-                                            <input type="checkbox" name="dept-pos" id=""> Some Position <br>
-                                            <input type="checkbox" name="dept-pos" id=""> Some Position <br>
-                                        </form>
-                                    </div>
+                                <label for="cms_apps_content">Description</label>
+                                <input name="cms_apps_content" type="hidden" id="cms_apps_content">
+                                <div id="apps-quill">
+                                    {{{appform_desc}}}
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-outline-success">SAVE</button>
+                            <div class="form-group">
+                                <label for="cms-apps-position">Departments Open for Application and Positions</label>
+                                <div class="div-choices sub-caption">
+                                    {{#each department_info as |department_info|}}
+                                    <input type="checkbox" name="department" id="{{department_info._id}}"
+                                        value="{{this.department_title}}" data-toggle="collapse"
+                                        data-target="#pos-{{this._id}}" onclick="department_change(this)"
+                                        {{#if this.department_available}}checked{{/if}}> {{this.department_title}} <br>
+
+                                    <div class="dept-positions {{#if this.department_available}}collapse show{{/if}}"
+                                        id="pos-{{this._id}}" {{#if this.department_available}}aria-expended="true"{{/if}}>
+                                        <form method="get">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    {{#each ../position_info as |position_info|}}
+                                                        {{#equals this.dept_name department_info.department_title}}
+                                                            <input type="checkbox" name="dept_pos" id="{{position_info._id}}" 
+                                                            value="{{this.position_name}}" onclick="position_change(this)"
+                                                            {{#if this.position_available}}checked{{/if}}> {{this.position_name}} <br>
+                                                        {{/equals}}
+                                                    {{/each}}
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success">SAVE</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -117,3 +62,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    var appQuill = new Quill('#apps-quill', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                [{ list: 'ordered' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var apps_form = document.getElementById("apps_form");
+    apps_form.onsubmit = function () {
+        var apps_content = document.querySelector('input[name=cms_apps_content]');
+        apps_content.value = appQuill.root.innerHTML;
+        console.log(apps_content);
+        return true;
+    };
+</script>

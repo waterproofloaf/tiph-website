@@ -1,0 +1,77 @@
+<div class="content">
+    <!-- Form -->
+    <div class="content">
+        <div class="cms-breadcrumbs text-uppercase pb-3">
+            <a href="cms-donate-mode">Donate Mode</a> / New Donation Mode
+        </div>
+        <div id="form-container" class="row">
+            <div class="col-md-12">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="card cms-blog">
+                        <div class="card-header">
+                            <h5>New Donation Mode:</h5>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="cms-font-text-error" id="donate-error">{{donateErrorMessage}}</h5>
+                            <div class="form-group">
+                                <label for="donatemode_name">Mode of Payment Name (e.g. GCash)</label>
+                                <input type="text" class="form-control" name="donatemode_name" id="donatemode_name"
+                                    placeholder="Mode of Payment Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="donatemode_color">Color (for the background)</label>
+                                <input type="color" id="donatemode_color" name="donatemode_color">
+                            </div>
+                            <input name="_id" type="hidden" id="_id">
+                            <div class="pb-2">
+                                <div class="preview-images donate-pic-preview"></div>
+                                <label for="donatemodepic">Mode Photo (preferably .png image)</label>
+                                <input type="file" id="donatemodepic" class="donate-cover" accept="image/*" />
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success">SUBMIT</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    div.preview-images>img {
+        width: 30%;
+    }
+</style>
+
+<script>
+    var timestamp = (new Date().getTime() / 1000 | 0).toString(16);
+    var id = timestamp + 'xxxxxxxxxxxxxxxx'.replace(/[x]/g, function () {
+        return (Math.random() * 16 | 0).toString(16);
+    }).toLowerCase();
+    document.getElementById("donatemodepic").name = "donatemodepic" + id;
+    document.getElementById("_id").value = id;
+
+    $(document).ready(function () {
+        let imagesPreview = function (input, placeToInsertImagePreview) {
+            if (input.files) {
+                let filesAmount = input.files.length;
+                for (i = 0; i < 1; i++) {
+                    let reader = new FileReader();
+                    reader.onload = function (event) {
+                        $($.parseHTML("<img>"))
+                            .attr("src", event.target.result)
+                            .appendTo(placeToInsertImagePreview);
+                    };
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+
+        $("#donatemodepic").on("change", function () {
+            $(".donate-pic-preview").empty();
+            imagesPreview(this, "div.donate-pic-preview");
+        });
+    });
+</script>

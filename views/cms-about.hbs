@@ -1,0 +1,96 @@
+<div class="content">
+    <!-- Form -->
+    <div class="content">
+        <div id="form-container" class="row">
+            <div class="col-md-12">
+                <form method="post" id="about_form" enctype="multipart/form-data">
+                    <div class="card cms-blog">
+                        <div class="card-header">
+                            <h4 class="card-title">Edit About Page:</h4>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="cms-font-text-error" id="about-error">{{aboutErrorMessage}}</h4>
+                            <div class="form-group">
+                                <label for="about_title">Title</label>
+                                <input type="text" class="form-control" id="about_title" placeholder="Title"
+                                    name="about_title" value="{{about_content.about_title}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="about_description">Content</label>
+                                <input name="about_description" type="hidden" id="about_description">
+                                <div id="about-quill">
+                                    {{{about_content.about_description}}}
+                                </div>
+                            </div>
+                            <div class="pb-2">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="preview-images about-pic-preview">
+                                            <img src="/about_pic">
+                                        </div>
+                                    </div>
+                                </div>
+                                <label for="about_pic">Side Photo</label>
+                                <input type="file" name="about_pic" id="about_pic" class="home-cover-upload"
+                                    accept="image/*" />
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success" id="updateAbout">SAVE</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    div.preview-images>img {
+        width: 30%;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        let imagesPreview = function (input, placeToInsertImagePreview) {
+            if (input.files) {
+                let filesAmount = input.files.length;
+                for (i = 0; i < 1; i++) {
+                    let reader = new FileReader();
+                    reader.onload = function (event) {
+                        $($.parseHTML("<img>"))
+                            .attr("src", event.target.result)
+                            .appendTo(placeToInsertImagePreview);
+                    };
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+
+        $("#about_pic").on("change", function () {
+            $(".about-pic-preview").empty();
+            imagesPreview(this, "div.about-pic-preview");
+        });
+    });
+
+    // CMS About Quill Form
+    var aboutQuill = new Quill('#about-quill', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var about_form = document.getElementById('about_form');
+    about_form.onsubmit = function () {
+        var about_description = document.querySelector('input[name=about_description]');
+        about_description.value = aboutQuill.root.innerHTML;
+
+        return true;
+    };
+</script>

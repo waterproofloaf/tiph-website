@@ -1,7 +1,7 @@
 # The Initiative PH
 <p align="center">
-<img  src="https://github.com/waterproofloaf/tiph-website/blob/master/public/assets/img/brand-line.png"
-width="180">
+<img  src="https://github.com/waterproofloaf/tiph-website/blob/master/public/assets/img/cropped-logo.png"
+width="20%">
 </p>
 This is a web application for The Initiative PH that features a background of their organization, projects, and other information related to them.
 

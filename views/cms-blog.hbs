@@ -7,15 +7,10 @@
             <div class="row d-flex align-items-center">
               <div class="col">
                 <h4 class="card-title">
-                  Blogs
+                  Manage Blogs
                 </h4>
               </div>
               <div class="col text-right">
-                <input type="text" id="cms-search" onkeyup="cms_search()" placeholder="Search..">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
                 <a href="cms-blog-new-page">
                   <button id="blogeditbtn" type="button" class="btn btn-success">
                     <i class="fas fa-plus-circle"></i> Add a new blog entry
@@ -26,7 +21,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive text-center">
-              <table class="table text-left blog-project-table" id="pages-table">
+              <table class="table text-left blog-project-table" id="blog-table">
                 <thead class=" text-primary">
                   <th style="width:30%">
                     Page
@@ -45,10 +40,9 @@
                   </th>
                 </thead>
                 <tbody id="entries-table">
-                  <tr>
+                  {{!-- <tr>
                     <td>
-                      <p class="entry-title">Project Lumad</p>
-                      
+                      Project Lumad
                     </td>
                     <td>
                       <time class="entry-date">03/07/2020</time>
@@ -67,76 +61,32 @@
                         <span class="slider round"></span>
                       </label>
                     </td>
-                  </tr>
+                  </tr> --}}
+                  {{#each blog_info}}
                   <tr>
                     <td>
-                      <p class="entry-title">Project Pagsibol</p>
-                      
+                      {{this.blog_title}}
                     </td>
                     <td>
-                      <time class="entry-date">04/08/2020</time>
+                      <time class="entry-date">{{dateFormat this.blog_date "YYYY-MM-DD"}}</time>
                     </td>
                     <td class="text-right">
-                      <a href="cms-blog-page"><button id="blogeditbtn" type="button"
+                      <a href="/cms-blog-page?id={{this._id}}"><button id="blogeditbtn" type="button"
                           class="btn btn-outline-success">Edit</button></a>
                     </td>
                     <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
+                      <button id="{{this._id}}" type="button" class="btn btn-outline-danger"
+                        onclick="deleteConfirm(this)">Delete</button>
                     </td>
-                    <td class="text-right">
+                    <td class="text-center">
                       <label class="switch">
-                        <input type="checkbox" checked>
+                        <input type="checkbox" id="{{this._id}}" onclick="blog_change(this)"
+                          {{#if blog_published}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <p class="entry-title">Hatid Kapatid</p>
-                      
-                    </td>
-                    <td>
-                      <time class="entry-date">03/30/2020</time>
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-blog-page"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="entry-title">News Title 4</p>
-                      
-                    </td>
-                    <td>
-                      <time class="entry-date">02/15/2020</time>
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-blog-page"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
+                  {{/each}}
                 </tbody>
               </table>
             </div>
@@ -146,5 +96,19 @@
     </div>
   </div>
 </div>
+
 <script>
+  function deleteConfirm(button) {
+    var self = $(button).attr('id');
+    if (confirm("Are you sure of deleting this blog entry?")) {
+      $.ajax({
+        url: "/cms-blog/delete",
+        data: { id: self },
+        success: function (response) {
+          window.location.href = 'cms-blog';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
 </script>

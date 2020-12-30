@@ -1,8 +1,19 @@
 <!-- HEADER -->
 <section>
-  <div class="container-fluid center">
-    <div class="row p-5 mt-5 justify-content-center">
-      <h5 class="font-weight-bold text-uppercase sub-title">BLOG <i class="fa fa-newspaper-o"></i></h5>
+  <div class="container-fluid">
+    <div class="row p-5 mt-5 d-flex align-items-center">
+      <div class="col text-lg-left text-center">
+        <h5 class="font-weight-bold text-uppercase sub-title">BLOG
+          <i class="fa fa-newspaper-o"></i>
+        </h5>
+      </div>
+      <div class="col-lg text-right d-flex flex-row">
+        <input class="form-control sub-caption" type="text"
+          placeholder="&#xF002; {{#if if_search}}{{search}}{{else}}Search...{{/if}}" id="blogsearch" aria-label="Search"
+          style="font-family:Montserrat, FontAwesome">
+      </div>
+    </div>
+    <div class="row px-5 pt-4 d-flex align-self-center">
       <p class="sub-caption p-3">
         We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
         Our projects seek to address issues that arised within our country and at the same time, encourage the youth
@@ -10,68 +21,95 @@
       </p>
     </div>
   </div>
+  <br>
+  <div class="container-fluid sort-view d-flex sub-caption">
+    <div class="blog-sort d-flex">
+      <select class="form-control form-control-sm sub-caption" id="blog-sort-by" name="blog_sort_by"
+        onchange="location = this.value;">
+        <option value="" selected disabled hidden>Sort by:</option>
+        <option value="/blog{{#if if_search}}/search{{/if}}?sort=ddate{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'ddate'}}selected{{/equals}}>Date (Latest)</option>
+        <option value="/blog{{#if if_search}}/search{{/if}}?sort=adate{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'adate'}}selected{{/equals}}>Date (Oldest)</option>
+        <option value="/blog{{#if if_search}}/search{{/if}}?sort=atitle{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'atitle'}}selected{{/equals}}>Title (A-Z)</option>
+        <option value="/blog{{#if if_search}}/search{{/if}}?sort=dtitle{{#if if_search}}&msg={{search}}{{/if}}"
+          {{#equals sort_string 'dtitle'}}selected{{/equals}}>Title (Z-A)</option>
+      </select>
+    </div>
+  </div>
+  <hr>
 </section>
 
 <!-- BODY -->
-<div class="container-fluid d-flex flex-lg-row flex-column justify-content-lg-between align-items-center px-5 mb-3">
-  {{!-- {{>#each blog-card}} --}}
-  <div class="card bg-light" style="width: 100vp;">
-    <img class="card-img-top" src="assets/img/test.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Project Title 1</h5>
-      <h6 class="card-subtitle mb-2 text-muted">By Author</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="a-blog" class="card-link">Read more</a>
+<div id="light-pagination" class="pagination">
+  <div class="container-fluid px-5 py-3 pb-5" id="blog-container">
+    <div class="row justify-content-center">
+      <h5 class="sub-caption">{{blogMessage}}</h5>
     </div>
-  </div>
-
-  <div class="card bg-light" style="width: 100vp;">
-    <img class="card-img-top" src="assets/img/test.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Project Title 2</h5>
-      <h6 class="card-subtitle mb-2 text-muted">By Author</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="a-blog" class="card-link">Read more</a>
+    {{#each blog_info}}
+    {{#if this.blog_published}}
+    <div class="blog-item">
+      <div class="row d-flex align-items-center blog-row">
+        <div class="col-lg-3 p-3">
+          <a href="/a-blog?id={{this._id}}">
+            <img src="/blog_cover{{this._id}}" width="100%" style="border-radius: 5px;">
+          </a>
+        </div>
+        <div class="col-lg-9 blog-post">
+          <a href="/a-blog?id={{this._id}}" style="text-decoration: none">
+            <h5 class="card-title blog-title" style="font-size: 25px;">{{this.blog_title}}</h5>
+          </a>
+          <h6 class="card-subtitle mb-2 text-muted blog-author">By {{this.blog_author}} |
+            {{dateFormat this.blog_date "MMMM Do, YYYY"}}</h6>
+          <p class="sub-caption blog-caption">{{this.blog_preview}}</p>
+          <a href="/a-blog?id={{this._id}}" class="btn btn-secondary" id="{{this._id}}">Continue Reading</a>
+        </div>
+      </div>
+      <hr>
     </div>
-  </div>
-
-  <div class="card bg-light" style="width: 100vp;">
-    <img class="card-img-top" src="assets/img/test.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Project Title 3</h5>
-      <h6 class="card-subtitle mb-2 text-muted">By Author</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="a-blog" class="card-link">Read more</a>
-    </div>
-  </div>
-
-  <div class="card bg-light" style="width: 100vp;">
-    <img class="card-img-top" src="assets/img/test.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Project Title 4</h5>
-      <h6 class="card-subtitle mb-2 text-muted">By Author</h6>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
-      <a href="a-blog" class="card-link">Read more</a>
-    </div>
+    {{/if}}
+    {{/each}}
   </div>
 </div>
 
-<div class="container-fluid pb-4">
-  <nav aria-label="news-pagination">
+<div class="pb-5">
+  <nav aria-label="...">
     <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      <li class="page-item {{#equals current 1}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
+        <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
+          href="/blog{{#if if_search}}/search{{/if}}?page={{minus current 1}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}"
+          {{/equals}}>Previous</a>
       </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
+      {{#repeat count=pages start=1}}
+      <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
+          href="/blog{{#if if_search}}/search{{/if}}?page={{@index}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">{{@index}}{{#equals current @index}}<span
+            class="sr-only">(current)</span>{{/equals}}</a></li>
+      {{else}}
+      <li class="page-item active"><a class="page-link"
+          href="/blog{{#if if_search}}/search{{/if}}?page=1{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">1<span
+            class="sr-only">(current)</span></a></li>
+      {{/repeat}}
+      <li class="page-item {{#equals current pages}}disabled{{/equals}} {{#equals count 0}}disabled{{/equals}}">
+        <a class="page-link"
+          href="/blog{{#if if_search}}/search{{/if}}?page={{add current 1}}{{#if if_search}}&msg={{search}}{{/if}}{{#if if_sort}}{{#equals sort_string 'ddate'}}&sort=ddate{{/equals}}{{#equals sort_string 'adate'}}&sort=adate{{/equals}}{{#equals sort_string 'atitle'}}&sort=atitle{{/equals}}{{#equals sort_string 'dtitle'}}&sort=dtitle{{/equals}}{{/if}}">Next</a>
       </li>
     </ul>
   </nav>
 </div>
+
+<script>
+  // For blog search
+  var input = document.getElementById("blogsearch");
+  // Execute a function when the user releases a key on the keyboard
+  input.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    var search = document.getElementById("blogsearch").value;
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      window.location = "/blog/search?msg=" + search;
+    }
+  });
+</script>

@@ -1,0 +1,169 @@
+<div class="content">
+    <div class="cms-breadcrumbs text-uppercase pb-3">
+        <a href="cms-applicant-pre-overview">Manage Pre-Applications</a> / <a href="cms-applicant-pre">All Pre-Applications</a> / Profile
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="POST">
+                <div class="card">
+                    <div class="card-header">
+                        {{!-- Applicant Name should be changed --}}
+                        <h4 class="card-title">{{this.pre_firstname}} {{this.pre_lastname}} Pre-Application Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="cms-font-text-error" id="applicant-error">{{applicantErrorMessage}}</h5>
+                        <div class="table-responsive text-center">
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Personal Information
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>Name: </b> {{this.pre_firstname}} {{this.pre_lastname}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Age: </b> {{this.pre_age}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>School/Company: </b> {{this.pre_schoolcompany}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Affilation with School/Company: </b> {{this.pre_affiliation}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Contact Details
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>Contact Number: </b> {{this.pre_number}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Email Address: </b> {{this.pre_email}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Facebook URL: </b> {{this.pre_facebook}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Mode of Notification: </b> {{this.pre_notify}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Comments
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{this.pre_comments}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Previous Reason for Status
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{this.pre_status_reason}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    
+                                    <th>
+                                        Status of this pre-applicant
+                                    </th>
+                                    <tr>
+                                        <td>
+                                            <select name="pre_status" id="pre_status" style="color:black">
+                                                <option value="Pending" style="color:#51bcda"{{#equals this.pre_status "Pending"}}selected{{/equals}}>Pending</option>
+                                                <option value="Accepted" style="color: #6bd098"{{#equals this.pre_status "Accepted"}}selected{{/equals}}>Accepted</option>
+                                                <option value="Rejected" style="color: #ef8157"{{#equals this.pre_status "Rejected"}}selected{{/equals}}>Rejected</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Reason for Changing the Status
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <textarea id="pre_status_reason" name="pre_status_reason" rows="3" class="form-control" ></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-primary">
+                                <tbody>
+                                    <td class="text-left">
+                                        <button type="submit" class="btn btn-lg btn-outline-success" id="{{this.pre_id}}">SUBMIT</button>
+                                    </td>
+                                    <td class="text-right">
+                                        {{!-- <a href="/cms-applicant-app/delete?id={{this.app_id}}"> --}}
+                                            <button id="{{this.pre_id}}" type="button" class="btn btn-sm btn-outline-danger" onclick="deleteConfirm(this)">
+                                                Delete
+                                            </button>
+                                        {{!-- </a> --}}
+                                    </td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+  function deleteConfirm(button) {
+    var self = $(button).attr('id');
+    if (confirm("Are you sure of deleting this applicant?")) {
+      $.ajax({
+        url: "/cms-applicant-pre/delete/",
+        data: { id: self },
+        success: function (response) {
+          window.location.href = 'cms-applicant-pre';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+</script>

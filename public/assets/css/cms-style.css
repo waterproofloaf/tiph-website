@@ -1,6 +1,36 @@
-/* Login Button */
-.login-button:hover {
+/* Main Navigation */
+.main-nav-button:hover {
     color:green !important;
+    text-decoration: none;
+}
+
+.logout-button:hover{
+    color:red !important;
+    text-decoration: none; 
+}
+
+.nav-item{
+    padding: 8px;
+}
+
+.cms-font-text-error{
+    font-family: "Montserrat";
+    font-size: 12px;
+    color: red;
+}
+
+.center-wrapper{
+    text-align: center;
+    color: #66615B;
+    margin-top: 200px;
+}
+
+.mt-7{
+    margin-top: 7px;
+}
+
+.ml-20{
+    margin-left: 20px;
 }
 
 /* Switch Slider Toggle */
@@ -68,8 +98,25 @@ input:checked + .slider:before {
     height: 0;
 }
 
-/* Search */
 
+/* CMS Applicant Table*/
+.volunteer-hidden{
+    display: none;
+}
+
+/* CMS Breadcrumbs */
+.cms-breadcrumbs {
+    font-size: 11px;
+    font-weight: 600;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.cms-breadcrumbs a {
+    color: green;
+}
+
+/* Search */
 #cms-search {
     height: 50%;
     width: 50%; /* Full-width */
@@ -88,50 +135,8 @@ input:checked + .slider:before {
 .div-choices{
     font-weight: 520;
     margin-left: 50px;
-    overflow-y: scroll;
-    height: 300px;
-}
-
-/* Login */
-.cms-login-container{
-    display: relative;
-    padding: 6vw;
-    box-sizing: border-box;
-    height: 70%;
-}
-
-.cms-login-form-container{
-    background-color: #f8f9fa;
-    padding: 50px;
-    border-radius: 4px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.cms-login-form-text{
-    width: 200px;
-    margin-bottom: 30px;
-    border-radius: 2px;
-    border: 1px solid #ccc
-}
-
-.cms-font-text{
-    font-family: "Montserrat";
-}
-
-.cms-font-text-error{
-    font-family: "Montserrat";
-    font-size: 12px;
-    color: red;
-}
-
-.button{
-    width: 100%;
-    background-color: #173b41;
-    color: #FFFFFF;
-    font-family: "Montserrat";
+    /* overflow-y: scroll; */
+    height: auto;
 }
 
 /* Blog */
@@ -234,3 +239,23 @@ input:checked + .slider:before {
     .entry-progress {
         font-size: 12px;
     }
+
+/* Admin */
+.admin-username {
+    font-style: italic;
+}
+
+
+/* Tables */
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}

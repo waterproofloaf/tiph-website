@@ -14,8 +14,28 @@ var ProjectModel = new mongoose.Schema({
         required: true
     },
     proj_img: {
-        type: Image,
+        //type: Image,
     },
+    proj_keywords: {
+        type: String,
+        required: true
+    },
+    proj_status: {
+        type: String,
+        default: 'Proposed',
+        //required: true
+    },
+    proj_preview: {
+        type: String,
+    },
+    proj_published: {
+        type: Boolean,
+        required: true
+    },
+    proj_showcase: {
+        type: Boolean,
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Project', ProjectModel);

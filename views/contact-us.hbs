@@ -5,8 +5,11 @@
 
     <div class="contact-us-container">
       <!-- Contact Us Texts -->
-      <h1 class="font-weight-bold text-uppercase sub-title"><strong>CONTACT US <i
-            class="fas fa-address-book"></i></strong></h1>
+      <h1 class="font-weight-bold text-uppercase sub-title text-md-left text-center">
+        <strong>
+          CONTACT US <i class="fas fa-address-book"></i>
+        </strong>
+      </h1>
       <br>
       <h5 class="contact-font-texts">
         Want to have a partnership with us for an initiative? <br><br>
@@ -21,23 +24,35 @@
     <!-- <form> -->
 
     <div class="contact-form-container">
-      <form class="needs-validation" novalidate>
-        <h6 class="contact-font-texts"><strong> SUBJECT</strong></h6>
-        <input type="text" name="contact-subject" id="contact-subject" class="contact-form-text " value required>
+      <form method="POST" action="contact-us" class="needs-validation" enctype="multipart/form-data">
+        <h6 class="contact-font-texts">{{{msg}}}</h6>
+        <h4 class="cms-font-text-error" id="contact-error">{{contactErrorMessage}}</h4>
+        <star>*</star> Required Fields
+        <br><br>
+        <h6 class="contact-font-texts"><strong> SUBJECT</strong> <star>*</star></h6>
+        <input type="text" list="subjects" name="contact_subject" id="contact_subject" class="contact-form-text " required>
+        <datalist id="subjects">
+          <option value="[INQUIRY] Organization Partnership"></option>
+          <option value="[INQUIRY] Organization Sponsorship"></option>
+          <option value="[INQUIRY] Organizational Events"></option>
+          <option value="[INQUIRY] Application Concerns"></option>
+          <option value="[DEPARTMENT] Department Pitch"></option>
+          <option value="[DONATION] Proof of Donation"></option>
+        </datalist>
 
         <h6 class="contact-font-texts"><strong> NAME</strong></h6>
-        <input type="text" name="contact-name" id="contact-name" class="contact-form-text ">
+        <input type="text" name="contact_name" id="contact_name" class="contact-form-text ">
 
-        <h6 class="contact-font-texts"><strong> EMAIL</strong></h6>
-        <input type="text" name="contact-email" id="contact-email" class="contact-form-text " value required>
+        <h6 class="contact-font-texts"><strong> EMAIL</strong> <star>*</star></h6>
+        <input type="text" name="contact_email" id="contact_email" class="contact-form-text "  required>
 
-        <h6 class="contact-font-texts"><strong>INQUIRY</strong></h6>
-        <textarea name="contact-inquiry" id="contact-inquiry" class="contact-form-text " value required></textarea>
+        <h6 class="contact-font-texts"><strong>INQUIRY</strong> <star>*</star></h6>
+        <textarea name="contact_inquiry" id="contact_inquiry" class="contact-form-text "  required></textarea>
 
-        <h6 class="contact-font-texts"><strong>FOR MOA/MOU</strong></h6>
-        <input type='file' name='upload' class="contact-form-upload">
-        <button type="submit" name="contact-submit" id="contact-submit"
-          class="contact-button contact-font-texts"><strong>S U B M I T</strong></button>
+        <h6 class="contact-font-texts"><strong>FILE</strong></h6>
+        <input type="file" name="contact_upload" id="contact_upload" class="contact-form-upload">
+
+        <button type="submit" class="contact-button contact-font-texts"><strong>S U B M I T</strong></button>
       </form>
 
     </div>
@@ -47,3 +62,25 @@
   </div>
 
 </div>
+
+<div id="contactModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Your Message Has Been Sent!</h4>
+            </div>
+            <div class="modal-body">
+				      <p>Your message has been sent! 
+              <br><br>Please wait for the reply in your given email.</p>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#if confirmed}}
+<script>
+  $(document).ready(function () { $('#contactModal').modal('show'); });
+</script>
+{{/if}}

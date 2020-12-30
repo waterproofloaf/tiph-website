@@ -1,0 +1,57 @@
+<div class="content">
+    <!-- Form -->
+    <div class="content">
+        <div class="cms-breadcrumbs text-uppercase pb-3">
+            <a href="cms-application">Application</a> / Edit Pre-Application
+        </div>
+        <div id="form-container" class="row">
+            <div class="col-md-12">
+                <form method="post" id="preapps_form">
+                    <div class="card cms-blog">
+                        <div class="card-header">
+                            <h5>Edit Pre-Application Form:</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="cms_pre_apps_date">Year</label>
+                                <input type="number" class="form-control" id="cms_pre_apps_date" placeholder="Year"
+                                    name="cms_pre_apps_date" value="{{preform_year}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="cms_pre_apps_content">Description</label>
+                                <input name="cms_pre_apps_content" type="hidden" id="cms_pre_apps_content">
+                                <div id="preapps-quill">
+                                    {{{preform_desc}}}
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success">SAVE</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var preappQuill = new Quill('#preapps-quill', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'],
+                [{ list: 'ordered' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var preapps_form = document.getElementById("preapps_form");
+    preapps_form.onsubmit = function () {
+        var preapps_content = document.querySelector('input[name=cms_pre_apps_content]');
+        preapps_content.value = preappQuill.root.innerHTML;
+        console.log(preapps_content);
+        return true;
+    };
+</script>

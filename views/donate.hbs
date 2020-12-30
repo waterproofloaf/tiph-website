@@ -1,24 +1,22 @@
 <div class="top-contact-container text-center">
   <!-- Hold the two assets together -->
 
-
-
-  <div class="container">
-    <h1 class="font-weight-bold text-uppercase sub-title"><strong>Support Us</i></strong></h1>
+  <div class="container text-center pb-3">
+    <h1 class="font-weight-bold text-uppercase sub-title p-3"><strong>Support Us</i></strong></h1>
     <div class="row mar-top-20">
       <div class="col-xs-12 col-sm-12 col-md-3 mt-5">
         <span class="fa-stack fa-2x">
           <i class="fas fa-circle fa-stack-2x"></i>
           <i class="fas fa-heart fa-stack-1x fa-inverse"></i>
         </span>
-        <p>Like and follow our social media accounts: </p>
-        <a class="fb-ic soc-button" href="https://www.facebook.com/theinitiativeph">
+        <p class="sub-caption pt-3 text-center">Like and follow our social media accounts: </p>
+        <a class="fb-ic soc-button" href="https://www.facebook.com/theinitiativeph" target="_blank">
           <i class="fab fa-facebook-square fa-3x mar-left-8"></i>
         </a>
-        <a class="tw-ic soc-button" href="https://twitter.com/theinitiativeph">
+        <a class="tw-ic soc-button" href="https://twitter.com/theinitiativeph" target="_blank">
           <i class="fab fa-twitter-square fa-3x mar-left-8"></i>
         </a>
-        <a class="ins-ic soc-button" href="https://www.instagram.com/theinitiativeph/">
+        <a class="ins-ic soc-button" href="https://www.instagram.com/theinitiativeph/" target="_blank">
           <i class="fab fa-instagram-square fa-3x mar-left-8"></i>
         </a>
       </div>
@@ -27,14 +25,16 @@
           <i class="fas fa-circle fa-stack-2x"></i>
           <i class="fas fa-share-square fa-stack-1x fa-inverse"></i>
         </span>
-        <p>Actively share TIPH's posts to boost them to the public</p>
+        <p class="sub-caption pt-3 text-center">Actively share TIPH's posts to boost them to the public</p>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 mt-5">
         <span class="fa-stack fa-2x">
           <i class="fas fa-circle fa-stack-2x"></i>
           <i class="fas fa-calendar-check fa-stack-1x fa-inverse"></i>
         </span>
-        <p>Attend our activites and events! <br>You may join us in the complete confidence that all proceeds go to TIPH
+        <p class="sub-caption pt-3 text-center">Attend our activites and events! You may join us in the complete
+          confidence that all
+          proceeds go to TIPH
           causes!</p>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-3 mt-5">
@@ -42,48 +42,36 @@
           <i class="fas fa-circle fa-stack-2x"></i>
           <i class="fas fa-handshake fa-stack-1x fa-inverse"></i>
         </span>
-        <p>Offer partnerships or sponsorships. <br>Microsponsorships from individuals, families, and informal groups are
+        <p class="sub-caption pt-3 text-center">Offer partnerships or sponsorships. Microsponsorships from individuals,
+          families,
+          and
+          informal groups are
           accepted!</p>
       </div>
     </div>
   </div>
 
   <section style="overflow-x: hidden;">
-    <div class="container-fluid mt-5">
-      <h1 class="font-weight-bold text-uppercase sub-title mar-top-40"><strong>Donate to Us</i></strong></h1>
-      <div class="row">
-        <div class="col-sm d-flex mb-3">
-          <div class="card-body card-gcash">
-            <img src="assets/img/gcash.png" width="80px">
-            <h5 class="card-title white-font">GCash</h5>
-            <p><strong>Account Name: </strong><br>John Doe</p>
-            <p><strong>Contact Number:</strong><br>09## - ### - ####</p>
+    <div class="container-fluid pt-5">
+      <h1 class="font-weight-bold text-uppercase sub-title mar-top-40 pb-3"><strong>Donate to Us</i></strong></h1>
+      <div class="row justify-content-center">
+        <h5 class="sub-caption">{{donateMessage}}</h5>
+        {{#each donate_info as |donate_info|}}
+        <div class="donation-card mb-3 justify-content-center " style={{#if donate_visible}}"display:
+          flex;"{{else}}"display: none;"{{/if}}>
+          {{#each ../donate_mode as |donate_mode|}}
+          {{#equals ../donate_type donatemode_name}}
+          <div class="card-body card-size d-flex flex-column align-items-center align-content-center"
+            style="background-color: {{donatemode_color}};">
+            <img src="/donatemodepic{{_id}}" width="80px">
+            <h5 class="card-title white-font">{{../donatemode_name}}</h5>
+            <p><strong>Account Name: </strong><br>{{../donate_name}}</p>
+            <p><strong>Contact Number:</strong><br>{{../donate_number}}</p>
           </div>
+          {{/equals}}
+          {{/each}}
         </div>
-        <div class="col-sm d-flex mb-3">
-          <div class="card-body card-paymaya">
-            <img src="assets/img/paymaya.png" width="70px">
-            <h5 class="card-title white-font">PayMaya</h5>
-            <p><strong>Account Name: </strong><br>John Doe</p>
-            <p><strong>Contact Number:</strong><br>09## - ### - ####</p>
-          </div>
-        </div>
-        <div class="col-sm d-flex mb-3">
-          <div class="card-body card-bdo">
-            <img src="assets/img/bdo.png" width="100px">
-            <h5 class="card-title white-font">BDO</h5>
-            <p><strong>Account Name: </strong><br>John Doe</p>
-            <p><strong>Account No.:</strong><br>######</p>
-          </div>
-        </div>
-        <div class="col-sm d-flex mb-3">
-          <div class="card-body card-bpi">
-            <img src="assets/img/bpi.png" width="85px">
-            <h5 class="card-title white-font">BPI</h5>
-            <p><strong>Account Name: </strong><br>John Doe</p>
-            <p><strong>Account No.:</strong><br>######</p>
-          </div>
-        </div>
+        {{/each}}
       </div>
     </div>
   </section>

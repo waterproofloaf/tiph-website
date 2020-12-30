@@ -1,107 +1,302 @@
 <div class="content">
-  <div class="row">
-    <div class="col-md-12">
-      <form>
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title">Website Toggles</h4>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive text-center">
-              <table class="table text-left">
-                <thead class=" text-primary">
-                  <th>
-                    Page
-                  </th>
-                  <th class="text-right">
-                    Switch
-                  </th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      Home Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      About Us Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Volunteer Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Project Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Blog Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Contact Us Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Donate Page
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <button type="submit" class="btn btn-outline-success">Save</button>
+    <!-- Form -->
+    <div class="content">
+        <div id="form-container" class="row">
+            <div class="col-md-12">
+                <form method="post" id="home_form" enctype="multipart/form-data">
+                    <div class="card cms-blog">
+                        <div class="card-header">
+                            <h4 class="card-title">Edit Home Page:</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="home_title">Title</label>
+                                <input type="text" class="form-control" id="home_title" placeholder="Title"
+                                    name="home_title" value="{{home_content.home_title}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="home_subtitle">Subtitle</label>
+                                <input type="text" class="form-control" id="home_subtitle" placeholder="Subtitle"
+                                    name="home_subtitle" value="{{home_content.home_subtitle}}">
+                            </div>
+                            <div class="pb-2">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="preview-images home-cover-preview">
+                                            <img src="/home_cover_upload">
+                                        </div>
+                                    </div>
+                                </div>
+                                <label for="home_cover_upload">Cover Photo</label>
+                                <input type="file" name="home_cover_upload" id="home_cover_upload"
+                                    class="home-cover-upload" accept="image/*" />
+                                {{!-- <input type="file" class="form-control-file" id="home_cover_pic"> --}}
+                            </div>
+                            <hr>
+                            <h6 class="card-title">Background Row:</h6>
+                            <div class="form-group">
+                                <label for="home_one_title">Title</label>
+                                <input type="text" class="form-control" id="home_one_title" placeholder="Title"
+                                    name="home_one_title" value="{{home_content.home_one_title}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="home_one_content">Content</label>
+                                <input name="home_one_content" type="hidden" id="home_one_content">
+                                <div id="home-quill-one">
+                                    {{{home_content.home_one_content}}}
+                                </div>
+                            </div>
+                            <div class="pb-2">
+                                <div class="preview-images home-one-preview">
+                                    <img src="/home_one_pic">
+                                </div>
+                                <label for="home_one_pic">Side Photo</label>
+                                <input type="file" name="home_one_pic" id="home_one_pic" class="home-one-pic"
+                                    accept="image/*" />
+                            </div>
+                            <hr>
+                            <h6 class="card-title">Objectives Row:</h6>
+                            <div class="form-group">
+                                <label for="home_two_title">Title</label>
+                                <input type="text" class="form-control" id="home_two_title" placeholder="Title"
+                                    name="home_two_title" value="{{home_content.home_two_title}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="home_two_content">Content</label>
+                                <input name="home_two_content" type="hidden" id="home_two_content">
+                                <div id="home-quill-two">
+                                    {{{home_content.home_two_content}}}
+                                </div>
+                            </div>
+                            <div class="pb-2">
+                                <div class="preview-images home-two-preview">
+                                    <img src="/home_two_pic">
+                                </div>
+                                <label for="home_two_pic">Side Photo</label>
+                                <input type="file" name="home_two_pic" id="home_two_pic" class="home-two-pic"
+                                    accept="image/*" />
+                            </div>
+                            <hr>
+                            <h6 class="card-title">Goals Row:</h6>
+                            <div class="form-group">
+                                <label for="home_three_title">Title</label>
+                                <input type="text" class="form-control" id="home_three_title" placeholder="Title"
+                                    name="home_three_title" value="{{home_content.home_three_title}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="home_three_content">Content</label>
+                                <input name="home_three_content" type="hidden" id="home_three_content">
+                                <div id="home-quill-three">
+                                    {{{home_content.home_three_content}}}
+                                </div>
+                            </div>
+                            <div class="pb-2">
+                                <div class="preview-images home-three-preview">
+                                    <img src="/home_three_pic">
+                                </div>
+                                <label for="home_three_pic">Side Photo</label>
+                                <input type="file" name="home_three_pic" id="home_three_pic" class="home-three-pic"
+                                    accept="image/*" />
+                            </div>
+                            <hr>
+                            <h6 class="card-title">Volunteer Row:</h6>
+                            <div class="form-group">
+                                <label for="home_four_title">Title</label>
+                                <input type="text" class="form-control" id="home_four_title" placeholder="Title"
+                                    name="home_four_title" value="{{home_content.home_four_title}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="home_four_content">Content</label>
+                                <input name="home_four_content" type="hidden" id="home_four_content">
+                                <div id="home-quill-four">
+                                    {{{home_content.home_four_content}}}
+                                </div>
+                            </div>
+                            <div class="pb-2">
+                                <div class="preview-images home-four-preview">
+                                    <img src="/home_four_pic">
+                                </div>
+                                <label for="home_four_pic">Side Photo</label>
+                                <input type="file" name="home_four_pic" id="home_four_pic" class="home-four-pic"
+                                    accept="image/*" />
+                            </div>
+                            <hr>
+                            <div class="form-row d-flex align-items-center">
+                                <div class="col text-left">
+                                    Enable Application Button?
+                                </div>
+                                <div class="col text-right">
+                                    <label class="switch">
+                                        <input name="home_preapp_button_val" type="hidden" id="home_preapp_button_val"
+                                            value={{#if home_content.home_preapp_button}}"true"{{else}}"false"{{/if}}>
+                                        <input name="home_app_button_val" type="hidden" id="home_app_button_val"
+                                            value={{#if home_content.home_app_button}}"true"{{else}}"false"{{/if}}>
+                                        <input type="checkbox" id="{{home_content._id}}" onclick="home_app(this)"
+                                            {{#if home_content.home_app_button}}checked{{/if}}>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success" id="updateHome">SAVE</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-          </div>
         </div>
-      </form>
     </div>
-  </div>
 </div>
+
+<style>
+    div.preview-images>img {
+        width: 30%;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        let imagesPreview = function (input, placeToInsertImagePreview) {
+            if (input.files) {
+                let filesAmount = input.files.length;
+                for (i = 0; i < 1; i++) {
+                    let reader = new FileReader();
+                    reader.onload = function (event) {
+                        $($.parseHTML("<img>"))
+                            .attr("src", event.target.result)
+                            .appendTo(placeToInsertImagePreview);
+                    };
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+
+        $("#home_cover_upload").on("change", function () {
+            $(".home-cover-preview").empty();
+            imagesPreview(this, "div.home-cover-preview");
+        });
+
+        $("#home_one_pic").on("change", function () {
+            $(".home-one-preview").empty();
+            imagesPreview(this, "div.home-one-preview");
+        });
+
+        $("#home_two_pic").on("change", function () {
+            $(".home-two-preview").empty();
+            imagesPreview(this, "div.home-two-preview");
+        });
+
+        $("#home_three_pic").on("change", function () {
+            $(".home-three-preview").empty();
+            imagesPreview(this, "div.home-three-preview");
+        });
+
+        $("#home_four_pic").on("change", function () {
+            $(".home-four-preview").empty();
+            imagesPreview(this, "div.home-four-preview");
+        });
+    });
+
+    function change() {
+        var x = document.getElementById("home_cover_upload").name = "home_cover";
+    }
+
+    // CMS Home App Button Switch Toggle
+    function home_app(checkbox) {
+        var home_app_button = document.querySelector('input[id=home_app_button_val]');
+        var home_preapp_button = document.querySelector('input[id=home_preapp_button_val]');
+        var self = $(checkbox).attr('id');
+
+        //If it is checked.
+        if (checkbox.checked) {
+            home_app_button.value = "true";
+            home_preapp_button.value = "false";
+            console.log(home_app_button);
+            $.ajax({
+                url: "/cms-home/toggle/",
+                data: { id: self, preapp: "false", app: "true" },
+                success: function (response) {
+                    $(this).attr("checked", "checked");
+                },
+                error: function (xhr) { }
+            });
+        }
+
+        //If it has been unchecked.
+        else {
+            home_app_button.value = "false";
+            home_preapp_button.value = "true";
+            console.log(home_app_button);
+            $.ajax({
+                url: "/cms-home/toggle/",
+                data: { id: self, preapp: "true", app:"false" },
+                success: function (response) {
+                    $(this).removeAttr("checked");
+                },
+                error: function (xhr) { }
+            });
+        }
+    }
+
+    // CMS Home Quill Forms
+    var homeQuillOne = new Quill('#home-quill-one', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var homeQuillTwo = new Quill('#home-quill-two', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var homeQuillThree = new Quill('#home-quill-three', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var homeQuillFour = new Quill('#home-quill-four', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var home_form = document.getElementById('home_form');
+    home_form.onsubmit = function () {
+        var home_one_content = document.querySelector('input[name=home_one_content]');
+        home_one_content.value = homeQuillOne.root.innerHTML;
+
+        var home_two_content = document.querySelector('input[name=home_two_content]');
+        home_two_content.value = homeQuillTwo.root.innerHTML;
+
+        var home_three_content = document.querySelector('input[name=home_three_content]');
+        home_three_content.value = homeQuillThree.root.innerHTML;
+
+        var home_four_content = document.querySelector('input[name=home_four_content]');
+        home_four_content.value = homeQuillFour.root.innerHTML;
+
+        return true;
+    };
+</script>

@@ -1,0 +1,24 @@
+<div class="container-fluid center">
+    <div class="row p-5 mt-5 justify-content-center">
+      <h5 class="font-weight-bold text-uppercase sub-title">{{title404}}</h5>
+    </div>
+	<div class="row mt-5 justify-content-center">
+	  <p class="sub-caption p-1">
+	    {{message}}
+		<br>
+		<br>
+		Here are some suggested pages
+		<br>
+		
+		{{#each links}}
+	    <a href="{{this.path}}">{{this.name}}</a>
+		
+		{{#if @last}}
+		{{else}}
+		&bull;
+		{{/if}}
+		
+		{{/each}}
+		</p>
+	</div>
+</div>

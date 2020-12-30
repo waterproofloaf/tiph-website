@@ -1,18 +1,26 @@
 var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     password: {
         type: String,
-        required: true
+        required: true,
     },
-    userType: {
+    userDepartment: {
         type: String,
-        enum: ['PRIMARY_ADMIN', 'SUB_ADMIN']
+        required: true,
+    },
+    userTypeMain: {
+        type: Boolean,
+        required: true,
     }
 });
 

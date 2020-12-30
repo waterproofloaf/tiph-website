@@ -1,3 +1,52 @@
+star{
+  color: #EB5E28;
+}
+
+/* Login */
+.cms-login-container{
+  display: relative;
+  padding: 6vw;
+  box-sizing: border-box;
+  height: 70%;
+}
+
+.cms-login-form-container{
+  background-color: #f8f9fa;
+  padding: 50px;
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cms-login-form-text{
+  width: 200px;
+  margin-bottom: 30px;
+  border-radius: 2px;
+  border: 1px solid #ccc
+}
+
+.cms-font-text{
+  font-family: "Montserrat";
+}
+
+.cms-font-text-error{
+  font-family: "Montserrat";
+  font-size: 12px;
+  color: red;
+}
+
+.button{
+  width: 100%;
+  height: 40px;
+  background-color: #173b41;
+  color: #FFFFFF;
+  font-family: "Montserrat";
+  font-weight: bold;
+  border-radius: 8px;
+}
+
 /* Home */
 
 .bg-color {
@@ -9,6 +58,14 @@
   font-family: "Montserrat";
   font-weight: 400;
   font-size: 14px;
+}
+
+.navbar a {
+  transition-duration: 0.4s;
+}
+
+.navbar a:hover {
+  transition-duration: 0.4s;
 }
 
 .dropdown-menu {
@@ -28,7 +85,8 @@
 }
 
 .header-home {
-  background-image: url(../img/test.jpg);
+  /* background-image: url(../img/test.jpg); */
+  background-image: url(/home_cover_upload); 
   position: relative;
   min-height: 500px;
   background-size: cover;
@@ -38,7 +96,7 @@
 
 .header-text {
   position: absolute;
-  padding-bottom: 1em;
+  padding-bottom: 0.5em;
   text-align: center;
   font-family: "Montserrat";
   text-transform: uppercase;
@@ -68,22 +126,32 @@
   text-align: justify;
 }
 
-
-
 .sub-header {
   font-family: "Roboto";
   font-weight: bolder;
   font-size: 30px;
-  color: #173b41;
+  color: #0c5865;
 }
 
 #carouselExampleIndicators {
   font-family: "Montserrat";
 }
 
+.carousel .carousel-item {
+  height: 400px;
+}
+
+.carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    min-height: 400px;
+}
+
 .carousel-inner img {
   transition: .5s ease;
-  background-color: black !important;
+  background-color: #eeede0 !important;
   opacity: 0.6;
 }
 
@@ -93,6 +161,48 @@
 }
 
 /* Blog */
+
+.view-b{
+    background-color: #0c5865 !important;
+}
+.proj-view-by:hover{
+    background-color: #043841 !important;
+}
+.sort-view{
+    justify-content: flex-end;
+}
+
+.blog-sort{
+    margin-right: 50px;
+}
+
+.view-by{
+    margin-right: 47px;
+}
+
+.viewer-back {
+  font-weight: 500;
+  color: #043841 !important;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  opacity: 0.8;
+}
+
+.viewer-back:hover {
+  color: #043841 !important;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  opacity: 1;
+}
+
+.hr-line {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em auto;
+  padding: 0;
+}
 
 .card {
   margin-top: 10px;
@@ -152,7 +262,7 @@ ul li{
 
 .object-container {
     position: relative;
-    text-align: center;
+    text-align: left;
     width: 80%;
     margin: auto;
 }
@@ -162,7 +272,7 @@ ul li{
     width: 100%;
     padding: 15px;
     color: white;
-    text-align: center;
+    text-align: left;
     border: none;
 }
 
@@ -202,6 +312,13 @@ ul li{
   cursor: not-allowed !important;
 }
 
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between
+}
+
 footer {
   font-family: "Montserrat";
   background-color: #dabd7e;
@@ -232,19 +349,33 @@ footer {
 
 .soc-button {
   color: white;
+  transition-duration: 0.4s;
 }
 
 .soc-button:hover {
   color: #0c5865;
+  transition-duration: 0.4s;
 }
 
 /* About */
+.about-us-acc{
+  margin-bottom: 24px;
+}
+
+.about-us-acc .content {
+  text-align: justify;
+}
 
 .sub-header{
-  margin-left: 24px;
+  /* margin-left: 24px; */
   margin-top: 16px;
   /*margin-left: 215px;
   margin-top: 15px;*/
+}
+
+/* Forms */
+#termsAndConds{
+  color: #0c5865;
 }
 
 /* Blog/News Content */
@@ -316,6 +447,7 @@ footer {
   border: 1px solid #ccc;
 }
 
+
 #contact-inquiry{
   height: 70px;
   overflow: auto;
@@ -328,7 +460,23 @@ footer {
 
 .contact-font-texts{
   font-family: "Montserrat";
-  font-size: 1em;
+  font-size: 16px;
+}
+
+.contact-font-texts mark a{
+  text-decoration: none;
+  background-image: linear-gradient(120deg, #0c5865 0%, #0c5865 100%);
+  border-bottom: 2px solid #0c5865;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 0;
+  transition: background-size .125s ease-in;
+  color: #0c5865;
+}
+
+.contact-font-texts mark a:hover{
+  color: white;
+  background-color: #0c5865;
 }
 
 .contact-button {
@@ -352,6 +500,10 @@ footer {
   float: right;
 }
 
+.contact-button:hover{
+  background-color: #0c5865;
+}
+
 .contact-button:after {
   content: "";
   background: #f1f1f1;
@@ -373,6 +525,11 @@ footer {
 }
 
 /* Projects */
+
+.proj-sort{
+    margin-right: 20px;
+}
+
 .project-subtitle {
     font-family: "Montserrat";
     font-weight: 500;
@@ -406,6 +563,35 @@ footer {
 .apps-deptchoice-font{
   font-family: "Montserrat";
   font-size: 20px;
+}
+
+.apps-button {
+  margin-top: 30px;
+  /* position: relative; */
+  background-color: #173b41;
+  border-radius: 10px;
+  border: none;
+  font-family: "Montserrat";
+  font-size: 16px;
+  color: #FFFFFF;
+  width: 128px;
+  height: 56px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  /* float: right; */
+}
+.apps-button:hover {
+  background-color: #0c5865;
+}
+
+.apps-font-texts{
+  font-family: "Montserrat";
+  font-size: 1em;
 }
 
 .form-width{
@@ -574,6 +760,16 @@ ul{
   margin-top: 30px;
 }
 
+#cmssubmit {
+  transition-duration: 0.4s;
+}
+
+#cmssubmit:hover {
+  transition-duration: 0.4s;
+  background-color: #0c5865;
+}
+
+
 /* Donate Icon */
 .fa-circle{
   color: #0c5865 !important;
@@ -595,22 +791,41 @@ ul{
   color: white!important;
 }
 
+.donation-card{
+  min-width: 300px;
+  max-width: 300px;
+}
+
+.card-size {
+  min-width: 250px;
+  max-width: 250px;
+  color: white;
+}
+
 .card-gcash{
+  min-width: 250px;
+  max-width: 250px;
   background-color:	#007dfe;
   color: white;
 }
 
 .card-paymaya{
+  min-width: 250px;
+  max-width: 250px;
   background-color:	#00344e;
   color: white;
 }
 
 .card-bdo{
+  min-width: 250px;
+  max-width: 250px;
   background-color:	#0b2972;
   color: white;
 }
 
 .card-bpi{
+  min-width: 250px;
+  max-width: 250px;
   background-color:	#b20000;
   color: white;
 }

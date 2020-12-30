@@ -1,0 +1,69 @@
+<div class="content">
+    <!-- Form -->
+    <div class="content">
+        <div class="cms-breadcrumbs text-uppercase pb-3">
+            <a href="cms-department">Department</a> / New Department
+        </div>
+        <div id="form-container" class="row">
+            <div class="col-md-12">
+                <form method="post" id="dept_form">
+                    <div class="card cms-blog">
+                        <div class="card-header">
+                            <h5>New Department:</h5>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="cms-font-text-error" id="dept-error">{{departmentErrorMessage}}</h4>
+                            <div class="form-group">
+                                <label for="department_title">Name</label>
+                                <input type="text" class="form-control" name="department_title" id="department_title"
+                                    placeholder="Department Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="department_description">Description</label>
+                                <input name="department_description" type="hidden" id="department_description">
+                                <div id="dept-quill"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="department_category">Category</label>
+                                <select class="form-control" name="department_category" id="department_category">
+                                    <option value="Management">Management</option>
+                                    <option value="Operations">Operations</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="department_contact">Contact</label>
+                                <input type="text" class="form-control" name="department_contact"
+                                    id="department_contact" placeholder="Department Contact">
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-outline-success">SUBMIT</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // CMS Department Quill Form
+    var deptQuill = new Quill('#dept-quill', {
+        modules: {
+            toolbar: [
+                ['bold', 'italic'], ,
+                [{ list: 'ordered' }]
+            ]
+        },
+        placeholder: 'Insert body here.',
+        theme: 'snow'
+    });
+
+    var dept_form = document.getElementById('dept_form');
+    dept_form.onsubmit = function () {
+        var department_description = document.querySelector('input[name=department_description]');
+        department_description.value = deptQuill.root.innerHTML;
+
+        return true;
+    };
+</script>

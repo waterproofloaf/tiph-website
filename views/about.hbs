@@ -1,96 +1,94 @@
 <!-- HOW IT WAS FOUNDED -->
 <div class="container-fluid">
     <div class="row p-5 my-5 d-flex align-items-center">
-        <div class="col">
-            <img src="assets/img/1.png" width="500">
+        <div class="col d-none d-lg-block">
+            <img src="about_pic" width="100%">
         </div>
         <div class="col">
-            <h5 class="font-weight-bold text-uppercase sub-title">How TIPH was founded</h5>
-            <p class="sub-caption">TIPH was established by De La Salle University - Senior High School (DLSU - SHS) Taft
+            {{!-- <h5 class="font-weight-bold text-uppercase sub-title">How TIPH was founded</h5> --}}
+            <h5 class="font-weight-bold text-uppercase sub-title">{{about_content.about_title}}</h5>
+            {{!-- <p class="sub-caption">TIPH was established by De La Salle University - Senior High School (DLSU - SHS) Taft
                 Campus students
-                After that, it slowly expanded to other schools across Metro Manila.</p>
+                After that, it slowly expanded to other schools across Metro Manila.</p> --}}
+            <div class="sub-caption">
+                {{{about_content.about_description}}}
+            </div>
         </div>
     </div>
 
-    <p class="font-weight-bold text-uppercase sub-header">Management</p>
-    <div id="accordion">
-        <div class="object-container card">
-            {{!-- <div class="card-header" id="headingOne"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseOne"
-                    aria-expanded="false" aria-controls="collapseOne">
-                    Department of Administrative Affairs
-                </button>
-            </h5>
-            {{!-- </div> --}}
+    <div class="row">
+        <div class="col text-center">
+            <p class="font-weight-bold text-uppercase sub-header">Management</p>
+        </div>
+    </div>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>The Department of Administrative Affairs concerns itself with the executive functions of the
-                        organization.
-                        They also enforce bylaws, manage human resources, administer general task assignments, and
-                        preside over organization-wide decision making.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
+    <div class="accordion about-us-acc">
+        {{#each department_content}}{{#equals this.department_category "Management"}}
         <div class="object-container card">
-            {{!-- <div class="card-header" id="headingTwo"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">
-                    Department of Publications and Communications
-                </button>
-            </h5>
-            {{!-- </div> --}}
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-header" id="heading{{this._id}}" style="background-color: #a67f46">
+                <h5 class="mb-0">
+                    <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapse{{this._id}}"
+                        aria-expanded="false" aria-controls="collapse{{this._id}}">
+                        <i class="fa fa-angle-right"></i>
+                        {{this.department_title}}
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapse{{this._id}}" class="collapse" aria-labelledby="heading{{this._id}}"
+                data-parent=".accordion">
                 <div class="card-body content">
-                    <p>The Department of Publications and Communications curates the organization's publicly published
-                        content.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
+                    {{{this.department_description}}}<br>
+                    <p>{{{this.department_contact}}}<br></p>
                 </div>
             </div>
         </div>
-        <div class="object-container card">
-            {{!-- <div class="card-header" id="headingThree"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="false" aria-controls="collapseThree">
-                    Department of Marketing, Finance and Logistics
-                </button>
-            </h5>
-            {{!-- </div> --}}
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>The Department of Marketing, Finance, and Logistics handles the finances and logistics of the
-                        organization and monitors cash and kind donations.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
+        {{/equals}}{{/each}}
         <br><br>
         <hr><br>
-        <p class="font-weight-bold text-uppercase sub-header">Operations</p>
-        <div class="object-container card">
-            {{!-- <div class="card-header" id="headingFour"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseFour"
-                    aria-expanded="false" aria-controls="collapseFour">
-                    Department of Disaster Mitigation and Recovery
-                </button>
-            </h5>
-            {{!-- </div> --}}
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <p class="font-weight-bold text-uppercase sub-header">Operations</p>
+        </div>
+    </div>
 
-            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+    <div class="accordion about-us-acc">
+        {{#each department_content}}{{#equals this.department_category "Operations"}}
+        <div class="object-container card">
+            <div class="card-header" id="heading{{this._id}}" style="background-color: #a67f46">
+                <h5 class="mb-0">
+                    <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapse{{this._id}}"
+                        aria-expanded="false" aria-controls="collapse{{this._id}}">
+                        <i class="fa fa-angle-right"></i>
+                        {{this.department_title}}
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapse{{this._id}}" class="collapse" aria-labelledby="heading{{this._id}}"
+                data-parent=".accordion">
+                <div class="card-body content">
+                    {{{this.department_description}}}<br>
+                    <p>{{{this.department_contact}}}<br></p>
+                </div>
+            </div>
+        </div>
+        {{/equals}}{{/each}}
+
+        {{!-- REFERENCE --}}
+        {{!-- <div class="object-container card">
+            <div class="card-header" id="headingFour" style="background-color: #a67f46">
+                <h5 class="mb-0">
+                    <button class="collapsible collapsed " data-toggle="collapse" data-target="#collapseFour"
+                        aria-expanded="false" aria-controls="collapseFour">
+                        <i class="fa fa-angle-right"></i>
+                        Department of Disaster Mitigation and Recovery
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent=".accordion">
                 <div class="card-body content">
                     <p>DDMR works towards responding to areas and communities affected by natural calamity or
                         catastrophic accidents.</p>
@@ -100,282 +98,23 @@
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="object-container card">
-            {{!-- <div class="card-header" id="headingFive"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseFive"
-                    aria-expanded="false" aria-controls="collapseFive">
-                    Department of Animal and Environmental Welfare
-                </button>
-            </h5>
-            {{!-- </div> --}}
-            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>DAEW works towards responding to issues affecting animals and natural resources.</p>
-                    <br>
-                    <p>tiph.daew@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            {{!-- <div class="card-header" id="headingSix"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseSix"
-                    aria-expanded="false" aria-controls="collapseSix">
-                    Department of Marginalized Community Action
-                </button>
-            </h5>
-            {{!-- </div> --}}
-            <div id="collapseSix" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                <div class="card-body content">
-                    <p> DMCA works towards responding to areas and communities affected by violence and other forms of
-                        oppression.
-                        They also oversee any events, projects, partnerships, and sponsorships formed by the
-                        organization for the benefit of these areas and communities.</p>
-                    <br>
-                    <p>tiph.dmca@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            {{!-- <div class="card-header" id="headingSeven"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseSeven"
-                    aria-expanded="false" aria-controls="collapseSeven">
-                    Department of SOGIE Rights
-                </button>
-            </h5>
-            {{!-- </div> --}}
-            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>DSR works towards responding to the conditions arising from SOGIE inequality and gender
-                        discrimination.</p>
-                    <br>
-                    <p>tiph.dsr@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            {{!-- <div class="card-header" id="headingEight"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseEight"
-                    aria-expanded="false" aria-controls="collapseEight">
-                    Department of Mental Health
-                </button>
-            </h5>
-            {{!-- </div> --}}
-            <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>DMH focuses on alleviating areas and communities affected by terminal illness and mental health
-                        issues.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            {{!-- <div class="card-header" id="headingNine"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseNine"
-                    aria-expanded="false" aria-controls="collapseNine">
-                    Project Taft
-                </button>
-            </h5>
-            {{!-- </div> --}}
-            <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            {{!-- <div class="card-header" id="headingTen"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseTen"
-                    aria-expanded="false" aria-controls="collapseTen">
-                    Project España
-                </button>
-            </h5>
-            {{!-- </div> --}}
-            <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="object-container card">
-            {{!-- <div class="card-header" id="headingEleven"> --}}
-            <h5 class="mb-0">
-                <button class="collapsible collapsed" data-toggle="collapse" data-target="#collapseEleven"
-                    aria-expanded="false" aria-controls="collapseEleven">
-                    Project Katipunan
-                </button>
-            </h5>
-            {{!-- </div> --}}
-            <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordion">
-                <div class="card-body content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <br>
-                    <p>theinitiativeph@gmail.com
-                        <br>
-                    </p>
-                </div>
-            </div>
-        </div>
+        </div> --}}
     </div>
 </div>
-
-<!-- DEPARTMENTS -->
-<!--
-        <div class="container-fluid">
-            <div class="bg-s" style="margin-bottom: 40px;">
-                <center>
-                    <h5 class="font-weight-bold text-uppercase sub-title">OUR STRUCTURE</h5>
-                    
-                </center>
-            </div>
-            <div class="col">
-                <p class="font-weight-bold text-uppercase sub-header">Management</p>
-                <div>
-                    <div class="object-container">
-                        <button type="button" class="collapsible text-uppercase" data-toggle="collapse" data-target="#adminis-des">Department of Administrative Affairs</button>
-                        <div class="content sub-caption" id="adminis-des">
-                            <p>The Department of Administrative Affairs concerns itself with the executive functions of the organization.
-                                They also enforce bylaws, manage human resources, administer general task assignments, and preside over organization-wide decision making.
-                            </p>
-                            <br>
-                            <p>theinitiativeph@gmail.com
-                                <br>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="object-container">
-                        <button type="button" class="collapsible text-uppercase" data-toggle="collapse" data-target="#pub-des">Department of Publications and Communications</button>
-                        <div class="content sub-caption" id="pub-des">
-                            <p>The Department of Publications and Communications curates the organization's publicly published content.</p>
-                            <br>
-                            <p>theinitiativeph@gmail.com
-                                <br>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="object-container">
-                        <button type="button" class="collapsible text-uppercase" data-toggle="collapse" data-target="#market-des">Department of Marketing, Finance and Logistics</button>
-                        <div class="content sub-caption" id="market-des">
-                            <p>The Department of Marketing, Finance, and Logistics handles the finances and logistics of the organization and monitors cash and kind donations.</p>
-                            <br>
-                            <p>theinitiativeph@gmail.com
-                                <br>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <br><br><hr><br>
-                <p class="font-weight-bold text-uppercase sub-header">Operations</p>
-                <div class="object-container">
-                    <button type="button" class="collapsible text-uppercase" data-toggle="collapse" data-target="#disaster-des">Department of Disaster Mitigation and Recovery</button>
-                    <div class="content sub-caption" id="disaster-des">
-                         <p>DDMR works towards responding to areas and communities affected by natural calamity or catastrophic accidents.</p>
-                        <br>
-                        <p>theinitiativeph@gmail.com
-                            <br>
-                        </p>
-                    </div>
-                </div>
-                <div class="object-container">
-                    <button type="button" class="collapsible text-uppercase" data-toggle="collapse" data-target="#animal-des">Department of Animal and Environmental Welfare</button>
-                    <div class="content sub-caption" id="animal-des">
-                         <p>DAEW works towards responding to issues affecting animals and natural resources.</p>
-                        <br>
-                        <p>tiph.daew@gmail.com
-                            <br>
-                        </p>
-                    </div>
-                </div>
-                <div class="object-container">
-                    <button type="button" class="collapsible text-uppercase" data-toggle="collapse" data-target="#margin-des">Department of Marginalized Community Action</button>
-                    <div class="content sub-caption" id="margin-des">
-                         <p> DMCA works towards responding to areas and communities affected by violence and other forms of oppression.
-                        They also oversee any events, projects, partnerships, and sponsorships formed by the organization for the benefit of these areas and communities.</p>
-                        <br>
-                        <p>tiph.dmca@gmail.com
-                            <br>
-                        </p>
-                    </div>
-                </div>
-                <div class="object-container">
-                    <button type="button" data-toggle="collapse" data-target="#sogie-des" class="collapsible text-uppercase">Department of SOGIE Rights</button>
-                    <div class="content sub-caption" id="sogie-des">
-                        <p>DSR works towards responding to the conditions arising from SOGIE inequality and gender discrimination.</p>
-                        <br>
-                        <p>tiph.dsr@gmail.com
-                            <br>
-                        </p>
-                    </div>
-                </div>
-                <div class="object-container">
-                    <button type="button" class="collapsible text-uppercase" data-toggle='collapse' data-target="#mental-des">Department of Mental Health</button>
-                    <div class="content sub-caption" id="mental-des">
-                         <p>DMH focuses on alleviating areas and communities affected by terminal illness and mental health issues.</p>
-                        <br>
-                        <p>theinitiativeph@gmail.com
-                            <br>
-                        </p>
-                    </div>
-                </div>
-                <div class="object-container">
-                    <button type="button" class="collapsible text-uppercase" data-toggle="collapse" data-target="#taft-des">Project Taft</button>
-                    <div class="content sub-caption" id="taft-des">
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <br>
-                        <p>theinitiativeph@gmail.com
-                            <br>
-                        </p>
-                    </div>
-                </div>
-                <div class="object-container">
-                    <button type="button" class="collapsible text-uppercase" data-toggle="collapse" data-target="#espana-des">Project España</button>
-                    <div class="content sub-caption" id="espana-des">
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <br>
-                        <p>theinitiativeph@gmail.com
-                            <br>
-                        </p>
-                    </div>
-                </div>
-                <div class="object-container">
-                    <button type="button" class="collapsible text-uppercase" data-toggle="collapse" data-target="#katip-des">Project Katipunan</button>
-                    <div class="content sub-caption" id="katip-des">
-                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <br>
-                        <p>theinitiativeph@gmail.com
-                            <br>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>-->
 <br><br>
+
+<script>
+    $(document).ready(function () {
+        // Add down arrow icon for collapse element which is open by default
+        $(".collapse.show").each(function () {
+            $(this).prev(".card-header").find(".fa").addClass("fa-angle-down").removeClass("fa-angle-right");
+        });
+
+        // Toggle right and down arrow icon on show hide of collapse element
+        $(".collapse").on('show.bs.collapse', function () {
+            $(this).prev(".card-header").find(".fa").removeClass("fa-angle-right").addClass("fa-angle-down");
+        }).on('hide.bs.collapse', function () {
+            $(this).prev(".card-header").find(".fa").removeClass("fa-angle-down").addClass("fa-angle-right");
+        });
+    });
+</script>

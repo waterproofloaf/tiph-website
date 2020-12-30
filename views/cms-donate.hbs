@@ -1,0 +1,105 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <div class="card">
+          <div class="card-header">
+            <div class="row d-flex align-items-center">
+              <div class="col">
+                <h4 class="card-title">
+                  Manage Donation Options
+                </h4>
+              </div>
+              <div class="col text-right">
+                {{!-- <input type="text" id="cms-search" onkeyup="cms_search()" placeholder="Search.."> --}}
+                <a href="cms-donation-new-option">
+                  <button id="blogeditbtn" type="button" class="btn btn-success">
+                    <i class="fas fa-plus-circle"></i> Add a new donation option
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive text-center">
+              <table class="table text-left blog-project-table" id="donate-table">
+                <thead class=" text-primary">
+                  <th style="width:20%">
+                    Mode
+                  </th>
+                  <th style="width:25%">
+                    Account Name
+                  </th>
+                  <th style="width:25%">
+                    Account Number
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Edit
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Delete
+                  </th>
+                  <th class="text-center" style="width:10%">
+                    Visible
+                  </th>
+                </thead>
+                <tbody id="entries-table">
+                  {{# each donate_info}}
+                  <tr>
+                    <td class="donate-type">
+                      {{this.donate_type}}
+                    </td>
+                    <td class="donate-name">
+                      <span>
+                        <time class="entry-date">{{this.donate_name}}</time>
+                      </span>
+                    </td>
+                    <td class="donate-number">
+                      <span class="entry-progress">
+                        {{this.donate_number}}
+                      </span>
+                    </td>
+                    <td class="text-right">
+                      <a
+                        href="/cms-edit-donation?type={{this.donate_type}}&name={{this.donate_name}}&num={{this.donate_number}}&id={{this._id}}">
+                        <button id={{this._id}} type="button" class="btn btn-outline-success">Edit</button>
+                      </a>
+                    </td>
+                    <td class="text-right">
+                      <button id={{this._id}} type="button" class="btn btn-outline-danger"
+                        onclick="deleteConfirm(this)">Delete</button>
+                    </td>
+                    <td class="text-center donate-switch">
+                      <label class="switch">
+                        <input type="checkbox" id={{this._id}} onclick="donate_change(this)"
+                          {{#if donate_visible}}checked{{/if}}>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function deleteConfirm(button) {
+    var self = $(button).attr('id');
+    if (confirm("Are you sure of deleting this donation option?")) {
+      $.ajax({
+        url: "/cms-donate/delete",
+        data: { id: self },
+        success: function (response) {
+          window.location.href = 'cms-donate';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+</script>

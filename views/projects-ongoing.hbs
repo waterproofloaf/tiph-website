@@ -1,0 +1,138 @@
+<!-- TITLE -->
+{{!-- <section>
+  <div class="container-fluid center">
+    <div class="row p-5 mt-5 justify-content-center">
+      <h5 class="font-weight-bold text-uppercase sub-title">Our Projects</h5>
+      <p class="sub-caption p-3">
+        We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
+        Our projects seek to address issues that arised within our country and at the same time, encourage the youth
+        to become more aware on their role as a citizen with social responsibilities.
+      </p>
+    </div>
+  </div>
+</section> --}}
+<section>
+  <div class="container-fluid">
+    <div class="row px-5 pt-5 mt-5 d-flex align-items-center">
+      <div class="col text-lg-left text-center">
+        <h5 class="font-weight-bold text-uppercase sub-title">Projects
+          <i class="fas fa-leaf"></i>
+        </h5>
+      </div>
+      <div class="col-lg text-right">
+        <input class="form-control sub-caption" type="text" placeholder="Search..." id="project-search"
+          onkeyup="project_search()" aria-label="Search">
+      </div>
+    </div>
+  </div>
+  <div class="row px-5 pt-4 d-flex align-self-center">
+    <p class="sub-caption p-3">
+      We have an ever-expanding advocacy base that caters to the causes of those who take initiative with us.
+      Our projects seek to address issues that arised within our country and at the same time, encourage the youth
+      to become more aware on their role as a citizen with social responsibilities.
+    </p>
+  </div>
+  <br>
+  <div class="container-fluid sort-view d-flex">
+    <div class="blog-project-sort d-flex">
+      <label for="blog_sort_by" style="margin-top: 5px; margin-right: 5px;" class="sub-caption">Sort by: </label>
+      <select class="form-control form-control-sm" id="proj-sort-by" name="proj_sort_by">
+        <option value="adate">Date (Latest)</option>
+        <option value="ddate">Date (Oldest)</option>
+        <option value="atitle">Title (A-Z)</option>
+        <option value="dtitle">Title (Z-A)</option>
+      </select>
+    </div>
+    <div class="view-by d-flex">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle btn-sm view-b" type="button" id="blog-sort-by"
+          name="blog_sort_by" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          View (by status):
+        </button>
+        <div class="dropdown-menu view-b" aria-labelledby="dropdownMenuButton" id="proj-view">
+          <a class="dropdown-item proj-view-by" href="/projects">All</a>
+          <a class="dropdown-item proj-view-by" href="/projects-approved">Approved</a>
+          <a class="dropdown-item proj-view-by" href="/projects-ongoing">Ongoing</a>
+          <a class="dropdown-item proj-view-by" href="/projects-proposed">Proposed</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+</section>
+
+<!-- CARD -->
+<div class="container-fluid py-3 px-5 pb-5" id="project-container">
+
+  {{#each proj_info}}
+  {{#if this.proj_published}}
+  <div class="project-item d-none" id="proj-ongoing">
+    <div class="row py-2 align-items-center project-row" style="display:flex;">
+      <div class="col-lg-4 p-3">
+        <a href="/a-project?id={{this._id}}">
+          <img src="/proj_cover{{this._id}}" width="100%" style="border-radius: 5px;">
+        </a>
+      </div>
+      <div class="col-lg-8 project-post">
+        <a href="/a-project?id={{this._id}}" style="text-decoration: none">
+          <h5 class="card-title text-uppercase project-title" style="font-size: 25px;">{{this.proj_title}}</h5>
+        </a>
+        <p class="project-subtitle project-date">{{this.proj_status}} •
+          {{dateFormat this.proj_date "MMMM Do, YYYY"}}</p>
+        <p class="sub-caption project-caption">
+          {{this.proj_preview}}
+        </p>
+        {{!-- <a href="/a-project/view?id={{this._id}}&title={{this.proj_title}}&date={{this.proj_date}}"> <button class="btn btn-outline-secondary" id="{{this._id}}">Continue Reading</button></a> --}}
+        <a href="/a-project?id={{this._id}}"> <button class="btn btn-secondary" id="{{this._id}}">Continue
+            Reading</button></a>
+      </div>
+    </div>
+    <hr>
+  </div>
+  {{/if}}
+  {{/each}}
+
+
+
+  <!-- PAGINATION -->
+  <div class="pt-5">
+    <nav aria-label="...">
+      <ul class="pagination justify-content-center">
+        <li class="page-item {{#equals current 1}}disabled{{/equals}}">
+          <a class="page-link" {{#equals current 1}} href="#" tabindex="-1" {{else}}
+            href="/projects-ongoing/{{minus current 1}}" {{/equals}}>Previous</a>
+        </li>
+        {{#repeat count=pages start=1}}
+        <li class="page-item {{#equals current @index}}active{{/equals}}"><a class="page-link"
+            href="/projects-ongoing/{{@index}}">{{@index}}{{#equals current @index}}<span
+              class="sr-only">(current)</span>{{/equals}}</a></li>
+        {{else}}
+        Nothing :(
+        {{/repeat}}
+        <li class="page-item {{#equals current pages}}disabled{{/equals}}">
+          <a class="page-link" href="/projects-ongoing/{{add current 1}}">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+{{!-- <div class="row m-auto py-3 px-5">
+  <div class="row m-auto">
+    <div class="row m-auto">
+      <div class="row p-5 border rounded bg-light">
+        <div class="col-lg-7">
+          <h5 class="font-weight-bold sub-title">{{this.proj_title}}</h5>
+          <p class="project-subtitle">{{this.proj_date}}</p>
+          <p class="sub-caption">
+            {{this.proj_preview}}
+          </p>
+          <a href="a-project"><button type="button" class="btn btn-outline-secondary">Continue Reading</button></a>
+        </div>
+        <div class="col-5 d-none d-lg-block">
+          <img src="assets/img/1.png" width="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> --}}

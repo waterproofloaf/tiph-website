@@ -1,0 +1,222 @@
+<div class="content">
+    <div class="cms-breadcrumbs text-uppercase pb-3">
+        <a href="cms-applicant-app-overview">Manage Applications</a> / <a href="cms-applicant-app">All Applications
+        </a> / Profile
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="POST">
+                <div class="card">
+                    <div class="card-header">
+                        {{!-- Applicant Name should be changed --}}
+                        <h4 class="card-title">{{this.app_firstname}} {{this.app_lastname}} Application Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="cms-font-text-error" id="applicant-error">{{applicantErrorMessage}}</h5>
+                        <div class="table-responsive text-center">
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th style="width: 50%;">
+                                        Personal Information
+                                    </th>
+                                    <th style="width: 50%;">
+                                        Contact Details
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>Name: </b> {{this.app_firstname}} {{this.app_lastname}}
+                                        </td>
+                                        <td>
+                                            <b>Contact Number: </b> {{this.app_number}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Nickname: </b> {{this.app_nickname}}
+                                        </td>
+                                        <td>
+                                            <b>Email Address: </b> {{this.app_email}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Date of Birth: </b> {{this.app_bday}}
+                                        </td>
+                                        <td>
+                                            <b>Facebook URL: </b> {{this.app_facebook}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>City of Residence: </b> {{this.app_cResidence}}
+                                        </td>
+                                        <td>
+                                            <b>Twitter URL: </b> {{this.app_twitter}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>School/Company: </b> {{this.app_schoolcompany}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>How did you find out about TIPH: </b> {{this.app_findout}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Areas of Expertise
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        {{!-- Every new line should break to be more readable--}}
+                                        <td>
+                                            {{this.app_expertise}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th style="width: 50%;">
+                                        Department Choice
+                                    </th>
+                                    <th style="width: 50%;">
+                                        Desired Position
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{this.app_dept1}}
+                                        </td>
+                                        <td>
+                                            {{this.app_position1}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{this.app_dept2}}
+                                        </td>
+                                        <td>
+                                            {{this.app_position2}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Reasons for Volunteering
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{this.app_reason}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Portfolio
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{this.app_portfolio}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Previous Reason for Status
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{this.app_status_reason}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Status of this applicant
+                                    </th>
+                                    <tr>
+                                        <td>
+                                            <select name="app_status" id="app_status" style="color:black">
+                                                <option value="Pending" style="color:#51bcda" {{#equals this.app_status "Pending"}}selected{{/equals}}>Pending</option>
+                                                <option value="Accepted" style="color: #6bd098"{{#equals this.app_status "Accepted"}}selected{{/equals}}>Accepted</option>
+                                                <option value="Rejected" style="color: #ef8157"{{#equals this.app_status "Rejected"}}selected{{/equals}}>Rejected</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <table class="table text-left">
+                                <thead class="text-primary">
+                                    <th>
+                                        Reason for Changing the Status
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <textarea id="app_status_reason" name="app_status_reason" rows="3" class="form-control" ></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table text-primary">
+                                <tbody>
+                                    <td class="text-left">
+                                        <button type="submit" class="btn btn-lg btn-outline-success" id="{{this.app_id}}">SUBMIT</button>
+                                    </td>
+                                    <td class="text-right">
+                                        {{!-- <a href="/cms-applicant-app/delete?id={{this.app_id}}"> --}}
+                                            <button id="{{this.app_id}}" type="button" class="btn btn-sm btn-outline-danger" onclick="deleteConfirm(this)">
+                                                Delete
+                                            </button>
+                                        {{!-- </a> --}}
+                                    </td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+  function deleteConfirm(button) {
+    var self = $(button).attr('id');
+    if (confirm("Are you sure of deleting this applicant?")) {
+      $.ajax({
+        url: "/cms-applicant-app/delete/",
+        data: { id: self },
+        success: function (response) {
+          window.location.href = 'cms-applicant-app';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+</script>

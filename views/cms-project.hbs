@@ -7,15 +7,10 @@
             <div class="row d-flex align-items-center">
               <div class="col">
                 <h4 class="card-title">
-                  Projects
+                  Manage Projects
                 </h4>
               </div>
               <div class="col text-right">
-                <input type="text" id="cms-search" onkeyup="cms_search()" placeholder="Search..">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
                 <a href="cms-project-new-page">
                   <button id="blogeditbtn" type="button" class="btn btn-success">
                     <i class="fas fa-plus-circle"></i> Add a new project page
@@ -23,7 +18,6 @@
                 </a>
               </div>
             </div>
-
           </div>
           <div class="card-body">
             <div class="table-responsive text-center">
@@ -35,7 +29,7 @@
                   <th style="width:15%">
                     Date
                   </th>
-                  <th style="width:25%">
+                  <th style="width:15%">
                     Status
                   </th>
                   <th class="text-center" style="width:10%">
@@ -47,132 +41,50 @@
                   <th class="text-center" style="width:10%">
                     Published
                   </th>
+                  <th class="text-center" style="width:10%">
+                    Showcase
+                  </th>
                 </thead>
                 <tbody id="entries-table">
+                  {{#each proj_info}}
                   <tr>
                     <td>
-                      <p class="entry-title">Project Lumad</p>
-                  
-                      
+                      {{this.proj_title}}
                     </td>
                     <td>
                       <span>
-                        <time class="entry-date">03/07/2020</time>
+                        <time class="entry-date">{{dateFormat this.proj_date "YYYY-MM-DD"}}</time>
                       </span>
                     </td>
                     <td>
                       <span class="entry-progress">
-                        Ongoing
+                        {{this.proj_status}}
                       </span>
                     </td>
                     <td class="text-right">
-                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
+                      <a href="/cms-project-page?id={{this._id}}"><button id="blogeditbtn" type="button"
                           class="btn btn-outline-success">Edit</button></a>
                     </td>
                     <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
+                      <button id="{{this._id}}" type="button" class="btn btn-outline-danger"
+                        onclick="deleteConfirm(this)">Delete</button>
                     </td>
-                    <td class="text-right">
+                    <td class="text-center">
                       <label class="switch">
-                        <input type="checkbox" checked>
+                        <input type="checkbox" class="proj_publish" id="{{this._id}}" onclick="proj_change(this)"
+                          {{#if proj_published}}checked{{/if}}>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                    <td class="text-center">
+                      <label class="switch">
+                        <input type="checkbox" class="proj_showcase" id="{{this._id}}" onclick="proj_showcase(this)"
+                          {{#if proj_showcase}}checked{{/if}}>
                         <span class="slider round"></span>
                       </label>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <p class="entry-title">Project Pagsibol</p>
-                      
-                     
-                    </td>
-                    <td>
-                      <span>
-                        <time class="entry-date">04/08/2020</time>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="entry-progress">
-                        Done
-                      </span>
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="entry-title">Hatid Kapatid</p>
-                      
-                      
-                    </td>
-                    <td>
-                      <span>
-                        <time class="entry-date">03/30/2020</time>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="entry-progress">
-                        Ongoing
-                      </span>
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="entry-title">Projects Title 4</p>
-                      
-                      
-                    </td>
-                    <td>
-                      <span>
-                        <time class="entry-date">11/15/2020</time>
-                      </span>
-                    </td>
-                    <td>
-                      <span class="entry-progress">
-                        Proposed
-                      </span>
-                    </td>
-                    <td class="text-right">
-                      <a href="cms-project-page"><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-success">Edit</button></a>
-                    </td>
-                    <td class="text-right">
-                      <a href=""><button id="blogeditbtn" type="button"
-                          class="btn btn-outline-danger">Delete</button></a>
-                    </td>
-                    <td class="text-right">
-                      <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </td>
-                  </tr>
+                  {{/each}}
                 </tbody>
               </table>
             </div>
@@ -182,3 +94,95 @@
     </div>
   </div>
 </div>
+
+<script>
+  // CMS Project Switch Toggle
+  function proj_change(checkbox) {
+
+    //If it is checked.
+    var self = $(checkbox).attr('id');
+    if (checkbox.checked) {
+      $.ajax({
+        url: "/cms-project/toggle/",
+        data: { id: self, publish: "true" },
+        success: function (response) {
+          $(this).attr("checked", "checked");
+        },
+        error: function (xhr) { }
+      });
+    }
+
+    //If it has been unchecked.
+    else {
+      $.ajax({
+        url: "/cms-project/toggle/",
+        data: { id: self, publish: "false" },
+        success: function (response) {
+          $(this).removeAttr("checked");
+          $.ajax({
+            url: "/cms-project/showcase/",
+            data: { id: self, showcase: "false" },
+            succ: function (res) {
+              $(this).removeAttr("checked");
+
+            }
+          })
+        },
+        error: function (xhr) { }
+      });
+
+      $("#" + self + ".proj_showcase").prop("checked", false);
+    }
+  }
+
+  // CMS Project Showcase Toggle
+  function proj_showcase(checkbox) {
+
+    //If it is checked.
+    var self = $(checkbox).attr('id');
+    if (checkbox.checked) {
+      $.ajax({
+        url: "/cms-project/showcase/",
+        data: { id: self, showcase: "true" },
+        success: function (response) {
+          $(this).attr("checked", "checked");
+          $.ajax({
+            url: "/cms-project/toggle/",
+            data: { id: self, publish: "true" },
+            succ: function (res) {
+              $(this).attr("checked", "checked");
+            }
+          })
+        },
+        error: function (xhr) { }
+      });
+      $("#" + self + ".proj_publish").prop("checked", true);
+    }
+
+    //If it has been unchecked.
+    else {
+      $.ajax({
+        url: "/cms-project/showcase/",
+        data: { id: self, showcase: "false" },
+        success: function (response) {
+          $(this).removeAttr("checked");
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+
+  function deleteConfirm(button) {
+    var self = $(button).attr('id');
+    if (confirm("Are you sure of deleting this project entry?")) {
+      $.ajax({
+        url: "/cms-project/delete",
+        data: { id: self },
+        success: function (response) {
+          window.location.href = 'cms-project';
+        },
+        error: function (xhr) { }
+      });
+    }
+  }
+</script>

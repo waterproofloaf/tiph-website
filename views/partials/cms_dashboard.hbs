@@ -1,11 +1,11 @@
 <div class="sidebar" data-color="white" data-active-color="danger">
   <div class="logo">
-    <a href="#" class="simple-text logo-mini">
+    <a href="cms-home" class="simple-text logo-mini">
       <div class="logo-image-small">
         <img src="assets/img/cropped-logo.png">
       </div>
     </a>
-    <a href="#" class="simple-text logo-normal">
+    <a href="cms-home" class="simple-text logo-normal">
       The Initiative PH
       <!-- Your Logo -->
       <!-- <div class="logo-image-big">
@@ -13,20 +13,114 @@
           </div> -->
     </a>
   </div>
-  <div class="sidebar-wrapper">
+  <div class="sidebar-wrapper" style="overflow: auto">
     <ul class="nav">
       <li class="{{#if home_active}} active {{/if}}">
         <a href="cms-home">
-          <i class="nc-icon nc-bullet-list-67"></i>
-          <p>Website Toggles</p>
+          <i class="nc-icon nc-shop"></i>
+          <p>Home Page</p>
         </a>
       </li>
-      <li {{#if application_active}}class="active " {{/if}}>
-        <a href="cms-application">
+
+      {{!-- <li class="{{#if about_active}} active {{/if}}">
+        <a href="cms-about">
+          <i class="nc-icon nc-satisfied"></i>
+          <p>About</p>
+        </a>
+      </li>
+      <li class="{{#if department_active}} active {{/if}}">
+        <a href="cms-department">
+          <i class="nc-icon nc-paper"></i>
+          <p>Departments</p>
+        </a>
+      </li> --}}
+
+
+      <li {{#if about_active}}class="active" {{/if}}>
+        <a data-toggle="collapse" href="#dashboardOverviewTwo" {{#if about_active}}aria-expanded="true" {{/if}}>
+          <i class="ti-panel nc-icon nc-favourite-28"></i>
+          <p>
+            About
+            <b class="caret mt-7"></b>
+          </p>
+        </a>
+        <div class="collapse {{#if about_active}}show{{else}}in{{/if}}" id="dashboardOverviewTwo">
+          <ul class="ml-20">
+            <li {{#if about_page_active}} class="active" {{/if}}>
+              <a href="cms-about">
+                <span class="sidebar-normal">About Page</span>
+              </a>
+            </li>
+            <li {{#if department_active}} class="active" {{/if}}>
+              <a href="cms-department">
+                <span class="sidebar-normal">Departments</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li {{#if application_active}}class="active" {{/if}}>
+        <a data-toggle="collapse" href="#dashboardOverviewThree" {{#if application_active}}aria-expanded="true" {{/if}}>
           <i class="nc-icon nc-badge"></i>
-          <p>Application</p>
+          <p>
+            Volunteer Forms
+            <b class="caret mt-7"></b>
+          </p>
+        </a>
+        <div class="collapse {{#if application_active}}show{{else}}in{{/if}}" id="dashboardOverviewThree">
+          <ul class="ml-20">
+            <li {{#if forms_active}} class="active" {{/if}}>
+              <a href="cms-application">
+                <span class="sidebar-normal">Manage Forms</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="ml-20">
+            <li {{#if positions_active}} class="active" {{/if}}>
+              <a href="cms-positions">
+                <span class="sidebar-normal">Manage Positions</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li {{#if applicant_active}}class="active" {{/if}}>
+        {{!-- <a href="cms-applicant-overview">
+          <i class="nc-icon nc-satisfied"></i>
+          <p>Applicants</p>
+        </a> --}}
+        <a data-toggle="collapse" href="#dashboardOverview" {{#if applicant_active}}aria-expanded="true" {{/if}}>
+          <i class="ti-panel nc-icon nc-satisfied"></i>
+          <p>
+            Applicants
+            <b class="caret mt-7"></b>
+          </p>
+        </a>
+        <div class="collapse {{#if applicant_active}}show{{else}}in{{/if}}" id="dashboardOverview">
+          <ul class="ml-20">
+            <li {{#if pre_app_active}} class="active" {{/if}}>
+              <a href="cms-applicant-pre-overview">
+                <span class="sidebar-normal">Pre-Applications</span>
+              </a>
+            </li>
+            <li {{#if app_active}} class="active" {{/if}}>
+              <a href="cms-applicant-app-overview">
+                <span class="sidebar-normal">Applications</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      {{#if type}}
+      <li class="{{#if admin_active}} active {{/if}}">
+        <a href="cms-admin">
+          <i class="nc-icon nc-single-02"></i>
+          <p>Admins</p>
         </a>
       </li>
+      {{/if}}
       <li {{#if blog_active}}class="active " {{/if}}>
         <a href="cms-blog">
           <i class="nc-icon nc-laptop"></i>
@@ -38,6 +132,36 @@
           <i class="nc-icon nc-single-copy-04"></i>
           <p>Projects</p>
         </a>
+      </li>
+      <li {{#if donate_active}}class="active" {{/if}}>
+        <a data-toggle="collapse" href="#dashboardOverviewFour" {{#if donate_active}}aria-expanded="true" {{/if}}>
+          <i class="nc-icon nc-credit-card"></i>
+          <p>
+            Donate
+            <b class="caret mt-7"></b>
+          </p>
+        </a>
+        <div class="collapse {{#if donate_active}}show{{else}}in{{/if}}" id="dashboardOverviewFour">
+          <ul class="ml-20">
+            <li {{#if donatelist_active}} class="active" {{/if}}>
+              <a href="cms-donate">
+                <span class="sidebar-normal">Manage Current List</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="ml-20">
+            <li {{#if donatemode_active}} class="active" {{/if}}>
+              <a href="cms-donate-mode">
+                <span class="sidebar-normal">Manage Modes</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <ul class="nav">
+      <li class="active">
+
       </li>
     </ul>
   </div>
