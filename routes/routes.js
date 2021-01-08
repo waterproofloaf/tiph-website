@@ -35,7 +35,7 @@ const app = express();
 // SET STORAGE FOR ATTACHMENT
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads')
+    cb(null, __dirname + 'uploads')
   },
   filename: function (req, file, cb) {
     // cb(null, file.originalname)
@@ -46,7 +46,7 @@ var storage = multer.diskStorage({
 
 var email_storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads')
+    cb(null, __dirname + 'uploads')
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
